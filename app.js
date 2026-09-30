@@ -50,7 +50,7 @@ Promise.all([
   fetch('data/data.json', { cache: 'no-cache' }).then(r => r.json()),
   fetch('data/history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { seasons: {} }).catch(() => ({ seasons: {} })),
   fetch('data/competitions.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([d, hist, comp]) => { render(d); renderHistory(d, hist); renderComps(d, comp); });
+]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderHistory(d, hist); renderComps(d, comp); });
 
 function render(d) {
   const GW = d.lastGW;

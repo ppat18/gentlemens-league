@@ -46,6 +46,37 @@ async function get(url) {
     live[gw] = Object.fromEntries(l.elements.map(e => [e.id, e.stats]));
   }
 
+  // Aktuellster Kader: letzte Gameweek, deren Deadline vorbei ist (vorher sind fremde Kader nicht sichtbar)
+  const squadGW = Math.max(0, ...boot.events.filter(e => new Date(e.deadline_time) < new Date()).map(e => e.id));
+  if (squadGW && !live[squadGW]) {
+    const l = await get(`/event/${squadGW}/live/`);
+    live[squadGW] = Object.fromEntries(l.elements.map(e => [e.id, e.stats]));
+  }
+  const elements = Object.fromEntries(boot.elements.map(e => [e.id, e]));
+  const teamById = Object.fromEntries(boot.teams.map(t => [t.id, t]));
+  const squadOf = async entry => {
+    if (!squadGW) return null;
+    const p = await get(`/entry/${entry}/event/${squadGW}/picks/`);
+    const stats = live[squadGW] || {};
+    return {
+      gw: squadGW,
+      finished: finished.includes(squadGW),
+      chip: p.active_chip,
+      points: p.entry_history?.points ?? null,
+      hits: p.entry_history?.event_transfers_cost ?? 0,
+      subs: p.automatic_subs.map(s => ({ in: s.element_in, out: s.element_out })),
+      picks: p.picks.map(x => {
+        const el = elements[x.element], t = teamById[el.team];
+        return {
+          id: x.element, name: el.web_name, type: el.element_type, // 1 TW, 2 VT, 3 MF, 4 ST
+          team: t.short_name, teamCode: t.code, pos: x.position, mult: x.multiplier,
+          cap: x.is_captain, vice: x.is_vice_captain,
+          pts: stats[x.element]?.total_points ?? 0, minutes: stats[x.element]?.minutes ?? 0,
+        };
+      }),
+    };
+  };
+
   const managers = [];
   for (const e of entries) {
     const meta = MANAGERS[e.entry] || { nick: e.player_name.split(' ')[0], avatar: null };
@@ -107,6 +138,7 @@ async function get(url) {
       rank: e.rank, lastRank: e.last_rank, total: e.total,
       chips: hist.chips, gws,
       past: hist.past.map(p => ({ season: p.season_name, points: p.total_points, overallRank: p.rank })),
+      squad: await squadOf(e.entry),
     });
   }
 
