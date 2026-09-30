@@ -18,6 +18,10 @@
   .sq-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;background:var(--lime);color:var(--navy);font:700 17px Oswald;text-transform:uppercase;letter-spacing:.5px}
   .sq-nav button{width:40px;height:34px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:700 24px/1 Inter;cursor:pointer}
   .sq-nav button:disabled{opacity:.25;cursor:default}
+  .sq-place{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:7px 10px;background:#f3f5f9;font-size:13px;font-weight:600;color:#444}
+  .sq-tag{font:700 13px Oswald;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+  .sq-tag.win{background:var(--gold);color:var(--ink)}
+  .sq-tag.last{background:var(--red);color:#fff}
   .sq-pitch{position:relative;overflow:hidden;padding:14px 6px 10px;background:repeating-linear-gradient(180deg,#2f7d32 0 44px,#2a722d 44px 88px)}
   .sq-pitch::before{content:"";position:absolute;left:12%;right:12%;top:0;height:54px;border:2px solid rgba(255,255,255,.35);border-top:0}
   .sq-pitch::after{content:"";position:absolute;left:50%;bottom:-40px;width:110px;height:80px;border:2px solid rgba(255,255,255,.35);border-radius:50%;transform:translateX(-50%)}
@@ -99,6 +103,17 @@
       .map(r => `<div class="sq-row">${r.map(p => card(p, false)).join('')}</div>`).join('');
     const net = s.points != null ? s.points - (s.hits || 0) : null;
 
+    // Rundenplatz in der Liga (Netto-Punkte dieser Gameweek aller Manager)
+    const netOf = x => { const q = (x.squads || []).find(q => q.gw === s.gw); return q && q.points != null ? q.points - (q.hits || 0) : null; };
+    const all = window.LEAGUE.managers.map(netOf).filter(v => v != null);
+    let placeHtml = '';
+    if (net != null && all.length > 1) {
+      const place = all.filter(v => v > net).length + 1;
+      const tag = net === Math.max(...all) ? '<span class="sq-tag win">🥇 Rundensieger</span>'
+        : net === Math.min(...all) ? '<span class="sq-tag last">🥄 Rundenletzter</span>' : '';
+      placeHtml = `<div class="sq-place">${tag}<span>Rundenplatz ${place} von ${all.length}${s.finished ? '' : ' (vorläufig)'}</span></div>`;
+    }
+
     ov.innerHTML = `<div class="sq-panel" role="dialog" aria-label="Kader von ${esc(m.nick)}">
       <div class="sq-head">
         <img class="av" src="${av(m)}" alt="">
@@ -111,6 +126,7 @@
         <span>Gameweek ${s.gw}${s.finished ? '' : ' · läuft'}</span>
         <button class="sq-next" ${idx === list.length - 1 ? 'disabled' : ''} aria-label="Neuere Gameweek">›</button>
       </div>
+      ${placeHtml}
       <div class="sq-pitch">${rows}</div>
       <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
       <div class="sq-foot">${s.finished ? `Endstand Gameweek ${s.gw}` : `Gameweek ${s.gw} läuft – Punkte werden bei jeder Aktualisierung nachgetragen`} · ↑↓ = automatische Einwechslung</div>
