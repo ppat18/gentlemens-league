@@ -179,6 +179,13 @@ function renderLuck(ms) {
     }).join('')}
     <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + Bonuspunkte − halbe Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer. Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
 
+  // Antippen (Handy): Details ein-/ausblenden, immer nur eine Zeile offen
+  document.querySelectorAll('#luck .lrow').forEach(row => row.addEventListener('click', () => {
+    const was = row.classList.contains('open');
+    document.querySelectorAll('#luck .lrow.open').forEach(r => r.classList.remove('open'));
+    if (!was) row.classList.add('open');
+  }));
+
   // Nadeln animiert ausschlagen lassen
   setTimeout(() => document.querySelectorAll('.needle').forEach(n => n.style.transform = `rotate(${n.dataset.angle}deg)`), 300);
 }
