@@ -1,0 +1,52 @@
+# Holt regelmäßig die FPL-Daten, speichert sie im Projekt und veröffentlicht die Seite auf GitHub Pages.
+name: Liga aktualisieren & veröffentlichen
+
+on:
+  schedule:
+    - cron: '0 5 * * *'    # täglich 05:00 UTC (07:00 in Österreich)
+    - cron: '0 23 * * *'   # täglich 23:00 UTC – nach den Abendspielen
+  push:
+    branches: [main]
+  workflow_dispatch:       # manuell auslösbar
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: FPL-Daten holen
+        run: node scripts/fetch.js
+
+      - name: Neue Daten speichern
+        run: |
+          git config user.name "liga-bot"
+          git config user.email "liga-bot@users.noreply.github.com"
+          git add data assets/badges
+          git diff --cached --quiet || git commit -m "Daten aktualisiert"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

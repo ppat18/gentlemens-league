@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gentlemen's League</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2a2870; --navy-2:#1c1b4f; --lime:#8dc63f; --lime-2:#a6d95a;
+  --grass-1:#2f7d32; --grass-2:#2a722d; --line:rgba(255,255,255,.55);
+  --gold:#f2c230; --red:#e0312f; --white:#fff; --ink:#15143a;
+  --card:rgba(255,255,255,.96);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Inter,system-ui,sans-serif;color:var(--ink);min-height:100vh;
+  background:
+    repeating-linear-gradient(180deg,var(--grass-1) 0 90px,var(--grass-2) 90px 180px);
+}
+/* Spielfeld-Linien */
+.pitch-lines{position:fixed;inset:0;pointer-events:none;z-index:0}
+.pitch-lines::before{content:"";position:absolute;left:50%;top:50%;width:260px;height:260px;
+  border:3px solid var(--line);border-radius:50%;transform:translate(-50%,-50%);opacity:.35}
+.pitch-lines::after{content:"";position:absolute;left:0;right:0;top:50%;border-top:3px solid var(--line);opacity:.35}
+main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 16px 60px}
+
+/* Header */
+header{position:relative;z-index:1;background:linear-gradient(180deg,var(--navy-2),var(--navy));
+  border-bottom:5px solid var(--lime);box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.head{max-width:1100px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;gap:16px}
+.logo{width:104px;height:104px;border-radius:18px;padding:5px;box-shadow:0 0 0 3px var(--lime);background:#fff;display:grid;place-items:center;
+  overflow:hidden;flex:none;font:700 12px Oswald;color:var(--navy);text-align:center}
+.logo img{width:100%;height:100%;object-fit:contain}
+.brand h1{font:700 clamp(24px,4vw,38px)/1 Oswald;color:#fff;letter-spacing:1px;text-transform:uppercase}
+.brand p{color:var(--lime-2);font-weight:600;margin-top:4px;font-size:14px}
+.gw-badge{margin-left:auto;background:var(--lime);color:var(--navy);font:700 15px Oswald;
+  padding:8px 14px;border-radius:999px;white-space:nowrap}
+.demo{background:var(--lime);color:var(--navy);text-align:center;font-size:13px;font-weight:600;padding:6px}
+
+h2{font:700 24px Oswald;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:34px 0 14px;
+  text-shadow:0 2px 6px rgba(0,0,0,.4);display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:3px;background:var(--line);opacity:.5}
+
+/* Avatar */
+.av{border-radius:50%;object-fit:cover;object-position:50% 15%;background:#111;display:block}
+
+/* Hero: Führender & Laterne */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.hcard{position:relative;border-radius:22px;padding:24px 20px 22px;text-align:center;color:#fff;overflow:hidden}
+.hcard .av{width:170px;height:170px;margin:10px auto 14px;border:6px solid}
+.hcard .tag{font:700 14px Oswald;letter-spacing:2px;text-transform:uppercase;display:inline-block;padding:5px 14px;border-radius:999px}
+.hcard .name{font:700 34px Oswald;text-transform:uppercase}
+.hcard .pts{font-weight:600;opacity:.9}
+.leader{background:radial-gradient(circle at 50% 0%,rgba(255,230,120,.55),transparent 60%),linear-gradient(160deg,var(--navy),var(--navy-2))}
+.leader .av{border-color:var(--gold);box-shadow:0 0 40px rgba(242,194,48,.8)}
+.leader .tag{background:var(--gold);color:var(--ink)}
+.crown{position:absolute;left:50%;top:18px;transform:translateX(-50%);font-size:40px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.5))}
+.lantern{background:radial-gradient(circle at 50% 35%,rgba(255,40,30,.75),rgba(90,0,0,.95) 65%,#1a0000);
+  animation:flicker 3.5s infinite}
+.lantern .av{border-color:var(--red);box-shadow:0 0 50px rgba(255,40,30,.95);filter:sepia(.35) saturate(1.4) hue-rotate(-15deg)}
+.lantern .tag{background:var(--red)}
+.lamp{position:absolute;right:22px;top:14px;font-size:44px;transform-origin:50% 0;animation:swing 2.4s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(9deg)}50%{transform:rotate(-9deg)}}
+@keyframes flicker{0%,100%{filter:brightness(1)}45%{filter:brightness(1.12)}50%{filter:brightness(.9)}55%{filter:brightness(1.08)}}
+
+/* Awards */
+.awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.award{background:var(--card);border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);border-top:6px solid var(--lime)}
+.award.bad{border-top-color:var(--red)}
+.award .av{width:74px;height:74px;border:3px solid var(--navy);flex:none}
+.award .t{font:700 13px Oswald;text-transform:uppercase;letter-spacing:1px;color:var(--navy)}
+.award.bad .t{color:var(--red)}
+.award .n{font:700 22px Oswald;text-transform:uppercase;line-height:1.1}
+.award .d{font-size:13px;color:#555;margin-top:2px}
+
+/* Tabelle */
+.table{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+table{width:100%;border-collapse:collapse}
+th{background:var(--navy);color:#fff;font:600 13px Oswald;text-transform:uppercase;letter-spacing:1px;padding:10px 8px;text-align:left}
+th.num,td.num{text-align:right}
+td{padding:8px;border-bottom:1px solid #e6e8ee;font-weight:600;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+tr.first td{background:#fff8dc}
+tr.last td{background:#ffe6e4}
+.rank{font:700 20px Oswald;width:44px;text-align:center}
+.mv{font-size:12px;font-weight:800;margin-left:4px}
+.up{color:#1e9e3a}.down{color:var(--red)}.same{color:#999}
+.who{display:flex;align-items:center;gap:10px}
+.who .av{width:40px;height:40px;border:2px solid var(--lime)}
+.who small{display:block;color:#777;font-weight:400;font-size:12px}
+.total{font:700 20px Oswald;color:var(--navy)}
+.scroll{overflow-x:auto}
+.stats th,.stats td{white-space:nowrap}
+.stats td.best{color:#1e9e3a;font-weight:800}.stats td.worst{color:var(--red);font-weight:800}
+.foot{color:#fff;opacity:.8;font-size:12px;margin-top:10px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.award .n small{font:600 13px Inter;text-transform:none;color:#777}
+/* Nächste Gameweek */
+.deadline{background:var(--navy);color:#fff;border-radius:16px;padding:14px 18px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;box-shadow:0 6px 18px rgba(0,0,0,.25);margin-bottom:12px}
+.deadline b{font:700 20px Oswald;color:var(--lime);letter-spacing:.5px}
+.deadline .cd{font:700 18px Oswald;background:var(--lime);color:var(--navy);padding:4px 12px;border-radius:999px}
+.fx-day{font:700 14px Oswald;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:14px 4px 6px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.fx-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:10px}
+.fx{background:var(--card);border-radius:14px;padding:10px 12px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.fx .tm{display:flex;align-items:center;gap:8px;font-weight:800;min-width:0}
+.fx .tm span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fx .tm.a{justify-content:flex-end;text-align:right}
+.fx img{width:34px;height:34px;object-fit:contain;flex:none}
+.fx .time{font:700 16px Oswald;color:var(--navy);background:#eef1f6;border-radius:8px;padding:4px 8px}
+.fdr{display:inline-block;width:9px;height:9px;border-radius:50%;flex:none}
+.fdr1,.fdr2{background:#1e9e3a}.fdr3{background:#c9ccd4}.fdr4{background:#f08a24}.fdr5{background:var(--red)}
+.fx .short{display:none}
+@media (max-width:480px){.fx-list{grid-template-columns:1fr}.fx .full{display:none}.fx .short{display:inline}}
+.fx-note{color:#fff;opacity:.8;font-size:12px;margin-top:8px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+/* Reiter */
+.tabs{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:6px;overflow-x:auto}
+.tabs a{color:#fff;text-decoration:none;font:600 15px Oswald;letter-spacing:.5px;text-transform:uppercase;padding:10px 16px;border-radius:12px 12px 0 0;white-space:nowrap;opacity:.75}
+.tabs a:hover{opacity:1;background:rgba(255,255,255,.08)}
+.tabs a.on{background:var(--lime);color:var(--navy);opacity:1}
+.intro{color:#fff;opacity:.9;margin:-6px 0 16px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+/* Archiv */
+.archive{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.season{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.season h3{background:var(--navy);color:#fff;font:700 20px Oswald;padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.season h3 small{font:600 12px Inter;color:var(--lime-2)}
+.season td{padding:6px 10px}
+.season .champ td{background:#fff8dc}
+.season .lastp td{background:#ffe6e4}
+.season .who .av{width:34px;height:34px}
+.season .pct{display:block;font:600 11px Inter;color:#23752f;white-space:nowrap}
+/* Wettbewerbe */
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.group,.round,.ko-round,.supercup{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.group h3,.round h3,.ko-round h3,.supercup h3{background:var(--navy);color:#fff;font:700 18px Oswald;padding:10px 14px;text-transform:uppercase;letter-spacing:.5px}
+.group h3 small,.round h3 small,.supercup h3 small{font:600 12px Inter;color:var(--lime-2);text-transform:none;margin-left:6px}
+.group td,.group th{padding:7px 8px}
+.group tr.out td{opacity:.55}
+.group .who .av{width:32px;height:32px}
+.gnote{font-size:12px;color:#777;padding:8px 12px}
+.rounds{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:16px}
+.match{display:grid;grid-template-columns:1fr 92px 1fr;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid #eceef3}
+.match:last-child{border-bottom:0}
+.mt{display:flex;align-items:center;gap:8px;min-width:0}
+.mt.r{flex-direction:row-reverse;text-align:right}
+.mt .av{width:34px;height:34px;border:2px solid var(--lime);flex:none}
+.mt b{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mt small{display:block;font-size:11px;color:#888;font-weight:600}
+.mt.tbd b{color:#777;font-weight:600;font-size:13px}
+.mt.tbd .av{border-color:#c9ccd4}
+.sc{text-align:center;font:700 22px Oswald;color:var(--navy)}
+.sc i{font-style:normal;margin:0 4px;color:#aaa}
+.sc small{font:600 12px Inter;color:#888;background:#eef1f6;padding:4px 8px;border-radius:8px}
+.win b{color:#1e7a2f}.lose{opacity:.6}
+.all-rounds{margin-top:14px;color:#fff}
+.all-rounds summary{cursor:pointer;font-weight:700;padding:8px 0}
+.all-rounds .rounds{margin-top:10px;color:var(--ink)}
+.ko{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start}
+.tie{padding:10px 12px;border-bottom:1px solid #eceef3}
+.tie:last-child{border-bottom:0}
+.tie-row{display:grid;grid-template-columns:1fr auto 44px;align-items:center;gap:8px;padding:3px 0}
+.tie-row.win .agg{background:var(--lime);color:var(--navy)}
+.tie-row.lose{opacity:.55}
+.legs i{font-style:normal;display:inline-block;min-width:30px;text-align:center;font-size:13px;color:#666;font-weight:600}
+.agg{font:700 18px Oswald;text-align:center;border-radius:8px;padding:2px 0;color:var(--navy)}
+.tie-foot{font-size:11px;color:#888;margin-top:4px}
+.supercup{margin-bottom:10px}
+.sc-win{padding:8px 14px 12px;font-weight:600}
+.champ-banner{margin-top:16px;background:linear-gradient(90deg,var(--gold),#ffe08a);color:var(--ink);font:700 22px Oswald;text-transform:uppercase;text-align:center;padding:14px;border-radius:16px}
+/* Goldenes Finale */
+.final-gold{max-width:720px;margin:26px auto 0;display:flex;align-items:center;gap:22px;padding:22px 26px;border-radius:24px;
+  background:radial-gradient(circle at 20% 20%,#fff3b0,transparent 45%),linear-gradient(135deg,#f7d34f,#e0a800 55%,#b8860b);
+  box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 3px rgba(255,255,255,.35);position:relative;overflow:hidden}
+.final-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 45%,transparent 60%);transform:translateX(-100%);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.trophy{flex:none;width:130px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.trophy svg{width:100%;display:block}
+.fg-body{flex:1;text-align:center;position:relative;z-index:1}
+.fg-title{font:700 30px Oswald;color:var(--ink);text-transform:uppercase;letter-spacing:2px}
+.fg-title small{display:block;font:600 13px Inter;letter-spacing:0;text-transform:none;opacity:.75}
+.fg-match{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0 10px}
+.fg-side{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:110px}
+.fg-side .av{width:78px;height:78px;border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.fg-side b{font:700 20px Oswald;color:var(--ink);text-transform:uppercase}
+.fg-side.lose{opacity:.55}
+.fg-side.win .av{border-color:var(--navy)}
+.fg-score{font:700 30px Oswald;color:var(--navy)}
+.fg-vs{font:700 26px Oswald;color:var(--navy);opacity:.8}
+.fg-when{font-weight:700;color:var(--ink);opacity:.8}
+.fg-winner{display:inline-block;background:var(--navy);color:var(--gold);font:700 20px Oswald;text-transform:uppercase;letter-spacing:1px;padding:8px 18px;border-radius:999px}
+/* CL: Finale unter dem Halbfinale, unten bündig mit dem Viertelfinale */
+.ko-cl{grid-template-columns:1fr 1fr;align-items:stretch}
+.ko-col{display:flex;flex-direction:column;gap:16px}
+.final-gold.compact{margin:auto 0 0;max-width:none;flex-direction:row;gap:14px;padding:14px 18px}
+.final-gold.compact .trophy{width:92px}
+.final-gold.compact .fg-match{margin:8px 0 6px}
+.final-gold.compact .fg-title{font-size:24px}
+.final-gold.compact .fg-side .av{width:64px;height:64px}
+/* König */
+.king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
+  background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
+.king .av{width:190px;height:190px;margin:14px auto;border:7px solid var(--gold);box-shadow:0 0 60px rgba(242,194,48,.85)}
+.king .crown{font-size:56px;top:6px}
+.king .tag{display:inline-block;background:var(--gold);color:var(--ink);font:700 15px Oswald;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:999px}
+.king .name{font:700 44px Oswald;text-transform:uppercase}
+.king .cups{font-size:30px;letter-spacing:4px;margin-top:4px}
+.king .seasons{opacity:.9;font-weight:600}
+.trophies{font-size:18px;letter-spacing:2px}
+/* Spieltags-Bericht */
+.report{margin-top:18px;background:#fffdf5;border-radius:18px;padding:18px 22px 18px;box-shadow:0 6px 18px rgba(0,0,0,.25);position:relative;border-left:8px solid var(--red)}
+.report .kicker{font:700 13px Oswald;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.report h3{font:700 clamp(22px,3.4vw,30px)/1.1 Oswald;color:var(--ink);margin:4px 0 10px;text-transform:uppercase}
+.report p{font-size:16px;line-height:1.55;color:#2b2b3a}
+.report p b{color:var(--navy)}
+.report .by{margin-top:10px;font-size:12px;color:#888;font-style:italic}
+/* Glück-o-Meter */
+.luck{background:var(--card);border-radius:18px;padding:18px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.gauges{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.gauge{border-radius:16px;padding:14px 10px 12px;text-align:center;position:relative}
+.gauge.lucky{background:linear-gradient(160deg,#eef9e2,#d9f0bf)}
+.gauge.unlucky{background:linear-gradient(160deg,#fdeceb,#f8d3d0)}
+.gauge svg{width:100%;max-width:260px;display:block;margin:0 auto}
+.gauge .av{width:72px;height:72px;border:3px solid #fff;margin:8px auto 0;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.gauge .lbl{font:700 13px Oswald;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px}
+.gauge.lucky .lbl{color:#23752f}.gauge.unlucky .lbl{color:#b3261e}
+.gauge .nm{font:700 26px Oswald;text-transform:uppercase;color:var(--ink);line-height:1.1}
+.gauge .vl{font-size:14px;color:#444;font-weight:600}
+.needle{transform-origin:130px 130px;transition:transform 1.4s cubic-bezier(.3,1.6,.5,1)}
+.lrow{display:grid;grid-template-columns:130px 1fr 64px;align-items:center;gap:10px;padding:5px 0;position:relative}
+.lrow .who .av{width:34px;height:34px}
+.ltrack{position:relative;height:22px}
+.ltrack::before{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;background:#9aa0ab}
+.lbar{position:absolute;top:3px;height:16px;border-radius:4px}
+.lbar.pos{left:calc(50% + 2px);background:#3aa845;border-radius:0 4px 4px 0}
+.lbar.neg{right:calc(50% + 2px);background:#d9443c;border-radius:4px 0 0 4px}
+.lval{font:700 17px Oswald;text-align:right;color:var(--ink)}
+.lrow .tip{display:none;position:absolute;z-index:5;left:140px;top:100%;background:var(--navy);color:#fff;font-size:13px;line-height:1.5;padding:10px 12px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.35);width:max-content;max-width:300px}
+.lrow:hover .tip,.lrow:focus .tip{display:block}
+.lrow:hover{background:#f3f5f9;border-radius:10px}
+.laxis{display:grid;grid-template-columns:130px 1fr 64px;gap:10px;font-size:12px;color:#666;font-weight:600;margin-bottom:4px}
+.laxis div:nth-child(2){display:flex;justify-content:space-between}
+.lnote{font-size:12px;color:#666;margin-top:12px;line-height:1.5}
+/* Tabellenverlauf */
+.rc{width:100%;height:auto;display:block;overflow:visible}
+.rc-grid{stroke:#e3e6ec;stroke-width:1}
+.rc-gw{font:600 13px Inter;fill:#777;text-anchor:middle}
+.rc-line{fill:none;stroke:#a9b0c4;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round;transition:stroke .2s,stroke-width .2s,opacity .2s}
+.rc-hit{fill:none;stroke:transparent;stroke-width:16;cursor:pointer}
+.rc-dot{fill:#a9b0c4;stroke:#fff;stroke-width:2}
+.rc-ring{fill:#fff;stroke:#a9b0c4;stroke-width:2.5}
+.rc-name{font:700 15px Oswald;fill:#15143a;letter-spacing:.3px}
+.rc-s{cursor:pointer;outline:none;transition:opacity .2s}
+.rc-s.gold .rc-line,.rc-s.gold .rc-dot{stroke:#e0a800}.rc-s.gold .rc-dot{fill:#e0a800;stroke:#fff}.rc-s.gold .rc-ring{stroke:#f2c230;stroke-width:3.5}
+.rc-s.red .rc-line{stroke:#d9443c}.rc-s.red .rc-dot{fill:#d9443c}.rc-s.red .rc-ring{stroke:#d9443c;stroke-width:3.5}
+.rc.focus .rc-s{opacity:.25}
+.rc.focus .rc-s.hl{opacity:1}
+.rc-s.hl .rc-line{stroke:#2a2870;stroke-width:4.5}
+.rc-s.hl .rc-dot{fill:#2a2870;r:6}
+.rc-s.hl .rc-ring{stroke:#2a2870;stroke-width:3.5}
+.rc-s.gold.hl .rc-line{stroke:#e0a800}.rc-s.red.hl .rc-line{stroke:#d9443c}
+/* Teamwert */
+.value{padding:14px 16px}
+.vrow{display:grid;grid-template-columns:130px 1fr 200px;align-items:center;gap:10px;padding:5px 0}
+.vrow .who .av{width:34px;height:34px}
+.vtrack{height:18px;position:relative}
+.vbar{position:absolute;left:0;top:1px;height:16px;border-radius:0 4px 4px 0;background:var(--navy)}
+.vbank{position:absolute;top:1px;height:16px;border-radius:0 4px 4px 0;background:var(--lime)}
+.vnum{text-align:right;font:700 17px Oswald;color:var(--ink)}
+.vnum small{display:block;font:600 11px Inter;color:#777}
+.vlegend{display:flex;gap:16px;font-size:12px;color:#555;font-weight:600;margin-bottom:8px}
+.vlegend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+@media (max-width:700px){
+  .final-gold.compact{flex-direction:column}
+  .ko-cl{grid-template-columns:1fr}
+  .final-gold{flex-direction:column;padding:20px 14px;gap:8px}
+  .trophy{width:96px}
+  .fg-side{min-width:0}
+  .groups{grid-template-columns:1fr}
+  .rounds{grid-template-columns:1fr}
+  .match{grid-template-columns:1fr 70px 1fr}
+  .gauges{grid-template-columns:1fr}
+  .lrow,.laxis{grid-template-columns:96px 1fr 50px}
+  .vrow{grid-template-columns:96px 1fr 120px}
+
+  .logo{width:80px;height:80px}
+  .hero{grid-template-columns:1fr}
+  .gw-badge{display:none}
+  .hide-m{display:none}
+  .hcard .av{width:140px;height:140px}
+}
+</style>
+</head>
+<body>
+<div class="pitch-lines"></div>
+<header>
+  <div class="head">
+    <div class="logo"><img src="assets/logo.png" alt="Gentlemen's League Logo" onerror="this.parentNode.innerHTML='LOGO'"></div>
+    <div class="brand"><h1>Gentlemen's League</h1><p>Fantasy Premier League · Saison 2026/27</p></div>
+    <div class="gw-badge" id="gw"></div>
+  </div>
+  <nav class="tabs">
+    <a href="#start" data-page="start">🏟️ Meisterschaft</a>
+    <a href="#cl" data-page="cl">⭐ Champions League</a>
+    <a href="#cup" data-page="cup">🥊 Cup</a>
+    <a href="#archiv" data-page="archiv">📚 Archiv</a>
+    <a href="#hall-of-fame" data-page="hall-of-fame">🏆 Hall of Fame</a>
+  </nav>
+  <div class="demo" id="updated"></div>
+</header>
+
+<main class="page" id="page-start">
+  <section class="hero" id="hero"></section>
+
+  <section class="report" id="report"></section>
+
+  <h2 id="gw-title">Gameweek</h2>
+  <section class="awards" id="awards"></section>
+
+  <h2>Tabelle</h2>
+  <section class="table">
+    <table>
+      <thead><tr><th>#</th><th>Manager</th><th class="num hide-m">GW</th><th class="num">Gesamt</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+
+  <h2>🍀 Glück-o-Meter</h2>
+  <section class="luck" id="luck"></section>
+
+  <h2 id="next-title">Nächste Gameweek</h2>
+  <section class="next" id="next"></section>
+
+  <h2>💰 Teamwert-Ranking</h2>
+  <section class="table value" id="value"></section>
+
+  <h2 id="chart-title">📈 Tabellenverlauf</h2>
+  <section class="luck" id="chart"></section>
+
+  <h2 id="season-title">Saison-Auszeichnungen</h2>
+  <section class="awards" id="season-awards"></section>
+
+  <h2>Saison-Statistik</h2>
+  <section class="table scroll">
+    <table class="stats">
+      <thead><tr><th>Manager</th>
+        <th class="num" title="Rundensiege">🥇</th><th class="num" title="Rundenletzter">🥄</th>
+        <th class="num" title="Bestes Spieltagsergebnis">Top-GW</th>
+        <th class="num" title="Punkte auf der Bank">🪑 Bank</th>
+        <th class="num" title="Kapitänspunkte">©️ Kap.</th>
+        <th class="num" title="Transfers">🔁</th><th class="num" title="Minuspunkte durch Transfers">🔪 Hits</th>
+        <th class="num" title="Gelbe Karten">🟨</th><th class="num" title="Rote Karten">🟥</th>
+        <th class="num" title="Tore der Startelf">⚽</th>
+      </tr></thead>
+      <tbody id="stats"></tbody>
+    </table>
+  </section>
+  <p class="foot">Karten, Tore &amp; Kapitänspunkte zählen nur für Spieler in der Startelf (inkl. Auto-Wechsel). Daten: Fantasy Premier League.</p>
+</main>
+
+<main class="page" id="page-cl" hidden>
+  <h2>⭐ Gentlemens Champions League</h2>
+  <p class="intro">Interner Wettbewerb: Duelle Mann gegen Mann – die Tore sind die FPL-Punkte der Gameweek (vor Abzug der Transfer-Minuspunkte). Sieg 3, Remis 1, Niederlage 0.</p>
+  <section id="cl"></section>
+</main>
+
+<main class="page" id="page-cup" hidden>
+  <h2>🥊 Cup</h2>
+  <p class="intro">K.o.-Modus mit Hin- und Rückspiel – die Summe der FPL-Punkte beider Gameweeks entscheidet.</p>
+  <section id="cup"></section>
+</main>
+
+<main class="page" id="page-archiv" hidden>
+  <h2>Archiv – alle Saisonen</h2>
+  <p class="intro">Endstände der vergangenen Saisonen – berechnet aus den Gesamtpunkten der heutigen Liga-Mitglieder.</p>
+  <section class="archive" id="archive"></section>
+</main>
+
+<main class="page" id="page-hall-of-fame" hidden>
+  <section id="king"></section>
+  <h2>🏆 Hall of Fame</h2>
+  <section class="table"><table>
+    <thead><tr><th>Manager</th><th class="num">Titel</th><th>Meistersaisonen</th><th class="num hide-m">Ø Platz</th></tr></thead>
+    <tbody id="hof"></tbody></table></section>
+  <h2>🏮 Hall of Shame</h2>
+  <section class="table"><table>
+    <thead><tr><th>Manager</th><th class="num">Rote Laternen</th><th>Saisonen</th></tr></thead>
+    <tbody id="hos"></tbody></table></section>
+  <h2>📜 Rekorde</h2>
+  <section class="awards" id="records"></section>
+  <p class="foot" id="hof-note"></p>
+</main>
+
+<script src="extras.js"></script>
+<script src="comps.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "_info": "Interne Wettbewerbe (Spielplan 2026/27 von Alex). Tore = FPL-Punkte der Gameweek VOR Abzug der Transfer-Minuspunkte. Platzhalter: A1..A4/B1..B4 = Gruppenplatz, VF1..VF4 / HF1..HF2 = Sieger des jeweiligen Duells (Reihenfolge wie in der Runde darüber).",
+  "season": "2026/27",
+  "supercup": { "gw": 1, "home": "kai", "away": "patrick", "note": "Meister gegen Cupsieger" },
+  "cl": {
+    "name": "Gentlemens Champions League",
+    "groups": {
+      "A": ["christian", "favo", "amti", "alex", "roli"],
+      "B": ["patrick", "kai", "thomas", "max", "andi"]
+    },
+    "rounds": [
+      { "name": "Runde 1", "gw": 4, "matches": [["christian", "amti"], ["alex", "favo"], ["kai", "andi"], ["patrick", "max"]] },
+      { "name": "Runde 2", "gw": 5, "matches": [["amti", "alex"], ["favo", "roli"], ["andi", "patrick"], ["max", "thomas"]] },
+      { "name": "Runde 3", "gw": 7, "matches": [["roli", "christian"], ["amti", "favo"], ["thomas", "kai"], ["andi", "max"]] },
+      { "name": "Runde 4", "gw": 8, "matches": [["alex", "roli"], ["christian", "favo"], ["patrick", "thomas"], ["kai", "max"]] },
+      { "name": "Runde 5", "gw": 10, "matches": [["alex", "christian"], ["roli", "amti"], ["patrick", "kai"], ["thomas", "andi"]] },
+      { "name": "Runde 6", "gw": 13, "matches": [["amti", "christian"], ["favo", "alex"], ["andi", "kai"], ["max", "patrick"]] },
+      { "name": "Runde 7", "gw": 15, "matches": [["alex", "amti"], ["roli", "favo"], ["patrick", "andi"], ["thomas", "max"]] },
+      { "name": "Runde 8", "gw": 16, "matches": [["christian", "roli"], ["favo", "amti"], ["kai", "thomas"], ["max", "andi"]] },
+      { "name": "Runde 9", "gw": 18, "matches": [["roli", "alex"], ["favo", "christian"], ["thomas", "patrick"], ["max", "kai"]] },
+      { "name": "Runde 10", "gw": 19, "matches": [["christian", "alex"], ["amti", "roli"], ["kai", "patrick"], ["andi", "thomas"]] }
+    ],
+    "knockout": [
+      { "name": "Viertelfinale", "gws": [23, 24], "ties": [["A1", "B4"], ["A2", "B3"], ["A3", "B2"], ["A4", "B1"]] },
+      { "name": "Halbfinale", "gws": [26, 27], "ties": [["VF3", "VF2"], ["VF4", "VF1"]] },
+      { "name": "Finale", "gws": [31], "ties": [["HF1", "HF2"]] }
+    ]
+  },
+  "cup": {
+    "name": "FPL Cup",
+    "rounds": [
+      { "name": "Achtelfinale", "gws": [2, 3], "ties": [["patrick", "favo"], ["max", "thomas"]] },
+      { "name": "Viertelfinale", "gws": [11, 12], "ties": [["christian", "amti"], ["roli", "max"], ["alex", "andi"], ["kai", "patrick"]] },
+      { "name": "Halbfinale", "gws": [21, 22], "ties": [["VF3", "VF1"], ["VF2", "VF4"]] },
+      { "name": "Finale", "gws": [29], "ties": [["HF1", "HF2"]] }
+    ]
+  }
+}

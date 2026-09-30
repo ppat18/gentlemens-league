@@ -1,0 +1,6 @@
+# Original-Gruppenbild der Avatare (wird auf der Seite nicht gebraucht)
+assets/avatare-original.webp
+node_modules/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,354 @@
+{
+  "_info": "Echte Endtabellen vergangener Saisonen (aus Screenshots). Reihenfolge = Platzierung. 'who' = Avatar-Name eines heutigen Mitglieds, 'name' = ehemaliges Mitglied. points null = unbekannt. Saisonen, die hier fehlen, werden aus den FPL-Daten berechnet. 2021/22–2025/26: Platzierungen aus Alex' Übersicht (WhatsApp 25.05.2026), Punkte aus FPL.",
+  "seasons": {
+    "2017/18": [
+      {
+        "who": "patrick",
+        "team": "FC Yellow Snow",
+        "points": 2250
+      },
+      {
+        "who": "kai",
+        "team": "FC Schworze Bruat",
+        "points": 2164
+      },
+      {
+        "who": "alex",
+        "team": "THE \"CHAMP\" IS HERE",
+        "points": 2138
+      },
+      {
+        "who": "roli",
+        "team": "Rolandinho 75",
+        "points": 2135
+      },
+      {
+        "name": "Elija Dohr",
+        "team": "Redneck FC",
+        "points": 2119
+      },
+      {
+        "who": "amti",
+        "team": "FC Puntigamer 1909",
+        "points": 2112
+      },
+      {
+        "name": "Moritz Lakeforest",
+        "team": "Lakeforest United",
+        "points": 2093
+      },
+      {
+        "who": "favo",
+        "team": "Favo",
+        "points": 2043
+      },
+      {
+        "who": "max",
+        "team": "FC Mia san mia",
+        "points": 1980
+      },
+      {
+        "who": "andi",
+        "team": "Gunners14",
+        "points": 1974
+      },
+      {
+        "name": "Mario Mair",
+        "team": "Supporter's",
+        "points": null
+      }
+    ],
+    "2019/20": [
+      {
+        "who": "patrick",
+        "team": "FC Free My Teamname",
+        "points": 2173
+      },
+      {
+        "who": "kai",
+        "team": "FC Openair Unten Sie",
+        "points": 2170
+      },
+      {
+        "who": "roli",
+        "team": "Cameltoe Lover",
+        "points": 2085
+      },
+      {
+        "who": "alex",
+        "team": "El Pedo",
+        "points": 2070
+      },
+      {
+        "name": "Mario Mair",
+        "team": "F.C Wechselmaschine",
+        "points": 2050
+      },
+      {
+        "who": "andi",
+        "team": "Gunners14",
+        "points": 2042
+      },
+      {
+        "who": "max",
+        "team": "FC \"Mair\" Crusher",
+        "points": 2032
+      },
+      {
+        "who": "amti",
+        "team": "black & white N.W.O",
+        "points": 1945
+      },
+      {
+        "who": "favo",
+        "team": "Winning Ugly United",
+        "points": 1909
+      }
+    ],
+    "2020/21": [
+      {
+        "who": "patrick",
+        "team": "FC Darmspiegelung",
+        "points": 2413
+      },
+      {
+        "who": "roli",
+        "team": "1.OGB.USENGRAPSCHER",
+        "points": 2355
+      },
+      {
+        "who": "max",
+        "team": "GFC \"Wernis\" Tornado",
+        "points": 2314
+      },
+      {
+        "who": "favo",
+        "team": "The Red Lantern",
+        "points": 2234
+      },
+      {
+        "who": "kai",
+        "team": "Purpur Cobras",
+        "points": 2227
+      },
+      {
+        "who": "alex",
+        "team": "1 FC Maschalagnie",
+        "points": 2192
+      },
+      {
+        "name": "Mario Mair",
+        "team": "FC Scheissdreck",
+        "points": 2123
+      },
+      {
+        "who": "amti",
+        "team": "FC Haudaneben",
+        "points": 2052
+      },
+      {
+        "who": "andi",
+        "team": "Gunners14",
+        "points": 1960
+      }
+    ],
+    "2021/22": [
+      {
+        "who": "roli",
+        "points": 2350
+      },
+      {
+        "who": "max",
+        "points": 2313
+      },
+      {
+        "who": "alex",
+        "points": 2289
+      },
+      {
+        "who": "kai",
+        "points": null
+      },
+      {
+        "who": "andi",
+        "points": 2206
+      },
+      {
+        "who": "amti",
+        "points": 2204
+      },
+      {
+        "who": "patrick",
+        "points": 2151
+      },
+      {
+        "who": "favo",
+        "points": 1792
+      }
+    ],
+    "2022/23": [
+      {
+        "who": "kai",
+        "points": null
+      },
+      {
+        "who": "roli",
+        "points": 2424
+      },
+      {
+        "who": "amti",
+        "points": 2332
+      },
+      {
+        "who": "patrick",
+        "points": 2309
+      },
+      {
+        "who": "max",
+        "points": 2277
+      },
+      {
+        "who": "alex",
+        "points": 2176
+      },
+      {
+        "who": "andi",
+        "points": 2163
+      },
+      {
+        "who": "favo",
+        "points": 1983
+      }
+    ],
+    "2023/24": [
+      {
+        "who": "thomas",
+        "points": 2408
+      },
+      {
+        "who": "patrick",
+        "points": 2395
+      },
+      {
+        "who": "alex",
+        "points": 2386
+      },
+      {
+        "who": "roli",
+        "points": 2350
+      },
+      {
+        "who": "kai",
+        "points": 2279
+      },
+      {
+        "who": "amti",
+        "points": 2235
+      },
+      {
+        "who": "max",
+        "points": 2199
+      },
+      {
+        "who": "andi",
+        "points": 2178
+      },
+      {
+        "who": "favo",
+        "points": 1986
+      }
+    ],
+    "2024/25": [
+      {
+        "who": "patrick",
+        "points": 2418
+      },
+      {
+        "who": "alex",
+        "points": 2370
+      },
+      {
+        "who": "roli",
+        "points": 2361
+      },
+      {
+        "who": "christian",
+        "points": 2359
+      },
+      {
+        "who": "max",
+        "points": 2323
+      },
+      {
+        "who": "andi",
+        "points": 2242
+      },
+      {
+        "who": "thomas",
+        "points": 2225
+      },
+      {
+        "name": "Maxi",
+        "points": null
+      },
+      {
+        "who": "kai",
+        "points": 2158
+      },
+      {
+        "who": "favo",
+        "points": 2128
+      },
+      {
+        "who": "amti",
+        "points": 2116
+      }
+    ],
+    "2025/26": [
+      {
+        "who": "kai",
+        "points": 2311
+      },
+      {
+        "who": "andi",
+        "points": 2254
+      },
+      {
+        "who": "roli",
+        "points": 2249
+      },
+      {
+        "who": "alex",
+        "points": 2201
+      },
+      {
+        "who": "christian",
+        "points": 2191
+      },
+      {
+        "who": "amti",
+        "points": 2188
+      },
+      {
+        "who": "patrick",
+        "points": 2127
+      },
+      {
+        "who": "max",
+        "points": 2127
+      },
+      {
+        "who": "favo",
+        "points": 2113
+      },
+      {
+        "who": "thomas",
+        "points": 1998
+      },
+      {
+        "name": "Maxi",
+        "points": null
+      }
+    ]
+  }
+}

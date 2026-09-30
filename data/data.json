@@ -1,0 +1,3031 @@
+{
+ "updated": "2026-09-29T22:53:47.630Z",
+ "league": {
+  "id": 243508,
+  "name": "Gentlemens League"
+ },
+ "lastGW": 5,
+ "next": {
+  "gw": 6,
+  "deadline": "2026-10-10T10:00:00Z",
+  "fixtures": [
+   {
+    "kickoff": "2026-10-10T11:30:00Z",
+    "home": {
+     "name": "Arsenal",
+     "short": "ARS",
+     "code": 3
+    },
+    "away": {
+     "name": "Leeds",
+     "short": "LEE",
+     "code": 2
+    },
+    "homeDiff": 3,
+    "awayDiff": 5
+   },
+   {
+    "kickoff": "2026-10-10T14:00:00Z",
+    "home": {
+     "name": "Aston Villa",
+     "short": "AVL",
+     "code": 7
+    },
+    "away": {
+     "name": "Brentford",
+     "short": "BRE",
+     "code": 94
+    },
+    "homeDiff": 3,
+    "awayDiff": 3
+   },
+   {
+    "kickoff": "2026-10-10T14:00:00Z",
+    "home": {
+     "name": "Chelsea",
+     "short": "CHE",
+     "code": 8
+    },
+    "away": {
+     "name": "Bournemouth",
+     "short": "BOU",
+     "code": 91
+    },
+    "homeDiff": 3,
+    "awayDiff": 4
+   },
+   {
+    "kickoff": "2026-10-10T14:00:00Z",
+    "home": {
+     "name": "Ipswich Town",
+     "short": "IPS",
+     "code": 40
+    },
+    "away": {
+     "name": "Fulham",
+     "short": "FUL",
+     "code": 54
+    },
+    "homeDiff": 2,
+    "awayDiff": 2
+   },
+   {
+    "kickoff": "2026-10-10T14:00:00Z",
+    "home": {
+     "name": "Sunderland",
+     "short": "SUN",
+     "code": 56
+    },
+    "away": {
+     "name": "Brighton",
+     "short": "BHA",
+     "code": 36
+    },
+    "homeDiff": 3,
+    "awayDiff": 3
+   },
+   {
+    "kickoff": "2026-10-10T16:30:00Z",
+    "home": {
+     "name": "Man Utd",
+     "short": "MUN",
+     "code": 1
+    },
+    "away": {
+     "name": "Spurs",
+     "short": "TOT",
+     "code": 6
+    },
+    "homeDiff": 2,
+    "awayDiff": 4
+   },
+   {
+    "kickoff": "2026-10-11T13:00:00Z",
+    "home": {
+     "name": "Crystal Palace",
+     "short": "CRY",
+     "code": 31
+    },
+    "away": {
+     "name": "Nott'm Forest",
+     "short": "NFO",
+     "code": 17
+    },
+    "homeDiff": 3,
+    "awayDiff": 3
+   },
+   {
+    "kickoff": "2026-10-11T13:00:00Z",
+    "home": {
+     "name": "Hull City",
+     "short": "HUL",
+     "code": 88
+    },
+    "away": {
+     "name": "Everton",
+     "short": "EVE",
+     "code": 11
+    },
+    "homeDiff": 3,
+    "awayDiff": 2
+   },
+   {
+    "kickoff": "2026-10-11T15:30:00Z",
+    "home": {
+     "name": "Liverpool",
+     "short": "LIV",
+     "code": 14
+    },
+    "away": {
+     "name": "Man City",
+     "short": "MCI",
+     "code": 43
+    },
+    "homeDiff": 4,
+    "awayDiff": 4
+   },
+   {
+    "kickoff": "2026-10-12T19:00:00Z",
+    "home": {
+     "name": "Coventry City",
+     "short": "COV",
+     "code": 9
+    },
+    "away": {
+     "name": "Newcastle",
+     "short": "NEW",
+     "code": 4
+    },
+    "homeDiff": 3,
+    "awayDiff": 2
+   }
+  ]
+ },
+ "managers": [
+  {
+   "id": 4797326,
+   "nick": "Kai",
+   "avatar": "kai",
+   "name": "Kai Reinisch",
+   "team": "Globo Gym United",
+   "rank": 1,
+   "lastRank": 1,
+   "total": 391,
+   "chips": [
+    {
+     "name": "3xc",
+     "time": "2026-09-03T19:51:09.490704Z",
+     "event": 3
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 54,
+     "gross": 54,
+     "total": 54,
+     "bench": 9,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 2,
+     "goals": 2,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 5,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Palmer",
+      "pts": 13
+     },
+     "transfersIn": [],
+     "leagueRank": 6
+    },
+    {
+     "gw": 2,
+     "points": 118,
+     "gross": 118,
+     "total": 172,
+     "bench": 6,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.1,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 46,
+     "red": 0,
+     "yellow": 0,
+     "goals": 9,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 15,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "transfersIn": [],
+     "leagueRank": 2
+    },
+    {
+     "gw": 3,
+     "points": 67,
+     "gross": 67,
+     "total": 239,
+     "bench": 9,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 0,
+     "chip": "3xc",
+     "captain": "Haaland",
+     "captainPts": 27,
+     "red": 0,
+     "yellow": 4,
+     "goals": 3,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 8,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Isak",
+      "pts": 13
+     },
+     "transfersIn": [
+      {
+       "in": "Schade",
+       "out": "Ndiaye",
+       "inPts": 2,
+       "outPts": 3
+      }
+     ],
+     "leagueRank": 2
+    },
+    {
+     "gw": 4,
+     "points": 95,
+     "gross": 95,
+     "total": 334,
+     "bench": 3,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.9,
+     "bank": 0.1,
+     "chip": null,
+     "captain": "Palmer",
+     "captainPts": 10,
+     "red": 0,
+     "yellow": 2,
+     "goals": 5,
+     "assists": 5,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 14,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Groß",
+      "pts": 17
+     },
+     "transfersIn": [
+      {
+       "in": "Konsa",
+       "out": "Shaw",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 1
+    },
+    {
+     "gw": 5,
+     "points": 57,
+     "gross": 57,
+     "total": 391,
+     "bench": 6,
+     "transfers": 0,
+     "hits": 0,
+     "value": 101.3,
+     "bank": 0.1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 1,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Groß",
+      "pts": 14
+     },
+     "transfersIn": [],
+     "leagueRank": 1
+    }
+   ],
+   "past": [
+    {
+     "season": "2023/24",
+     "points": 2279,
+     "overallRank": 1247237
+    },
+    {
+     "season": "2024/25",
+     "points": 2158,
+     "overallRank": 3468725
+    },
+    {
+     "season": "2025/26",
+     "points": 2311,
+     "overallRank": 146658
+    }
+   ]
+  },
+  {
+   "id": 5944301,
+   "nick": "Patrick",
+   "avatar": "patrick",
+   "name": "Patrick Pilko",
+   "team": "Eat The Poor FC",
+   "rank": 2,
+   "lastRank": 2,
+   "total": 377,
+   "chips": [
+    {
+     "name": "3xc",
+     "time": "2026-09-04T03:25:00.695709Z",
+     "event": 3
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 68,
+     "gross": 68,
+     "total": 68,
+     "bench": 10,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 2,
+     "goals": 3,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 7,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Ødegaard",
+      "pts": 11
+     },
+     "transfersIn": [],
+     "leagueRank": 1
+    },
+    {
+     "gw": 2,
+     "points": 111,
+     "gross": 111,
+     "total": 179,
+     "bench": 2,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.3,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 46,
+     "red": 0,
+     "yellow": 1,
+     "goals": 7,
+     "assists": 4,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 13,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "transfersIn": [
+      {
+       "in": "Tavernier",
+       "out": "Ndiaye",
+       "inPts": 1,
+       "outPts": 4
+      }
+     ],
+     "leagueRank": 1
+    },
+    {
+     "gw": 3,
+     "points": 65,
+     "gross": 65,
+     "total": 244,
+     "bench": 10,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.5,
+     "bank": 0,
+     "chip": "3xc",
+     "captain": "Haaland",
+     "captainPts": 27,
+     "red": 0,
+     "yellow": 3,
+     "goals": 3,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 9,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Tavernier",
+      "pts": 10
+     },
+     "transfersIn": [],
+     "leagueRank": 1
+    },
+    {
+     "gw": 4,
+     "points": 86,
+     "gross": 86,
+     "total": 330,
+     "bench": 8,
+     "transfers": 2,
+     "hits": 0,
+     "value": 100.8,
+     "bank": 0.9,
+     "chip": null,
+     "captain": "Palmer",
+     "captainPts": 10,
+     "red": 0,
+     "yellow": 2,
+     "goals": 4,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 13,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Groß",
+      "pts": 17
+     },
+     "transfersIn": [
+      {
+       "in": "Lacroix",
+       "out": "Aina",
+       "inPts": 1,
+       "outPts": 2
+      },
+      {
+       "in": "Palmer",
+       "out": "B.Fernandes",
+       "inPts": 5,
+       "outPts": 2
+      }
+     ],
+     "leagueRank": 2
+    },
+    {
+     "gw": 5,
+     "points": 47,
+     "gross": 47,
+     "total": 377,
+     "bench": 8,
+     "transfers": 1,
+     "hits": 0,
+     "value": 101.3,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 2,
+     "goals": 3,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 1,
+     "autoSubPts": 2,
+     "best": {
+      "name": "Groß",
+      "pts": 14
+     },
+     "transfersIn": [
+      {
+       "in": "Van Hecke",
+       "out": "Diop",
+       "inPts": 6,
+       "outPts": 4
+      }
+     ],
+     "leagueRank": 2
+    }
+   ],
+   "past": [
+    {
+     "season": "2016/17",
+     "points": 1938,
+     "overallRank": 935722
+    },
+    {
+     "season": "2017/18",
+     "points": 2250,
+     "overallRank": 48490
+    },
+    {
+     "season": "2018/19",
+     "points": 2234,
+     "overallRank": 169356
+    },
+    {
+     "season": "2019/20",
+     "points": 2173,
+     "overallRank": 422254
+    },
+    {
+     "season": "2020/21",
+     "points": 2413,
+     "overallRank": 68933
+    },
+    {
+     "season": "2021/22",
+     "points": 2151,
+     "overallRank": 1534840
+    },
+    {
+     "season": "2022/23",
+     "points": 2309,
+     "overallRank": 1435585
+    },
+    {
+     "season": "2023/24",
+     "points": 2395,
+     "overallRank": 387037
+    },
+    {
+     "season": "2024/25",
+     "points": 2418,
+     "overallRank": 459803
+    },
+    {
+     "season": "2025/26",
+     "points": 2127,
+     "overallRank": 1848765
+    }
+   ]
+  },
+  {
+   "id": 3730212,
+   "nick": "Thomas",
+   "avatar": "thomas",
+   "name": "Thomas Pirker",
+   "team": "1. FC Wadenkrampf",
+   "rank": 3,
+   "lastRank": 4,
+   "total": 327,
+   "chips": [],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 52,
+     "gross": 52,
+     "total": 52,
+     "bench": 12,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 11
+     },
+     "transfersIn": [],
+     "leagueRank": 8
+    },
+    {
+     "gw": 2,
+     "points": 95,
+     "gross": 95,
+     "total": 147,
+     "bench": 21,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 26,
+     "red": 0,
+     "yellow": 3,
+     "goals": 7,
+     "assists": 5,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 13,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "transfersIn": [
+      {
+       "in": "Lewis-Potter",
+       "out": "Bailey",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 6
+    },
+    {
+     "gw": 3,
+     "points": 46,
+     "gross": 46,
+     "total": 193,
+     "bench": 9,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 3,
+     "goals": 2,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "transfersIn": [
+      {
+       "in": "Groß",
+       "out": "Tzolis",
+       "inPts": 1,
+       "outPts": 5
+      }
+     ],
+     "leagueRank": 7
+    },
+    {
+     "gw": 4,
+     "points": 81,
+     "gross": 81,
+     "total": 274,
+     "bench": 31,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.3,
+     "bank": 0.6,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 11,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Groß",
+      "pts": 17
+     },
+     "transfersIn": [
+      {
+       "in": "De Cuyper",
+       "out": "Shaw",
+       "inPts": 11,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 4
+    },
+    {
+     "gw": 5,
+     "points": 53,
+     "gross": 53,
+     "total": 327,
+     "bench": 10,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.7,
+     "bank": 1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 3,
+     "goals": 2,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "autoSubs": 1,
+     "autoSubPts": 2,
+     "best": {
+      "name": "Groß",
+      "pts": 14
+     },
+     "transfersIn": [
+      {
+       "in": "Belloumi",
+       "out": "Lewis-Potter",
+       "inPts": 4,
+       "outPts": 3
+      }
+     ],
+     "leagueRank": 3
+    }
+   ],
+   "past": [
+    {
+     "season": "2022/23",
+     "points": 2006,
+     "overallRank": 5176525
+    },
+    {
+     "season": "2023/24",
+     "points": 2408,
+     "overallRank": 330109
+    },
+    {
+     "season": "2024/25",
+     "points": 2225,
+     "overallRank": 2494600
+    },
+    {
+     "season": "2025/26",
+     "points": 1998,
+     "overallRank": 4090160
+    }
+   ]
+  },
+  {
+   "id": 2634875,
+   "nick": "Roli",
+   "avatar": "roli",
+   "name": "Roland Kumpitsch",
+   "team": "District 14 Graz",
+   "rank": 4,
+   "lastRank": 3,
+   "total": 325,
+   "chips": [
+    {
+     "name": "3xc",
+     "time": "2026-09-04T17:25:52.746351Z",
+     "event": 3
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 52,
+     "gross": 52,
+     "total": 52,
+     "bench": 22,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 11
+     },
+     "transfersIn": [],
+     "leagueRank": 9
+    },
+    {
+     "gw": 2,
+     "points": 108,
+     "gross": 108,
+     "total": 160,
+     "bench": 10,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 46,
+     "red": 0,
+     "yellow": 2,
+     "goals": 8,
+     "assists": 5,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 14,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "transfersIn": [],
+     "leagueRank": 4
+    },
+    {
+     "gw": 3,
+     "points": 53,
+     "gross": 53,
+     "total": 213,
+     "bench": 14,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 0,
+     "chip": "3xc",
+     "captain": "Haaland",
+     "captainPts": 27,
+     "red": 0,
+     "yellow": 3,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "transfersIn": [],
+     "leagueRank": 3
+    },
+    {
+     "gw": 4,
+     "points": 75,
+     "gross": 75,
+     "total": 288,
+     "bench": 12,
+     "transfers": 3,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 1,
+     "chip": null,
+     "captain": "Palmer",
+     "captainPts": 10,
+     "red": 0,
+     "yellow": 1,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 11,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "Gibbs-White",
+       "out": "Tzolis",
+       "inPts": 8,
+       "outPts": 3
+      },
+      {
+       "in": "Palmer",
+       "out": "B.Fernandes",
+       "inPts": 5,
+       "outPts": 2
+      },
+      {
+       "in": "Konsa",
+       "out": "Rodon",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 3
+    },
+    {
+     "gw": 5,
+     "points": 37,
+     "gross": 37,
+     "total": 325,
+     "bench": 18,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.7,
+     "bank": 0.2,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 1,
+     "goals": 1,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Ajer",
+      "pts": 7
+     },
+     "transfersIn": [
+      {
+       "in": "Gvardiol",
+       "out": "Maguire",
+       "inPts": 4,
+       "outPts": 2
+      }
+     ],
+     "leagueRank": 4
+    }
+   ],
+   "past": [
+    {
+     "season": "2016/17",
+     "points": 1992,
+     "overallRank": 645791
+    },
+    {
+     "season": "2017/18",
+     "points": 2135,
+     "overallRank": 326785
+    },
+    {
+     "season": "2018/19",
+     "points": 2246,
+     "overallRank": 142647
+    },
+    {
+     "season": "2019/20",
+     "points": 2085,
+     "overallRank": 1042186
+    },
+    {
+     "season": "2020/21",
+     "points": 2355,
+     "overallRank": 181033
+    },
+    {
+     "season": "2021/22",
+     "points": 2350,
+     "overallRank": 463398
+    },
+    {
+     "season": "2022/23",
+     "points": 2424,
+     "overallRank": 506178
+    },
+    {
+     "season": "2023/24",
+     "points": 2350,
+     "overallRank": 642702
+    },
+    {
+     "season": "2024/25",
+     "points": 2361,
+     "overallRank": 878855
+    },
+    {
+     "season": "2025/26",
+     "points": 2249,
+     "overallRank": 465531
+    }
+   ]
+  },
+  {
+   "id": 434292,
+   "nick": "Christian",
+   "avatar": "christian",
+   "name": "Christian Lorenz",
+   "team": "CL1",
+   "rank": 5,
+   "lastRank": 8,
+   "total": 315,
+   "chips": [
+    {
+     "name": "wildcard",
+     "time": "2026-08-24T23:43:07.017788Z",
+     "event": 2
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 58,
+     "gross": 58,
+     "total": 58,
+     "bench": 11,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "João Pedro",
+     "captainPts": 22,
+     "red": 0,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 11
+     },
+     "transfersIn": [],
+     "leagueRank": 5
+    },
+    {
+     "gw": 2,
+     "points": 88,
+     "gross": 88,
+     "total": 146,
+     "bench": 5,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.3,
+     "bank": 0.4,
+     "chip": "wildcard",
+     "captain": "Saka",
+     "captainPts": 22,
+     "red": 0,
+     "yellow": 1,
+     "goals": 6,
+     "assists": 3,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 12,
+     "autoSubs": 1,
+     "autoSubPts": 6,
+     "best": {
+      "name": "Haaland",
+      "pts": 13
+     },
+     "transfersIn": [
+      {
+       "in": "Slater",
+       "out": "Tavernier",
+       "inPts": 2,
+       "outPts": 1
+      },
+      {
+       "in": "Richards",
+       "out": "Gvardiol",
+       "inPts": 0,
+       "outPts": 5
+      },
+      {
+       "in": "Kayode",
+       "out": "O'Shea",
+       "inPts": 2,
+       "outPts": 0
+      },
+      {
+       "in": "De Cuyper",
+       "out": "Egan",
+       "inPts": 0,
+       "outPts": 9
+      },
+      {
+       "in": "Thiaw",
+       "out": "Ajer",
+       "inPts": 6,
+       "outPts": 3
+      },
+      {
+       "in": "Leno",
+       "out": "Verbruggen",
+       "inPts": 3,
+       "outPts": 0
+      },
+      {
+       "in": "Tavernier",
+       "out": "M.Sangaré",
+       "inPts": 1,
+       "outPts": 4
+      },
+      {
+       "in": "Egan",
+       "out": "De Cuyper",
+       "inPts": 9,
+       "outPts": 0
+      },
+      {
+       "in": "Verbruggen",
+       "out": "Tzolakis",
+       "inPts": 0,
+       "outPts": 10
+      },
+      {
+       "in": "M.Sangaré",
+       "out": "Tavernier",
+       "inPts": 4,
+       "outPts": 1
+      },
+      {
+       "in": "Gvardiol",
+       "out": "Thiaw",
+       "inPts": 5,
+       "outPts": 6
+      },
+      {
+       "in": "Tavernier",
+       "out": "M.Sangaré",
+       "inPts": 1,
+       "outPts": 4
+      },
+      {
+       "in": "Ndiaye",
+       "out": "Rogers",
+       "inPts": 4,
+       "outPts": 5
+      },
+      {
+       "in": "Thiaw",
+       "out": "Justin",
+       "inPts": 6,
+       "outPts": 2
+      },
+      {
+       "in": "Ajer",
+       "out": "Mykolenko",
+       "inPts": 3,
+       "outPts": 4
+      },
+      {
+       "in": "Trafford",
+       "out": "Petrović",
+       "inPts": 3,
+       "outPts": 3
+      },
+      {
+       "in": "Rogers",
+       "out": "Ndiaye",
+       "inPts": 5,
+       "outPts": 4
+      },
+      {
+       "in": "M.Sangaré",
+       "out": "Tavernier",
+       "inPts": 4,
+       "outPts": 1
+      },
+      {
+       "in": "Mykolenko",
+       "out": "Gvardiol",
+       "inPts": 4,
+       "outPts": 5
+      },
+      {
+       "in": "De Cuyper",
+       "out": "Ajer",
+       "inPts": 0,
+       "outPts": 3
+      },
+      {
+       "in": "Petrović",
+       "out": "Verbruggen",
+       "inPts": 3,
+       "outPts": 0
+      },
+      {
+       "in": "Palmer",
+       "out": "Rogers",
+       "inPts": 7,
+       "outPts": 5
+      },
+      {
+       "in": "O'Shea",
+       "out": "Thiaw",
+       "inPts": 0,
+       "outPts": 6
+      },
+      {
+       "in": "Calafiori",
+       "out": "De Cuyper",
+       "inPts": 11,
+       "outPts": 0
+      },
+      {
+       "in": "Tzolakis",
+       "out": "Henderson",
+       "inPts": 10,
+       "outPts": 1
+      },
+      {
+       "in": "Verbruggen",
+       "out": "Raya",
+       "inPts": 0,
+       "outPts": 6
+      },
+      {
+       "in": "Gvardiol",
+       "out": "Guéhi",
+       "inPts": 5,
+       "outPts": 2
+      },
+      {
+       "in": "Thiaw",
+       "out": "Richards",
+       "inPts": 6,
+       "outPts": 0
+      },
+      {
+       "in": "Henderson",
+       "out": "Tzolakis",
+       "inPts": 1,
+       "outPts": 10
+      },
+      {
+       "in": "Saka",
+       "out": "Tzolis",
+       "inPts": 11,
+       "outPts": 0
+      },
+      {
+       "in": "Rogers",
+       "out": "Tonali",
+       "inPts": 5,
+       "outPts": 2
+      },
+      {
+       "in": "Tavernier",
+       "out": "Semenyo",
+       "inPts": 1,
+       "outPts": 5
+      },
+      {
+       "in": "Ndiaye",
+       "out": "Szoboszlai",
+       "inPts": 4,
+       "outPts": 4
+      },
+      {
+       "in": "Justin",
+       "out": "Shaw",
+       "inPts": 2,
+       "outPts": 2
+      },
+      {
+       "in": "Ajer",
+       "out": "Rúben",
+       "inPts": 3,
+       "outPts": 2
+      },
+      {
+       "in": "Richards",
+       "out": "Virgil",
+       "inPts": 0,
+       "outPts": 1
+      },
+      {
+       "in": "Guéhi",
+       "out": "Calafiori",
+       "inPts": 2,
+       "outPts": 11
+      },
+      {
+       "in": "Raya",
+       "out": "Sánchez",
+       "inPts": 6,
+       "outPts": 0
+      },
+      {
+       "in": "Tzolakis",
+       "out": "Verbruggen",
+       "inPts": 10,
+       "outPts": 0
+      },
+      {
+       "in": "De Cuyper",
+       "out": "Van Hecke",
+       "inPts": 0,
+       "outPts": 1
+      }
+     ],
+     "leagueRank": 7
+    },
+    {
+     "gw": 3,
+     "points": 40,
+     "gross": 40,
+     "total": 186,
+     "bench": 8,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.7,
+     "bank": 0.4,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 3,
+     "goals": 2,
+     "assists": 1,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 4,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "transfersIn": [],
+     "leagueRank": 9
+    },
+    {
+     "gw": 4,
+     "points": 74,
+     "gross": 74,
+     "total": 260,
+     "bench": 12,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.8,
+     "bank": 0.3,
+     "chip": null,
+     "captain": "João Pedro",
+     "captainPts": 24,
+     "red": 0,
+     "yellow": 1,
+     "goals": 3,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 8,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "Barnes",
+       "out": "Ndiaye",
+       "inPts": 2,
+       "outPts": 1
+      }
+     ],
+     "leagueRank": 8
+    },
+    {
+     "gw": 5,
+     "points": 55,
+     "gross": 55,
+     "total": 315,
+     "bench": 6,
+     "transfers": 2,
+     "hits": 0,
+     "value": 101,
+     "bank": 1.3,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 2,
+     "goals": 1,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 5,
+     "autoSubs": 1,
+     "autoSubPts": 2,
+     "best": {
+      "name": "Trafford",
+      "pts": 10
+     },
+     "transfersIn": [
+      {
+       "in": "Mykolenko",
+       "out": "Richards",
+       "inPts": 5,
+       "outPts": 8
+      },
+      {
+       "in": "Davis",
+       "out": "Kayode",
+       "inPts": 2,
+       "outPts": 6
+      }
+     ],
+     "leagueRank": 5
+    }
+   ],
+   "past": [
+    {
+     "season": "2024/25",
+     "points": 2359,
+     "overallRank": 896911
+    },
+    {
+     "season": "2025/26",
+     "points": 2191,
+     "overallRank": 999987
+    }
+   ]
+  },
+  {
+   "id": 2776955,
+   "nick": "Max",
+   "avatar": "max",
+   "name": "Markus Reinisch",
+   "team": "The Unbreakables",
+   "rank": 6,
+   "lastRank": 5,
+   "total": 313,
+   "chips": [
+    {
+     "name": "3xc",
+     "time": "2026-09-02T17:47:22.671041Z",
+     "event": 3
+    },
+    {
+     "name": "freehit",
+     "time": "2026-09-18T14:09:08.533739Z",
+     "event": 5
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 53,
+     "gross": 53,
+     "total": 53,
+     "bench": 25,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Kayode",
+      "pts": 13
+     },
+     "transfersIn": [],
+     "leagueRank": 7
+    },
+    {
+     "gw": 2,
+     "points": 74,
+     "gross": 78,
+     "total": 127,
+     "bench": 2,
+     "transfers": 2,
+     "hits": 4,
+     "value": 100.3,
+     "bank": 1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 26,
+     "red": 0,
+     "yellow": 2,
+     "goals": 6,
+     "assists": 3,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 9,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 13
+     },
+     "transfersIn": [
+      {
+       "in": "Wissa",
+       "out": "Isak",
+       "inPts": 8,
+       "outPts": 8
+      },
+      {
+       "in": "Palmer",
+       "out": "Wirtz",
+       "inPts": 7,
+       "outPts": 4
+      }
+     ],
+     "leagueRank": 9
+    },
+    {
+     "gw": 3,
+     "points": 65,
+     "gross": 65,
+     "total": 192,
+     "bench": 9,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.6,
+     "bank": 0.4,
+     "chip": "3xc",
+     "captain": "Haaland",
+     "captainPts": 27,
+     "red": 0,
+     "yellow": 5,
+     "goals": 3,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "transfersIn": [
+      {
+       "in": "Gvardiol",
+       "out": "Van Hecke",
+       "inPts": 8,
+       "outPts": 8
+      }
+     ],
+     "leagueRank": 8
+    },
+    {
+     "gw": 4,
+     "points": 81,
+     "gross": 81,
+     "total": 273,
+     "bench": 7,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.7,
+     "bank": 0.4,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 1,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 12,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "White",
+       "out": "Rúben",
+       "inPts": 1,
+       "outPts": 6
+      }
+     ],
+     "leagueRank": 5
+    },
+    {
+     "gw": 5,
+     "points": 40,
+     "gross": 40,
+     "total": 313,
+     "bench": 19,
+     "transfers": 0,
+     "hits": 0,
+     "value": 101,
+     "bank": 0.4,
+     "chip": "freehit",
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 2,
+     "goals": 1,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 0,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Tzolakis",
+      "pts": 6
+     },
+     "transfersIn": [
+      {
+       "in": "Calvert-Lewin",
+       "out": "Wissa",
+       "inPts": 2,
+       "outPts": 0
+      },
+      {
+       "in": "Havertz",
+       "out": "João Pedro",
+       "inPts": 2,
+       "outPts": 0
+      },
+      {
+       "in": "Ødegaard",
+       "out": "Tzolis",
+       "inPts": 2,
+       "outPts": 2
+      },
+      {
+       "in": "Mykolenko",
+       "out": "Hume",
+       "inPts": 5,
+       "outPts": 1
+      },
+      {
+       "in": "Justin",
+       "out": "Kayode",
+       "inPts": 8,
+       "outPts": 6
+      },
+      {
+       "in": "Calafiori",
+       "out": "White",
+       "inPts": 1,
+       "outPts": 0
+      },
+      {
+       "in": "Tzolakis",
+       "out": "Lammens",
+       "inPts": 6,
+       "outPts": 4
+      },
+      {
+       "in": "Kinsky",
+       "out": "Verbruggen",
+       "inPts": 2,
+       "outPts": 6
+      }
+     ],
+     "leagueRank": 6
+    }
+   ],
+   "past": [
+    {
+     "season": "2015/16",
+     "points": 1810,
+     "overallRank": 1735927
+    },
+    {
+     "season": "2016/17",
+     "points": 1993,
+     "overallRank": 640200
+    },
+    {
+     "season": "2017/18",
+     "points": 1980,
+     "overallRank": 1344504
+    },
+    {
+     "season": "2018/19",
+     "points": 2036,
+     "overallRank": 1469296
+    },
+    {
+     "season": "2019/20",
+     "points": 2032,
+     "overallRank": 1552396
+    },
+    {
+     "season": "2020/21",
+     "points": 2314,
+     "overallRank": 308827
+    },
+    {
+     "season": "2021/22",
+     "points": 2313,
+     "overallRank": 603152
+    },
+    {
+     "season": "2022/23",
+     "points": 2277,
+     "overallRank": 1779881
+    },
+    {
+     "season": "2023/24",
+     "points": 2199,
+     "overallRank": 2202593
+    },
+    {
+     "season": "2024/25",
+     "points": 2323,
+     "overallRank": 1252531
+    },
+    {
+     "season": "2025/26",
+     "points": 2127,
+     "overallRank": 1849551
+    }
+   ]
+  },
+  {
+   "id": 5717008,
+   "nick": "Favo",
+   "avatar": "favo",
+   "name": "Sascha Mair",
+   "team": "FC Scheisshaus",
+   "rank": 7,
+   "lastRank": 7,
+   "total": 307,
+   "chips": [
+    {
+     "name": "wildcard",
+     "time": "2026-08-31T03:36:11.022495Z",
+     "event": 3
+    },
+    {
+     "name": "freehit",
+     "time": "2026-09-11T03:28:01.076781Z",
+     "event": 4
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 68,
+     "gross": 68,
+     "total": 68,
+     "bench": 1,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 1,
+     "autoSubPts": 1,
+     "best": {
+      "name": "João Pedro",
+      "pts": 11
+     },
+     "transfersIn": [],
+     "leagueRank": 2
+    },
+    {
+     "gw": 2,
+     "points": 87,
+     "gross": 87,
+     "total": 155,
+     "bench": 4,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 26,
+     "red": 0,
+     "yellow": 2,
+     "goals": 4,
+     "assists": 4,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 10,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 13
+     },
+     "transfersIn": [
+      {
+       "in": "Gakpo",
+       "out": "Gibbs-White",
+       "inPts": 5,
+       "outPts": 13
+      }
+     ],
+     "leagueRank": 5
+    },
+    {
+     "gw": 3,
+     "points": 52,
+     "gross": 52,
+     "total": 207,
+     "bench": 14,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.7,
+     "bank": 0.2,
+     "chip": "wildcard",
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 3,
+     "goals": 1,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Gakpo",
+      "pts": 11
+     },
+     "transfersIn": [
+      {
+       "in": "Shaw",
+       "out": "Cash",
+       "inPts": 4,
+       "outPts": 6
+      },
+      {
+       "in": "Gakpo",
+       "out": "Szoboszlai",
+       "inPts": 11,
+       "outPts": 3
+      },
+      {
+       "in": "Wissa",
+       "out": "Simms",
+       "inPts": 1,
+       "outPts": 1
+      },
+      {
+       "in": "B.Fernandes",
+       "out": "Gakpo",
+       "inPts": 2,
+       "outPts": 11
+      },
+      {
+       "in": "Bobb",
+       "out": "Ndiaye",
+       "inPts": 2,
+       "outPts": 3
+      },
+      {
+       "in": "Cherki",
+       "out": "Mbeumo",
+       "inPts": 3,
+       "outPts": 8
+      },
+      {
+       "in": "De Cuyper",
+       "out": "Dalot",
+       "inPts": 4,
+       "outPts": 1
+      },
+      {
+       "in": "Diop",
+       "out": "Mukiele",
+       "inPts": 3,
+       "outPts": 4
+      },
+      {
+       "in": "Dedić",
+       "out": "Guéhi",
+       "inPts": 1,
+       "outPts": 8
+      },
+      {
+       "in": "Verbruggen",
+       "out": "Dubravka",
+       "inPts": 3,
+       "outPts": 0
+      },
+      {
+       "in": "Kinsky",
+       "out": "Raya",
+       "inPts": 6,
+       "outPts": 3
+      }
+     ],
+     "leagueRank": 4
+    },
+    {
+     "gw": 4,
+     "points": 54,
+     "gross": 54,
+     "total": 261,
+     "bench": 16,
+     "transfers": 0,
+     "hits": 0,
+     "value": 101,
+     "bank": 0.2,
+     "chip": "freehit",
+     "captain": "Palmer",
+     "captainPts": 10,
+     "red": 0,
+     "yellow": 0,
+     "goals": 2,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "Buendía",
+       "out": "Tavernier",
+       "inPts": 2,
+       "outPts": 8
+      },
+      {
+       "in": "Kerkez",
+       "out": "De Cuyper",
+       "inPts": 1,
+       "outPts": 11
+      },
+      {
+       "in": "Palmer",
+       "out": "Tzolis",
+       "inPts": 5,
+       "outPts": 3
+      },
+      {
+       "in": "Tavernier",
+       "out": "Gakpo",
+       "inPts": 8,
+       "outPts": 1
+      },
+      {
+       "in": "Marmoush",
+       "out": "Wissa",
+       "inPts": 2,
+       "outPts": 2
+      },
+      {
+       "in": "Isak",
+       "out": "Haaland",
+       "inPts": 2,
+       "outPts": 9
+      },
+      {
+       "in": "Saka",
+       "out": "Cherki",
+       "inPts": 8,
+       "outPts": 1
+      },
+      {
+       "in": "Robertson",
+       "out": "Shaw",
+       "inPts": 7,
+       "outPts": 0
+      },
+      {
+       "in": "James",
+       "out": "Dedić",
+       "inPts": 1,
+       "outPts": 0
+      },
+      {
+       "in": "Yeremy",
+       "out": "Bobb",
+       "inPts": 1,
+       "outPts": 3
+      }
+     ],
+     "leagueRank": 7
+    },
+    {
+     "gw": 5,
+     "points": 46,
+     "gross": 46,
+     "total": 307,
+     "bench": 11,
+     "transfers": 1,
+     "hits": 0,
+     "value": 101.1,
+     "bank": 2.2,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 1,
+     "goals": 3,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 1,
+     "bonus": 2,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Cherki",
+      "pts": 8
+     },
+     "transfersIn": [
+      {
+       "in": "Barry",
+       "out": "João Pedro",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 7
+    }
+   ],
+   "past": [
+    {
+     "season": "2015/16",
+     "points": 1521,
+     "overallRank": 2843727
+    },
+    {
+     "season": "2016/17",
+     "points": 1727,
+     "overallRank": 2319978
+    },
+    {
+     "season": "2017/18",
+     "points": 2043,
+     "overallRank": 851416
+    },
+    {
+     "season": "2018/19",
+     "points": 2019,
+     "overallRank": 1662454
+    },
+    {
+     "season": "2019/20",
+     "points": 1909,
+     "overallRank": 2977479
+    },
+    {
+     "season": "2020/21",
+     "points": 2234,
+     "overallRank": 694017
+    },
+    {
+     "season": "2021/22",
+     "points": 1792,
+     "overallRank": 4890514
+    },
+    {
+     "season": "2022/23",
+     "points": 1983,
+     "overallRank": 5458923
+    },
+    {
+     "season": "2023/24",
+     "points": 1986,
+     "overallRank": 4962555
+    },
+    {
+     "season": "2024/25",
+     "points": 2128,
+     "overallRank": 3898358
+    },
+    {
+     "season": "2025/26",
+     "points": 2113,
+     "overallRank": 2067955
+    }
+   ]
+  },
+  {
+   "id": 1279976,
+   "nick": "Alex",
+   "avatar": "alex",
+   "name": "Alex Preissler",
+   "team": "FC HelloT*tty82",
+   "rank": 8,
+   "lastRank": 6,
+   "total": 304,
+   "chips": [],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 65,
+     "gross": 65,
+     "total": 65,
+     "bench": 9,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Palmer",
+      "pts": 13
+     },
+     "transfersIn": [],
+     "leagueRank": 3
+    },
+    {
+     "gw": 2,
+     "points": 96,
+     "gross": 96,
+     "total": 161,
+     "bench": 13,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 46,
+     "red": 0,
+     "yellow": 1,
+     "goals": 7,
+     "assists": 3,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 10,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "transfersIn": [],
+     "leagueRank": 3
+    },
+    {
+     "gw": 3,
+     "points": 42,
+     "gross": 42,
+     "total": 203,
+     "bench": 6,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 4,
+     "goals": 1,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "transfersIn": [
+      {
+       "in": "Dedić",
+       "out": "Robertson",
+       "inPts": 1,
+       "outPts": 1
+      }
+     ],
+     "leagueRank": 5
+    },
+    {
+     "gw": 4,
+     "points": 62,
+     "gross": 62,
+     "total": 265,
+     "bench": 15,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 0,
+     "chip": null,
+     "captain": "Palmer",
+     "captainPts": 10,
+     "red": 0,
+     "yellow": 0,
+     "goals": 2,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "Konsa",
+       "out": "Shaw",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 6
+    },
+    {
+     "gw": 5,
+     "points": 39,
+     "gross": 39,
+     "total": 304,
+     "bench": 0,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.6,
+     "bank": 0.3,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 2,
+     "goals": 1,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 0,
+     "autoSubs": 1,
+     "autoSubPts": 8,
+     "best": {
+      "name": "Gomez",
+      "pts": 8
+     },
+     "transfersIn": [
+      {
+       "in": "Delap",
+       "out": "Brobbey",
+       "inPts": 1,
+       "outPts": 17
+      }
+     ],
+     "leagueRank": 8
+    }
+   ],
+   "past": [
+    {
+     "season": "2015/16",
+     "points": 2176,
+     "overallRank": 67201
+    },
+    {
+     "season": "2016/17",
+     "points": 2246,
+     "overallRank": 32367
+    },
+    {
+     "season": "2017/18",
+     "points": 2138,
+     "overallRank": 313836
+    },
+    {
+     "season": "2018/19",
+     "points": 2191,
+     "overallRank": 305550
+    },
+    {
+     "season": "2019/20",
+     "points": 2070,
+     "overallRank": 1176326
+    },
+    {
+     "season": "2020/21",
+     "points": 2192,
+     "overallRank": 968250
+    },
+    {
+     "season": "2021/22",
+     "points": 2289,
+     "overallRank": 709220
+    },
+    {
+     "season": "2022/23",
+     "points": 2176,
+     "overallRank": 3009501
+    },
+    {
+     "season": "2023/24",
+     "points": 2386,
+     "overallRank": 429695
+    },
+    {
+     "season": "2024/25",
+     "points": 2370,
+     "overallRank": 801927
+    },
+    {
+     "season": "2025/26",
+     "points": 2201,
+     "overallRank": 888878
+    }
+   ]
+  },
+  {
+   "id": 6335161,
+   "nick": "Amti",
+   "avatar": "amti",
+   "name": "Patrick Amtmann",
+   "team": "Patrick's Team",
+   "rank": 9,
+   "lastRank": 9,
+   "total": 301,
+   "chips": [],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 61,
+     "gross": 61,
+     "total": 61,
+     "bench": 7,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 0,
+     "goals": 4,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 5,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Kayode",
+      "pts": 13
+     },
+     "transfersIn": [],
+     "leagueRank": 4
+    },
+    {
+     "gw": 2,
+     "points": 73,
+     "gross": 73,
+     "total": 134,
+     "bench": 7,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 26,
+     "red": 0,
+     "yellow": 1,
+     "goals": 6,
+     "assists": 3,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 9,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "transfersIn": [],
+     "leagueRank": 8
+    },
+    {
+     "gw": 3,
+     "points": 61,
+     "gross": 61,
+     "total": 195,
+     "bench": 13,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 1.4,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 4,
+     "goals": 3,
+     "assists": 3,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Mitchell",
+      "pts": 15
+     },
+     "transfersIn": [
+      {
+       "in": "Wissa",
+       "out": "Havertz",
+       "inPts": 1,
+       "outPts": 8
+      }
+     ],
+     "leagueRank": 6
+    },
+    {
+     "gw": 4,
+     "points": 56,
+     "gross": 56,
+     "total": 251,
+     "bench": 21,
+     "transfers": 1,
+     "hits": 0,
+     "value": 99.9,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 0,
+     "goals": 2,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "Calafiori",
+       "out": "Shaw",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 9
+    },
+    {
+     "gw": 5,
+     "points": 50,
+     "gross": 54,
+     "total": 301,
+     "bench": 15,
+     "transfers": 3,
+     "hits": 4,
+     "value": 99.7,
+     "bank": 0.3,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 2,
+     "goals": 3,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 1,
+     "bonus": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Semenyo",
+      "pts": 17
+     },
+     "transfersIn": [
+      {
+       "in": "Havertz",
+       "out": "João Pedro",
+       "inPts": 2,
+       "outPts": 0
+      },
+      {
+       "in": "Belloumi",
+       "out": "Lewis-Potter",
+       "inPts": 4,
+       "outPts": 3
+      },
+      {
+       "in": "Bogle",
+       "out": "Kayode",
+       "inPts": 5,
+       "outPts": 6
+      }
+     ],
+     "leagueRank": 9
+    }
+   ],
+   "past": [
+    {
+     "season": "2020/21",
+     "points": 2052,
+     "overallRank": 2131773
+    },
+    {
+     "season": "2021/22",
+     "points": 2204,
+     "overallRank": 1173292
+    },
+    {
+     "season": "2022/23",
+     "points": 2332,
+     "overallRank": 1206354
+    },
+    {
+     "season": "2023/24",
+     "points": 2235,
+     "overallRank": 1743171
+    },
+    {
+     "season": "2024/25",
+     "points": 2116,
+     "overallRank": 4064244
+    },
+    {
+     "season": "2025/26",
+     "points": 2188,
+     "overallRank": 1032088
+    }
+   ]
+  },
+  {
+   "id": 2889833,
+   "nick": "Andi",
+   "avatar": "andi",
+   "name": "Andreas Hauth",
+   "team": "Volle Attacke ihr �",
+   "rank": 10,
+   "lastRank": 10,
+   "total": 258,
+   "chips": [
+    {
+     "name": "wildcard",
+     "time": "2026-08-31T09:10:44.104198Z",
+     "event": 3
+    }
+   ],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 46,
+     "gross": 46,
+     "total": 46,
+     "bench": 13,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "red": 0,
+     "yellow": 1,
+     "goals": 3,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 2,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 11
+     },
+     "transfersIn": [],
+     "leagueRank": 10
+    },
+    {
+     "gw": 2,
+     "points": 62,
+     "gross": 66,
+     "total": 108,
+     "bench": 4,
+     "transfers": 2,
+     "hits": 4,
+     "value": 100.2,
+     "bank": 0,
+     "chip": null,
+     "captain": "João Pedro",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 2,
+     "goals": 4,
+     "assists": 4,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 8,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 13
+     },
+     "transfersIn": [
+      {
+       "in": "De Cuyper",
+       "out": "Van de Ven",
+       "inPts": 0,
+       "outPts": 0
+      },
+      {
+       "in": "White",
+       "out": "Keane",
+       "inPts": 7,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 10
+    },
+    {
+     "gw": 3,
+     "points": 36,
+     "gross": 36,
+     "total": 144,
+     "bench": 15,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.6,
+     "bank": 0.2,
+     "chip": "wildcard",
+     "captain": "Haaland",
+     "captainPts": 18,
+     "red": 0,
+     "yellow": 3,
+     "goals": 1,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "transfersIn": [
+      {
+       "in": "Igor Jesus",
+       "out": "Marmoush",
+       "inPts": 1,
+       "outPts": 2
+      },
+      {
+       "in": "Stach",
+       "out": "Janelt",
+       "inPts": 2,
+       "outPts": 11
+      },
+      {
+       "in": "Marmoush",
+       "out": "Havertz",
+       "inPts": 2,
+       "outPts": 8
+      },
+      {
+       "in": "Cherki",
+       "out": "Xhaka",
+       "inPts": 3,
+       "outPts": 3
+      },
+      {
+       "in": "Davis",
+       "out": "Gvardiol",
+       "inPts": 1,
+       "outPts": 8
+      },
+      {
+       "in": "Havertz",
+       "out": "Calvert-Lewin",
+       "inPts": 8,
+       "outPts": 1
+      },
+      {
+       "in": "Janelt",
+       "out": "Ødegaard",
+       "inPts": 11,
+       "outPts": 10
+      },
+      {
+       "in": "Calafiori",
+       "out": "White",
+       "inPts": 2,
+       "outPts": 2
+      },
+      {
+       "in": "Ødegaard",
+       "out": "Tzolis",
+       "inPts": 10,
+       "outPts": 5
+      },
+      {
+       "in": "Calvert-Lewin",
+       "out": "Akpom",
+       "inPts": 1,
+       "outPts": 0
+      },
+      {
+       "in": "Xhaka",
+       "out": "Cherki",
+       "inPts": 3,
+       "outPts": 3
+      },
+      {
+       "in": "Dedić",
+       "out": "Shaw",
+       "inPts": 1,
+       "outPts": 4
+      },
+      {
+       "in": "White",
+       "out": "Kayode",
+       "inPts": 2,
+       "outPts": 1
+      },
+      {
+       "in": "Leno",
+       "out": "Tzolakis",
+       "inPts": 1,
+       "outPts": 6
+      },
+      {
+       "in": "Akpom",
+       "out": "Calvert-Lewin",
+       "inPts": 0,
+       "outPts": 1
+      },
+      {
+       "in": "Cherki",
+       "out": "Dewsbury-Hall",
+       "inPts": 3,
+       "outPts": 2
+      },
+      {
+       "in": "Tzolakis",
+       "out": "Petrović",
+       "inPts": 6,
+       "outPts": 1
+      },
+      {
+       "in": "Calvert-Lewin",
+       "out": "Havertz",
+       "inPts": 1,
+       "outPts": 8
+      },
+      {
+       "in": "Elanga",
+       "out": "Mbeumo",
+       "inPts": 1,
+       "outPts": 8
+      },
+      {
+       "in": "B.Fernandes",
+       "out": "Semenyo",
+       "inPts": 2,
+       "outPts": 6
+      },
+      {
+       "in": "Kayode",
+       "out": "Mitchell",
+       "inPts": 1,
+       "outPts": 15
+      },
+      {
+       "in": "Gvardiol",
+       "out": "Cash",
+       "inPts": 8,
+       "outPts": 6
+      },
+      {
+       "in": "Ajayi",
+       "out": "White",
+       "inPts": 5,
+       "outPts": 2
+      }
+     ],
+     "leagueRank": 10
+    },
+    {
+     "gw": 4,
+     "points": 69,
+     "gross": 73,
+     "total": 213,
+     "bench": 24,
+     "transfers": 2,
+     "hits": 4,
+     "value": 101.2,
+     "bank": 0.1,
+     "chip": null,
+     "captain": "João Pedro",
+     "captainPts": 24,
+     "red": 0,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 9,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "transfersIn": [
+      {
+       "in": "Akpom",
+       "out": "Igor Jesus",
+       "inPts": 0,
+       "outPts": 7
+      },
+      {
+       "in": "Gakpo",
+       "out": "Elanga",
+       "inPts": 1,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 10
+    },
+    {
+     "gw": 5,
+     "points": 45,
+     "gross": 45,
+     "total": 258,
+     "bench": 7,
+     "transfers": 0,
+     "hits": 0,
+     "value": 101.6,
+     "bank": 0.1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "red": 0,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 2,
+     "autoSubs": 1,
+     "autoSubPts": 6,
+     "best": {
+      "name": "Cherki",
+      "pts": 8
+     },
+     "transfersIn": [],
+     "leagueRank": 10
+    }
+   ],
+   "past": [
+    {
+     "season": "2010/11",
+     "points": 1990,
+     "overallRank": 98415
+    },
+    {
+     "season": "2011/12",
+     "points": 1969,
+     "overallRank": 232134
+    },
+    {
+     "season": "2012/13",
+     "points": 2044,
+     "overallRank": 136809
+    },
+    {
+     "season": "2013/14",
+     "points": 2178,
+     "overallRank": 361565
+    },
+    {
+     "season": "2014/15",
+     "points": 2026,
+     "overallRank": 154434
+    },
+    {
+     "season": "2015/16",
+     "points": 1925,
+     "overallRank": 1081587
+    },
+    {
+     "season": "2016/17",
+     "points": 2164,
+     "overallRank": 112125
+    },
+    {
+     "season": "2017/18",
+     "points": 1974,
+     "overallRank": 1394626
+    },
+    {
+     "season": "2018/19",
+     "points": 2023,
+     "overallRank": 1616446
+    },
+    {
+     "season": "2019/20",
+     "points": 2042,
+     "overallRank": 1451475
+    },
+    {
+     "season": "2020/21",
+     "points": 1960,
+     "overallRank": 3012013
+    },
+    {
+     "season": "2021/22",
+     "points": 2206,
+     "overallRank": 1162810
+    },
+    {
+     "season": "2022/23",
+     "points": 2163,
+     "overallRank": 3174092
+    },
+    {
+     "season": "2023/24",
+     "points": 2178,
+     "overallRank": 2483297
+    },
+    {
+     "season": "2024/25",
+     "points": 2242,
+     "overallRank": 2258952
+    },
+    {
+     "season": "2025/26",
+     "points": 2254,
+     "overallRank": 430495
+    }
+   ]
+  }
+ ]
+}
