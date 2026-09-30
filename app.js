@@ -60,7 +60,7 @@ function render(d) {
 
   $('gw').textContent = `Gameweek ${GW}`;
   $('gw-title').textContent = `Gameweek ${GW} – Auszeichnungen`;
-  $('updated').textContent = `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { dateStyle: 'medium', timeStyle: 'short' })}`;
+  $('updated').textContent = `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
 
   // --- Hero ---
   $('hero').innerHTML = `

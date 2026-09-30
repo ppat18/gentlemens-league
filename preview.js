@@ -72,8 +72,8 @@ function renderPreview(d, hist, comp) {
       ? pick([`${b(S.nick)} sitzt nur ${gapTop} Punkte dahinter und schärft schon das Messer.`, `${b(S.nick)} (${gapTop} dahinter) hat jetzt die Chance auf den Königsmord – oder auf die nächste Enttäuschung.`])
       : pick([`Dahinter hechelt ${b(S.nick)} mit ${gapTop} Punkten Rückstand hinterher. Aufholjagd oder Kapitulation? Wir tippen auf Kapitulation.`, `${b(S.nick)} liegt ${gapTop} Punkte zurück – das ist in FPL-Sprache „theoretisch noch möglich“, in Wahrheit aber „vergiss es“.`]),
     hot !== F ? `Achtung vor ${b(hot.nick)}: ${form(hot)} Punkte in den letzten 3 Runden – der hat einen Lauf und das Selbstvertrauen eines Mannes, der noch nie eine Wildcard verbockt hat.` : '',
-    climb.v > 0 && climb.m !== F && climb.m !== hot ? `${b(climb.m.nick)} ist in den letzten Runden ${climb.v} Plätze geklettert – mal sehen, wie lange die Höhenluft hält.` : '',
-  ].filter(Boolean).join(' ');
+    hot === F && climb.v > 0 && climb.m !== F ? `${b(climb.m.nick)} ist in den letzten Runden ${climb.v} Plätze geklettert – mal sehen, wie lange die Höhenluft hält.` : '',
+  ].filter(Boolean).slice(0, 2).join(' ');
 
   const bottom = [
     pick([
@@ -85,7 +85,7 @@ function renderPreview(d, hist, comp) {
     cold !== Z ? `Und dann wäre da noch ${b(cold.nick)} mit mageren ${form(cold)} Punkten aus den letzten 3 Runden – wer so weitermacht, bekommt die Laterne bald per Post zugestellt.` : '',
     fall.v < 0 && fall.m !== cold && fall.m !== Z ? `${b(fall.m.nick)} ist zuletzt ${-fall.v} Plätze abgerutscht. Freier Fall mit Aussicht.` : '',
     L(Z1) >= 3 && Z1 !== cold ? `${b(Z1.nick)} schaut übrigens auch schon wieder nervös nach unten – alte Gewohnheit (${L(Z1)}× Laterne).` : '',
-  ].filter(Boolean).join(' ');
+  ].filter(Boolean).slice(0, 2).join(' ');
 
   // Duelle der Runde in CL & Cup
   const duels = [];
@@ -97,7 +97,7 @@ function renderPreview(d, hist, comp) {
       if (leg >= 0) cr.ties.forEach(([h, a]) => byAv[h] && byAv[a] && duels.push([`Cup-${cr.name}`, leg ? byAv[a] : byAv[h], leg ? byAv[h] : byAv[a]]));
     }
   }
-  const duelTxt = duels.length ? duels.slice(0, 3).map(([k, h, a]) => {
+  const duelTxt = duels.length ? duels.slice(0, 1).map(([k, h, a]) => {
     const fav = form(h) >= form(a) ? h : a, dog = fav === h ? a : h;
     return pick([
       `${k}: ${b(h.nick)} gegen ${b(a.nick)} – auf dem Papier klarer Vorteil ${fav.nick}, aber Papier hat auch noch nie ein FPL-Team aufgestellt.`,
@@ -117,7 +117,7 @@ function renderPreview(d, hist, comp) {
       const s = (m.squads || [])[(m.squads || []).length - 1];
       return s && s.picks.some(([id, pos]) => pos <= 11 && [fx.home.code, fx.away.code].includes(P[id]?.[3]));
     }).length;
-    fxTxt = `Topspiel der Runde: ${b(fx.home.name)} gegen ${b(fx.away.name)} – ${owners} von ${ms.length} Gentlemen haben zuletzt Spieler aus diesem Spiel in der Startelf gehabt. Das Zittern ist also Mannschaftssport.`;
+    fxTxt = `Topspiel: ${b(fx.home.name)} – ${b(fx.away.name)}, ${owners} von ${ms.length} zittern mit.`;
   }
   const dl = new Date(n.deadline).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', weekday: 'long', hour: '2-digit', minute: '2-digit' });
 
@@ -126,7 +126,6 @@ function renderPreview(d, hist, comp) {
     <h3>${esc(head)}</h3>
     <p>${top}</p>
     <p style="margin-top:8px">${bottom}</p>
-    ${duelTxt || fxTxt ? `<p style="margin-top:8px">${[duelTxt, fxTxt].filter(Boolean).join(' ')}</p>` : ''}
-    <p style="margin-top:8px">Transfer-Deadline ist ${esc(dl)} Uhr. Wer den Kapitän wieder in letzter Minute ändert, wird hier nächste Woche namentlich erwähnt.</p>
+    ${duelTxt || fxTxt ? `<p style="margin-top:8px">${[duelTxt, fxTxt].filter(Boolean).join(' ')} ⏰ Deadline: ${esc(dl)} Uhr.</p>` : `<p style="margin-top:8px">⏰ Deadline: ${esc(dl)} Uhr.</p>`}
     <div class="by">– Der Gentleman-Reporter. Mit Glaskugel, ohne Gewissen.</div>`.replace(/,\s*([.!?])/g, '$1');
 }
