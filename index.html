@@ -215,6 +215,8 @@ tr.last td{background:#ffe6e4}
 .chips td.total.best{color:#1e9e3a}
 .pen-note{font-size:11px;font-weight:600;color:var(--red);padding:0 12px 8px;margin-top:-2px}
 .tie .pen-note{padding:4px 0 0}
+.report.preview{border-left-color:var(--lime);margin:0 0 16px}
+.report.preview .kicker{color:#3b8a1d}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -352,6 +354,7 @@ tr.last td{background:#ffe6e4}
   <section class="luck" id="luck"></section>
 
   <h2 id="next-title">Nächste Gameweek</h2>
+  <section class="report preview" id="preview-report"></section>
   <section class="next" id="next"></section>
 
   <h2>💰 Teamwert-Ranking</h2>
@@ -359,9 +362,6 @@ tr.last td{background:#ffe6e4}
 
   <h2 id="chart-title">📈 Tabellenverlauf</h2>
   <section class="luck" id="chart"></section>
-
-  <h2 id="season-title">Saison-Auszeichnungen</h2>
-  <section class="awards" id="season-awards"></section>
 
   <h2>Saison-Statistik</h2>
   <section class="table scroll">
@@ -383,6 +383,9 @@ tr.last td{background:#ffe6e4}
   <h2>🃏 Chips</h2>
   <section class="table scroll" id="chips"></section>
   <p class="foot">Triple Captain: Punkte des Kapitäns (dreifach) · Bench Boost: Punkte der ganzen Runde (in Klammer: davon von der Bank) · Free Hit: Punkte der ganzen Runde – grün = bester Wert je Chip. ○ = noch nicht gespielt (jeder Chip 2× pro Saison). Die Wildcard zählt nicht.</p>
+
+  <h2 id="season-title">Saison-Auszeichnungen</h2>
+  <section class="awards" id="season-awards"></section>
 
 </main>
 
@@ -422,6 +425,7 @@ tr.last td{background:#ffe6e4}
 <script src="extras.js?v=__BUILD__"></script>
 <script src="comps.js?v=__BUILD__"></script>
 <script src="squad.js?v=__BUILD__"></script>
+<script src="preview.js?v=__BUILD__"></script>
 <script src="app.js?v=__BUILD__"></script>
 </body>
 </html>
