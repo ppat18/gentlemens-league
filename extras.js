@@ -195,7 +195,9 @@ function renderChips(ms) {
     // Triple Captain: nur die (dreifachen) Punkte des Kapitäns · sonst: Punkte der Runde
     const cells = CHIPS.map(c => ({ c, uses: m.gws.filter(g => g.chip === c.key).map(g => c.key === '3xc'
       ? { gw: g.gw, pts: g.captainPts, label: `${g.captain} · GW ${g.gw}` }
-      : { gw: g.gw, pts: g.points, label: `GW ${g.gw}` }) }));
+      : c.key === 'bboost'
+        ? { gw: g.gw, pts: g.points, label: `(Bank: ${g.benchPlayersPts ?? '?'}) · GW ${g.gw}` }
+        : { gw: g.gw, pts: g.points, label: `GW ${g.gw}` }) }));
     const all = cells.flatMap(x => x.uses);
     return { m, cells, total: all.reduce((a, u) => a + u.pts, 0), used: all.length };
   });
