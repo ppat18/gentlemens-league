@@ -192,7 +192,10 @@ function renderChips(ms) {
     { key: 'freehit', name: 'Free Hit', icon: '🎯' },
   ];
   const rows = ms.map(m => {
-    const cells = CHIPS.map(c => ({ c, uses: m.gws.filter(g => g.chip === c.key).map(g => ({ gw: g.gw, pts: g.points })) }));
+    // Triple Captain: nur die (dreifachen) Punkte des Kapitäns · sonst: Punkte der Runde
+    const cells = CHIPS.map(c => ({ c, uses: m.gws.filter(g => g.chip === c.key).map(g => c.key === '3xc'
+      ? { gw: g.gw, pts: g.captainPts, label: `${g.captain} · GW ${g.gw}` }
+      : { gw: g.gw, pts: g.points, label: `GW ${g.gw}` }) }));
     const all = cells.flatMap(x => x.uses);
     return { m, cells, total: all.reduce((a, u) => a + u.pts, 0), used: all.length };
   });
@@ -204,7 +207,7 @@ function renderChips(ms) {
       <thead><tr><th>Manager</th>${CHIPS.map(c => `<th class="num">${c.icon} ${c.name}</th>`).join('')}</tr></thead>
       <tbody>${rows.map(r => `<tr>
         <td><div class="who"><img class="av" src="${av(r.m)}" alt=""><div>${esc(r.m.nick)}</div></div></td>
-        ${r.cells.map((x, i) => `<td class="num chip-cell">${x.uses.map(u => `<span class="chip-use ${u.pts === bestOf[i] ? 'pos' : ''}">${u.pts}<small>GW ${u.gw}</small></span>`).join('')}${'<span class="chip-open" title="noch nicht gespielt">○</span>'.repeat(Math.max(0, 2 - x.uses.length))}</td>`).join('')}
+        ${r.cells.map((x, i) => `<td class="num chip-cell">${x.uses.map(u => `<span class="chip-use ${u.pts === bestOf[i] ? 'pos' : ''}">${u.pts}<small>${esc(u.label)}</small></span>`).join('')}${'<span class="chip-open" title="noch nicht gespielt">○</span>'.repeat(Math.max(0, 2 - x.uses.length))}</td>`).join('')}
       </tr>`).join('')}</tbody>
     </table>`;
 }
