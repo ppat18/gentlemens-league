@@ -217,6 +217,8 @@ tr.last td{background:#ffe6e4}
 .tie .pen-note{padding:4px 0 0}
 .report.preview{border-left-color:var(--lime);margin:0 0 16px}
 .report.preview .kicker{color:#3b8a1d}
+td.live{color:var(--red);font-weight:800}
+#gw-col{white-space:nowrap}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -345,7 +347,7 @@ tr.last td{background:#ffe6e4}
   <h2>Tabelle</h2>
   <section class="table">
     <table>
-      <thead><tr><th>#</th><th>Manager</th><th class="num hide-m">GW</th><th class="num">Gesamt</th></tr></thead>
+      <thead><tr><th>#</th><th>Manager</th><th class="num hide-m" id="gw-col">GW</th><th class="num">Gesamt</th></tr></thead>
       <tbody id="rows"></tbody>
     </table>
   </section>
