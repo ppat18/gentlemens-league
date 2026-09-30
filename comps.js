@@ -5,7 +5,11 @@
 function renderComps(d, comp) {
   if (!comp) return;
   const byAv = Object.fromEntries(d.managers.map(m => [m.avatar, m]));
-  const goals = (a, gw) => byAv[a]?.gws.find(g => g.gw === gw)?.gross ?? null;
+  // Tore = Punkte vor Transfer-Abzug, aber Minuspunkte über der Freigrenze (Standard 12 = 3 Zusatzwechsel) werden abgezogen
+  const free = comp.freeHitPoints ?? 12;
+  const gwOf = (a, gw) => byAv[a]?.gws.find(g => g.gw === gw);
+  const goals = (a, gw) => { const g = gwOf(a, gw); return g ? g.gross - Math.max(0, (g.hits || 0) - free) : null; };
+  const penalty = (a, gw) => { const g = gwOf(a, gw); return g ? Math.max(0, (g.hits || 0) - free) : 0; };
   const played = gw => gw <= d.lastGW;
   const code = { Achtelfinale: 'AF', Viertelfinale: 'VF', Halbfinale: 'HF', Finale: 'F' };
   const ctx = {}; // Platzhalter -> Avatar-Name (A1, VF2, …)
@@ -25,7 +29,13 @@ function renderComps(d, comp) {
     h = resolve(h); a = resolve(a);
     const ready = byAv[h] && byAv[a] && played(gw);
     const hs = ready ? goals(h, gw) : null, as = ready ? goals(a, gw) : null;
-    return { h, a, gw, hs, as, done: hs != null && as != null };
+    const pens = ready ? [[h, penalty(h, gw)], [a, penalty(a, gw)]].filter(p => p[1] > 0) : [];
+    return { h, a, gw, hs, as, pens, done: hs != null && as != null };
+  };
+  // Hinweis, wenn jemand mehr als 3 Zusatzwechsel gemacht hat
+  const penNote = gs => {
+    const all = gs.flatMap(g => g.pens.map(([who, p]) => `${esc(nameOf(who))} −${p} (GW ${g.gw})`));
+    return all.length ? `<div class="pen-note">⚠️ Mehr als 3 Zusatzwechsel: ${all.join(', ')}</div>` : '';
   };
   const matchRow = g => {
     const cls = s => !g.done ? '' : s === 'h' ? (g.hs > g.as ? 'win' : g.hs < g.as ? 'lose' : 'draw') : (g.as > g.hs ? 'win' : g.as < g.hs ? 'lose' : 'draw');
@@ -33,7 +43,7 @@ function renderComps(d, comp) {
       <div class="${cls('h')}">${person(g.h)}</div>
       <div class="sc">${g.done ? `${g.hs}<i>:</i>${g.as}` : `<small>GW ${g.gw}</small>`}</div>
       <div class="${cls('a')}">${person(g.a, true)}</div>
-    </div>`;
+    </div>${penNote([g])}`;
   };
 
   // K.o.-Duell (Hin- und Rückspiel oder ein Spiel)
@@ -55,6 +65,7 @@ function renderComps(d, comp) {
           <span class="agg">${x.any ? s : ''}</span>
         </div>`).join('')}
       <div class="tie-foot">${x.legs.map((g, i) => `${x.legs.length > 1 ? (i ? 'Rück' : 'Hin') : round} GW ${g.gw}`).join(' · ')}${x.done && !x.winner ? ' · <b>Gleichstand!</b>' : ''}</div>
+      ${penNote(x.legs)}
     </div>`;
   const koRound = (r, pre) => {
     const ties = r.ties.map(t => tie(t, r.gws));
