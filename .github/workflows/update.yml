@@ -42,6 +42,9 @@ jobs:
           git diff --cached --quiet || git commit -m "Daten aktualisiert"
           git push
 
+      - name: Versionskennung setzen (damit Handys keine alten Dateien zeigen)
+        run: sed -i "s/__BUILD__/$(git rev-parse --short HEAD)-$(date +%s)/g" index.html
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
