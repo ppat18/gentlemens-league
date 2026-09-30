@@ -140,7 +140,7 @@ tr.last td{background:#ffe6e4}
 .season .who .av{width:34px;height:34px}
 .season .pct{display:block;font:600 11px Inter;color:#23752f;white-space:nowrap}
 /* Wettbewerbe */
-.groups{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px}
 .group,.round,.ko-round,.supercup{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .group h3,.round h3,.ko-round h3,.supercup h3{background:var(--navy);color:#fff;font:700 18px Oswald;padding:10px 14px;text-transform:uppercase;letter-spacing:.5px}
 .group h3 small,.round h3 small,.supercup h3 small{font:600 12px Inter;color:var(--lime-2);text-transform:none;margin-left:6px}
