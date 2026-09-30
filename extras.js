@@ -183,6 +183,45 @@ function renderLuck(ms) {
   setTimeout(() => document.querySelectorAll('.needle').forEach(n => n.style.transform = `rotate(${n.dataset.angle}deg)`), 300);
 }
 
+// --- Chip-Ranking (ohne Wildcard) ---
+// Ertrag: Triple Captain = Extra-Kapitänspunkte, Bench Boost = Punkte der 4 Bankspieler,
+// Free Hit = Punkte der Runde minus Liga-Schnitt dieser Runde. Jeder Chip 2× pro Saison.
+function renderChips(ms) {
+  const CHIPS = [
+    { key: '3xc', name: 'Triple Captain', icon: '©️' },
+    { key: 'bboost', name: 'Bench Boost', icon: '🪑' },
+    { key: 'freehit', name: 'Free Hit', icon: '🎯' },
+  ];
+  const avgOf = gw => {
+    const pts = ms.map(m => m.gws.find(g => g.gw === gw)?.points).filter(v => v != null);
+    return pts.reduce((a, b) => a + b, 0) / pts.length;
+  };
+  const gain = (g, key) => key === '3xc' ? g.captainBase
+    : key === 'bboost' ? g.benchPlayersPts
+    : Math.round(g.points - avgOf(g.gw));
+  const fmt = v => (v > 0 ? '+' : v < 0 ? '−' : '±') + Math.abs(v);
+
+  const rows = ms.map(m => {
+    const cells = CHIPS.map(c => {
+      const uses = m.gws.filter(g => g.chip === c.key).map(g => ({ gw: g.gw, v: gain(g, c.key), pts: g.points }));
+      return { c, uses, sum: uses.reduce((a, u) => a + u.v, 0) };
+    });
+    return { m, cells, total: cells.reduce((a, x) => a + x.sum, 0), used: cells.reduce((a, x) => a + x.uses.length, 0) };
+  }).sort((a, b) => b.total - a.total || b.used - a.used);
+
+  const best = Math.max(...rows.map(r => r.total));
+  $('chips').innerHTML = `
+    <table class="stats chips">
+      <thead><tr><th>#</th><th>Manager</th>${CHIPS.map(c => `<th class="num">${c.icon} ${c.name}</th>`).join('')}<th class="num">Ertrag</th></tr></thead>
+      <tbody>${rows.map((r, i) => `<tr>
+        <td class="rank">${i + 1}</td>
+        <td><div class="who"><img class="av" src="${av(r.m)}" alt=""><div>${esc(r.m.nick)}</div></div></td>
+        ${r.cells.map(x => `<td class="num chip-cell">${x.uses.map(u => `<span class="chip-use ${u.v > 0 ? 'pos' : u.v < 0 ? 'neg' : ''}" title="GW ${u.gw}: ${u.pts} Punkte in der Runde">${fmt(u.v)}<small>GW ${u.gw}</small></span>`).join('')}${'<span class="chip-open" title="noch nicht gespielt">○</span>'.repeat(Math.max(0, 2 - x.uses.length))}</td>`).join('')}
+        <td class="num total ${r.used && r.total === best ? 'best' : ''}">${r.used ? fmt(r.total) : '–'}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+}
+
 // --- Teamwert-Ranking ---
 // FPL-Wert "value" enthält die Bank bereits (Start = 100,0 für alle)
 function renderValue(ms, GW) {

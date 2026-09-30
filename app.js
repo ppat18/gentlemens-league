@@ -155,6 +155,7 @@ function render(d) {
   renderRankChart(ms);
   renderLuck(ms);
   renderValue(ms, GW);
+  renderChips(ms);
 
   // --- Saison-Auszeichnungen ---
   renderSeasonAwards(ms, GW);

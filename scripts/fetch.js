@@ -72,6 +72,9 @@ async function get(url) {
       const autoSubPts = picks.automatic_subs.reduce((a, x) => a + (stats[x.element_in]?.total_points || 0), 0);
       const cap = picks.picks.find(p => p.is_captain);
       const capPts = (stats[cap.element]?.total_points || 0);
+      // Punkte der 4 Bankspieler (Positionen 12–15) – für den Bench-Boost-Ertrag
+      const benchPlayersPts = picks.picks.filter(p => p.position > 11)
+        .reduce((a, p) => a + (stats[p.element]?.total_points || 0), 0);
       // Transfers dieses Spieltags: Punkte der Neuzugänge
       const tIn = transfers.filter(t => t.event === h.event).map(t => ({
         in: players[t.element_in], out: players[t.element_out],
@@ -91,6 +94,8 @@ async function get(url) {
         chip: picks.active_chip,
         captain: players[cap.element],
         captainPts: capPts * cap.multiplier,
+        captainBase: capPts,
+        benchPlayersPts,
         red, yellow, goals, assists, ownGoals, penMiss, bonus,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
         transfersIn: tIn,

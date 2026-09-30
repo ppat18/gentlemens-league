@@ -206,6 +206,12 @@ tr.last td{background:#ffe6e4}
 .final-gold.compact .fg-match{margin:8px 0 6px}
 .final-gold.compact .fg-title{font-size:24px}
 .final-gold.compact .fg-side .av{width:64px;height:64px}
+.chip-cell{white-space:nowrap}
+.chip-use{display:inline-block;margin-left:6px;font:700 16px Oswald;color:var(--ink);text-align:center;line-height:1.05}
+.chip-use small{display:block;font:600 10px Inter;color:#888}
+.chip-use.pos{color:#1e7a2f}.chip-use.neg{color:var(--red)}
+.chip-open{display:inline-block;margin-left:8px;color:#c3c7d1;font-size:15px;vertical-align:middle}
+.chips td.total.best{color:#1e9e3a}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -368,6 +374,11 @@ tr.last td{background:#ffe6e4}
     </table>
   </section>
   <p class="foot">Karten, Tore &amp; Kapitänspunkte zählen nur für Spieler in der Startelf (inkl. Auto-Wechsel). Daten: Fantasy Premier League.</p>
+
+  <h2>🃏 Chip-Ranking</h2>
+  <section class="table scroll" id="chips"></section>
+  <p class="foot">Ertrag je Chip: Triple Captain = Extra-Punkte durch den dreifachen Kapitän · Bench Boost = Punkte der 4 Bankspieler · Free Hit = Punkte der Runde im Vergleich zum Liga-Schnitt. ○ = noch nicht gespielt (jeder Chip 2× pro Saison). Wildcard zählt nicht.</p>
+
 </main>
 
 <main class="page" id="page-cl" hidden>
