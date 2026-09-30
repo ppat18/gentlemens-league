@@ -54,25 +54,23 @@ async function get(url) {
   }
   const elements = Object.fromEntries(boot.elements.map(e => [e.id, e]));
   const teamById = Object.fromEntries(boot.teams.map(t => [t.id, t]));
-  const squadOf = async entry => {
-    if (!squadGW) return null;
-    const p = await get(`/entry/${entry}/event/${squadGW}/picks/`);
-    const stats = live[squadGW] || {};
+  // Kader platzsparend: Spieler-Stammdaten einmal in "players", je Gameweek nur die Aufstellung
+  const squadPlayers = {}; // id -> [Name, Typ (1 TW, 2 VT, 3 MF, 4 ST), Verein kurz, Vereinscode]
+  const buildSquad = (p, gw) => {
+    const stats = live[gw] || {};
     return {
-      gw: squadGW,
-      finished: finished.includes(squadGW),
+      gw,
+      finished: finished.includes(gw),
       chip: p.active_chip,
       points: p.entry_history?.points ?? null,
       hits: p.entry_history?.event_transfers_cost ?? 0,
-      subs: p.automatic_subs.map(s => ({ in: s.element_in, out: s.element_out })),
+      subs: p.automatic_subs.map(s => [s.element_in, s.element_out]),
+      // [Spieler-ID, Position 1–15, Multiplikator, 1 = Kapitän / 2 = Vize, Punkte, Minuten]
       picks: p.picks.map(x => {
         const el = elements[x.element], t = teamById[el.team];
-        return {
-          id: x.element, name: el.web_name, type: el.element_type, // 1 TW, 2 VT, 3 MF, 4 ST
-          team: t.short_name, teamCode: t.code, pos: x.position, mult: x.multiplier,
-          cap: x.is_captain, vice: x.is_vice_captain,
-          pts: stats[x.element]?.total_points ?? 0, minutes: stats[x.element]?.minutes ?? 0,
-        };
+        squadPlayers[x.element] = [el.web_name, el.element_type, t.short_name, t.code];
+        return [x.element, x.position, x.multiplier, x.is_captain ? 1 : x.is_vice_captain ? 2 : 0,
+          stats[x.element]?.total_points ?? 0, stats[x.element]?.minutes ?? 0];
       }),
     };
   };
@@ -83,8 +81,10 @@ async function get(url) {
     const hist = await get(`/entry/${e.entry}/history/`);
     const transfers = await get(`/entry/${e.entry}/transfers/`);
     const gws = [];
+    const squads = [];
     for (const h of hist.current.filter(h => finished.includes(h.event))) {
       const picks = await get(`/entry/${e.entry}/event/${h.event}/picks/`);
+      squads.push(buildSquad(picks, h.event));
       const stats = live[h.event];
       // Startelf nach Auto-Wechseln
       const xi = new Set(picks.picks.filter(p => p.multiplier > 0).map(p => p.element));
@@ -132,13 +132,17 @@ async function get(url) {
         transfersIn: tIn,
       });
     }
+    // Laufende Gameweek (Deadline vorbei, noch nicht fertig) zusätzlich anhängen
+    if (squadGW && !squads.some(s => s.gw === squadGW)) {
+      squads.push(buildSquad(await get(`/entry/${e.entry}/event/${squadGW}/picks/`), squadGW));
+    }
     managers.push({
       id: e.entry, nick: meta.nick, avatar: meta.avatar,
       name: e.player_name, team: e.entry_name,
       rank: e.rank, lastRank: e.last_rank, total: e.total,
       chips: hist.chips, gws,
       past: hist.past.map(p => ({ season: p.season_name, points: p.total_points, overallRank: p.rank })),
-      squad: await squadOf(e.entry),
+      squads,
     });
   }
 
@@ -186,6 +190,7 @@ async function get(url) {
     lastGW,
     next,
     managers,
+    players: squadPlayers,
   };
   const file = path.join(__dirname, '..', 'data', 'data.json');
   fs.mkdirSync(path.dirname(file), { recursive: true });

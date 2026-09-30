@@ -4,7 +4,8 @@
 (function () {
   const css = `
   .sq-overlay{position:fixed;inset:0;z-index:100;background:rgba(10,10,30,.72);display:flex;align-items:flex-start;justify-content:center;padding:24px 12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  .sq-panel{width:100%;max-width:560px;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:sqIn .22s ease-out}
+  .sq-panel{width:100%;max-width:560px;background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .sq-overlay.in .sq-panel{animation:sqIn .22s ease-out}
   @keyframes sqIn{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
   .sq-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff}
   .sq-head .av{width:56px;height:56px;border:3px solid var(--lime);flex:none}
@@ -14,6 +15,9 @@
   .sq-head .gw small{display:block;font:600 11px Inter;color:#fff;opacity:.8;margin-top:3px}
   .sq-x{background:rgba(255,255,255,.12);color:#fff;border:0;width:36px;height:36px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer;flex:none}
   .sq-chip{display:inline-block;background:var(--gold);color:var(--ink);font:700 11px Oswald;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-top:4px}
+  .sq-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;background:var(--lime);color:var(--navy);font:700 17px Oswald;text-transform:uppercase;letter-spacing:.5px}
+  .sq-nav button{width:40px;height:34px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:700 24px/1 Inter;cursor:pointer}
+  .sq-nav button:disabled{opacity:.25;cursor:default}
   .sq-pitch{position:relative;overflow:hidden;padding:14px 6px 10px;background:repeating-linear-gradient(180deg,#2f7d32 0 44px,#2a722d 44px 88px)}
   .sq-pitch::before{content:"";position:absolute;left:12%;right:12%;top:0;height:54px;border:2px solid rgba(255,255,255,.35);border-top:0}
   .sq-pitch::after{content:"";position:absolute;left:50%;bottom:-40px;width:110px;height:80px;border:2px solid rgba(255,255,255,.35);border-radius:50%;transform:translateX(-50%)}
@@ -41,9 +45,44 @@
   const TYPES = { 1: 'Tor', 2: 'Abwehr', 3: 'Mittelfeld', 4: 'Sturm' };
   const chipName = { wildcard: 'Wildcard', freehit: 'Free Hit', bboost: 'Bench Boost', '3xc': 'Triple Captain', manager: 'Assistant Manager' };
 
+  // Kompakte Kaderdaten (siehe fetch.js) in lesbare Objekte umwandeln
+  function expand(s) {
+    const P = window.LEAGUE.players || {};
+    return {
+      ...s,
+      subs: s.subs.map(([i, o]) => ({ in: i, out: o })),
+      picks: s.picks.map(([id, pos, mult, cv, pts, minutes]) => {
+        const [name, type, team, teamCode] = P[id] || ['?', 3, '', 0];
+        return { id, pos, mult, cap: cv === 1, vice: cv === 2, pts, minutes, name, type, team, teamCode };
+      }),
+    };
+  }
+
   function open(m) {
-    const s = m.squad;
-    if (!s) return;
+    const list = m.squads || [];
+    if (!list.length) return;
+    let idx = list.length - 1; // neueste Gameweek zuerst
+
+    const ov = document.createElement('div');
+    ov.className = 'sq-overlay';
+    const close = () => { ov.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', keys); };
+    const go = d => { const n = idx + d; if (n >= 0 && n < list.length) { idx = n; draw(); } };
+    const keys = e => { if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(-1); else if (e.key === 'ArrowRight') go(1); };
+    ov.addEventListener('click', e => {
+      if (e.target === ov || e.target.closest('.sq-x')) close();
+      else if (e.target.closest('.sq-prev')) go(-1);
+      else if (e.target.closest('.sq-next')) go(1);
+    });
+    // Wischen am Handy: nach links = neuere, nach rechts = ältere Gameweek
+    let x0 = null;
+    ov.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    ov.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 60) go(dx < 0 ? 1 : -1); x0 = null; });
+    document.addEventListener('keydown', keys);
+    document.body.style.overflow = 'hidden';
+    document.body.appendChild(ov);
+
+    function draw() {
+    const s = expand(list[idx]);
     const subIn = new Set(s.subs.map(x => x.in)), subOut = new Set(s.subs.map(x => x.out));
     const card = (p, bench) => {
       const shown = bench && s.chip !== 'bboost' ? p.pts : p.pts * Math.max(p.mult, 1);
@@ -60,25 +99,26 @@
       .map(r => `<div class="sq-row">${r.map(p => card(p, false)).join('')}</div>`).join('');
     const net = s.points != null ? s.points - (s.hits || 0) : null;
 
-    const ov = document.createElement('div');
-    ov.className = 'sq-overlay';
     ov.innerHTML = `<div class="sq-panel" role="dialog" aria-label="Kader von ${esc(m.nick)}">
       <div class="sq-head">
         <img class="av" src="${av(m)}" alt="">
         <div><div class="nm">${esc(m.nick)}</div><div class="tm">${esc(m.team)}</div>${s.chip ? `<span class="sq-chip">🃏 ${chipName[s.chip] || s.chip}</span>` : ''}</div>
-        <div class="gw">${net ?? '–'}<small>Punkte · GW ${s.gw}${s.hits ? ` (−${s.hits})` : ''}</small></div>
+        <div class="gw">${net ?? '–'}<small>Punkte${s.hits ? ` (−${s.hits})` : ''}</small></div>
         <button class="sq-x" aria-label="Schließen">×</button>
+      </div>
+      <div class="sq-nav">
+        <button class="sq-prev" ${idx === 0 ? 'disabled' : ''} aria-label="Ältere Gameweek">‹</button>
+        <span>Gameweek ${s.gw}${s.finished ? '' : ' · läuft'}</span>
+        <button class="sq-next" ${idx === list.length - 1 ? 'disabled' : ''} aria-label="Neuere Gameweek">›</button>
       </div>
       <div class="sq-pitch">${rows}</div>
       <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
       <div class="sq-foot">${s.finished ? `Endstand Gameweek ${s.gw}` : `Gameweek ${s.gw} läuft – Punkte werden bei jeder Aktualisierung nachgetragen`} · ↑↓ = automatische Einwechslung</div>
     </div>`;
-    const close = () => { ov.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', esc_); };
-    const esc_ = e => { if (e.key === 'Escape') close(); };
-    ov.addEventListener('click', e => { if (e.target === ov || e.target.closest('.sq-x')) close(); });
-    document.addEventListener('keydown', esc_);
-    document.body.style.overflow = 'hidden';
-    document.body.appendChild(ov);
+    }
+    ov.classList.add('in');
+    draw();
+    setTimeout(() => ov.classList.remove('in'), 300); // Animation nur beim Öffnen, nicht beim Blättern
   }
 
   // Ein Klick-Handler für alle Manager-Fotos auf der Seite
@@ -88,6 +128,6 @@
     const hit = (img.getAttribute('src') || '').match(/avatars\/([a-z0-9_-]+)\.webp/i);
     if (!hit) return;
     const m = window.LEAGUE.managers.find(x => x.avatar === hit[1]);
-    if (m && m.squad) { e.stopPropagation(); open(m); }
+    if (m && m.squads && m.squads.length) { e.stopPropagation(); open(m); }
   }, true);
 })();
