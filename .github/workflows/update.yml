@@ -1,10 +1,10 @@
 # Holt die FPL-Daten, speichert sie im Projekt und veröffentlicht die Seite auf GitHub Pages.
-# Während Premier-League-Spielen alle 20 Minuten (bis 30 Min. nach Spielende), sonst nur 1× täglich.
+# Während Premier-League-Spielen alle 10 Minuten (bis 30 Min. nach Spielende), sonst nur 1× täglich.
 name: Liga aktualisieren & veröffentlichen
 
 on:
   schedule:
-    - cron: '*/20 * * * *'  # alle 20 Min. prüfen – aktualisiert nur, wenn gerade gespielt wird
+    - cron: '*/10 * * * *'  # alle 10 Min. prüfen – aktualisiert nur, wenn gerade gespielt wird
     - cron: '0 5 * * *'     # täglich 05:00 UTC (07:00 in Österreich) – immer volle Aktualisierung
   push:
     branches: [main]
