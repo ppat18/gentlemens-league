@@ -42,6 +42,24 @@
   .sq-bench h4{font:700 12px Oswald;letter-spacing:1.5px;text-transform:uppercase;color:#666;text-align:center;margin-bottom:6px}
   .sq-bench .sq-row{margin:0}
   .sq-foot{font-size:12px;color:#777;padding:8px 14px 14px;text-align:center}
+  .sq-fifa-wrap{padding:6px 14px 18px;background:linear-gradient(180deg,#fff,#eef1f6);text-align:center}
+  .fifa{width:230px;margin:0 auto;padding:14px 14px 12px;border-radius:18px 18px 40px 40px;position:relative;color:#2a1d00;box-shadow:0 8px 22px rgba(0,0,0,.35);text-align:left}
+  .fifa.gold{background:linear-gradient(150deg,#fff3b0,#e8c25a 40%,#b8860b)}
+  .fifa.silver{background:linear-gradient(150deg,#ffffff,#cfd6df 45%,#8e99a6);color:#1d2430}
+  .fifa.bronze{background:linear-gradient(150deg,#ffe0c2,#cd8a4e 45%,#8a4f22);color:#2b1404}
+  .fifa.wood{background:repeating-linear-gradient(100deg,#a0703f 0 8px,#8a5c30 8px 15px,#9b6a3a 15px 22px);color:#fff4e2}
+  .fifa-top{display:flex;align-items:center;justify-content:space-between}
+  .fifa-ovr{font:700 46px/0.9 Oswald}
+  .fifa-ovr small{display:block;font:700 13px Oswald;letter-spacing:1px;margin-top:4px}
+  .fifa .av{width:96px;height:96px;border:3px solid rgba(255,255,255,.85);box-shadow:0 3px 10px rgba(0,0,0,.3)}
+  .fifa-name{font:700 24px Oswald;text-transform:uppercase;text-align:center;margin:8px 0 6px;border-bottom:2px solid currentColor;padding-bottom:4px;opacity:.95}
+  .fifa-stats{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}
+  .fifa-stats div{font:600 14px Oswald;letter-spacing:.5px}
+  .fifa-stats b{font-size:18px;margin-right:3px}
+  .fifa-stats small{display:block;font:600 9px Inter;opacity:.7;letter-spacing:0;margin-top:-2px}
+  .fifa-tier{text-align:center;font:700 11px Oswald;letter-spacing:2px;text-transform:uppercase;margin-top:8px;opacity:.8}
+  .fifa-roast{font-size:13px;font-style:italic;color:#555;margin-top:10px;line-height:1.45}
+  .fifa-roast small{font-style:normal;font-size:10px;color:#999}
   img.av{cursor:pointer}
   img.av[src$="unknown.svg"]{cursor:default}
   @media (max-width:420px){.sq-p img{width:32px;height:32px}.sq-p .n{font-size:10px}.sq-head .nm{font-size:20px}.sq-head .gw{font-size:22px}}
@@ -50,6 +68,47 @@
 
   const TYPES = { 1: 'Tor', 2: 'Abwehr', 3: 'Mittelfeld', 4: 'Sturm' };
   const chipName = { wildcard: 'Wildcard', freehit: 'Free Hit', bboost: 'Bench Boost', '3xc': 'Triple Captain', manager: 'Assistant Manager' };
+
+  // --- FIFA-Karte: Saisonwerte je Manager, im Liga-Vergleich auf 45–95 skaliert ---
+  let fifaCache = null;
+  function fifaRatings() {
+    if (fifaCache) return fifaCache;
+    const ms = window.LEAGUE.managers, last = window.LEAGUE.lastGW;
+    const sum = (m, k) => m.gws.reduce((a, g) => a + (g[k] || 0), 0);
+    const raw = ms.map(m => ({
+      m,
+      TRA: m.gws.reduce((a, g) => a + (g.transfersIn || []).reduce((b, t) => b + t.inPts - t.outPts, 0), 0) - sum(m, 'hits'),
+      KAP: sum(m, 'captainPts'),
+      FRM: m.gws.filter(g => g.gw > last - 3).reduce((a, g) => a + g.points, 0),
+      BNK: -sum(m, 'bench'),
+      DIS: -(sum(m, 'red') * 3 + sum(m, 'yellow') + sum(m, 'ownGoals') * 2),
+      GLU: sum(m, 'autoSubPts') + sum(m, 'bonus') / 2 - sum(m, 'bench') / 2 - (sum(m, 'red') * 3 + sum(m, 'yellow') + sum(m, 'ownGoals') * 2 + sum(m, 'penMiss') * 2) + sum(m, 'lateGain') - sum(m, 'lateLoss'),
+    }));
+    const keys = ['TRA', 'KAP', 'FRM', 'BNK', 'DIS', 'GLU'];
+    const out = {};
+    raw.forEach(r => out[r.m.avatar] = {});
+    for (const k of keys) {
+      const vals = raw.map(r => r[k]), hi = Math.max(...vals), lo = Math.min(...vals);
+      raw.forEach(r => out[r.m.avatar][k] = hi === lo ? 70 : Math.round(45 + (r[k] - lo) / (hi - lo) * 50));
+    }
+    for (const a in out) out[a].OVR = Math.round(keys.reduce((s, k) => s + out[a][k], 0) / keys.length);
+    return (fifaCache = out);
+  }
+  function fifaCard(m) {
+    const r = fifaRatings()[m.avatar];
+    if (!r) return '';
+    const tier = r.OVR >= 80 ? ['gold', 'Gold', 'Weltklasse. Oder einfach Glück. Vermutlich Glück.']
+      : r.OVR >= 70 ? ['silver', 'Silber', 'Solide. Wie ein Kombi: niemand bewundert ihn, aber er fährt.']
+      : r.OVR >= 60 ? ['bronze', 'Bronze', 'Kreisliga mit Ambitionen. Viel Ambition, wenig Liga.']
+      : ['wood', 'Holz', 'Holzklasse. Selbst der Ersatztormann der Reserve schaut weg.'];
+    const lbl = { TRA: 'Transfer', KAP: 'Kapitän', FRM: 'Form', BNK: 'Bank', DIS: 'Disziplin', GLU: 'Glück' };
+    return `<div class="sq-fifa-wrap"><div class="fifa ${tier[0]}">
+      <div class="fifa-top"><div class="fifa-ovr">${r.OVR}<small>MGR</small></div><img class="av" src="${av(m)}" alt=""></div>
+      <div class="fifa-name">${esc(m.nick)}</div>
+      <div class="fifa-stats">${Object.keys(lbl).map(k => `<div><b>${r[k]}</b> ${k === 'GLU' ? 'GLÜ' : k}<small>${lbl[k]}</small></div>`).join('')}</div>
+      <div class="fifa-tier">${tier[1]}-Karte</div>
+    </div><p class="fifa-roast">${tier[2]}<br><small>Werte der laufenden Saison im Liga-Vergleich (45 = Liga-Schlechtester, 95 = Liga-Bester).</small></p></div>`;
+  }
 
   // Kompakte Kaderdaten (siehe fetch.js) in lesbare Objekte umwandeln
   function expand(s) {
@@ -139,6 +198,7 @@
       <div class="sq-pitch">${rows}</div>
       <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
       <div class="sq-foot">${s.finished ? `Endstand Gameweek ${s.gw}` : `Gameweek ${s.gw} läuft – Punkte werden bei jeder Aktualisierung nachgetragen`} · ↑↓ = automatische Einwechslung</div>
+      ${fifaCard(m)}
     </div>`;
     }
     ov.classList.add('in');
