@@ -205,13 +205,15 @@ function renderLuck(ms) {
   setTimeout(() => document.querySelectorAll('.needle').forEach(n => n.style.transform = `rotate(${n.dataset.angle}deg)`), 300);
 }
 
-// --- Chip-Tabelle (ohne Wildcard) ---
+// --- Chip-Tabelle ---
 // Eingetragen werden die Punkte der Runde, in der der Chip gespielt wurde. Jeder Chip 2× pro Saison.
+// Wildcard ohne Punkte – nur ● gespielt / ○ offen.
 function renderChips(ms) {
   const CHIPS = [
     { key: '3xc', name: 'Triple Captain', icon: '©️' },
     { key: 'bboost', name: 'Bench Boost', icon: '🪑' },
     { key: 'freehit', name: 'Free Hit', icon: '🎯' },
+    { key: 'wildcard', name: 'Wildcard', icon: '♻️', noPoints: true },
   ];
   const rows = ms.map(m => {
     // Triple Captain: nur die (dreifachen) Punkte des Kapitäns · sonst: Punkte der Runde
@@ -224,14 +226,16 @@ function renderChips(ms) {
     return { m, cells, total: all.reduce((a, u) => a + u.pts, 0), used: all.length };
   });
   // Bester Wert je Chip-Spalte hervorheben
-  const bestOf = CHIPS.map((_, i) => Math.max(0, ...rows.flatMap(r => r.cells[i].uses.map(u => u.pts))));
+  const bestOf = CHIPS.map((c, i) => c.noPoints ? null : Math.max(0, ...rows.flatMap(r => r.cells[i].uses.map(u => u.pts))));
 
   $('chips').innerHTML = `
     <table class="stats chips">
       <thead><tr><th>Manager</th>${CHIPS.map(c => `<th class="num chip-h" title="${c.name}" aria-label="${c.name}">${c.icon}</th>`).join('')}</tr></thead>
       <tbody>${rows.map(r => `<tr>
         <td><div class="who"><img class="av" src="${av(r.m)}" alt=""><div>${esc(r.m.nick)}</div></div></td>
-        ${r.cells.map((x, i) => `<td class="num chip-cell">${x.uses.map(u => `<span class="chip-use ${u.pts === bestOf[i] ? 'pos' : ''}">${u.pts}<small>${esc(u.label)}</small></span>`).join('')}${'<span class="chip-open" title="noch nicht gespielt">○</span>'.repeat(Math.max(0, 2 - x.uses.length))}</td>`).join('')}
+        ${r.cells.map((x, i) => `<td class="num chip-cell">${x.uses.map(u => x.c.noPoints
+          ? `<span class="chip-use chip-done" title="Wildcard gespielt in GW ${u.gw}">●<small>GW ${u.gw}</small></span>`
+          : `<span class="chip-use ${u.pts === bestOf[i] ? 'pos' : ''}">${u.pts}<small>${esc(u.label)}</small></span>`).join('')}${'<span class="chip-open" title="noch nicht gespielt">○</span>'.repeat(Math.max(0, 2 - x.uses.length))}</td>`).join('')}
       </tr>`).join('')}</tbody>
     </table>`;
 }
