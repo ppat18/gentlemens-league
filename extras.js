@@ -127,7 +127,10 @@ function renderLuck(ms) {
   const rows = ms.map(m => {
     const auto = sum(m, 'autoSubPts'), bonus = sum(m, 'bonus'), bench = sum(m, 'bench');
     const bad = sum(m, 'red') * 3 + sum(m, 'yellow') + sum(m, 'ownGoals') * 2 + sum(m, 'penMiss') * 2;
-    return { m, auto, bonus, bench, bad, raw: auto + bonus - bench / 2 - bad };
+    // Last-Minute: Tore/Vorlagen ab 90' (+) und spät verlorenes Zu-null (−)
+    const lateGain = sum(m, 'lateGain'), lateLoss = sum(m, 'lateLoss');
+    const lateList = m.gws.flatMap(g => (g.lateInfo || []).map(t => `GW ${g.gw}: ${t}`));
+    return { m, auto, bonus, bench, bad, lateGain, lateLoss, lateList, raw: auto + bonus - bench / 2 - bad + lateGain - lateLoss };
   });
   const avg = rows.reduce((a, r) => a + r.raw, 0) / rows.length;
   rows.forEach(r => r.luck = Math.round((r.raw - avg) * 10) / 10);
@@ -174,10 +177,13 @@ function renderLuck(ms) {
           ⭐ Bonuspunkte: +${r.bonus}<br>
           🪑 Bankpunkte (halb): −${(r.bench / 2).toLocaleString('de-AT')}<br>
           🟥 Karten, Eigentore, Elfer: −${r.bad}<br>
+          ⏱️ Last-Minute-Glück: +${r.lateGain}<br>
+          ⏱️ Last-Minute-Pech: −${r.lateLoss}<br>
+          ${r.lateList.length ? `<small style="opacity:.85">${r.lateList.map(esc).join('<br>')}</small><br>` : ''}
           <b>= ${fmt(r.luck)} gegenüber dem Liga-Schnitt</b></div>
       </div>`;
     }).join('')}
-    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + Bonuspunkte − halbe Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer. Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
+    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + Bonuspunkte − halbe Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer + Last-Minute-Glück (Tore/Vorlagen der Startelf ab der 90. Minute) − Last-Minute-Pech (Zu-null erst ab der 90. Minute verloren). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
 
   // Antippen (Handy): Details ein-/ausblenden, immer nur eine Zeile offen
   document.querySelectorAll('#luck .lrow').forEach(row => row.addEventListener('click', () => {
@@ -213,7 +219,7 @@ function renderChips(ms) {
 
   $('chips').innerHTML = `
     <table class="stats chips">
-      <thead><tr><th>Manager</th>${CHIPS.map(c => `<th class="num">${c.icon} ${c.name}</th>`).join('')}</tr></thead>
+      <thead><tr><th>Manager</th>${CHIPS.map(c => `<th class="num chip-h" title="${c.name}" aria-label="${c.name}">${c.icon}</th>`).join('')}</tr></thead>
       <tbody>${rows.map(r => `<tr>
         <td><div class="who"><img class="av" src="${av(r.m)}" alt=""><div>${esc(r.m.nick)}</div></div></td>
         ${r.cells.map((x, i) => `<td class="num chip-cell">${x.uses.map(u => `<span class="chip-use ${u.pts === bestOf[i] ? 'pos' : ''}">${u.pts}<small>${esc(u.label)}</small></span>`).join('')}${'<span class="chip-open" title="noch nicht gespielt">○</span>'.repeat(Math.max(0, 2 - x.uses.length))}</td>`).join('')}

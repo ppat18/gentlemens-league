@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-30T21:43:47.313Z",
+ "updated": "2026-10-01T13:50:27.984Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -207,6 +207,11 @@
       "name": "Palmer",
       "pts": 13
      },
+     "lateGain": 6,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+6 Gvardiol ⚽ 90+1'"
+     ],
      "transfersIn": [],
      "leagueRank": 6
     },
@@ -238,6 +243,11 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Groß ⚽ 90+6'"
+     ],
      "transfersIn": [],
      "leagueRank": 2
     },
@@ -269,6 +279,9 @@
       "name": "Isak",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Schade",
@@ -307,6 +320,11 @@
       "name": "Groß",
       "pts": 17
      },
+     "lateGain": 3,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+3 Groß 🅰️ 90+4'"
+     ],
      "transfersIn": [
       {
        "in": "Konsa",
@@ -345,6 +363,9 @@
       "name": "Groß",
       "pts": 14
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 1
     }
@@ -1064,6 +1085,11 @@
       "name": "Ødegaard",
       "pts": 11
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
      "transfersIn": [],
      "leagueRank": 1
     },
@@ -1095,6 +1121,12 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "lateGain": 5,
+     "lateLoss": 1,
+     "lateInfo": [
+      "−1 Tavernier 🧤 90+1'",
+      "+5 Groß ⚽ 90+6'"
+     ],
      "transfersIn": [
       {
        "in": "Tavernier",
@@ -1133,6 +1165,9 @@
       "name": "Tavernier",
       "pts": 10
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 1
     },
@@ -1164,6 +1199,11 @@
       "name": "Groß",
       "pts": 17
      },
+     "lateGain": 3,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+3 Groß 🅰️ 90+4'"
+     ],
      "transfersIn": [
       {
        "in": "Lacroix",
@@ -1208,6 +1248,11 @@
       "name": "Groß",
       "pts": 14
      },
+     "lateGain": 6,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+6 Van Hecke ⚽ 90+8'"
+     ],
      "transfersIn": [
       {
        "in": "Van Hecke",
@@ -1968,6 +2013,11 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
      "transfersIn": [],
      "leagueRank": 8
     },
@@ -1999,6 +2049,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Lewis-Potter",
@@ -2037,6 +2090,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Groß",
@@ -2075,6 +2131,11 @@
       "name": "Groß",
       "pts": 17
      },
+     "lateGain": 3,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+3 Groß 🅰️ 90+4'"
+     ],
      "transfersIn": [
       {
        "in": "De Cuyper",
@@ -2113,6 +2174,9 @@
       "name": "Groß",
       "pts": 14
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Belloumi",
@@ -2849,6 +2913,11 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
      "transfersIn": [],
      "leagueRank": 9
     },
@@ -2880,6 +2949,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 4
     },
@@ -2911,6 +2983,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 3
     },
@@ -2942,6 +3017,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Gibbs-White",
@@ -2992,6 +3070,9 @@
       "name": "Ajer",
       "pts": 7
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Gvardiol",
@@ -3753,6 +3834,11 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
      "transfersIn": [],
      "leagueRank": 5
     },
@@ -3784,6 +3870,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Slater",
@@ -4056,6 +4145,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 9
     },
@@ -4087,6 +4179,12 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 5,
+     "lateLoss": 4,
+     "lateInfo": [
+      "−4 Trafford 🧤 90'",
+      "+5 Saka ⚽ 90+7'"
+     ],
      "transfersIn": [
       {
        "in": "Barnes",
@@ -4125,6 +4223,9 @@
       "name": "Trafford",
       "pts": 10
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Mykolenko",
@@ -4867,6 +4968,9 @@
       "name": "Kayode",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 7
     },
@@ -4898,6 +5002,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Wissa",
@@ -4942,6 +5049,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Gvardiol",
@@ -4980,6 +5090,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "White",
@@ -5018,6 +5131,9 @@
       "name": "Tzolakis",
       "pts": 6
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Calvert-Lewin",
@@ -5831,6 +5947,11 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
      "transfersIn": [],
      "leagueRank": 2
     },
@@ -5862,6 +5983,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Gakpo",
@@ -5900,6 +6024,9 @@
       "name": "Gakpo",
       "pts": 11
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Shaw",
@@ -5998,6 +6125,11 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Saka ⚽ 90+7'"
+     ],
      "transfersIn": [
       {
        "in": "Buendía",
@@ -6090,6 +6222,9 @@
       "name": "Cherki",
       "pts": 8
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Barry",
@@ -6855,6 +6990,11 @@
       "name": "Palmer",
       "pts": 13
      },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
      "transfersIn": [],
      "leagueRank": 3
     },
@@ -6886,6 +7026,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 3
     },
@@ -6917,6 +7060,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Dedić",
@@ -6955,6 +7101,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Konsa",
@@ -6993,6 +7142,9 @@
       "name": "Gomez",
       "pts": 8
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Delap",
@@ -7758,6 +7910,9 @@
       "name": "Kayode",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 4
     },
@@ -7789,6 +7944,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 8
     },
@@ -7820,6 +7978,9 @@
       "name": "Mitchell",
       "pts": 15
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Wissa",
@@ -7858,6 +8019,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Calafiori",
@@ -7896,6 +8060,9 @@
       "name": "Semenyo",
       "pts": 17
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Havertz",
@@ -8649,6 +8816,9 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 10
     },
@@ -8680,6 +8850,11 @@
       "name": "Haaland",
       "pts": 13
      },
+     "lateGain": 0,
+     "lateLoss": 4,
+     "lateInfo": [
+      "−4 Petrović 🧤 90+1'"
+     ],
      "transfersIn": [
       {
        "in": "De Cuyper",
@@ -8724,6 +8899,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Igor Jesus",
@@ -8894,6 +9072,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [
       {
        "in": "Akpom",
@@ -8938,6 +9119,9 @@
       "name": "Cherki",
       "pts": 8
      },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
      "transfersIn": [],
      "leagueRank": 10
     }

@@ -75,6 +75,15 @@ async function get(url) {
     };
   };
 
+  // Tore ab der 90. Minute (für Last-Minute-Glück/-Pech im Glück-o-Meter) – darf nie den Rest blockieren
+  let late = {};
+  try {
+    const { lateGoals } = require('./lategoals');
+    late = await lateGoals(boot, await get('/fixtures/'));
+    console.log('Last-Minute-Tore:', Object.values(late).flat().length);
+  } catch (err) { console.warn('Last-Minute-Daten nicht verfügbar:', err.message); }
+  const GOAL_PTS = { 1: 10, 2: 6, 3: 5, 4: 4 }, ASSIST_PTS = 3, CS_PTS = { 1: 4, 2: 4, 3: 1, 4: 0 };
+
   const managers = [];
   for (const e of entries) {
     const meta = MANAGERS[e.entry] || { nick: e.player_name.split(' ')[0], avatar: null };
@@ -101,6 +110,28 @@ async function get(url) {
       }
       // Glücksfaktor: Punkte durch automatische Einwechslungen
       const autoSubPts = picks.automatic_subs.reduce((a, x) => a + (stats[x.element_in]?.total_points || 0), 0);
+      // Last-Minute: Tore/Vorlagen eigener Startelf-Spieler ab 90' (+) und spät verlorenes Zu-null (−)
+      const multOf = id => Math.max(1, picks.picks.find(p => p.element === id)?.multiplier || 1);
+      let lateGain = 0, lateLoss = 0; const lateInfo = [];
+      for (const g of late[h.event] || []) {
+        if (g.scorer && xi.has(g.scorer)) {
+          const pts = (GOAL_PTS[elements[g.scorer].element_type] || 4) * multOf(g.scorer);
+          lateGain += pts; lateInfo.push(`+${pts} ${players[g.scorer]} ⚽ ${g.label}`);
+        }
+        if (g.assist && xi.has(g.assist)) {
+          const pts = ASSIST_PTS * multOf(g.assist);
+          lateGain += pts; lateInfo.push(`+${pts} ${players[g.assist]} 🅰️ ${g.label}`);
+        }
+        if (g.firstConceded && g.concedingTeam) {
+          for (const id of xi) {
+            const el = elements[id], st = stats[id] || {};
+            if (el.team !== g.concedingTeam || !CS_PTS[el.element_type]) continue;
+            if ((st.minutes || 0) < 89 || st.clean_sheets) continue; // war beim Gegentor auf dem Platz, Zu-null weg
+            const pts = CS_PTS[el.element_type] * multOf(id);
+            lateLoss += pts; lateInfo.push(`−${pts} ${players[id]} 🧤 ${g.label}`);
+          }
+        }
+      }
       const cap = picks.picks.find(p => p.is_captain);
       const capPts = (stats[cap.element]?.total_points || 0);
       // Punkte der 4 Bankspieler (Positionen 12–15) – für den Bench-Boost-Ertrag
@@ -129,6 +160,7 @@ async function get(url) {
         benchPlayersPts,
         red, yellow, goals, assists, ownGoals, penMiss, bonus,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
+        lateGain, lateLoss, lateInfo,
         transfersIn: tIn,
       });
     }
