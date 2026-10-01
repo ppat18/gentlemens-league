@@ -181,11 +181,11 @@ function render(d) {
     m, cells: [
       winsOf[m.id] || 0, lastOf[m.id] || 0, Math.max(...m.gws.map(g => g.points)),
       sum(m, 'bench'), sum(m, 'captainPts'), sum(m, 'transfers'), sum(m, 'hits'),
-      sum(m, 'yellow'), sum(m, 'red'), sum(m, 'goals'),
+      sum(m, 'yellow'), sum(m, 'red'), sum(m, 'goals'), sum(m, 'assists'), sum(m, 'cleanSheets'),
     ]
   }));
   // Bei welchen Spalten ist "hoch" gut (1) oder schlecht (-1)?
-  const good = [1, -1, 1, -1, 1, 0, -1, -1, -1, 1];
+  const good = [1, -1, 1, -1, 1, 0, -1, -1, -1, 1, 1, 1];
   const colMax = good.map((_, i) => Math.max(...rows.map(r => r.cells[i])));
   $('stats').innerHTML = rows.map(r => `<tr>
     <td><div class="who"><img class="av" src="${av(r.m)}" alt=""><div>${esc(r.m.nick)}</div></div></td>

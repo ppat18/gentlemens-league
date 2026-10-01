@@ -98,11 +98,13 @@ async function get(url) {
       // Startelf nach Auto-Wechseln
       const xi = new Set(picks.picks.filter(p => p.multiplier > 0).map(p => p.element));
       for (const s of picks.automatic_subs) { xi.delete(s.element_out); xi.add(s.element_in); }
-      let red = 0, yellow = 0, goals = 0, assists = 0, ownGoals = 0, penMiss = 0, bonus = 0;
+      let red = 0, yellow = 0, goals = 0, assists = 0, ownGoals = 0, penMiss = 0, bonus = 0, cleanSheets = 0;
       let best = null;
       for (const id of xi) {
         const s = stats[id] || {};
         bonus += s.bonus || 0;
+        // Zu-null nur bei Tormann/Verteidiger (bringt 4 Punkte)
+        if ((s.clean_sheets || 0) && elements[id]?.element_type <= 2) cleanSheets += 1;
         if (!best || (s.total_points || 0) > best.pts) best = { name: players[id], pts: s.total_points || 0 };
         red += s.red_cards || 0; yellow += s.yellow_cards || 0;
         goals += s.goals_scored || 0; assists += s.assists || 0;
@@ -158,7 +160,7 @@ async function get(url) {
         captainPts: capPts * cap.multiplier,
         captainBase: capPts,
         benchPlayersPts,
-        red, yellow, goals, assists, ownGoals, penMiss, bonus,
+        red, yellow, goals, assists, ownGoals, penMiss, bonus, cleanSheets,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
         lateGain, lateLoss, lateInfo,
         transfersIn: tIn,

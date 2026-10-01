@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-01T13:52:23.293Z",
+ "updated": "2026-10-01T13:53:17.384Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -201,6 +201,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 5,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -237,6 +238,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 15,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -273,6 +275,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 8,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -314,6 +317,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 14,
+     "cleanSheets": 4,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -357,6 +361,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -1079,6 +1084,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 7,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -1115,6 +1121,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 13,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -1159,6 +1166,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 9,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -1193,6 +1201,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 13,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -1242,6 +1251,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 0,
      "autoSubs": 1,
      "autoSubPts": 2,
      "best": {
@@ -2007,6 +2017,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -2043,6 +2054,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 13,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -2084,6 +2096,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 4,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -2125,6 +2138,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 11,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -2168,6 +2182,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 4,
+     "cleanSheets": 2,
      "autoSubs": 1,
      "autoSubPts": 2,
      "best": {
@@ -2907,6 +2922,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -2943,6 +2959,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 14,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -2977,6 +2994,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 4,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -3011,6 +3029,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 11,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -3064,6 +3083,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 1,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -3828,6 +3848,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -3864,6 +3885,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 12,
+     "cleanSheets": 2,
      "autoSubs": 1,
      "autoSubPts": 6,
      "best": {
@@ -4139,6 +4161,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 4,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -4173,6 +4196,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 8,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -4217,6 +4241,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 5,
+     "cleanSheets": 3,
      "autoSubs": 1,
      "autoSubPts": 2,
      "best": {
@@ -4962,6 +4987,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 4,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -4996,6 +5022,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 9,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -5043,6 +5070,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -5084,6 +5112,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 12,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -5125,6 +5154,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 0,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -5941,6 +5971,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 2,
      "autoSubs": 1,
      "autoSubPts": 1,
      "best": {
@@ -5977,6 +6008,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 10,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -6018,6 +6050,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -6119,6 +6152,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -6216,6 +6250,7 @@
      "ownGoals": 0,
      "penMiss": 1,
      "bonus": 2,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -6984,6 +7019,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -7020,6 +7056,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 10,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -7054,6 +7091,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 4,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -7095,6 +7133,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -7136,6 +7175,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 0,
+     "cleanSheets": 1,
      "autoSubs": 1,
      "autoSubPts": 8,
      "best": {
@@ -7904,6 +7944,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 5,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -7938,6 +7979,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 9,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -7972,6 +8014,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -8013,6 +8056,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 6,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -8054,6 +8098,7 @@
      "ownGoals": 0,
      "penMiss": 1,
      "bonus": 3,
+     "cleanSheets": 2,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -8810,6 +8855,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 1,
      "autoSubs": 2,
      "autoSubPts": 0,
      "best": {
@@ -8844,6 +8890,7 @@
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 8,
+     "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -8893,6 +8940,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 3,
+     "cleanSheets": 0,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -9066,6 +9114,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 9,
+     "cleanSheets": 3,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
@@ -9113,6 +9162,7 @@
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 2,
+     "cleanSheets": 1,
      "autoSubs": 1,
      "autoSubPts": 6,
      "best": {
