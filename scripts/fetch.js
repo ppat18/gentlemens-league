@@ -114,8 +114,11 @@ async function get(url) {
       const autoSubPts = picks.automatic_subs.reduce((a, x) => a + (stats[x.element_in]?.total_points || 0), 0);
       // Last-Minute: Tore/Vorlagen eigener Startelf-Spieler ab 90' (+) und spät verlorenes Zu-null (−)
       const multOf = id => Math.max(1, picks.picks.find(p => p.element === id)?.multiplier || 1);
-      let lateGain = 0, lateLoss = 0; const lateInfo = [];
+      let lateGain = 0, lateLoss = 0, lateFor = 0, lateAgainst = 0; const lateInfo = [];
       for (const g of late[h.event] || []) {
+        if (g.scorer && xi.has(g.scorer)) lateFor++;
+        // Gegentor ab 90' gegen ein Team, dessen Tormann/Verteidiger in der Startelf auf dem Platz stand
+        if (g.concedingTeam && [...xi].some(id => elements[id].team === g.concedingTeam && elements[id].element_type <= 2 && (stats[id]?.minutes || 0) >= 89)) lateAgainst++;
         if (g.scorer && xi.has(g.scorer)) {
           const pts = (GOAL_PTS[elements[g.scorer].element_type] || 4) * multOf(g.scorer);
           lateGain += pts; lateInfo.push(`+${pts} ${players[g.scorer]} ⚽ ${g.label}`);
@@ -162,7 +165,7 @@ async function get(url) {
         benchPlayersPts,
         red, yellow, goals, assists, ownGoals, penMiss, bonus, cleanSheets,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
-        lateGain, lateLoss, lateInfo,
+        lateGain, lateLoss, lateInfo, lateFor, lateAgainst,
         transfersIn: tIn,
       });
     }
