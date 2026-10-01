@@ -19,6 +19,8 @@
   .sq-nav button{width:40px;height:34px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:700 24px/1 Inter;cursor:pointer}
   .sq-nav button:disabled{opacity:.25;cursor:default}
   .sq-place{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:7px 10px;background:#f3f5f9;font-size:13px;font-weight:600;color:#444}
+  .sq-lazy{text-align:center;font-size:12px;font-weight:600;padding:5px 10px;background:#f3f5f9;border-top:1px solid #e6e8ee}
+  .sq-lazy.bad{color:var(--red)}.sq-lazy.good{color:#1e7a2f}
   .sq-tag{font:700 13px Oswald;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:999px}
   .sq-tag.win{background:var(--gold);color:var(--ink)}
   .sq-tag.last{background:var(--red);color:#fff}
@@ -112,6 +114,13 @@
       const tag = net === Math.max(...all) ? '<span class="sq-tag win">🥇 Rundensieger</span>'
         : net === Math.min(...all) ? '<span class="sq-tag last">🥄 Rundenletzter</span>' : '';
       placeHtml = `<div class="sq-place">${tag}<span>Rundenplatz ${place} von ${all.length}${s.finished ? '' : ' (vorläufig)'}</span></div>`;
+    }
+    // "Hättest du nichts getan": Vorwochen-Elf mit den Punkten dieser Runde
+    const gwData = m.gws.find(g => g.gw === s.gw);
+    if (gwData && gwData.lazyPts != null) {
+      const d = gwData.lazyPts - gwData.points;
+      placeHtml += `<div class="sq-lazy ${d > 0 ? 'bad' : 'good'}">🛋️ Ohne Änderungen: ${gwData.lazyPts} Punkte · ${
+        d > 0 ? `−${d} durch Aktionismus` : d < 0 ? `+${-d} durch kluge Wechsel` : 'genau gleich'}</div>`;
     }
 
     ov.innerHTML = `<div class="sq-panel" role="dialog" aria-label="Kader von ${esc(m.nick)}">

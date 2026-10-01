@@ -1,8 +1,8 @@
 {
   "_info": "Interne Wettbewerbe (Spielplan 2026/27 von Alex). Tore = FPL-Punkte der Gameweek VOR Abzug der Transfer-Minuspunkte. Platzhalter: A1..A4/B1..B4 = Gruppenplatz, VF1..VF4 / HF1..HF2 = Sieger des jeweiligen Duells (Reihenfolge wie in der Runde darüber).",
   "season": "2026/27",
-  "freeHitPoints": 12,
-  "_freeHitPoints": "Transfer-Minuspunkte bis zu diesem Wert (3 Zusatzwechsel = 12) zählen in Cup & CL nicht; alles darüber wird abgezogen.",
+  "freeHitPoints": 8,
+  "_freeHitPoints": "Transfer-Minuspunkte bis zu diesem Wert (2 Zusatzwechsel = 8) zählen in Cup & CL nicht; liegt man darüber (ab 3 Zusatzwechseln = −12), werden ALLE Minuspunkte abgezogen.",
   "supercup": { "gw": 1, "home": "kai", "away": "patrick", "note": "Meister gegen Cupsieger" },
   "cl": {
     "name": "Gentlemens Champions League",

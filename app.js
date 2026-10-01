@@ -50,7 +50,7 @@ Promise.all([
   fetch('data/data.json', { cache: 'no-cache' }).then(r => r.json()),
   fetch('data/history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { seasons: {} }).catch(() => ({ seasons: {} })),
   fetch('data/competitions.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderHistory(d, hist); renderComps(d, comp); renderPreview(d, hist, comp); });
+]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderHistory(d, hist); renderComps(d, comp); renderPreview(d, hist, comp); renderBingo(d); });
 
 function render(d) {
   const GW = d.lastGW;
@@ -118,6 +118,9 @@ function render(d) {
     `${cards[0].g.red ? cards[0].g.red + '× Rot, ' : ''}${cards[0].g.yellow}× Gelb`, 1);
   const hits = leaders(cur, x => x.g.hits);
   if (hits[0]?.v > 0) add('🔪 Hit-König', hits, `−${hits[0].v} Punkte für Zusatztransfers`, 1);
+  // Hätte er nur nichts getan: Vorwochen-Elf hätte mehr geholt
+  const lazy = leaders(cur, x => x.g.lazyPts != null ? x.g.lazyPts - x.g.points : null);
+  if (lazy[0]?.v > 0) add('🛋️ Hätte er nur nichts getan', lazy, `Ohne Änderungen ${lazy[0].g.lazyPts} statt ${lazy[0].g.points} Punkte (−${lazy[0].v})`, 1);
   const climb = leaders(cur, x => prevRank(x.m) ? prevRank(x.m) - x.g.leagueRank : null);
   if (climb[0]?.v > 0) add('🚀 Aufsteiger', climb, `+${climb[0].v} Plätze in der Tabelle`);
   const fall = leaders(cur, x => prevRank(x.m) ? prevRank(x.m) - x.g.leagueRank : null, -1);
@@ -377,6 +380,8 @@ function renderSeasonAwards(ms, GW) {
   add('🔁 Transfer-Junkie', l, `${l[0].v} Transfers`);
   l = leaders(all, x => sum(x.m, 'hits'));
   add('🔪 Hit-König', l, `−${l[0].v} Punkte für Zusatztransfers`, 1);
+  l = leaders(all, x => x.m.gws.reduce((a, g) => a + (g.lazyPts != null ? g.lazyPts - g.points : 0), 0));
+  add('🛋️ Aktionismus-Opfer', l, `${l[0].v} Punkte verschenkt durch Änderungen – Nichtstun wäre besser gewesen`, 1);
   l = leaders(all, x => sum(x.m, 'red') * 3 + sum(x.m, 'yellow'));
   add('🟥 Treter der Saison', l, `${sum(l[0].m, 'red')}× Rot, ${sum(l[0].m, 'yellow')}× Gelb`, 1);
   l = leaders(all, x => sum(x.m, 'goals'));

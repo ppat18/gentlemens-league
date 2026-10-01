@@ -233,6 +233,38 @@ td.live{color:var(--red);font-weight:800}
 .faq summary::after{content:"+";font:700 20px/1 Oswald;color:var(--lime);flex:none}
 .faq details[open] summary::after{content:"−"}
 .faq details p{padding:0 4px 12px;line-height:1.6;color:#333;font-size:15px}
+/* Bier-Bingo */
+.bpodium,.blegend{background:var(--card);border-radius:18px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.25);margin-bottom:16px}
+.bpodium h3,.blegend h3{font:700 18px Oswald;text-transform:uppercase;letter-spacing:.5px;color:var(--navy);margin-bottom:8px}
+.bpodium h3 small{font:600 12px Inter;color:#888;text-transform:none;margin-left:6px}
+.bprow{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #eceef3}
+.bprow:last-of-type{border-bottom:0}
+.bprow .av{width:40px;height:40px;border:2px solid #e0a800}
+.bpl{font:700 22px Oswald;color:#b8860b;width:28px}
+.bpf{color:#666;font-size:13px;font-weight:600}
+.bpr{margin-left:auto;font-weight:700;color:var(--ink);white-space:nowrap}
+.bnote{font-size:12px;color:#777;margin-top:8px;line-height:1.5}
+.bcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:16px}
+.bcard{background:radial-gradient(circle at 30% 0%,#fff8dc,#f6e7b8);border-radius:22px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.3);border:4px solid #d9a521;position:relative}
+.bcard.pay1{border-color:var(--red);box-shadow:0 0 0 3px rgba(224,49,47,.35),0 6px 18px rgba(0,0,0,.3)}
+.bcard.pay2{border-color:#e0702f}.bcard.pay3{border-color:#e0a800}
+.bhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bhead .av{width:46px;height:46px;border:3px solid var(--navy)}
+.bn{font:700 22px/1 Oswald;text-transform:uppercase;color:var(--ink)}
+.bs{font-size:12px;font-weight:700;color:#8a6d1a;margin-top:2px}
+.bpay{margin-left:auto;font-size:22px}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bf{position:relative;background:#fff;border-radius:12px;min-height:84px;padding:8px 4px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #e2cf94;overflow:hidden}
+.bf .bi{font-size:24px;line-height:1}
+.bf .bl{font:600 11px/1.2 Inter;color:#555;margin-top:4px}
+.bf.hit{border:2px solid var(--red);background:#fff1ef}
+.bf.hit .bi,.bf.hit .bl{opacity:.45}
+.bf .bx{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 34px Oswald;color:var(--red);transform:rotate(-14deg);text-shadow:0 1px 0 #fff}
+.bf .bg{position:absolute;bottom:3px;left:0;right:0;font:700 9px Inter;color:var(--red)}
+.bbingo{margin-top:10px;text-align:center;font:700 18px Oswald;letter-spacing:1px;color:#fff;background:var(--red);border-radius:12px;padding:6px;animation:flicker 2.5s infinite}
+.broast{margin-top:8px;font-size:12px;font-style:italic;color:#6b5a26;text-align:center}
+.blegend div{padding:5px 0;font-size:14px;line-height:1.45;border-bottom:1px solid #eceef3}
+.blegend div span{display:inline-block;width:28px}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -344,6 +376,7 @@ td.live{color:var(--red);font-weight:800}
     <a href="#start" data-page="start">🏟️ Meisterschaft</a>
     <a href="#cl" data-page="cl">⭐ Champions League</a>
     <a href="#cup" data-page="cup">🥊 Cup</a>
+    <a href="#bingo" data-page="bingo">🍺 Bier-Bingo</a>
     <a href="#archiv" data-page="archiv">📚 Archiv</a>
     <a href="#hall-of-fame" data-page="hall-of-fame">🏆 Hall of Fame</a>
     <a href="#faq" data-page="faq">❓ FAQ</a>
@@ -412,14 +445,20 @@ td.live{color:var(--red);font-weight:800}
 
 <main class="page" id="page-cl" hidden>
   <h2>⭐ Gentlemens Champions League</h2>
-  <p class="intro">Interner Wettbewerb: Duelle Mann gegen Mann – die Tore sind die FPL-Punkte der Gameweek. Bis zu 3 Zusatzwechsel (−12) sind frei, jeder weitere Minuspunkt wird abgezogen. Sieg 3, Remis 1, Niederlage 0.</p>
+  <p class="intro">Interner Wettbewerb: Duelle Mann gegen Mann – die Tore sind die FPL-Punkte der Gameweek. Bis 2 Zusatzwechsel (−8) kein Abzug, ab 3 Zusatzwechseln (−12) zählen alle Minuspunkte. Sieg 3, Remis 1, Niederlage 0.</p>
   <section id="cl"></section>
 </main>
 
 <main class="page" id="page-cup" hidden>
   <h2>🥊 Cup</h2>
-  <p class="intro">K.o.-Modus mit Hin- und Rückspiel – die Summe der FPL-Punkte beider Gameweeks entscheidet. Bis zu 3 Zusatzwechsel (−12) sind frei, jeder weitere Minuspunkt wird abgezogen.</p>
+  <p class="intro">K.o.-Modus mit Hin- und Rückspiel – die Summe der FPL-Punkte beider Gameweeks entscheidet. Bis 2 Zusatzwechsel (−8) kein Abzug, ab 3 Zusatzwechseln (−12) zählen alle Minuspunkte.</p>
   <section id="cup"></section>
+</main>
+
+<main class="page" id="page-bingo" hidden>
+  <h2>🍺 Bier-Bingo</h2>
+  <p class="intro">Jede Schande wird abgestempelt. Wer am Saisonende die meisten Felder voll hat, zahlt bei der Abschlussfeier – Prost!</p>
+  <section id="bingo"></section>
 </main>
 
 <main class="page" id="page-archiv" hidden>
@@ -484,12 +523,12 @@ td.live{color:var(--red);font-weight:800}
     <h3>Champions League & Cup</h3>
     <details><summary>Wie wird ein Duell entschieden?</summary>
       <p>Jedes CL- und Cup-Spiel ist ein Duell Mann gegen Mann in einer bestimmten Gameweek. Die „Tore“ sind die <b>FPL-Punkte dieser Gameweek</b> – wer mehr hat, gewinnt.</p></details>
-    <details><summary>Die Wechsel-Regel: 3 Zusatzwechsel sind frei</summary>
+    <details><summary>Die Wechsel-Regel: 2 Zusatzwechsel sind frei</summary>
       <p>Jeder Wechsel über die Gratis-Transfers hinaus kostet in FPL −4 Punkte. In <b>Champions League und Cup</b> gilt bei uns:<br>
-      • <b>Bis zu 3 Zusatzwechsel (zusammen −12) sind frei</b> – diese Minuspunkte werden <b>nicht</b> abgezogen.<br>
-      • <b>Jeder weitere Zusatzwechsel wird abgezogen.</b><br>
-      Beispiele: 2 Zusatzwechsel (−8) → kein Abzug · 3 Zusatzwechsel (−12) → kein Abzug · 4 Zusatzwechsel (−16) → 4 Punkte Abzug · 5 Zusatzwechsel (−20) → 8 Punkte Abzug.<br>
-      So kann niemand mit 10 Wechseln jemanden schlagen, der nur 2 gemacht hat. Wer betroffen ist, steht rot unter dem Spiel („⚠️ Mehr als 3 Zusatzwechsel“).<br>
+      • <b>Bis zu 2 Zusatzwechsel (zusammen −8) sind frei</b> – diese Minuspunkte werden <b>nicht</b> abgezogen.<br>
+      • <b>Ab 3 Zusatzwechseln (−12) werden ALLE Minuspunkte abgezogen</b> – nicht nur die über −8.<br>
+      Beispiele: 1 Zusatzwechsel (−4) → kein Abzug · 2 Zusatzwechsel (−8) → kein Abzug · 3 Zusatzwechsel (−12) → 12 Punkte Abzug · 4 Zusatzwechsel (−16) → 16 Punkte Abzug.<br>
+      So kann niemand mit 10 Wechseln jemanden schlagen, der nur 2 gemacht hat. Wer betroffen ist, steht rot unter dem Spiel („⚠️ 3+ Zusatzwechsel“).<br>
       In der <b>Meisterschaft</b> gilt das nicht – dort zählen die FPL-Punkte ganz normal inklusive aller Minuspunkte.</p></details>
     <details><summary>Champions League</summary>
       <p>Zwei Gruppen à 5, jeder spielt zweimal gegen jeden (10 Runden). Sieg 3, Remis 1, Niederlage 0. Bei Punktgleichheit zählt der <b>direkte Vergleich</b> (Punkte, Tordifferenz, Tore), dann die Gesamt-Tordifferenz. Platz 1–4 kommt ins Viertelfinale (A1–B4, A2–B3 …), dann Halbfinale (je Hin- und Rückspiel) und Finale in GW 31.</p></details>
@@ -502,6 +541,7 @@ td.live{color:var(--red);font-weight:800}
 <script src="comps.js?v=__BUILD__"></script>
 <script src="squad.js?v=__BUILD__"></script>
 <script src="preview.js?v=__BUILD__"></script>
+<script src="bingo.js?v=__BUILD__"></script>
 <script src="app.js?v=__BUILD__"></script>
 </body>
 </html>

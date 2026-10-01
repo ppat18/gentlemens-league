@@ -5,11 +5,12 @@
 function renderComps(d, comp) {
   if (!comp) return;
   const byAv = Object.fromEntries(d.managers.map(m => [m.avatar, m]));
-  // Tore = Punkte vor Transfer-Abzug, aber Minuspunkte über der Freigrenze (Standard 12 = 3 Zusatzwechsel) werden abgezogen
-  const free = comp.freeHitPoints ?? 12;
+  // Tore = Punkte vor Transfer-Abzug. Minuspunkte bis zur Freigrenze (Standard 8 = 2 Zusatzwechsel) zählen nicht;
+  // liegt man darüber (ab 3 Zusatzwechseln = −12), werden ALLE Minuspunkte abgezogen.
+  const free = comp.freeHitPoints ?? 8;
   const gwOf = (a, gw) => byAv[a]?.gws.find(g => g.gw === gw);
-  const goals = (a, gw) => { const g = gwOf(a, gw); return g ? g.gross - Math.max(0, (g.hits || 0) - free) : null; };
-  const penalty = (a, gw) => { const g = gwOf(a, gw); return g ? Math.max(0, (g.hits || 0) - free) : 0; };
+  const penalty = (a, gw) => { const g = gwOf(a, gw); const h = g?.hits || 0; return h > free ? h : 0; };
+  const goals = (a, gw) => { const g = gwOf(a, gw); return g ? g.gross - penalty(a, gw) : null; };
   const played = gw => gw <= d.lastGW;
   const code = { Achtelfinale: 'AF', Viertelfinale: 'VF', Halbfinale: 'HF', Finale: 'F' };
   const ctx = {}; // Platzhalter -> Avatar-Name (A1, VF2, …)
@@ -35,7 +36,7 @@ function renderComps(d, comp) {
   // Hinweis, wenn jemand mehr als 3 Zusatzwechsel gemacht hat
   const penNote = gs => {
     const all = gs.flatMap(g => g.pens.map(([who, p]) => `${esc(nameOf(who))} −${p} (GW ${g.gw})`));
-    return all.length ? `<div class="pen-note">⚠️ Mehr als 3 Zusatzwechsel: ${all.join(', ')}</div>` : '';
+    return all.length ? `<div class="pen-note">⚠️ 3+ Zusatzwechsel – alle Minuspunkte zählen:${all.join(', ')}</div>` : '';
   };
   const matchRow = g => {
     const cls = s => !g.done ? '' : s === 'h' ? (g.hs > g.as ? 'win' : g.hs < g.as ? 'lose' : 'draw') : (g.as > g.hs ? 'win' : g.as < g.hs ? 'lose' : 'draw');
