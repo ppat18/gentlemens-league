@@ -162,6 +162,8 @@ async function get(url) {
         captain: players[cap.element],
         captainPts: capPts * cap.multiplier,
         captainBase: capPts,
+        captainGoals: stats[cap.element]?.goals_scored || 0,
+        captainAssists: stats[cap.element]?.assists || 0,
         benchPlayersPts,
         red, yellow, goals, assists, ownGoals, penMiss, bonus, cleanSheets,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,

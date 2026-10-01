@@ -130,7 +130,15 @@ function renderLuck(ms) {
     // Last-Minute: Tore/Vorlagen ab 90' (+) und spät verlorenes Zu-null (−)
     const lateGain = sum(m, 'lateGain'), lateLoss = sum(m, 'lateLoss');
     const lateList = m.gws.flatMap(g => (g.lateInfo || []).map(t => `GW ${g.gw}: ${t}`));
-    return { m, auto, bonus, bench, bad, lateGain, lateLoss, lateList, raw: auto + bonus / 2 - bench / 2 - bad + lateGain - lateLoss }; // Bonus zählt nur halb
+    // Triple Captain: kein Tor & kein Assist = −5 · ab dem 2. Tor +5 je Tor
+    const tc = m.gws.filter(g => g.chip === '3xc').map(g => {
+      const goals = g.captainGoals || 0, assists = g.captainAssists || 0;
+      const v = !goals && !assists ? -5 : goals >= 2 ? 5 * (goals - 1) : 0;
+      return { gw: g.gw, v, txt: `GW ${g.gw}: ${g.captain} ${goals}⚽ ${assists}🅰️ → ${v > 0 ? '+' : v < 0 ? '−' : '±'}${Math.abs(v)}` };
+    });
+    const tcLuck = tc.reduce((a, x) => a + x.v, 0);
+    return { m, auto, bonus, bench, bad, lateGain, lateLoss, lateList, tc, tcLuck,
+      raw: auto + bonus / 2 - bench / 2 - bad + lateGain - lateLoss + tcLuck }; // Bonus zählt nur halb
   });
   const avg = rows.reduce((a, r) => a + r.raw, 0) / rows.length;
   rows.forEach(r => r.luck = Math.round((r.raw - avg) * 10) / 10);
@@ -180,10 +188,11 @@ function renderLuck(ms) {
           ⏱️ Last-Minute-Glück: +${r.lateGain}<br>
           ⏱️ Last-Minute-Pech: −${r.lateLoss}<br>
           ${r.lateList.length ? `<small style="opacity:.85">${r.lateList.map(esc).join('<br>')}</small><br>` : ''}
+          ${r.tc.length ? `🃏 Triple Captain: ${r.tcLuck > 0 ? '+' : r.tcLuck < 0 ? '−' : '±'}${Math.abs(r.tcLuck)}<br><small style="opacity:.85">${r.tc.map(x => esc(x.txt)).join('<br>')}</small><br>` : ''}
           <b>= ${fmt(r.luck)} gegenüber dem Liga-Schnitt</b></div>
       </div>`;
     }).join('')}
-    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + halbe Bonuspunkte − halbe Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer + Last-Minute-Glück (Tore/Vorlagen der Startelf ab der 90. Minute) − Last-Minute-Pech (Zu-null erst ab der 90. Minute verloren). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
+    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + halbe Bonuspunkte − halbe Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer + Last-Minute-Glück (Tore/Vorlagen der Startelf ab der 90. Minute) − Last-Minute-Pech (Zu-null erst ab der 90. Minute verloren) ± Triple Captain (kein Tor &amp; kein Assist −5, ab dem 2. Tor +5 je Tor). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
 
   // Antippen (Handy): Details ein-/ausblenden, immer nur eine Zeile offen
   document.querySelectorAll('#luck .lrow').forEach(row => row.addEventListener('click', () => {
