@@ -153,7 +153,7 @@ async function get(url) {
         points: h.points - h.event_transfers_cost, // Netto nach Minuspunkten
         gross: h.points,
         total: h.total_points,
-        bench: h.points_on_bench,
+        bench: picks.active_chip === 'bboost' ? 0 : h.points_on_bench, // beim Bench Boost zählt die Bank → nichts verschenkt
         transfers: h.event_transfers,
         hits: h.event_transfers_cost,
         value: h.value / 10,
