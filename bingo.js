@@ -1,5 +1,5 @@
 // Gentlemen's League – Bier-Bingo: 9 Schande-Felder je Manager (laufende Saison).
-// Die drei mit den meisten Feldern zahlen bei der Abschlussfeier je eine Runde.
+// Die drei mit den meisten Kreuzen (jede Schande zählt einzeln) zahlen bei der Abschlussfeier je eine Runde.
 // (nutzt $, av, esc aus app.js)
 
 const BINGO_FIELDS = [
@@ -48,11 +48,11 @@ function renderBingo(d) {
     const on = BINGO_FIELDS.map(x => f[x.key].length > 0);
     const lines = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].filter(l => l.every(i => on[i])).length;
     return { m, f, marked, total, lines };
-  }).sort((a, b) => b.marked - a.marked || b.total - a.total);
+  }).sort((a, b) => b.total - a.total || b.marked - a.marked); // Kreuze entscheiden, dann Anzahl Felder
 
   // Zahl-Ranking mit Gleichstand
   let place = 0, prev = null;
-  hits.forEach((h, i) => { const key = h.marked + '/' + h.total; if (key !== prev) place = i + 1; prev = key; h.place = place; });
+  hits.forEach((h, i) => { const key = h.total + '/' + h.marked; if (key !== prev) place = i + 1; prev = key; h.place = place; });
   const roast = h => h.marked >= 7 ? 'Wandelnde Katastrophe – die Brauerei schickt schon Dankeskarten.'
     : h.marked >= 5 ? 'Fleißig am Ankreuzen. Das Portemonnaie wird leichter.'
     : h.marked >= 3 ? 'Solides Mittelmaß im Versagen.'
@@ -62,7 +62,7 @@ function renderBingo(d) {
     <div class="bcard ${h.place <= 3 && h.marked ? 'pay' + h.place : ''}">
       <div class="bhead">
         <img class="av" src="${av(h.m)}" alt="">
-        <div><div class="bn">${esc(h.m.nick)}</div><div class="bs">${h.marked}/9 Felder${h.total > h.marked ? ` · ${h.total}× insgesamt` : ''}</div></div>
+        <div><div class="bn">${esc(h.m.nick)}</div><div class="bs">${h.total} Kreuz${h.total === 1 ? '' : 'e'} · ${h.marked}/9 Felder</div></div>
         ${h.place <= 3 && h.marked ? `<div class="bpay">${'🍺'.repeat(BINGO_ROUNDS[h.place - 1])}</div>` : ''}
       </div>
       <div class="bgrid">${BINGO_FIELDS.map(x => {
@@ -81,9 +81,9 @@ function renderBingo(d) {
     <div class="bpodium">
       <h3>🍻 Wer zahlt bei der Abschlussfeier? <small>Stand nach GW ${d.lastGW}</small></h3>
       ${payers.map(h => `<div class="bprow"><span class="bpl">${h.place}.</span><img class="av" src="${av(h.m)}" alt="">
-        <b>${esc(h.m.nick)}</b><span class="bpf">${h.marked}/9 Felder · ${h.total} Kreuze</span>
+        <b>${esc(h.m.nick)}</b><span class="bpf"><b>${h.total} Kreuze</b> · ${h.marked}/9 Felder</span>
         <span class="bpr">${'🍺'.repeat(BINGO_ROUNDS[h.place - 1])} ${BINGO_ROUNDS[h.place - 1]} Runde${BINGO_ROUNDS[h.place - 1] > 1 ? 'n' : ''}</span></div>`).join('')}
-      <p class="bnote">Am Saisonende zahlen die drei mit den meisten angekreuzten Feldern je eine Runde. Zuerst zählt, wie viele der 9 Felder voll sind. Bei Gleichstand wird weitergezählt: wer insgesamt öfter angekreuzt wurde (z. B. 3× Rundenletzter), liegt vorne.</p>
+      <p class="bnote">Am Saisonende zahlen die drei mit den <b>meisten Kreuzen</b> je eine Runde. Jedes Kreuz zählt – 3× Rundenletzter sind 3 Kreuze. Bei Gleichstand entscheidet, wer mehr verschiedene Felder voll hat.</p>
     </div>
     <div class="bcards">${hits.map(cardHtml).join('')}</div>
     <div class="blegend"><h3>📜 Legende</h3>${BINGO_FIELDS.map(x => `<div><span>${x.icon}</span><b>${esc(x.name)}</b> – ${esc(x.desc)}</div>`).join('')}
