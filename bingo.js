@@ -81,9 +81,9 @@ function renderBingo(d) {
     <div class="bpodium">
       <h3>🍻 Wer zahlt bei der Abschlussfeier? <small>Stand nach GW ${d.lastGW}</small></h3>
       ${payers.map(h => `<div class="bprow"><span class="bpl">${h.place}.</span><img class="av" src="${av(h.m)}" alt="">
-        <b>${esc(h.m.nick)}</b><span class="bpf">${h.marked} Felder</span>
+        <b>${esc(h.m.nick)}</b><span class="bpf">${h.marked}/9 Felder · ${h.total} Kreuze</span>
         <span class="bpr">${'🍺'.repeat(BINGO_ROUNDS[h.place - 1])} ${BINGO_ROUNDS[h.place - 1]} Runde${BINGO_ROUNDS[h.place - 1] > 1 ? 'n' : ''}</span></div>`).join('')}
-      <p class="bnote">Am Saisonende zahlen die drei mit den meisten angekreuzten Feldern je eine Runde. Bei gleich vielen Feldern entscheidet, wie oft insgesamt angekreuzt wurde.</p>
+      <p class="bnote">Am Saisonende zahlen die drei mit den meisten angekreuzten Feldern je eine Runde. Zuerst zählt, wie viele der 9 Felder voll sind. Bei Gleichstand wird weitergezählt: wer insgesamt öfter angekreuzt wurde (z. B. 3× Rundenletzter), liegt vorne.</p>
     </div>
     <div class="bcards">${hits.map(cardHtml).join('')}</div>
     <div class="blegend"><h3>📜 Legende</h3>${BINGO_FIELDS.map(x => `<div><span>${x.icon}</span><b>${esc(x.name)}</b> – ${esc(x.desc)}</div>`).join('')}
