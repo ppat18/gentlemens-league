@@ -58,6 +58,58 @@
         "points": null
       }
     ],
+    "2018/19": [
+      {
+        "who": "roli",
+        "team": "AttackonWerndorf",
+        "points": 2246
+      },
+      {
+        "who": "patrick",
+        "team": "FC Papuschi Kuraz",
+        "points": 2234
+      },
+      {
+        "who": "alex",
+        "team": "Grandmaster P",
+        "points": 2191
+      },
+      {
+        "who": "kai",
+        "team": "Die Busenbärenbande",
+        "points": 2175
+      },
+      {
+        "name": "Mario Mair",
+        "team": "FC Suppo",
+        "points": 2122
+      },
+      {
+        "who": "max",
+        "team": "FC Ahnungslos",
+        "points": 2036
+      },
+      {
+        "who": "andi",
+        "team": "Gunners",
+        "points": 2023
+      },
+      {
+        "name": "Elija Dohr",
+        "team": "Redneck FC",
+        "points": 2022
+      },
+      {
+        "who": "favo",
+        "team": "FC Beat the Maxx",
+        "points": 2019
+      },
+      {
+        "who": "amti",
+        "team": "Die Bierbauch Garde",
+        "points": 1998
+      }
+    ],
     "2019/20": [
       {
         "who": "patrick",
