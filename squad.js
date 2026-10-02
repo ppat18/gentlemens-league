@@ -58,6 +58,7 @@
   .fifa-stats b{font-size:18px;margin-right:3px}
   .fifa-stats small{display:block;font:600 9px Inter;opacity:.7;letter-spacing:0;margin-top:-2px}
   .fifa-tier{text-align:center;font:700 11px Oswald;letter-spacing:2px;text-transform:uppercase;margin-top:8px;opacity:.8}
+  .fifa-brand{text-align:center;font:700 9px Oswald;letter-spacing:1.5px;text-transform:uppercase;opacity:.65;margin-top:2px}
   .fifa-roast{font-size:13px;font-style:italic;color:#555;margin-top:10px;line-height:1.45}
   .fifa-roast small{font-style:normal;font-size:10px;color:#999}
   img.av{cursor:pointer}
@@ -69,7 +70,7 @@
   const TYPES = { 1: 'Tor', 2: 'Abwehr', 3: 'Mittelfeld', 4: 'Sturm' };
   const chipName = { wildcard: 'Wildcard', freehit: 'Free Hit', bboost: 'Bench Boost', '3xc': 'Triple Captain', manager: 'Assistant Manager' };
 
-  // --- FIFA-Karte: Saisonwerte je Manager, im Liga-Vergleich auf 45–95 skaliert ---
+  // --- Gentlemen's League Card Game: Saisonwerte je Manager, im Liga-Vergleich auf 45–95 skaliert ---
   let fifaCache = null;
   function fifaRatings() {
     if (fifaCache) return fifaCache;
@@ -107,6 +108,7 @@
       <div class="fifa-name">${esc(m.nick)}</div>
       <div class="fifa-stats">${Object.keys(lbl).map(k => `<div><b>${r[k]}</b> ${k === 'GLU' ? 'GLÜ' : k}<small>${lbl[k]}</small></div>`).join('')}</div>
       <div class="fifa-tier">${tier[1]}-Karte</div>
+      <div class="fifa-brand">Gentlemen's League Card Game</div>
     </div><p class="fifa-roast">${tier[2]}<br><small>Werte der laufenden Saison im Liga-Vergleich (45 = Liga-Schlechtester, 95 = Liga-Bester).</small></p></div>`;
   }
 
