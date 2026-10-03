@@ -301,7 +301,7 @@ function renderHistory(d, hist) {
   $('hof').innerHTML = hof.map(x => `<tr class="${kings.includes(x) ? 'first' : ''}">
     <td><div class="who"><img class="av" src="${av(x.m)}" alt=""><div>${esc(x.m.nick)}<small>${x.m.former ? 'ehemalig · ' : ''}${x.n} Saison${x.n === 1 ? '' : 'en'} im Archiv</small></div></div></td>
     <td class="num total">${x.titles.length}</td>
-    <td class="trophies">${x.titles.length ? x.titles.map(s => `🏆<small style="font-size:12px">${short(s)}</small>`).join(' ') : '–'}</td>
+    <td class="trophies">${x.titles.length ? x.titles.map(s => `<span class="tr-pill">🏆<small>${short(s)}</small></span>`).join('') : '–'}</td>
     <td class="num hide-m">${x.avg ? x.avg.toFixed(1) : '–'}</td>
   </tr>`).join('');
 
@@ -309,7 +309,7 @@ function renderHistory(d, hist) {
   $('hos').innerHTML = hos.map((x, i) => `<tr class="${i === 0 ? 'last' : ''}">
     <td><div class="who"><img class="av" src="${av(x.m)}" alt=""><div>${esc(x.m.nick)}</div></div></td>
     <td class="num total">${x.lanterns.length}</td>
-    <td class="trophies">${x.lanterns.map(s => `🏮<small style="font-size:12px">${short(s)}</small>`).join(' ')}</td>
+    <td class="trophies">${x.lanterns.map(s => `<span class="tr-pill shame">🏮<small>${short(s)}</small></span>`).join('')}</td>
   </tr>`).join('');
 
   // Rekorde
