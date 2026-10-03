@@ -281,6 +281,12 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 .rank{white-space:nowrap}
 .cupcount{padding:10px 12px 12px;border-top:1px solid #eceef3}
 .cupcount .tr-pill .av{border:none}
+/* Chip-Zellen: immer zwei Plätze nebeneinander */
+.chips .chip-slots{display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:nowrap}
+.chips .chip-slots .chip-use{margin:0;max-width:58px}
+.chips .chip-slots .chip-use small{font-size:9px;line-height:1.15;word-break:break-word}
+.chips .chip-slots .chip-open{margin:0;width:16px;text-align:center}
+.chips td.chip-cell{padding-left:3px;padding-right:3px}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -452,7 +458,7 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 
   <h2>🃏 Chips</h2>
   <section class="table scroll" id="chips"></section>
-  <p class="foot">©️ Triple Captain: Punkte des Kapitäns (dreifach) · 🪑 Bench Boost: Punkte der ganzen Runde (in Klammer: davon von der Bank) · 🎯 Free Hit: Punkte der ganzen Runde – grün = bester Wert je Chip. ♻️ Wildcard: nur ● gespielt / ○ offen (ohne Punkte). ○ = noch nicht gespielt (jeder Chip 2× pro Saison).</p>
+  <p class="foot">3️⃣ Triple Captain: Punkte des Kapitäns (dreifach) · 🪑 Bench Boost: Punkte der ganzen Runde (in Klammer: davon von der Bank) · 🎯 Free Hit: Punkte der ganzen Runde – grün = bester Wert je Chip. ♻️ Wildcard: nur ● gespielt / ○ offen (ohne Punkte). ○ = noch nicht gespielt (jeder Chip 2× pro Saison).</p>
 
   <h2 id="season-title">Saison-Auszeichnungen</h2>
   <section class="awards" id="season-awards"></section>
@@ -538,7 +544,7 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
     <details><summary>Was steht in der Saison-Statistik?</summary>
       <p>🥇/💩 Rundensiege/Stinker der Woche · Top-GW = beste Runde · 🪑 Bank = Summe der Punkte, die auf der Bank verfallen sind (Bench-Boost-Runden zählen nicht) · ©️ Kap. = Kapitänspunkte (schon verdoppelt) · 🔁 Transfers · 🔪 Hits = Transfer-Minuspunkte · 🟨🟥 Karten · ⚽ Tore · 🅰️ Assists · 🧤 CS = Zu-null von Tormann/Verteidigern · ⏱️⚽ Tore ab 90' · ⏱️🥅 Gegentore ab 90'.<br>Alles zählt nur für die <b>Startelf</b> (inkl. automatischer Einwechslungen). Grün = bester, Rot = schlechtester Wert.</p></details>
     <details><summary>Chips, Teamwert & Tabellenverlauf</summary>
-      <p>🃏 <b>Chips</b>: ©️ Triple Captain = Punkte des Kapitäns (dreifach), 🪑 Bench Boost = Rundenpunkte (in Klammer: davon Bank), 🎯 Free Hit = Rundenpunkte, ♻️ Wildcard nur ● gespielt / ○ offen (ohne Punkte). Jeder Chip 2× pro Saison.<br>
+      <p>🃏 <b>Chips</b>: 3️⃣ Triple Captain = Punkte des Kapitäns (dreifach), 🪑 Bench Boost = Rundenpunkte (in Klammer: davon Bank), 🎯 Free Hit = Rundenpunkte, ♻️ Wildcard nur ● gespielt / ○ offen (ohne Punkte). Jeder Chip 2× pro Saison.<br>
       💰 <b>Teamwert</b> inklusive Geld auf der Bank; alle starten mit £100,0 Mio.<br>
       📈 <b>Tabellenverlauf</b>: Platz nach jeder Gameweek; Antippen hebt einen Manager hervor.</p></details>
 
