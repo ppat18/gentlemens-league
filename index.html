@@ -276,6 +276,9 @@ td.live{color:var(--red);font-weight:800}
 .tr-pill{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;background:#fff8dc;border:1px solid #ecd58a;border-radius:999px;padding:3px 8px 3px 6px;margin:2px 4px 2px 0;font-size:15px}
 .tr-pill small{font:700 12px Inter;color:var(--ink)}
 .tr-pill.shame{background:#f6e7d4;border-color:#d9b38a}
+/* Avatare immer exakt rund – nie von Text zusammengedrückt */
+img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
+.rank{white-space:nowrap}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -555,6 +558,7 @@ td.live{color:var(--red);font-weight:800}
   </section>
 </main>
 
+<script src="nobreak.js?v=__BUILD__"></script>
 <script src="extras.js?v=__BUILD__"></script>
 <script src="comps.js?v=__BUILD__"></script>
 <script src="squad.js?v=__BUILD__"></script>
