@@ -72,7 +72,7 @@ function render(d) {
     <div class="hcard leader">
       <div class="crown">👑</div><br>
       <img class="av" src="${av(first)}" alt="${esc(first.nick)}">
-      <span class="tag">Tabellenführer</span>
+      <span class="tag">Gott der Liga</span>
       <div class="name">${esc(first.nick)}</div>
       <div class="pts">${esc(first.team)} · ${first.total} Punkte · +${first.total - ms[1].total} Vorsprung</div>
     </div>
