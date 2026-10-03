@@ -159,7 +159,12 @@ function renderComps(d, comp) {
   // Goldenes Finale mit Pokal
   function finalGold(r, winnerLabel, compact) {
     const x = tie(r.ties[0], r.gws);
-    if (x.winner) ctx.F1 = x.winner;
+    if (x.winner) {
+      ctx.F1 = x.winner;
+      // Sieger der laufenden Saison für die Hall of Fame merken
+      window.COMP_WINNERS = window.COMP_WINNERS || { season: comp.season };
+      window.COMP_WINNERS[winnerLabel === 'Cupsieger' ? 'cup' : 'cl'] = x.winner;
+    }
     const g = x.legs[0];
     const side = (who, s) => `<div class="fg-side ${x.winner === who ? 'win' : x.winner ? 'lose' : ''}">
       ${byAv[who] ? `<img class="av" src="${av(byAv[who])}" alt="">` : `<img class="av" src="assets/avatars/unknown.svg" alt="">`}

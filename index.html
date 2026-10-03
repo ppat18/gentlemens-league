@@ -279,6 +279,8 @@ td.live{color:var(--red);font-weight:800}
 /* Avatare immer exakt rund – nie von Text zusammengedrückt */
 img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 .rank{white-space:nowrap}
+.cupcount{padding:10px 12px 12px;border-top:1px solid #eceef3}
+.cupcount .tr-pill .av{border:none}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -487,6 +489,12 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
   <section class="table"><table>
     <thead><tr><th>Manager</th><th class="num">Titel</th><th>Meistersaisonen</th><th class="num hide-m">Ø Platz</th></tr></thead>
     <tbody id="hof"></tbody></table></section>
+  <h2>🥊 Cup & ⭐ Champions League</h2>
+  <section class="table"><table>
+    <thead><tr><th>Saison</th><th>🥊 Cupsieger</th><th>⭐ CL-Sieger</th></tr></thead>
+    <tbody id="cupwins"></tbody></table>
+    <div class="cupcount" id="cupcount"></div></section>
+
   <h2>💩 Hall of Shame</h2>
   <section class="table"><table>
     <thead><tr><th>Manager</th><th class="num">Stinker der Saison</th><th>Saisonen</th></tr></thead>

@@ -402,5 +402,15 @@
         "points": null
       }
     ]
-  }
+  },
+  "cups": {
+    "2023/24": "patrick",
+    "2024/25": "max",
+    "2025/26": "patrick"
+  },
+  "cl": {
+    "2024/25": "favo",
+    "2025/26": "amti"
+  },
+  "_infoCups": "Frühere Sieger der internen Wettbewerbe (Avatar-Namen). Die laufende Saison trägt die Seite automatisch nach, sobald das Finale gespielt ist."
 }

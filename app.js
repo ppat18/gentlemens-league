@@ -50,7 +50,29 @@ Promise.all([
   fetch('data/data.json', { cache: 'no-cache' }).then(r => r.json()),
   fetch('data/history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { seasons: {} }).catch(() => ({ seasons: {} })),
   fetch('data/competitions.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderHistory(d, hist); renderComps(d, comp); renderPreview(d, hist, comp); renderBingo(d); renderBirthday(d); });
+]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderComps(d, comp); renderHistory(d, hist); renderCupWinners(d, hist); renderPreview(d, hist, comp); renderBingo(d); renderBirthday(d); });
+
+// --- Hall of Fame: Sieger von Cup & Champions League (frühere Saisonen aus history.json + laufende automatisch) ---
+function renderCupWinners(d, hist) {
+  const box = $('cupwins');
+  if (!box) return;
+  const cups = { ...(hist.cups || {}) }, cls = { ...(hist.cl || {}) };
+  const live = window.COMP_WINNERS;
+  if (live?.season) { if (live.cup) cups[live.season] = live.cup; if (live.cl) cls[live.season] = live.cl; }
+  const seasons = [...new Set([...Object.keys(cups), ...Object.keys(cls)])].sort().reverse();
+  if (!seasons.length) { box.closest('section').previousElementSibling?.remove(); box.closest('section').remove(); return; }
+  const byAv = Object.fromEntries(d.managers.map(m => [m.avatar, m]));
+  const cell = a => { const m = byAv[a]; return m ? `<div class="who"><img class="av" src="${av(m)}" alt=""><div>${esc(m.nick)}</div></div>` : (a ? esc(a) : '–'); };
+  const short = s => s.replace(/^20(\d\d)\/(\d\d)$/, '$1/$2');
+  box.innerHTML = seasons.map(s => `<tr><td class="rank" style="width:auto">${short(s)}</td><td>${cell(cups[s])}</td><td>${cell(cls[s])}</td></tr>`).join('');
+
+  // Titelsammler: Pokale je Manager
+  const count = {};
+  for (const a of Object.values(cups)) (count[a] ||= { cup: 0, cl: 0 }).cup++;
+  for (const a of Object.values(cls)) (count[a] ||= { cup: 0, cl: 0 }).cl++;
+  $('cupcount').innerHTML = Object.entries(count).sort((a, b) => (b[1].cup + b[1].cl) - (a[1].cup + a[1].cl))
+    .map(([a, c]) => `<span class="tr-pill">${byAv[a] ? `<img class="av" src="${av(byAv[a])}" alt="" style="width:20px;height:20px">` : ''}<small>${esc(byAv[a]?.nick || a)}: ${c.cup ? `🥊×${c.cup}` : ''}${c.cup && c.cl ? ' ' : ''}${c.cl ? `⭐×${c.cl}` : ''}</small></span>`).join('');
+}
 
 function render(d) {
   const GW = d.lastGW;
