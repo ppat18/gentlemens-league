@@ -87,7 +87,7 @@ function renderReport(ms, GW) {
     `${b(F.nick)} führt die Tabelle an. Der Rest der Liga hat offiziell den Kampf um Platz 2 eröffnet.`,
   ]);
   const bottom = pick([
-    `Ganz unten müffelt weiter ${b(Z.nick)} als Stinker of the League – ${F.total - Z.total} Punkte hinter Platz 1. Jemand sollte da unten dringend lüften.`,
+    `Ganz unten müffelt weiter ${b(Z.nick)} als Stinker der Liga – ${F.total - Z.total} Punkte hinter Platz 1. Jemand sollte da unten dringend lüften.`,
     `${b(Z.nick)} trägt den Stinker-Titel so stolz, als wäre er ein Familienerbstück.`,
     `${b(Z.nick)} ist Letzter. Nicht überraschend, aber zuverlässig – die einzige Konstante in diesem Team.`,
   ]);

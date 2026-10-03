@@ -47,7 +47,7 @@ function renderPreview(d, hist, comp) {
   const nick = m => {
     const opts = [];
     if (m === F) opts.push('der Tabellen-Pate', 'Seine Majestät an der Spitze');
-    if (m === Z) opts.push('das Kellerkind', 'der Stinker of the League');
+    if (m === Z) opts.push('das Kellerkind', 'der Stinker der Liga');
     if (T(m) >= 3) opts.push('der Rekordmeister im Ruhestand', 'der alte König');
     if (L(m) >= 3) opts.push(`der Laternen-Dauerabonnent (${L(m)}×)`, 'der Stammkunde im Keller');
     if (m === hot) opts.push('der Mann mit dem Lauf');

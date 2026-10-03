@@ -173,7 +173,7 @@
     if (net != null && all.length > 1) {
       const place = all.filter(v => v > net).length + 1;
       const tag = net === Math.max(...all) ? '<span class="sq-tag win">🥇 Rundensieger</span>'
-        : net === Math.min(...all) ? '<span class="sq-tag last">💩 Stinker of the Week</span>' : '';
+        : net === Math.min(...all) ? '<span class="sq-tag last">💩 Stinker der Woche</span>' : '';
       placeHtml = `<div class="sq-place">${tag}<span>Rundenplatz ${place} von ${all.length}${s.finished ? '' : ' (vorläufig)'}</span></div>`;
     }
     // "Hättest du nichts getan": Vorwochen-Elf mit den Punkten dieser Runde

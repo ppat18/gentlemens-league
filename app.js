@@ -79,7 +79,7 @@ function render(d) {
     <div class="hcard lantern stinker">
       <div class="lamp">💩</div><br>
       <img class="av" src="${av(last)}" alt="${esc(last.nick)}">
-      <span class="tag">Stinker of the League</span>
+      <span class="tag">Stinker der Liga</span>
       <div class="name">${esc(last.nick)}</div>
       <div class="pts">${esc(last.team)} · ${last.total} Punkte · ${first.total - last.total} hinter Platz 1</div>
     </div>`;
@@ -94,7 +94,7 @@ function render(d) {
   const win = leaders(cur, x => x.g.points);
   add('🥇 Rundensieger', win, `${win[0]?.v} Punkte`);
   const lose = leaders(cur, x => x.g.points, -1);
-  add('💩 Stinker of the Week', lose, `nur ${lose[0]?.v} Punkte`, 1);
+  add('💩 Stinker der Woche', lose, `nur ${lose[0]?.v} Punkte`, 1);
   const bench = leaders(cur, x => x.g.bench);
   add('🪑 Pechvogel', bench, `${bench[0]?.v} Punkte auf der Bank`, 1);
 
@@ -354,7 +354,7 @@ function renderSeasonAwards(ms, GW) {
   let l = leaders(all, x => count(x.m, 1));
   add('🥇 Rundensieg-König', l, `${l[0].v}× Rundensieger`);
   l = leaders(all, x => count(x.m, -1));
-  add('💩 Serien-Stinker', l, `${l[0].v}× Stinker of the Week`, 1);
+  add('💩 Serien-Stinker', l, `${l[0].v}× Stinker der Woche`, 1);
 
   const games = ms.flatMap(m => m.gws.map(g => ({ m, g })));
   l = leaders(games, x => x.g.points);
