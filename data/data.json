@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-02T05:14:02.390Z",
+ "updated": "2026-10-03T01:27:50.371Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -210,10 +210,12 @@
       "name": "Palmer",
       "pts": 13
      },
-     "lateGain": 0,
+     "lateGain": 6,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+6 Gvardiol ⚽ 90+1'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -250,10 +252,12 @@
       "name": "B.Fernandes",
       "pts": 23
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Groß ⚽ 90+6'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": 118,
      "transfersIn": [],
@@ -294,7 +298,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 52,
      "transfersIn": [
       {
@@ -337,9 +341,11 @@
       "name": "Groß",
       "pts": 17
      },
-     "lateGain": 0,
+     "lateGain": 3,
      "lateLoss": 0,
-     "lateInfo": [],
+     "lateInfo": [
+      "+3 Groß 🅰️ 90+4'"
+     ],
      "lateFor": 0,
      "lateAgainst": 0,
      "lazyPts": 93,
@@ -1112,10 +1118,12 @@
       "name": "Ødegaard",
       "pts": 11
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -1152,10 +1160,13 @@
       "name": "B.Fernandes",
       "pts": 23
      },
-     "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateGain": 5,
+     "lateLoss": 1,
+     "lateInfo": [
+      "−1 Tavernier 🧤 90+1'",
+      "+5 Groß ⚽ 90+6'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": 113,
      "transfersIn": [
@@ -1203,7 +1214,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 52,
      "transfersIn": [],
      "leagueRank": 1
@@ -1239,9 +1250,11 @@
       "name": "Groß",
       "pts": 17
      },
-     "lateGain": 0,
+     "lateGain": 3,
      "lateLoss": 0,
-     "lateInfo": [],
+     "lateInfo": [
+      "+3 Groß 🅰️ 90+4'"
+     ],
      "lateFor": 0,
      "lateAgainst": 0,
      "lazyPts": 86,
@@ -1292,11 +1305,13 @@
       "name": "Groß",
       "pts": 14
      },
-     "lateGain": 0,
+     "lateGain": 6,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
-     "lateAgainst": 0,
+     "lateInfo": [
+      "+6 Van Hecke ⚽ 90+8'"
+     ],
+     "lateFor": 1,
+     "lateAgainst": 1,
      "lazyPts": 41,
      "transfersIn": [
       {
@@ -2061,10 +2076,12 @@
       "name": "João Pedro",
       "pts": 11
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -2152,7 +2169,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 50,
      "transfersIn": [
       {
@@ -2195,9 +2212,11 @@
       "name": "Groß",
       "pts": 17
      },
-     "lateGain": 0,
+     "lateGain": 3,
      "lateLoss": 0,
-     "lateInfo": [],
+     "lateInfo": [
+      "+3 Groß 🅰️ 90+4'"
+     ],
      "lateFor": 0,
      "lateAgainst": 0,
      "lazyPts": 70,
@@ -2987,10 +3006,12 @@
       "name": "João Pedro",
       "pts": 11
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -3031,7 +3052,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 108,
      "transfersIn": [],
      "leagueRank": 4
@@ -3071,7 +3092,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 41,
      "transfersIn": [],
      "leagueRank": 3
@@ -3936,10 +3957,12 @@
       "name": "João Pedro",
       "pts": 11
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -4297,11 +4320,14 @@
       "name": "João Pedro",
       "pts": 12
      },
-     "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
-     "lateAgainst": 0,
+     "lateGain": 5,
+     "lateLoss": 4,
+     "lateInfo": [
+      "−4 Trafford 🧤 90'",
+      "+5 Saka ⚽ 90+7'"
+     ],
+     "lateFor": 1,
+     "lateAgainst": 2,
      "lazyPts": 75,
      "transfersIn": [
       {
@@ -5139,7 +5165,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 75,
      "transfersIn": [
       {
@@ -5192,7 +5218,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 50,
      "transfersIn": [
       {
@@ -6104,10 +6130,12 @@
       "name": "João Pedro",
       "pts": 11
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -6298,10 +6326,12 @@
       "name": "João Pedro",
       "pts": 12
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Saka ⚽ 90+7'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": 55,
      "transfersIn": [
@@ -7173,10 +7203,12 @@
       "name": "Palmer",
       "pts": 13
      },
-     "lateGain": 0,
+     "lateGain": 5,
      "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
      "lateAgainst": 0,
      "lazyPts": null,
      "transfersIn": [],
@@ -7257,7 +7289,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 37,
      "transfersIn": [
       {
@@ -8205,7 +8237,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 64,
      "transfersIn": [
       {
@@ -9098,10 +9130,12 @@
       "pts": 13
      },
      "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
+     "lateLoss": 4,
+     "lateInfo": [
+      "−4 Petrović 🧤 90+1'"
+     ],
      "lateFor": 0,
-     "lateAgainst": 0,
+     "lateAgainst": 1,
      "lazyPts": 62,
      "transfersIn": [
       {
