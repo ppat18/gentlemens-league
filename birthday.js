@@ -58,7 +58,7 @@ function renderBirthday(d) {
     <div class="bd-sub">${b.age} Jahre – du alter Sack! 👴</div>
     <div class="bd-pic"><img class="av" src="${av(m)}" alt="">${hat}${glasses}${cane}</div>
     ${cake}
-    <div class="bd-sign">Herzlichen Glückwunsch von der ganzen Liga – bleib gesund, und bitte stell den Kapitän nicht mehr nach der Deadline ein. 🍻</div>
+    <div class="bd-sign">Herzlichen Glückwunsch von der ganzen Liga – bleib gesund! 🍻</div>
     <button class="bd-ok">Prost, ${esc(m.nick)}! 🍺</button>
   </div>`;
   const close = () => ov.remove();
