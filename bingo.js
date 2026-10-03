@@ -3,7 +3,7 @@
 // (nutzt $, av, esc aus app.js)
 
 const BINGO_FIELDS = [
-  { key: 'last',   icon: '🥄', name: 'Rundenletzter',        desc: 'Die wenigsten Punkte einer Gameweek in der Liga.' },
+  { key: 'last',   icon: '💩', name: 'Stinker of the Week',        desc: 'Die wenigsten Punkte einer Gameweek in der Liga.' },
   { key: 'red',    icon: '🟥', name: 'Rote Karte',           desc: 'Ein Spieler der Startelf sieht Rot.' },
   { key: 'og',     icon: '🙈', name: 'Eigentor',             desc: 'Ein Spieler der Startelf trifft ins eigene Tor.' },
   { key: 'late',   icon: '⏱️', name: 'Gegentor ab 90\'',     desc: 'Eigener Tormann/Verteidiger kassiert ab der 90. Minute.' },
@@ -83,7 +83,7 @@ function renderBingo(d) {
       ${payers.map(h => `<div class="bprow"><span class="bpl">${h.place}.</span><img class="av" src="${av(h.m)}" alt="">
         <b>${esc(h.m.nick)}</b><span class="bpf"><b>${h.total} Kreuze</b> · ${h.marked}/9 Felder</span>
         <span class="bpr">${'🍺'.repeat(BINGO_ROUNDS[h.place - 1])} ${BINGO_ROUNDS[h.place - 1]} Runde${BINGO_ROUNDS[h.place - 1] > 1 ? 'n' : ''}</span></div>`).join('')}
-      <p class="bnote">Am Saisonende zahlen die drei mit den <b>meisten Kreuzen</b> je eine Runde. Jedes Kreuz zählt – 3× Rundenletzter sind 3 Kreuze. Bei Gleichstand entscheidet, wer mehr verschiedene Felder voll hat.</p>
+      <p class="bnote">Am Saisonende zahlen die drei mit den <b>meisten Kreuzen</b> je eine Runde. Jedes Kreuz zählt – 3× Stinker of the Week sind 3 Kreuze. Bei Gleichstand entscheidet, wer mehr verschiedene Felder voll hat.</p>
     </div>
     <div class="bcards">${hits.map(cardHtml).join('')}</div>
     <div class="blegend"><h3>📜 Legende</h3>${BINGO_FIELDS.map(x => `<div><span>${x.icon}</span><b>${esc(x.name)}</b> – ${esc(x.desc)}</div>`).join('')}

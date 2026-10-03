@@ -266,6 +266,10 @@ td.live{color:var(--red);font-weight:800}
 .blegend div{padding:5px 0;font-size:14px;line-height:1.45;border-bottom:1px solid #eceef3}
 .blegend div span{display:inline-block;width:28px}
 .chips .chip-done{font-size:20px;color:var(--navy)}
+/* Stinker of the League: braun statt rotes Licht */
+.lantern.stinker{background:radial-gradient(circle at 50% 35%,rgba(176,112,52,.9),rgba(74,42,16,.97) 65%,#1e1006);animation:none}
+.lantern.stinker .av{border-color:#e0a35a;box-shadow:0 0 0 3px rgba(46,26,8,.35),0 0 50px rgba(224,163,90,.75);filter:sepia(.45) saturate(1.2)}
+.lantern.stinker .tag{background:#e0a35a;color:#2e1a08}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -418,7 +422,7 @@ td.live{color:var(--red);font-weight:800}
   <section class="table scroll">
     <table class="stats">
       <thead><tr><th>Manager</th>
-        <th class="num" title="Rundensiege">🥇</th><th class="num" title="Rundenletzter">🥄</th>
+        <th class="num" title="Rundensiege">🥇</th><th class="num" title="Stinker of the Week">💩</th>
         <th class="num" title="Bestes Spieltagsergebnis">Top-GW</th>
         <th class="num" title="Punkte auf der Bank">🪑 Bank</th>
         <th class="num" title="Kapitänspunkte">©️ Kap.</th>
@@ -506,7 +510,7 @@ td.live{color:var(--red);font-weight:800}
     <details><summary>Spieltags-Bericht & Vorschau</summary>
       <p>Beide Texte schreibt die Seite nach jeder Runde automatisch aus den Zahlen – gnadenlos, aber nur über FPL. Der <b>Spieltags-Bericht</b> nimmt die letzte Runde auseinander, die <b>Vorschau</b> blickt auf die nächste (Form, Laternen-Geschichte, CL-/Cup-Duelle, Topspiel).</p></details>
     <details><summary>Wie werden die Gameweek-Auszeichnungen vergeben?</summary>
-      <p>🥇 <b>Rundensieger</b> / 🥄 <b>Rundenletzter</b>: meiste/wenigste Punkte der Runde (nach Transfer-Minuspunkten).<br>
+      <p>🥇 <b>Rundensieger</b> / 💩 <b>Stinker of the Week</b>: meiste/wenigste Punkte der Runde (nach Transfer-Minuspunkten).<br>
       🪑 <b>Pechvogel</b>: meiste Punkte auf der Bank · 💸 <b>Transfer-Flop</b> / 🎯 <b>Volltreffer</b>: Neuzugang im Vergleich zum verkauften Spieler in dieser Runde · 🟥 <b>Treter</b>: Rot zählt 3, Gelb 1 · 🔪 <b>Hit-König</b>: meiste Transfer-Minuspunkte · 🚀/📉 Plätze gewonnen/verloren · 🔥/🥶 Punkte der letzten 3 Runden · ©️ Kapitäns-Genie/-Flop (nur wenn nicht alle denselben Kapitän hatten).<br>Bei Gleichstand gewinnen alle.</p></details>
     <details><summary>Wie funktioniert das Glück-o-Meter?</summary>
       <p>Glückspunkte = Punkte durch <b>automatische Einwechslungen</b> + <b>halbe Bonuspunkte</b> − <b>halbe Bankpunkte</b> − Minuspunkte durch <b>Karten, Eigentore, verschossene Elfer</b> (Rot 3, Gelb 1, Eigentor 2, Elfer 2)<br>
@@ -515,7 +519,7 @@ td.live{color:var(--red);font-weight:800}
       ± <b>🃏 Triple Captain</b>: kein Tor & kein Assist −5, ab dem 2. Tor +5 je Tor.<br>
       Angezeigt wird der Abstand zum Liga-Schnitt. Antippen einer Zeile zeigt alle Details.</p></details>
     <details><summary>Was steht in der Saison-Statistik?</summary>
-      <p>🥇/🥄 Rundensiege/-letzte · Top-GW = beste Runde · 🪑 Bank = Summe der Punkte, die auf der Bank verfallen sind (Bench-Boost-Runden zählen nicht) · ©️ Kap. = Kapitänspunkte (schon verdoppelt) · 🔁 Transfers · 🔪 Hits = Transfer-Minuspunkte · 🟨🟥 Karten · ⚽ Tore · 🅰️ Assists · 🧤 CS = Zu-null von Tormann/Verteidigern · ⏱️⚽ Tore ab 90' · ⏱️🥅 Gegentore ab 90'.<br>Alles zählt nur für die <b>Startelf</b> (inkl. automatischer Einwechslungen). Grün = bester, Rot = schlechtester Wert.</p></details>
+      <p>🥇/💩 Rundensiege/Stinker of the Week · Top-GW = beste Runde · 🪑 Bank = Summe der Punkte, die auf der Bank verfallen sind (Bench-Boost-Runden zählen nicht) · ©️ Kap. = Kapitänspunkte (schon verdoppelt) · 🔁 Transfers · 🔪 Hits = Transfer-Minuspunkte · 🟨🟥 Karten · ⚽ Tore · 🅰️ Assists · 🧤 CS = Zu-null von Tormann/Verteidigern · ⏱️⚽ Tore ab 90' · ⏱️🥅 Gegentore ab 90'.<br>Alles zählt nur für die <b>Startelf</b> (inkl. automatischer Einwechslungen). Grün = bester, Rot = schlechtester Wert.</p></details>
     <details><summary>Chips, Teamwert & Tabellenverlauf</summary>
       <p>🃏 <b>Chips</b>: ©️ Triple Captain = Punkte des Kapitäns (dreifach), 🪑 Bench Boost = Rundenpunkte (in Klammer: davon Bank), 🎯 Free Hit = Rundenpunkte, ♻️ Wildcard nur ● gespielt / ○ offen (ohne Punkte). Jeder Chip 2× pro Saison.<br>
       💰 <b>Teamwert</b> inklusive Geld auf der Bank; alle starten mit £100,0 Mio.<br>
@@ -526,7 +530,7 @@ td.live{color:var(--red);font-weight:800}
     <details><summary>Was ist das Gentlemen's League Card Game?</summary>
       <p>In der Kader-Ansicht (Foto antippen) steht unter der Mannschaft deine Sammelkarte im <b>Gentlemen's League Card Game</b>. Sechs Werte aus der laufenden Saison, jeweils im Liga-Vergleich (95 = Liga-Bester, 45 = Liga-Schlechtester): <b>TRA</b> Transfer-IQ (Punkte der Neuzugänge minus verkaufte Spieler, minus Hits) · <b>KAP</b> Kapitänspunkte · <b>FRM</b> Punkte der letzten 3 Runden · <b>BNK</b> wenig Bankpunkte = gut · <b>DIS</b> wenig Karten/Eigentore = gut · <b>GLÜ</b> Glück-o-Meter. Gesamt = Durchschnitt → ab 80 Gold, ab 70 Silber, ab 60 Bronze, darunter Holz.</p></details>
     <details><summary>Was ist das Bier-Bingo?</summary>
-      <p>Jeder hat eine Bingo-Karte mit 9 Schande-Feldern (Rundenletzter, Rote Karte, Eigentor, Gegentor ab 90', Kapitän ≤ 2 Punkte, Hit −8 oder mehr, 15+ Punkte auf der Bank, Transfer-Flop, Startelf-Spieler mit 0 Minuten). Jedes Mal, wenn etwas davon passiert, gibt es ein Kreuz (3× Rundenletzter = 3 Kreuze). <b>Die drei mit den meisten Kreuzen zahlen bei der Abschlussfeier je eine Runde.</b> Bei Gleichstand entscheidet, wer mehr verschiedene Felder voll hat.</p></details>
+      <p>Jeder hat eine Bingo-Karte mit 9 Schande-Feldern (Stinker of the Week, Rote Karte, Eigentor, Gegentor ab 90', Kapitän ≤ 2 Punkte, Hit −8 oder mehr, 15+ Punkte auf der Bank, Transfer-Flop, Startelf-Spieler mit 0 Minuten). Jedes Mal, wenn etwas davon passiert, gibt es ein Kreuz (3× Stinker of the Week = 3 Kreuze). <b>Die drei mit den meisten Kreuzen zahlen bei der Abschlussfeier je eine Runde.</b> Bei Gleichstand entscheidet, wer mehr verschiedene Felder voll hat.</p></details>
 
     <h3>Champions League & Cup</h3>
     <details><summary>Wie wird ein Duell entschieden?</summary>

@@ -29,7 +29,7 @@ function renderRankChart(ms) {
       <clipPath id="${id}"><circle cx="${left - 40}" cy="${y(start.g.leagueRank)}" r="18"/></clipPath>
       <circle cx="${left - 40}" cy="${y(start.g.leagueRank)}" r="20" class="rc-ring"/>
       <image href="${av(m)}" x="${left - 58}" y="${y(start.g.leagueRank) - 18}" width="36" height="36" preserveAspectRatio="xMidYMin slice" clip-path="url(#${id})"/>
-      <text x="${x(end.i) + 14}" y="${y(end.g.leagueRank) + 5}" class="rc-name">${end.g.leagueRank}. ${esc(m.nick)}${m === first ? ' 👑' : m === last ? ' 🏮' : ''}</text>
+      <text x="${x(end.i) + 14}" y="${y(end.g.leagueRank) + 5}" class="rc-name">${end.g.leagueRank}. ${esc(m.nick)}${m === first ? ' 👑' : m === last ? ' 💩' : ''}</text>
     </g>`;
   }).join('');
 
@@ -87,8 +87,8 @@ function renderReport(ms, GW) {
     `${b(F.nick)} führt die Tabelle an. Der Rest der Liga hat offiziell den Kampf um Platz 2 eröffnet.`,
   ]);
   const bottom = pick([
-    `Die rote Laterne leuchtet weiter bei ${b(Z.nick)} – ${F.total - Z.total} Punkte hinter Platz 1. Jemand sollte da unten ein Nachtlicht aufstellen.`,
-    `${b(Z.nick)} hält die rote Laterne so fest, als wäre sie ein Familienerbstück.`,
+    `Ganz unten müffelt weiter ${b(Z.nick)} als Stinker of the League – ${F.total - Z.total} Punkte hinter Platz 1. Jemand sollte da unten dringend lüften.`,
+    `${b(Z.nick)} trägt den Stinker-Titel so stolz, als wäre er ein Familienerbstück.`,
     `${b(Z.nick)} ist Letzter. Nicht überraschend, aber zuverlässig – die einzige Konstante in diesem Team.`,
   ]);
 
