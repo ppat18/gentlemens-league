@@ -268,13 +268,13 @@ function renderHistory(d, hist) {
       <table>${t.rows.map((x, i) => `
         <tr class="${x.m === t.champ ? 'champ' : x.m === t.last ? 'lastp' : ''}">
           <td class="rank">${i + 1}</td>
-          <td><div class="who"><img class="av" src="${av(x.m)}" alt=""><div>${esc(x.m.nick)}${x.m === t.champ ? ' 🏆' : ''}${x.m === t.last ? ' 🏮' : ''}${x.team ? `<small>${esc(x.team)}</small>` : ''}</div></div></td>
+          <td><div class="who"><img class="av" src="${av(x.m)}" alt=""><div>${esc(x.m.nick)}${x.m === t.champ ? ' 🏆' : ''}${x.m === t.last ? ' 💩' : ''}${x.team ? `<small>${esc(x.team)}</small>` : ''}</div></div></td>
           <td class="num total">${pts(x.p.points)}${(r => r ? `<small class="pct" title="Weltrang ${r.toLocaleString('de-AT')}">${topPct(r, t.season)}</small>` : '')(x.p.overallRank || x.m.past?.find(p => p.season === t.season)?.overallRank)}</td>
         </tr>`).join('')}
       </table>
     </div>`).join('');
 
-  // Titel & Laternen zählen (heutige + ehemalige Mitglieder)
+  // Titel & Stinker-Saisonen zählen (heutige + ehemalige Mitglieder)
   const stat = people.map(m => {
     const places = tables.map(t => t.rows.findIndex(x => x.m === m) + 1).filter(Boolean);
     return {
@@ -309,7 +309,7 @@ function renderHistory(d, hist) {
   $('hos').innerHTML = hos.map((x, i) => `<tr class="${i === 0 ? 'last' : ''}">
     <td><div class="who"><img class="av" src="${av(x.m)}" alt=""><div>${esc(x.m.nick)}</div></div></td>
     <td class="num total">${x.lanterns.length}</td>
-    <td class="trophies">${x.lanterns.map(s => `<span class="tr-pill shame">🏮<small>${short(s)}</small></span>`).join('')}</td>
+    <td class="trophies">${x.lanterns.map(s => `<span class="tr-pill shame">💩<small>${short(s)}</small></span>`).join('')}</td>
   </tr>`).join('');
 
   // Rekorde

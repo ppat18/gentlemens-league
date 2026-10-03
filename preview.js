@@ -26,7 +26,7 @@ function renderPreview(d, hist, comp) {
   const climb = leaders(ms.map(m => ({ m })), x => (rankAt(x.m, Math.max(1, last - 2)) ?? x.m.rank) - x.m.rank)[0];
   const fall = leaders(ms.map(m => ({ m })), x => (rankAt(x.m, Math.max(1, last - 2)) ?? x.m.rank) - x.m.rank, -1)[0];
 
-  // Liga-Historie: Titel & Laternen (echte Tabellen, sonst aus FPL-Punkten berechnet)
+  // Liga-Historie: Titel & Stinker-Saisonen (echte Tabellen, sonst aus FPL-Punkten berechnet)
   const titles = {}, lanterns = {};
   const manual = hist?.seasons || {};
   const seasons = [...new Set([...ms.flatMap(m => m.past.map(p => p.season)), ...Object.keys(manual)])].filter(s => s >= '2016/17');
@@ -49,7 +49,7 @@ function renderPreview(d, hist, comp) {
     if (m === F) opts.push('der Tabellen-Pate', 'Seine Majestät an der Spitze');
     if (m === Z) opts.push('das Kellerkind', 'der Stinker der Liga');
     if (T(m) >= 3) opts.push('der Rekordmeister im Ruhestand', 'der alte König');
-    if (L(m) >= 3) opts.push(`der Laternen-Dauerabonnent (${L(m)}×)`, 'der Stammkunde im Keller');
+    if (L(m) >= 3) opts.push(`der Dauer-Stinker (${L(m)}× Saison-Letzter)`, 'der Stammkunde im Keller');
     if (m === hot) opts.push('der Mann mit dem Lauf');
     if (m === cold) opts.push('der Formkrisen-Beauftragte');
     return opts.length ? pick(opts) : null;
@@ -80,11 +80,11 @@ function renderPreview(d, hist, comp) {
       `Ganz unten müffelt ${who(Z)} als Stinker der Liga – ${gapBottom} Punkte hinter ${b(Z1.nick)}.`,
       `Im Keller brennt weiter das Licht bei ${who(Z)}. Abstand nach oben: ${gapBottom} Punkte. Abstand zur Würde: unmessbar.`,
     ]),
-    L(Z) >= 2 ? `Überraschend ist das nicht: ${Z.nick} kennt die Laterne schon aus ${L(Z)} früheren Saisonen. Die Frage ist nicht ob, sondern wie lange noch.`
+    L(Z) >= 2 ? `Überraschend ist das nicht: ${Z.nick} hat schon ${L(Z)} ganze Saisonen lang gestunken. Die Frage ist nicht ob, sondern wie lange noch.`
       : pick([`Kann ${Z.nick} den Spieß umdrehen? Die Statistik sagt Nein, der Stolz sagt vielleicht, die Aufstellung sagt wieder Nein.`, `Wird ${Z.nick} diese Runde die Wende schaffen? Wir haben Wetten angenommen. Niemand hat auf Ja gesetzt.`]),
     cold !== Z ? `Und dann wäre da noch ${b(cold.nick)} mit mageren ${form(cold)} Punkten aus den letzten 3 Runden – wer so weitermacht, bekommt den Stinker-Titel bald per Post zugestellt.` : '',
     fall.v < 0 && fall.m !== cold && fall.m !== Z ? `${b(fall.m.nick)} ist zuletzt ${-fall.v} Plätze abgerutscht. Freier Fall mit Aussicht.` : '',
-    L(Z1) >= 3 && Z1 !== cold ? `${b(Z1.nick)} schaut übrigens auch schon wieder nervös nach unten – alte Gewohnheit (${L(Z1)}× Laterne).` : '',
+    L(Z1) >= 3 && Z1 !== cold ? `${b(Z1.nick)} schaut übrigens auch schon wieder nervös nach unten – alte Gewohnheit (${L(Z1)}× Stinker der Saison).` : '',
   ].filter(Boolean).slice(0, 2).join(' ');
 
   // Duelle der Runde in CL & Cup
