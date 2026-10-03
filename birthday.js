@@ -58,9 +58,7 @@ function renderBirthday(d) {
     <path d="M20 74 q9 10 18 0 t18 0 t18 0 t18 0 t18 0 t20 0" fill="#fff4f0"/>
     <rect x="10" y="106" width="130" height="10" rx="5" fill="#c9ccd4"/>
     <text x="75" y="100" text-anchor="middle" font-family="Oswald,Arial Black,sans-serif" font-weight="700" font-size="22" fill="#f2c230">${b.age}</text>
-    ${[45, 75, 105].map(x => `<rect x="${x - 3}" y="36" width="6" height="26" rx="2" fill="#2a2870"/><path d="M${x} 22 q6 8 0 14 q-6 -6 0 -14" fill="#ff9d1a"><animate attributeName="opacity" values="1;.5;1" dur=".8s" repeatCount="indefinite"/></path>`).join('')}
-    <text x="75" y="14" text-anchor="middle" font-size="9" fill="#7a6a3a" textLength="146" lengthAdjust="spacingAndGlyphs">(mehr Kerzen hat die Feuerwehr verboten)</text>
-  </svg>`;
+    ${[45, 75, 105].map(x => `<rect x="${x - 3}" y="36" width="6" height="26" rx="2" fill="#2a2870"/><path d="M${x} 22 q6 8 0 14 q-6 -6 0 -14" fill="#ff9d1a"><animate attributeName="opacity" values="1;.5;1" dur=".8s" repeatCount="indefinite"/></path>`).join('')}  </svg>`;
 
   const ov = document.createElement('div');
   ov.className = 'bd-ov';
