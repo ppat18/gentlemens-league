@@ -15,17 +15,6 @@ function renderBirthday(d) {
   const key = `bday-${b.avatar}-${new Date().getFullYear()}`;
   try { if (!forced && localStorage.getItem(key)) return; localStorage.setItem(key, '1'); } catch { /* egal */ }
 
-  const sum = k => m.gws.reduce((a, g) => a + (g[k] || 0), 0);
-  const wins = m.gws.filter(g => g.points === Math.max(...d.managers.map(x => x.gws.find(y => y.gw === g.gw)?.points ?? 0))).length;
-  const roasts = [
-    m.rank === 1 ? `${b.age} Jahre alt und trotzdem Tabellenführer – kein Wunder, wer um 5 Uhr früh wach liegt, hat viel Zeit für Transfers.` : `${b.age} Jahre und immer noch auf Platz ${m.rank}. Im Alter wird man halt langsamer.`,
-    wins ? `${wins} Rundensiege diese Saison. Die Erfahrung des Alters – oder einfach Haaland.` : `Noch kein Rundensieg. Aber mit ${b.age} hat man ja Geduld gelernt.`,
-    `Ab heute zählt jede Minute doppelt: Kapitän, Knie und Kreuz. ©️🦴`,
-    `${sum('bench')} Punkte auf der Bank verschenkt – genau wie bald seine Abende: auf der Couch.`,
-    `Die Kerzen auf der Torte kosten mittlerweile mehr als sein ganzes Mittelfeld.`,
-    `Gute Nachricht: Ab ${b.age} gibt's im Bier-Bingo kein Feld „Rückenschmerzen“. Noch nicht.`,
-  ];
-
   const css = `
   .bd-ov{position:fixed;inset:0;z-index:200;background:rgba(10,10,30,.75);display:flex;align-items:center;justify-content:center;padding:16px;animation:bdFade .3s}
   @keyframes bdFade{from{opacity:0}to{opacity:1}}
@@ -69,7 +58,6 @@ function renderBirthday(d) {
     <div class="bd-sub">${b.age} Jahre – du alter Sack! 👴</div>
     <div class="bd-pic"><img class="av" src="${av(m)}" alt="">${hat}${glasses}${cane}</div>
     ${cake}
-    <ul class="bd-list">${roasts.slice(0, 4).map(r => `<li>${esc(r)}</li>`).join('')}</ul>
     <div class="bd-sign">Herzlichen Glückwunsch von der ganzen Liga – bleib gesund, und bitte stell den Kapitän nicht mehr nach der Deadline ein. 🍻</div>
     <button class="bd-ok">Prost, ${esc(m.nick)}! 🍺</button>
   </div>`;
