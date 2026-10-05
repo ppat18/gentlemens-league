@@ -1,10 +1,12 @@
-// Entscheidet, ob gerade aktualisiert werden soll:
-// ja, wenn ein PL-Spiel läuft oder vor weniger als 30 Min. geendet hat (Spieldauer ~2 h ab Anstoß),
-// oder wenn eine Gameweek beendet ist, FPL die Daten aber noch nicht final geprüft hat.
+// Entscheidet, ob gerade aktualisiert werden soll (2026-10-05: nicht ständig abgleichen):
+// ja, während ein PL-Spiel der aktuellen Gameweek läuft (Anstoß bis ~2 h danach)
+// und bis 4 Stunden nach dem Ende des letzten Spiels der Gameweek (Bonuspunkte, Auto-Wechsel).
+// Sonst nein – die tägliche Aktualisierung um 05:00 UTC läuft getrennt davon.
 // Ausgabe für GitHub Actions: update=true|false
 const fs = require('fs');
 const API = 'https://fantasy.premierleague.com/api';
-const WINDOW_MIN = 120 + 30; // ab Anstoß: ~2 h Spiel + 30 Min. Nachlauf
+const MATCH_MIN = 120;       // Spieldauer ab Anstoß inkl. Halbzeit/Nachspielzeit
+const AFTER_GW_MIN = 4 * 60; // Nachlauf nach dem letzten Spiel der Gameweek
 
 (async () => {
   const get = async u => (await fetch(API + u, { headers: { 'User-Agent': 'Mozilla/5.0' } })).json();
@@ -14,14 +16,21 @@ const WINDOW_MIN = 120 + 30; // ab Anstoß: ~2 h Spiel + 30 Min. Nachlauf
     const now = Date.now();
     const started = boot.events.filter(e => new Date(e.deadline_time).getTime() < now);
     const cur = started[started.length - 1];
-    if (cur && cur.finished && !cur.data_checked) { update = true; reason = `GW ${cur.id} beendet, FPL prüft noch`; }
-    if (cur && !update) {
-      const fx = await get(`/fixtures/?event=${cur.id}`);
-      const live = fx.find(f => f.kickoff_time && now >= new Date(f.kickoff_time).getTime() &&
-        now <= new Date(f.kickoff_time).getTime() + WINDOW_MIN * 60000);
-      if (live) { update = true; reason = `Spiel läuft/gerade vorbei (Anstoß ${live.kickoff_time})`; }
+    if (cur) {
+      const fx = (await get(`/fixtures/?event=${cur.id}`)).filter(f => f.kickoff_time);
+      const ko = f => new Date(f.kickoff_time).getTime();
+      const live = fx.find(f => now >= ko(f) && now <= ko(f) + MATCH_MIN * 60000);
+      const lastKo = Math.max(...fx.map(ko));
+      const allPlayed = fx.length && fx.every(f => ko(f) + MATCH_MIN * 60000 <= now);
+      if (live) { update = true; reason = `Spiel läuft (Anstoß ${live.kickoff_time})`; }
+      else if (allPlayed && now <= lastKo + (MATCH_MIN + AFTER_GW_MIN) * 60000) {
+        update = true; reason = `GW ${cur.id} vorbei – Nachlauf bis 4 h nach dem letzten Spiel`;
+      }
     }
-  } catch (e) { update = true; reason = 'Prüfung fehlgeschlagen – sicherheitshalber aktualisieren'; }
+  } catch (e) {
+    // FPL nicht erreichbar: lieber auslassen als einen fehlschlagenden Lauf starten
+    reason = 'FPL nicht erreichbar – nächster Versuch in 10 Min.';
+  }
   console.log(`update=${update} (${reason})`);
   if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `update=${update}\n`);
 })();

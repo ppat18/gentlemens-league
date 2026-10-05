@@ -1,10 +1,12 @@
 # Holt die FPL-Daten, speichert sie im Projekt und veröffentlicht die Seite auf GitHub Pages.
-# Während Premier-League-Spielen alle 10 Minuten (bis 30 Min. nach Spielende), sonst nur 1× täglich.
+# Aktualisiert nur während Premier-League-Spielen (alle 10 Min.) und bis 4 h nach dem letzten Spiel
+# einer Gameweek, dazu 1× täglich morgens. Die kurze Prüfung läuft als eigener Job ohne Pages-Sperre,
+# damit sich nichts staut (2026-10-05).
 name: Liga aktualisieren & veröffentlichen
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # alle 10 Min. prüfen – aktualisiert nur, wenn gerade gespielt wird
+    - cron: '*/10 * * * *'  # alle 10 Min. prüfen – aktualisiert nur während/kurz nach Spielen
     - cron: '0 5 * * *'     # täglich 05:00 UTC (07:00 in Österreich) – immer volle Aktualisierung
   push:
     branches: [main]
@@ -15,13 +17,37 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  update:
+  check:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      update: ${{ steps.check.outputs.update }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Läuft gerade ein Spiel?
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ github.event.schedule }}" = "0 5 * * *" ]; then
+            echo "update=true" >> "$GITHUB_OUTPUT"; echo "Volle Aktualisierung (${{ github.event_name }})"
+          else
+            node scripts/should-update.js
+          fi
+
+  update:
+    needs: check
+    if: needs.check.outputs.update == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # nur ein Veröffentlichen gleichzeitig; ein wartender Lauf wird durch den neueren ersetzt
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
@@ -32,21 +58,10 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Läuft gerade ein Spiel?
-        id: check
-        run: |
-          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ github.event.schedule }}" = "0 5 * * *" ]; then
-            echo "update=true" >> "$GITHUB_OUTPUT"; echo "Volle Aktualisierung (${{ github.event_name }})"
-          else
-            node scripts/should-update.js
-          fi
-
       - name: FPL-Daten holen
-        if: steps.check.outputs.update == 'true'
         run: node scripts/fetch.js
 
       - name: Neue Daten speichern
-        if: steps.check.outputs.update == 'true'
         run: |
           git config user.name "liga-bot"
           git config user.email "liga-bot@users.noreply.github.com"
@@ -56,17 +71,13 @@ jobs:
           git push
 
       - name: Versionskennung setzen (damit Handys keine alten Dateien zeigen)
-        if: steps.check.outputs.update == 'true'
         run: sed -i "s/__BUILD__/$(git rev-parse --short HEAD)-$(date +%s)/g" index.html
 
       - uses: actions/configure-pages@v5
-        if: steps.check.outputs.update == 'true'
 
       - uses: actions/upload-pages-artifact@v3
-        if: steps.check.outputs.update == 'true'
         with:
           path: .
 
       - id: deploy
-        if: steps.check.outputs.update == 'true'
         uses: actions/deploy-pages@v4
