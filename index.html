@@ -105,6 +105,9 @@ tr.last td{background:#ffe6e4}
 .scroll{overflow-x:auto}
 .stats th,.stats td{white-space:nowrap}
 .stats td.best{color:#1e9e3a;font-weight:800}.stats td.worst{color:var(--red);font-weight:800}
+.stats th.sortable{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
+.stats th.sorted{background:rgba(212,175,55,.28)}
+.stats th.sorted::after{content:' ▼';font-size:.7em}.stats th.sorted.asc::after{content:' ▲'}
 .foot{color:#fff;opacity:.8;font-size:12px;margin-top:10px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 .award .n small{font:600 13px Inter;text-transform:none;color:#777}
 /* Nächste Gameweek */
@@ -454,7 +457,7 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
       <tbody id="stats"></tbody>
     </table>
   </section>
-  <p class="foot">Karten, Tore, Assists, Clean Sheets (🧤 = Zu-null von Tormann/Verteidigern), ⏱️⚽ Tore bzw. ⏱️🥅 Gegentore ab der 90. Minute &amp; Kapitänspunkte zählen nur für Spieler in der Startelf (inkl. Auto-Wechsel). Daten: Fantasy Premier League.</p>
+  <p class="foot">👆 Tipp auf ein Symbol oben sortiert die Tabelle (höchster Wert zuerst, nochmal tippen = umgekehrt). Karten, Tore, Assists, Clean Sheets (🧤 = Zu-null von Tormann/Verteidigern), ⏱️⚽ Tore bzw. ⏱️🥅 Gegentore ab der 90. Minute &amp; Kapitänspunkte zählen nur für Spieler in der Startelf (inkl. Auto-Wechsel). Daten: Fantasy Premier League.</p>
 
   <h2>🃏 Chips</h2>
   <section class="table scroll" id="chips"></section>

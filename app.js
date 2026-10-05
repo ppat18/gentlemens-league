@@ -212,13 +212,35 @@ function render(d) {
   // Bei welchen Spalten ist "hoch" gut (1) oder schlecht (-1)?
   const good = [1, -1, 1, -1, 1, 0, -1, -1, -1, 1, 1, 1, 1, -1];
   const colMax = good.map((_, i) => Math.max(...rows.map(r => r.cells[i])));
-  $('stats').innerHTML = rows.map(r => `<tr>
+  // Sortieren per Tipp auf die Spaltenüberschrift: zuerst höchster Wert oben, nochmal tippen = umgekehrt,
+  // "Manager" = zurück zur Tabellenreihenfolge
+  const ths = [...document.querySelectorAll('table.stats thead th')];
+  let sortCol = -1, sortDir = -1;
+  ths.forEach((th, j) => {
+    th.classList.add('sortable');
+    th.onclick = () => {
+      const i = j - 1;
+      if (i < 0) sortCol = -1;
+      else if (sortCol === i) sortDir = -sortDir;
+      else { sortCol = i; sortDir = -1; }
+      ths.forEach((t, k) => {
+        t.classList.toggle('sorted', sortCol >= 0 && k - 1 === sortCol);
+        t.classList.toggle('asc', sortCol >= 0 && k - 1 === sortCol && sortDir > 0);
+      });
+      drawStats();
+    };
+  });
+  const drawStats = () => {
+    const list = sortCol < 0 ? rows : [...rows].sort((x, y) => (x.cells[sortCol] - y.cells[sortCol]) * sortDir || rows.indexOf(x) - rows.indexOf(y));
+    $('stats').innerHTML = list.map(r => `<tr>
     <td><div class="who"><img class="av" src="${av(r.m)}" alt=""><div>${esc(r.m.nick)}</div></div></td>
     ${r.cells.map((v, i) => {
       const hl = v > 0 && v === colMax[i] && good[i] ? (good[i] > 0 ? 'best' : 'worst') : '';
       return `<td class="num ${hl}">${i === 6 && v ? '−' + v : v}</td>`;
     }).join('')}
   </tr>`).join('');
+  };
+  drawStats();
 }
 
 function renderNext(n) {
