@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06T01:45:19.171Z",
+ "updated": "2026-10-06T01:52:25.795Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -158,6 +158,51 @@
     },
     "homeDiff": 3,
     "awayDiff": 2
+   }
+  ]
+ },
+ "current": {
+  "gw": 5,
+  "fixtures": [
+   {
+    "kickoff": "2026-09-18T19:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-19T11:30:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-19T14:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-19T14:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-19T14:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-19T16:30:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-20T13:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-20T13:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-20T13:00:00Z",
+    "done": true
+   },
+   {
+    "kickoff": "2026-09-20T15:30:00Z",
+    "done": true
    }
   ]
  },
