@@ -226,7 +226,7 @@ function render(d) {
   const colMax = good.map((_, i) => Math.max(...rows.map(r => r.cells[i])));
   // Sortieren per Tipp auf die Spaltenüberschrift: zuerst höchster Wert oben, nochmal tippen = umgekehrt,
   // "Manager" = zurück zur Tabellenreihenfolge
-  const ths = [...document.querySelectorAll('table.stats thead th')];
+  const ths = [...$('stats').closest('table').querySelectorAll('thead th')];
   let sortCol = -1, sortDir = -1;
   ths.forEach((th, j) => {
     th.classList.add('sortable');
