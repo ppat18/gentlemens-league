@@ -85,7 +85,8 @@ function render(d) {
   const liveS = ms.map(liveOf).find(Boolean);
   const liveGW = liveS ? liveS.gw : null;
   $('gw').textContent = liveGW ? `🔴 GW ${liveGW} live` : `Gameweek ${GW}`;
-  if (liveGW) { const th = $('gw-col'); th.textContent = `GW ${liveGW} live`; th.classList.remove('hide-m'); }
+  // Spalte mit den Punkten der letzten GW – immer sichtbar (auch am Handy); sobald die neue GW Live-Daten hat, zeigt sie diese
+  $('gw-col').textContent = liveGW ? `GW ${liveGW} live` : `GW ${GW}`;
   $('gw-title').textContent = `Gameweek ${GW} – Auszeichnungen`;
   $('updated').textContent = `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
 
@@ -175,7 +176,7 @@ function render(d) {
     return `<tr class="${cls}">
       <td class="rank">${r}${mv}</td>
       <td><div class="who"><img class="av" src="${av(m)}" alt=""><div>${esc(m.nick)}${r === 1 ? ' 👑' : ''}${r === ms.length ? ' 💩' : ''}<small>${esc(m.team)}</small></div></div></td>
-      <td class="num ${liveGW ? 'live' : 'hide-m'}">${liveGW ? (l => l ? l.points - (l.hits || 0) : '–')(liveOf(m)) : (gwOf(m)?.points ?? '–')}</td>
+      <td class="num gwp ${liveGW ? 'live' : ''}">${liveGW ? (l => l ? l.points - (l.hits || 0) : '–')(liveOf(m)) : (gwOf(m)?.points ?? '–')}</td>
       <td class="num total">${m.total}</td>
     </tr>`;
   }).join('');
