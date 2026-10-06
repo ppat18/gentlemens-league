@@ -221,6 +221,12 @@ tr.last td{background:#ffe6e4}
 .report.preview{border-color:var(--lime);margin:0 0 16px}
 .report.preview .kicker{color:#3b8a1d}
 td.live{color:var(--red);font-weight:800}
+th.live{color:#ff8a80}
+.show-m{display:none}
+.live-tag{display:inline-block;background:var(--red);color:#fff;font:700 13px Oswald;letter-spacing:1.5px;padding:2px 8px;border-radius:6px;margin-left:4px;vertical-align:1px}
+.games-live .live-tag,.games-live td.live{animation:liveblink 1.2s ease-in-out infinite}
+@keyframes liveblink{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.games-live .live-tag,.games-live td.live{animation-duration:3s}}
 #gw-col{white-space:nowrap}
 .chips th.chip-h{font-size:20px;text-align:center}
 .chips td.chip-cell{text-align:center;white-space:normal}
@@ -384,6 +390,7 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
   .logo{width:80px;height:80px}
   .hero{grid-template-columns:1fr}
   .gw-badge{display:none}
+  .show-m{display:inline}
   .hide-m{display:none}
   .hcard .av{width:140px;height:140px}
 }

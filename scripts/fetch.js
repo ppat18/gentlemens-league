@@ -233,11 +233,27 @@ async function get(url) {
     };
   }
 
+  // Laufende GW: Anstoßzeiten + Status, damit die Seite erkennt, ob gerade wirklich gespielt wird
+  let current = null;
+  const curEv = boot.events.find(e => e.is_current);
+  if (curEv) {
+    try {
+      const fx = await get(`/fixtures/?event=${curEv.id}`);
+      current = {
+        gw: curEv.id,
+        fixtures: fx.filter(x => x.kickoff_time).map(x => ({
+          kickoff: x.kickoff_time, done: !!(x.finished || x.finished_provisional),
+        })),
+      };
+    } catch (err) { console.warn('Spielplan der laufenden GW nicht verfügbar:', err.message); }
+  }
+
   const out = {
     updated: new Date().toISOString(),
     league: { id: LEAGUE_ID, name: league.league.name },
     lastGW,
     next,
+    current,
     managers,
     players: squadPlayers,
   };

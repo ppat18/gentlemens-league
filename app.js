@@ -84,11 +84,22 @@ function render(d) {
   const liveOf = m => { const s = (m.squads || [])[(m.squads || []).length - 1]; return s && !s.finished && s.points != null ? s : null; };
   const liveS = ms.map(liveOf).find(Boolean);
   const liveGW = liveS ? liveS.gw : null;
-  $('gw').textContent = liveGW ? `🔴 GW ${liveGW} live` : `Gameweek ${GW}`;
+  $('gw').innerHTML = liveGW ? `<span class="hide-m">Gameweek</span><span class="show-m">GW</span> ${liveGW} <span class="live-tag">LIVE</span>` : `Gameweek ${GW}`;
+  $('gw').classList.toggle('is-live', !!liveGW);
+  // Laufen gerade wirklich Spiele? (Anstoß bis 2 h danach, noch nicht beendet) → GW-Punkte blinken rot
+  const gamesLive = () => {
+    const fx = d.current && d.current.gw === liveGW ? d.current.fixtures : [];
+    const now = Date.now();
+    return fx.some(x => { const ko = new Date(x.kickoff).getTime(); return !x.done && now >= ko && now <= ko + 120 * 60000; });
+  };
+  const markLive = () => document.body.classList.toggle('games-live', !!liveGW && gamesLive());
+  markLive();
+  clearInterval(window.__liveTimer); window.__liveTimer = setInterval(markLive, 60000);
   // Spalte mit den Punkten der letzten GW – immer sichtbar (auch am Handy); sobald die neue GW Live-Daten hat, zeigt sie diese
-  $('gw-col').textContent = liveGW ? `GW ${liveGW} live` : `GW ${GW}`;
+  $('gw-col').textContent = `GW ${liveGW || GW}`;
+  $('gw-col').classList.toggle('live', !!liveGW);
   $('gw-title').textContent = `Gameweek ${GW} – Auszeichnungen`;
-  $('updated').textContent = `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
+  $('updated').innerHTML = (liveGW ? `<span class="show-m"><span class="live-tag">LIVE</span> GW ${liveGW} läuft · </span>` : '') + `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
 
   // --- Hero ---
   $('hero').innerHTML = `
