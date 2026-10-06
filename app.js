@@ -50,7 +50,7 @@ Promise.all([
   fetch('data/data.json', { cache: 'no-cache' }).then(r => r.json()),
   fetch('data/history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { seasons: {} }).catch(() => ({ seasons: {} })),
   fetch('data/competitions.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderComps(d, comp); renderHistory(d, hist); renderCupWinners(d, hist); renderPreview(d, hist, comp); renderBingo(d); renderBirthday(d); });
+]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderComps(d, comp); renderHistory(d, hist); renderCupWinners(d, hist); renderPreview(d, hist, comp); renderBingo(d); renderBirthday(d); if (window.renderCalendar) renderCalendar(); });
 
 // --- Hall of Fame: Sieger von Cup & Champions League (frühere Saisonen aus history.json + laufende automatisch) ---
 function renderCupWinners(d, hist) {
@@ -278,11 +278,11 @@ function renderNext(n) {
     ${Object.entries(byDay).map(([day, list]) => `
       <div class="fx-day">${day}</div>
       <div class="fx-list">${list.map(f => `
-        <div class="fx">
+        <div class="fx"><div class="fx-row">
           <div class="tm">${badge(f.home)}<span class="full">${esc(f.home.name)}</span><span class="short">${esc(f.home.short)}</span>${dot(f.homeDiff)}</div>
           <div class="time">${f.kickoff ? new Date(f.kickoff).toLocaleTimeString('de-AT', { ...tz, hour: '2-digit', minute: '2-digit' }) : '–'}</div>
           <div class="tm a">${dot(f.awayDiff)}<span class="full">${esc(f.away.name)}</span><span class="short">${esc(f.away.short)}</span>${badge(f.away)}</div>
-        </div>`).join('')}
+        </div></div>`).join('')}
       </div>`).join('')}
     <p class="fx-note">Punkte = FPL-Schwierigkeit für die jeweilige Mannschaft: 🟢 leicht · ⚪ mittel · 🟠 schwer · 🔴 sehr schwer. Zeiten in österreichischer Zeit.</p>`;
 }

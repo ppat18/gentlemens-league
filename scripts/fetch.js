@@ -248,6 +248,12 @@ async function get(url) {
     } catch (err) { console.warn('Spielplan der laufenden GW nicht verfügbar:', err.message); }
   }
 
+  // Spielkalender (alle Spiele mit Ereignissen) – darf nie den Rest blockieren
+  try {
+    const { writeFixtures } = require('./fixtures');
+    console.log('Spielkalender:', await writeFixtures(boot, get), 'Spiele -> data/fixtures.json');
+  } catch (err) { console.warn('Spielkalender nicht verfügbar:', err.message); }
+
   const out = {
     updated: new Date().toISOString(),
     league: { id: LEAGUE_ID, name: league.league.name },
