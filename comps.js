@@ -128,15 +128,23 @@ function renderComps(d, comp, hist) {
   };
   const oddsNote = `<p class="gnote odds-note">📊 <b>Siegchance:</b> erwartete Punkte pro Spieltag aus Form (Ø letzte 3 GWs, 40 %), aktueller Saison (30 %) und den letzten 2 Saisonen (30 %; wer noch keine hat: nur aktuelle Saison). Dazu +1 je Titel (Meister, Cup, CL) der letzten 2 Saisonen und ein kleiner Bonus für Siege in CL & Cup dieser Saison. Bei Hin- und Rückspiel zählt der Zwischenstand mit. Reine Spielerei – FPL bleibt Glückssache.</p>`;
 
+  // Siegchance direkt in der Zeile des Managers (Mini-Balken + Prozent)
+  const rowChance = (x, who) => {
+    if (x.done) return '';
+    const p = chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length);
+    if (p == null) return '';
+    const pa = Math.round(p * 100), v = who === x.A ? pa : 100 - pa, fav = v > 50 || (v === 50 && who === x.A);
+    return `<span class="tchance ${fav ? 'fav' : ''}" title="Siegchance laut Gentlemen-Formel"><span class="tbar"><i style="width:${v}%"></i></span><b>${v}\u00a0%</b></span>`;
+  };
   const tieCard = (x, round) => `
     <div class="tie ${x.done ? 'done' : ''}">
       ${[['A', x.A, x.sa], ['B', x.B, x.sb]].map(([k, who, s]) => `
         <div class="tie-row ${x.winner === who ? 'win' : x.done && x.winner ? 'lose' : ''}">
           ${person(who)}
+          ${rowChance(x, who) || '<span></span>'}
           <span class="legs">${x.legs.map(g => `<i>${g.done ? (g.h === who ? g.hs : g.as) : '–'}</i>`).join('')}</span>
           <span class="agg">${x.any ? s : ''}</span>
         </div>`).join('')}
-      ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length))}
       <div class="tie-foot">${x.legs.map((g, i) => `${x.legs.length > 1 ? (i ? 'Rück' : 'Hin') : round} GW ${g.gw}`).join(' · ')}${x.done && !x.winner ? ' · <b>Gleichstand!</b>' : ''}</div>
       ${penNote(x.legs)}
     </div>`;

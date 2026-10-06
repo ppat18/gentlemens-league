@@ -192,7 +192,14 @@ tr.last td{background:#ffe6e4}
 .ko{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start}
 .tie{padding:10px 12px;border-bottom:1px solid #eceef3}
 .tie:last-child{border-bottom:0}
-.tie-row{display:grid;grid-template-columns:1fr auto 44px;align-items:center;gap:8px;padding:3px 0}
+.tie-row{display:grid;grid-template-columns:1fr auto auto 44px;align-items:center;gap:8px;padding:3px 0}
+.tchance{display:flex;align-items:center;gap:6px;font:700 13px Oswald;color:#999}
+.tchance .tbar{width:56px;height:6px;border-radius:999px;background:#e3e6ee;overflow:hidden}
+.tchance .tbar i{display:block;height:100%;background:#cfd3dd;border-radius:999px}
+.tchance.fav{color:var(--navy)}
+.tchance.fav .tbar i{background:linear-gradient(90deg,var(--lime),#1e9e3a)}
+.tchance b{min-width:34px;text-align:right}
+@media (max-width:420px){.tchance .tbar{width:26px}.tchance{gap:4px}.tie-row{gap:6px}.tie .legs i{min-width:22px}.tchance b{min-width:30px}}
 .tie-row.win .agg{background:var(--lime);color:var(--navy)}
 .tie-row.lose{opacity:.55}
 .legs i{font-style:normal;display:inline-block;min-width:30px;text-align:center;font-size:13px;color:#666;font-weight:600}
