@@ -318,8 +318,9 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 .chips td.chip-cell{padding-left:3px;padding-right:3px}
 .odds{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:2px 12px 8px;font:700 13px Oswald;color:#888}
 .odds .fav{color:var(--navy)}
-.odds-bar{height:6px;border-radius:999px;background:#e3e6ee;overflow:hidden}
-.odds-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--lime),#1e9e3a);border-radius:999px}
+.odds-bar{height:6px;border-radius:999px;background:#e3e6ee;overflow:hidden;display:flex;gap:2px}
+.odds-bar i{display:block;height:100%;background:#cfd3dd}
+.odds-bar i.fav{background:linear-gradient(90deg,var(--lime),#1e9e3a)}.odds-bar i.fav:last-child{background:linear-gradient(270deg,var(--lime),#1e9e3a)}
 .tie .odds,.final-gold .odds{padding:6px 2px 2px}
 .final-gold .odds{color:#c9c2a0}.final-gold .odds .fav{color:#fff}
 .odds-note{margin-top:14px}

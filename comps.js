@@ -122,7 +122,7 @@ function renderComps(d, comp, hist) {
     const a = Math.round(p * 100), b = 100 - a;
     return `<div class="odds" title="Siegchance laut Gentlemen-Formel">
       <span class="${a >= b ? 'fav' : ''}">${a} %</span>
-      <div class="odds-bar"><i style="width:${a}%"></i></div>
+      <div class="odds-bar"><i class="${a >= b ? 'fav' : ''}" style="width:${a}%"></i><i class="${b > a ? 'fav' : ''}" style="width:${b}%"></i></div>
       <span class="${b > a ? 'fav' : ''}">${b} %</span>
     </div>`;
   };
