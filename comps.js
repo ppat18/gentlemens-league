@@ -2,7 +2,7 @@
 // Tore = FPL-Punkte der Gameweek vor Abzug der Transfer-Minuspunkte (gross).
 // (nutzt $, av, esc aus app.js)
 
-function renderComps(d, comp) {
+function renderComps(d, comp, hist) {
   if (!comp) return;
   const byAv = Object.fromEntries(d.managers.map(m => [m.avatar, m]));
   // Tore = Punkte vor Transfer-Abzug. Minuspunkte bis zur Freigrenze (Standard 8 = 2 Zusatzwechsel) zählen nicht;
@@ -44,7 +44,7 @@ function renderComps(d, comp) {
       <div class="${cls('h')}">${person(g.h)}</div>
       <div class="sc">${g.done ? `${g.hs}<i>:</i>${g.as}` : `<small>GW ${g.gw}</small>`}</div>
       <div class="${cls('a')}">${person(g.a, true)}</div>
-    </div>${penNote([g])}`;
+    </div>${g.done ? '' : oddsBar(g.h, g.a, chance(g.h, g.a))}${penNote([g])}`;
   };
 
   // K.o.-Duell (Hin- und Rückspiel oder ein Spiel)
@@ -57,6 +57,77 @@ function renderComps(d, comp) {
     const winner = done ? (sa > sb ? A : sb > sa ? B : null) : null;
     return { A, B, legs, sa, sb, done, winner, any: legs.some(g => g.done) };
   };
+  // --- Siegchance ---
+  // Stärke = erwartete Punkte pro Spieltag:
+  //   40 % Form (Ø letzte 3 GWs) + 30 % Ø aktuelle Saison + 30 % Ø pro GW der letzten 2 Saisonen (neuere doppelt)
+  //   ohne Vorsaisonen: 55 % Form + 45 % aktuelle Saison
+  //   + 1 Punkt je Titel (Meister/Cup/CL) in den letzten 2 Saisonen
+  //   + 0,5 × (Siege − Niederlagen) in CL & Cup dieser Saison (max. ±3)
+  // Chance = Normalverteilung der Punktedifferenz (Streuung 20 Punkte je Spiel), bei 2 Spielen inkl. Zwischenstand.
+  const SIGMA = 20;
+  const prevSeasons = (() => { const y = +String(comp.season || '').slice(0, 4); return y ? [1, 2].map(k => `${y - k}/${String(y - k + 1).slice(2)}`) : []; })();
+  const seasonPts = (a, s) => {
+    const row = (hist?.seasons?.[s] || []).find(r => r.who === a);
+    if (row?.points) return row.points;
+    return byAv[a]?.past?.find(p => p.season === s)?.points ?? null;
+  };
+  const champOf = s => {
+    const rows = hist?.seasons?.[s];
+    if (rows?.length) return rows[0].who;
+    const best = d.managers.map(m => [m.avatar, seasonPts(m.avatar, s)]).filter(x => x[1]).sort((x, y) => y[1] - x[1])[0];
+    return best?.[0];
+  };
+  let record = null;
+  const compRecord = () => {
+    if (record) return record;
+    record = {};
+    const count = g => {
+      if (!g.done || !byAv[g.h] || !byAv[g.a] || g.hs === g.as) return;
+      const [w, l] = g.hs > g.as ? [g.h, g.a] : [g.a, g.h];
+      (record[w] ||= { w: 0, l: 0 }).w++; (record[l] ||= { w: 0, l: 0 }).l++;
+    };
+    comp.cl.rounds.forEach(r => r.matches.forEach(([h, a]) => count(game(h, a, r.gw))));
+    [...comp.cl.knockout, ...comp.cup.rounds].forEach(r => r.ties.filter(t => byAv[t[0]] && byAv[t[1]]).forEach(t => tie(t, r.gws).legs.forEach(count)));
+    return record;
+  };
+  const strengthCache = {};
+  const strength = a => {
+    if (strengthCache[a] != null) return strengthCache[a];
+    const m = byAv[a];
+    const gws = m.gws.filter(g => g.gw <= d.lastGW).sort((x, y) => x.gw - y.gw);
+    const avg = l => l.length ? l.reduce((s, g) => s + g.gross, 0) / l.length : 50;
+    const form = avg(gws.slice(-3)), season = avg(gws);
+    const past = prevSeasons.map((s, i) => [seasonPts(a, s), i ? 1 : 2]).filter(x => x[0]);
+    let e = past.length
+      ? 0.4 * form + 0.3 * season + 0.3 * (past.reduce((s, [p, w]) => s + p / 38 * w, 0) / past.reduce((s, [, w]) => s + w, 0))
+      : 0.55 * form + 0.45 * season;
+    for (const s of prevSeasons) e += [champOf(s), hist?.cups?.[s], hist?.cl?.[s]].filter(x => x === a).length;
+    const r = compRecord()[a];
+    if (r) e += Math.max(-3, Math.min(3, 0.5 * (r.w - r.l)));
+    return (strengthCache[a] = e);
+  };
+  const phi = z => { // Standardnormalverteilung
+    const t = 1 / (1 + 0.2316419 * Math.abs(z));
+    const p = 1 - 0.3989423 * Math.exp(-z * z / 2) * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+    return z >= 0 ? p : 1 - p;
+  };
+  // Chance von A gegen B; lead = aktueller Vorsprung von A, n = verbleibende Spiele
+  const chance = (A, B, lead = 0, n = 1) => {
+    if (!byAv[A] || !byAv[B] || n < 1) return null;
+    const p = phi((lead + (strength(A) - strength(B)) * n) / (SIGMA * Math.sqrt(n)));
+    return Math.max(0.02, Math.min(0.98, p));
+  };
+  const oddsBar = (A, B, p) => {
+    if (p == null) return '';
+    const a = Math.round(p * 100), b = 100 - a;
+    return `<div class="odds" title="Siegchance laut Gentlemen-Formel">
+      <span class="${a >= b ? 'fav' : ''}">${a} %</span>
+      <div class="odds-bar"><i style="width:${a}%"></i></div>
+      <span class="${b > a ? 'fav' : ''}">${b} %</span>
+    </div>`;
+  };
+  const oddsNote = `<p class="gnote odds-note">📊 <b>Siegchance:</b> erwartete Punkte pro Spieltag aus Form (Ø letzte 3 GWs, 40 %), aktueller Saison (30 %) und den letzten 2 Saisonen (30 %; wer noch keine hat: nur aktuelle Saison). Dazu +1 je Titel (Meister, Cup, CL) der letzten 2 Saisonen und ein kleiner Bonus für Siege in CL & Cup dieser Saison. Bei Hin- und Rückspiel zählt der Zwischenstand mit. Reine Spielerei – FPL bleibt Glückssache.</p>`;
+
   const tieCard = (x, round) => `
     <div class="tie ${x.done ? 'done' : ''}">
       ${[['A', x.A, x.sa], ['B', x.B, x.sb]].map(([k, who, s]) => `
@@ -65,6 +136,7 @@ function renderComps(d, comp) {
           <span class="legs">${x.legs.map(g => `<i>${g.done ? (g.h === who ? g.hs : g.as) : '–'}</i>`).join('')}</span>
           <span class="agg">${x.any ? s : ''}</span>
         </div>`).join('')}
+      ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length))}
       <div class="tie-foot">${x.legs.map((g, i) => `${x.legs.length > 1 ? (i ? 'Rück' : 'Hin') : round} GW ${g.gw}`).join(' · ')}${x.done && !x.winner ? ' · <b>Gleichstand!</b>' : ''}</div>
       ${penNote(x.legs)}
     </div>`;
@@ -140,7 +212,8 @@ function renderComps(d, comp) {
       // Spalte 1: Viertelfinale · Spalte 2: Halbfinale + Finale (unten bündig)
       const [vf, ...rest] = cl.knockout.filter(r => r.name !== 'Finale').map(r => koRound(r, 'KO'));
       return `${vf}<div class="ko-col">${rest.join('')}${clFinal ? finalGold(clFinal, 'Champions-League-Sieger', true) : ''}</div>`;
-    })()}</div>`;
+    })()}</div>
+    ${oddsNote}`;
 
   // --- Cup ---
   for (const k of Object.keys(ctx)) if (/^(VF|HF|AF|F)\d$/.test(k)) delete ctx[k];
@@ -154,7 +227,8 @@ function renderComps(d, comp) {
       ${sg.done && sg.hs !== sg.as ? `<p class="sc-win">Supercup-Sieger: <b>${esc(nameOf(sg.hs > sg.as ? sg.h : sg.a))}</b></p>` : ''}</div>` : ''}
     <h2>${esc(comp.cup.name)}</h2>
     <div class="ko">${cupHtml}</div>
-    ${cupFinal ? finalGold(cupFinal, 'Cupsieger') : ''}`;
+    ${cupFinal ? finalGold(cupFinal, 'Cupsieger') : ''}
+    ${oddsNote}`;
 
   // Goldenes Finale mit Pokal
   function finalGold(r, winnerLabel, compact) {
@@ -176,6 +250,7 @@ function renderComps(d, comp) {
       <div class="fg-body">
         <div class="fg-title">🏆 ${esc(r.name)} <small>GW ${r.gws.join(' + ')}</small></div>
         <div class="fg-match">${side(x.A, x.sa)}<span class="fg-vs">${g.done ? ':' : 'vs'}</span>${side(x.B, x.sb)}</div>
+        ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length))}
         ${x.winner ? `<div class="fg-winner">${winnerLabel} ${esc(byAv[x.winner].nick)}</div>` : `<div class="fg-when">Anpfiff in Gameweek ${r.gws[0]}</div>`}
       </div>
     </div>`;

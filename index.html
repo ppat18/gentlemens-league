@@ -316,6 +316,13 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 .chips .chip-slots .chip-use small{font-size:9px;line-height:1.15;word-break:break-word}
 .chips .chip-slots .chip-open{margin:0;width:16px;text-align:center}
 .chips td.chip-cell{padding-left:3px;padding-right:3px}
+.odds{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:2px 12px 8px;font:700 13px Oswald;color:#888}
+.odds .fav{color:var(--navy)}
+.odds-bar{height:6px;border-radius:999px;background:#e3e6ee;overflow:hidden}
+.odds-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--lime),#1e9e3a);border-radius:999px}
+.tie .odds,.final-gold .odds{padding:6px 2px 2px}
+.final-gold .odds{color:#c9c2a0}.final-gold .odds .fav{color:#fff}
+.odds-note{margin-top:14px}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -550,11 +557,13 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
     <details><summary>Woher kommen die Daten?</summary>
       <p>Alle Punkte, Kader, Chips und Transfers kommen direkt aus der offiziellen <b>Fantasy Premier League</b> (unsere Liga 243508). Die Torminuten für das Last-Minute-Glück kommen von der offiziellen <b>Premier-League-Seite</b>. Champions League, Cup und Archiv berechnet die Seite selbst aus diesen Daten.</p></details>
     <details><summary>Wie oft wird aktualisiert?</summary>
-      <p>Während Premier-League-Spielen <b>alle 10 Minuten</b> (bis ca. 30 Minuten nach Spielende), sonst einmal täglich um 7 Uhr. Oben steht immer, wann zuletzt aktualisiert wurde. FPL selbst braucht nach Spielende oft noch eine Weile für Bonuspunkte – die kommen dann mit dem nächsten Update.</p></details>
+      <p>Während Premier-League-Spielen <b>alle 10 Minuten</b> (bis ca. 3 Stunden nach dem letzten Spiel der Gameweek), sonst einmal täglich um 7 Uhr. Oben steht immer, wann zuletzt aktualisiert wurde. FPL selbst braucht nach Spielende oft noch eine Weile für Bonuspunkte – die kommen dann mit dem nächsten Update.</p></details>
     <details><summary>Welche Uhrzeit gilt?</summary>
       <p>Alle Zeiten (Deadline, Anstoß, Aktualisierung) sind <b>österreichische Zeit</b> – egal, wo ihr gerade seid.</p></details>
     <details><summary>Was bedeutet „live“?</summary>
-      <p>Läuft eine Gameweek, steht oben <b>🔴 GW live</b> und die Tabelle zeigt die aktuellen Rundenpunkte in Rot. Die Werte sind vorläufig, bis FPL die Runde abschließt.</p></details>
+      <p>Läuft eine Gameweek, steht oben <b>LIVE</b> (am Handy in der grünen Zeile unter den Reitern) und die Tabelle zeigt die aktuellen Rundenpunkte in Rot. <b>Blinken</b> die Punkte, wird gerade wirklich gespielt. Die Werte sind vorläufig, bis FPL die Runde abschließt. Zwischen den Runden zeigt die Spalte die Punkte der letzten Gameweek.</p></details>
+    <details><summary>Wie funktioniert der Spielkalender?</summary>
+      <p>Unter der Vorschau: mit ‹ › oder durch Wischen durch alle Spieltage der Saison blättern. Laufende Spiele haben einen <b>roten, blinkenden Rahmen</b>. Unter jedem gestarteten Spiel stehen Tore ⚽, Assists 🅰️, Eigentore 🙈, Karten 🟨🟥, gehaltene 🧤 und verschossene ❌ Elfer sowie die <b>Bonuspunkte ⭐</b> – während des Spiels vorläufig aus dem BPS berechnet (wie bei FPL: 3-2-1, bei Gleichstand bekommen alle gleich viel), danach die offiziellen.</p></details>
     <details><summary>Wie lege ich die Seite als App aufs Handy?</summary>
       <p><b>iPhone:</b> In Safari öffnen → Teilen-Knopf (Quadrat mit Pfeil) → „Zum Home-Bildschirm“.<br><b>Android:</b> Im Browser-Menü (⋮) → „Zur Startseite hinzufügen“. Es entsteht ein Symbol mit dem Gentleman.</p></details>
     <details><summary>Ich sehe eine alte Version – was tun?</summary>
@@ -600,6 +609,8 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
       <p>Zwei Gruppen à 5, jeder spielt zweimal gegen jeden (10 Runden). Sieg 3, Remis 1, Niederlage 0. Bei Punktgleichheit zählt der <b>direkte Vergleich</b> (Punkte, Tordifferenz, Tore), dann die Gesamt-Tordifferenz. Platz 1–4 kommt ins Viertelfinale (A1–B4, A2–B3 …), dann Halbfinale (je Hin- und Rückspiel) und Finale in GW 31.</p></details>
     <details><summary>Cup & Supercup</summary>
       <p>K.-o.-Modus mit Hin- und Rückspiel, die Summe beider Runden entscheidet; Finale in GW 29. Der <b>Supercup</b> in GW 1: Meister gegen Cupsieger.</p></details>
+    <details><summary>Wie wird die Siegchance berechnet?</summary>
+      <p>Bei jedem offenen CL- oder Cup-Duell steht, wer wie wahrscheinlich gewinnt. Dafür bekommt jeder eine <b>Stärke</b> = erwartete Punkte pro Spieltag: <b>40 %</b> Form (Ø der letzten 3 GWs), <b>30 %</b> Ø der aktuellen Saison und <b>30 %</b> Ø pro Spieltag der letzten 2 Saisonen (die jüngere zählt doppelt). Wer noch keine Vorsaison hat, wird nur aus der aktuellen Saison bewertet (55 % Form, 45 % Saison-Ø). Dazu <b>+1</b> je Titel (Meister, Cup, CL) der letzten 2 Saisonen und <b>±0,5</b> je Sieg bzw. Niederlage in CL & Cup dieser Saison (max. ±3). Aus dem Stärke-Unterschied wird mit der typischen FPL-Streuung (±20 Punkte pro Duell) die Chance – bei Hin- und Rückspiel inklusive Zwischenstand nach dem Hinspiel. Reine Spielerei, FPL bleibt Glückssache.</p></details>
   </section>
 </main>
 

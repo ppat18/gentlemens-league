@@ -50,7 +50,7 @@ Promise.all([
   fetch('data/data.json', { cache: 'no-cache' }).then(r => r.json()),
   fetch('data/history.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { seasons: {} }).catch(() => ({ seasons: {} })),
   fetch('data/competitions.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
-]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderComps(d, comp); renderHistory(d, hist); renderCupWinners(d, hist); renderPreview(d, hist, comp); renderBingo(d); renderBirthday(d); if (window.renderCalendar) renderCalendar(); });
+]).then(([d, hist, comp]) => { window.LEAGUE = d; render(d); renderComps(d, comp, hist); renderHistory(d, hist); renderCupWinners(d, hist); renderPreview(d, hist, comp); renderBingo(d); renderBirthday(d); if (window.renderCalendar) renderCalendar(); });
 
 // --- Hall of Fame: Sieger von Cup & Champions League (frühere Saisonen aus history.json + laufende automatisch) ---
 function renderCupWinners(d, hist) {
