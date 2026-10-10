@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-10T14:50:38.074Z",
+ "updated": "2026-10-10T15:01:08.897Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -215,7 +215,7 @@
    "team": "Globo Gym United",
    "rank": 1,
    "lastRank": 1,
-   "total": 407,
+   "total": 406,
    "chips": [
     {
      "name": "3xc",
@@ -1253,7 +1253,7 @@
    "team": "Eat The Poor FC",
    "rank": 2,
    "lastRank": 2,
-   "total": 399,
+   "total": 398,
    "chips": [
     {
      "name": "3xc",
@@ -2347,7 +2347,7 @@
    "team": "District 14 Graz",
    "rank": 3,
    "lastRank": 4,
-   "total": 354,
+   "total": 356,
    "chips": [
     {
      "name": "3xc",
@@ -3428,7 +3428,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 3,
-   "total": 349,
+   "total": 348,
    "chips": [],
    "gws": [
     {
@@ -6887,7 +6887,7 @@
        14,
        0,
        0,
-       7,
+       8,
        45
       ],
       [
@@ -9204,7 +9204,7 @@
    "team": "Patrick's Team",
    "rank": 9,
    "lastRank": 9,
-   "total": 313,
+   "total": 312,
    "chips": [],
    "gws": [
     {
@@ -10264,7 +10264,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 10,
    "lastRank": 10,
-   "total": 285,
+   "total": 284,
    "chips": [
     {
      "name": "wildcard",
