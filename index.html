@@ -348,6 +348,13 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 .cap-who span{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:700;background:#f3f5f9;border-radius:999px;padding:2px 8px 2px 2px}
 .cap-who img.av{width:24px;height:24px}
 .cap-who .tc{background:var(--gold, #f2c230);color:var(--navy);border-radius:5px;font-size:10px;padding:0 4px}
+/* Aktualisieren-Knopf: schwebt immer unten rechts */
+.refresh-btn{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:90;width:52px;height:52px;border-radius:50%;border:3px solid #6fa52a;background:var(--lime);color:var(--navy);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center;-webkit-tap-highlight-color:transparent}
+.refresh-btn:active{transform:scale(.94)}
+main.page{padding-bottom:84px}
+.refresh-btn.spin span{animation:rfspin .8s linear infinite}
+@keyframes rfspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.refresh-btn.spin span{animation:none}}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -642,6 +649,11 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
   </section>
 </main>
 
+<button type="button" class="refresh-btn" id="refresh-btn" title="Aktualisieren" aria-label="Seite aktualisieren"><span>🔄</span></button>
+<script>
+// Neu laden mit frischen Daten (Daten werden ohnehin ohne Cache geholt); Reiter bleibt erhalten
+document.getElementById('refresh-btn').onclick = function () { this.classList.add('spin'); location.reload(); };
+</script>
 <script src="nobreak.js?v=__BUILD__"></script>
 <script src="extras.js?v=__BUILD__"></script>
 <script src="comps.js?v=__BUILD__"></script>
