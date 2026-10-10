@@ -38,6 +38,14 @@
   .sq-p .sub{position:absolute;top:-4px;left:12%;width:18px;height:18px;border-radius:50%;font:700 12px/18px Inter;color:#fff;box-shadow:0 0 0 2px #fff}
   .sq-p .sub.in{background:#1e9e3a}.sq-p .sub.out{background:var(--red)}
   .sq-p.dim{opacity:.5}
+  /* laufende GW: noch nicht gespielt = grau mit Anstoßzeit, spielt gerade = rot */
+  .sq-p.todo .pt{background:#b9bfcc;color:var(--ink);font:700 10.5px/1.75 Inter}
+  .sq-p.todo .n{background:#e9ecf2;color:#555}
+  .sq-p.todo img{filter:grayscale(.6) drop-shadow(0 2px 3px rgba(0,0,0,.4));opacity:.85}
+  .sq-p.playing .pt{background:var(--red);color:#fff}
+  .games-live .sq-p.playing .pt{animation:liveblink 1.2s ease-in-out infinite}
+  .sq-legend{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+  .sq-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:-1px;margin-right:3px}
   .sq-bench{background:#e9edf3;padding:10px 6px 12px}
   .sq-bench h4{font:700 12px Oswald;letter-spacing:1.5px;text-transform:uppercase;color:#666;text-align:center;margin-bottom:6px}
   .sq-bench .sq-row{margin:0}
@@ -151,14 +159,29 @@
     function draw() {
     const s = expand(list[idx]);
     const subIn = new Set(s.subs.map(x => x.in)), subOut = new Set(s.subs.map(x => x.out));
+    // Laufende GW: Spielstatus je Verein (noch nicht gespielt / spielt gerade / fertig)
+    const cur = window.LEAGUE?.current;
+    const fx = !s.finished && cur && cur.gw === s.gw ? cur.fixtures : [];
+    const tz = { timeZone: 'Europe/Vienna' };
+    const status = code => {
+      const own = fx.filter(f => f.h === code || f.a === code);
+      if (!own.length) return null;
+      const now = Date.now();
+      if (own.some(f => !f.done && now >= new Date(f.kickoff).getTime())) return { cls: 'playing' };
+      const next = own.filter(f => !f.done && new Date(f.kickoff) > now).sort((a, b) => new Date(a.kickoff) - new Date(b.kickoff))[0];
+      if (next && !own.some(f => f.done)) return { cls: 'todo', ko: new Date(next.kickoff).toLocaleString('de-AT', { ...tz, weekday: 'short', hour: '2-digit', minute: '2-digit' }) };
+      return null;
+    };
+    const anyStatus = fx.length > 0;
     const card = (p, bench) => {
       const shown = bench && s.chip !== 'bboost' ? p.pts : p.pts * Math.max(p.mult, 1);
-      return `<div class="sq-p ${bench && !subIn.has(p.id) && s.chip !== 'bboost' ? 'dim' : ''}" title="${esc(p.name)} (${esc(p.team)}) · ${p.minutes} Min.">
+      const st = status(p.teamCode);
+      return `<div class="sq-p ${bench && !subIn.has(p.id) && s.chip !== 'bboost' ? 'dim' : ''} ${st ? st.cls : ''}" title="${esc(p.name)} (${esc(p.team)}) · ${st?.ko ? 'Anstoß ' + st.ko : p.minutes + ' Min.'}">
         ${p.cap ? `<span class="cv c">${p.mult === 3 ? '3×' : 'C'}</span>` : p.vice ? '<span class="cv">V</span>' : ''}
         ${subIn.has(p.id) ? '<span class="sub in">↑</span>' : subOut.has(p.id) ? '<span class="sub out">↓</span>' : ''}
         <img src="assets/badges/${p.teamCode}.png" alt="${esc(p.team)}" onerror="this.style.visibility='hidden'">
         <div class="n">${esc(p.name)}</div>
-        <div class="pt ${shown >= 10 ? 'hi' : ''}">${shown}</div>
+        <div class="pt ${shown >= 10 && !st ? 'hi' : ''}">${st?.ko ? st.ko : shown}</div>
       </div>`;
     };
     const xi = s.picks.filter(p => p.pos <= 11), bench = s.picks.filter(p => p.pos > 11);
@@ -199,7 +222,7 @@
       ${placeHtml}
       <div class="sq-pitch">${rows}</div>
       <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
-      <div class="sq-foot">${s.finished ? `Endstand Gameweek ${s.gw}` : `Gameweek ${s.gw} läuft – Punkte werden bei jeder Aktualisierung nachgetragen`} · ↑↓ = automatische Einwechslung</div>
+      <div class="sq-foot">${s.finished ? `Endstand Gameweek ${s.gw}` : `Gameweek ${s.gw} läuft – Punkte werden bei jeder Aktualisierung nachgetragen`} · ↑↓ = automatische Einwechslung${anyStatus ? '<br><span class="sq-legend"><span><i style="background:#b9bfcc"></i>noch nicht gespielt (mit Anstoß)</span><span><i style="background:var(--red)"></i>spielt gerade</span></span>' : ''}</div>
       ${fifaCard(m)}
     </div>`;
     }
