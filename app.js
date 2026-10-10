@@ -179,6 +179,14 @@ function render(d) {
     </div>`;
   }).join('');
 
+  // GW-Spalte wie bei FPL: Punkte vor Abzug der Hits, darunter klein der Abzug (z. B. 58 / −4)
+  const gwCell = m => {
+    const l = liveGW ? liveOf(m) : null, g = liveGW ? null : gwOf(m);
+    const gross = l ? l.points : g?.gross, hits = (l || g)?.hits || 0;
+    if (gross == null) return '–';
+    return hits ? `${gross}<small class="hit" title="Minuspunkte durch Transfers">−${hits}</small>` : `${gross}`;
+  };
+
   // --- Tabelle ---
   $('rows').innerHTML = ms.map(m => {
     const r = m.rank, diff = (m.lastRank || r) - r;
@@ -187,7 +195,7 @@ function render(d) {
     return `<tr class="${cls}">
       <td class="rank">${r}${mv}</td>
       <td><div class="who"><img class="av" src="${av(m)}" alt=""><div>${esc(m.nick)}${r === 1 ? ' 👑' : ''}${r === ms.length ? ' 💩' : ''}<small>${esc(m.team)}</small></div></div></td>
-      <td class="num gwp ${liveGW ? 'live' : ''}">${liveGW ? (l => l ? l.points - (l.hits || 0) : '–')(liveOf(m)) : (gwOf(m)?.points ?? '–')}</td>
+      <td class="num gwp ${liveGW ? 'live' : ''}">${gwCell(m)}</td>
       <td class="num total">${m.total}</td>
     </tr>`;
   }).join('');
