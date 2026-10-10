@@ -246,6 +246,7 @@ async function get(url) {
         gw: curEv.id,
         fixtures: fx.filter(x => x.kickoff_time).map(x => ({
           kickoff: x.kickoff_time, done: !!(x.finished || x.finished_provisional),
+          h: boot.teams.find(t => t.id === x.team_h)?.code, a: boot.teams.find(t => t.id === x.team_a)?.code,
         })),
       };
     } catch (err) { console.warn('Spielplan der laufenden GW nicht verfügbar:', err.message); }

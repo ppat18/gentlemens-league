@@ -203,6 +203,7 @@ function render(d) {
   renderSeasonAwards(ms, GW);
 
   // --- Nächste Gameweek ---
+  renderCaptains(d, ms, liveGW);
   renderNext(d.next);
 
   // --- Saison-Statistik ---
@@ -253,6 +254,48 @@ function render(d) {
   </tr>`).join('');
   };
   drawStats();
+}
+
+// Kapitäne der laufenden Runde – nur sichtbar, solange die Gameweek läuft (Deadline bis Rundenende)
+function renderCaptains(d, ms, liveGW) {
+  const el = $('caps');
+  if (!el) return;
+  if (!liveGW) { el.hidden = true; el.innerHTML = ''; return; }
+  const tz = { timeZone: 'Europe/Vienna' };
+  const fx = d.current && d.current.gw === liveGW ? d.current.fixtures : [];
+  const groups = {};
+  for (const m of ms) {
+    const s = (m.squads || []).find(x => x.gw === liveGW);
+    const c = s && s.picks.find(p => p[3] === 1);
+    if (!c) continue;
+    const g = groups[c[0]] ||= { id: c[0], pts: c[4], min: c[5], who: [] };
+    g.who.push({ m, tc: s.chip === '3xc' });
+  }
+  const status = code => {
+    const now = Date.now();
+    const own = fx.filter(f => f.h === code || f.a === code);
+    if (!own.length) return { txt: fx.length ? 'keine Partie' : '', live: false };
+    if (own.some(f => !f.done && now >= new Date(f.kickoff).getTime())) return { txt: '<span class="live-tag">LIVE</span>', live: true };
+    const next = own.filter(f => !f.done && new Date(f.kickoff) > now).sort((x, y) => new Date(x.kickoff) - new Date(y.kickoff))[0];
+    if (next) return { txt: 'Anstoß ' + new Date(next.kickoff).toLocaleString('de-AT', { ...tz, weekday: 'short', hour: '2-digit', minute: '2-digit' }), live: false };
+    return { txt: 'fertig', live: false };
+  };
+  const list = Object.values(groups).sort((x, y) => y.who.length - x.who.length || y.pts - x.pts);
+  el.innerHTML = `<h2>©️ Kapitäne der Gameweek ${liveGW}</h2>
+    <div class="caps">${list.map(g => {
+      const p = d.players[g.id] || ['?', 0, '', 0];
+      const st = status(p[3]);
+      return `<div class="cap ${st.live ? 'live' : ''}">
+        <div class="cap-top">
+          <img class="badge" src="assets/badges/${p[3]}.png" alt="" onerror="this.style.visibility='hidden'">
+          <div class="cap-name"><b>${esc(p[0])}</b><small>${st.txt}</small></div>
+          <div class="cap-pts">${g.pts}<small>Punkte</small></div>
+        </div>
+        <div class="cap-who">${g.who.map(x => `<span><img class="av" src="${av(x.m)}" alt="">${esc(x.m.nick)}${x.tc ? ' <i class="tc" title="Triple Captain">3×</i>' : ''}</span>`).join('')}</div>
+      </div>`;
+    }).join('')}</div>
+    <p class="foot">Punkte = Live-Punkte des Spielers (ohne Kapitänsfaktor). Der Block verschwindet, sobald die Gameweek abgeschlossen ist.</p>`;
+  el.hidden = false;
 }
 
 function renderNext(n) {
