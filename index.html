@@ -351,7 +351,7 @@ img.av{flex:none;aspect-ratio:1/1;object-fit:cover;object-position:50% 15%}
 /* Aktualisieren-Knopf: schwebt immer unten rechts */
 .refresh-btn{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));z-index:90;width:52px;height:52px;border-radius:50%;border:3px solid #6fa52a;background:var(--lime);color:var(--navy);font-size:24px;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);display:grid;place-items:center;-webkit-tap-highlight-color:transparent}
 .refresh-btn:active{transform:scale(.94)}
-main.page{padding-bottom:84px}
+body{padding-bottom:80px}
 .refresh-btn.spin span{animation:rfspin .8s linear infinite}
 @keyframes rfspin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.refresh-btn.spin span{animation:none}}
