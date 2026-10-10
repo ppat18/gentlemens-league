@@ -62,7 +62,10 @@ async function get(url) {
       gw,
       finished: finished.includes(gw),
       chip: p.active_chip,
-      points: p.entry_history?.points ?? null,
+      // Laufende GW: FPL aktualisiert entry_history.points erst spät → Live-Punkte selbst aus Spielerpunkte × Multiplikator
+      points: finished.includes(gw)
+        ? (p.entry_history?.points ?? null)
+        : Math.max(p.entry_history?.points ?? 0, p.picks.reduce((s, x) => s + (stats[x.element]?.total_points ?? 0) * x.multiplier, 0)),
       hits: p.entry_history?.event_transfers_cost ?? 0,
       subs: p.automatic_subs.map(s => [s.element_in, s.element_out]),
       // [Spieler-ID, Position 1–15, Multiplikator, 1 = Kapitän / 2 = Vize, Punkte, Minuten]
