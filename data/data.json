@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T14:34:30.144Z",
+ "updated": "2026-10-11T14:51:42.689Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -1251,7 +1251,7 @@
        0,
        0,
        2,
-       70
+       74
       ],
       [
        175,
@@ -2367,7 +2367,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 3,
    "lastRank": 3,
-   "total": 391,
+   "total": 396,
    "chips": [],
    "gws": [
     {
@@ -3285,7 +3285,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 64,
+     "points": 69,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3358,8 +3358,8 @@
        9,
        1,
        0,
-       1,
-       6
+       6,
+       23
       ],
       [
        411,
@@ -4440,7 +4440,7 @@
        1,
        0,
        2,
-       69
+       84
       ],
       [
        165,
@@ -6908,7 +6908,7 @@
        0,
        0,
        2,
-       70
+       74
       ],
       [
        233,
@@ -8010,7 +8010,7 @@
    "team": "FC Scheisshaus",
    "rank": 8,
    "lastRank": 7,
-   "total": 346,
+   "total": 350,
    "chips": [
     {
      "name": "wildcard",
@@ -9178,7 +9178,7 @@
        1,
        0,
        6,
-       70
+       85
       ],
       [
        496,
@@ -9224,7 +9224,7 @@
    "team": "Patrick's Team",
    "rank": 9,
    "lastRank": 9,
-   "total": 340,
+   "total": 345,
    "chips": [],
    "gws": [
     {
@@ -10148,7 +10148,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 43,
+     "points": 48,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -10182,15 +10182,15 @@
        1,
        0,
        4,
-       69
+       84
       ],
       [
        286,
        5,
        1,
        0,
-       1,
-       6
+       6,
+       23
       ],
       [
        426,
@@ -10284,7 +10284,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 10,
    "lastRank": 10,
-   "total": 324,
+   "total": 323,
    "chips": [
     {
      "name": "wildcard",
@@ -11446,7 +11446,7 @@
        1,
        0,
        1,
-       70
+       87
       ],
       [
        94,
