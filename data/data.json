@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T16:34:35.535Z",
+ "updated": "2026-10-11T16:52:05.832Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -1137,7 +1137,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 43,
+     "points": 44,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -1218,8 +1218,8 @@
        10,
        1,
        0,
-       1,
-       45
+       2,
+       61
       ],
       [
        569,
@@ -2231,7 +2231,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 52,
+     "points": 54,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -2312,8 +2312,8 @@
        10,
        2,
        1,
-       1,
-       45
+       2,
+       61
       ],
       [
        165,
@@ -3285,7 +3285,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 70,
+     "points": 71,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3366,8 +3366,8 @@
        10,
        1,
        2,
-       1,
-       45
+       2,
+       61
       ],
       [
        165,
@@ -4366,7 +4366,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 66,
+     "points": 67,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -4455,8 +4455,8 @@
        11,
        1,
        2,
-       1,
-       45
+       2,
+       61
       ],
       [
        496,
@@ -5505,7 +5505,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 67,
+     "points": 69,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -5586,8 +5586,8 @@
        10,
        2,
        1,
-       1,
-       45
+       2,
+       61
       ],
       [
        464,
@@ -6794,7 +6794,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 58,
+     "points": 59,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -6883,8 +6883,8 @@
        11,
        1,
        0,
-       1,
-       45
+       2,
+       61
       ],
       [
        385,
@@ -7874,7 +7874,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 56,
+     "points": 57,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -7963,8 +7963,8 @@
        11,
        1,
        0,
-       1,
-       45
+       2,
+       61
       ],
       [
        497,
@@ -9088,7 +9088,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 45,
+     "points": 48,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -9137,8 +9137,8 @@
        6,
        1,
        0,
-       1,
-       45
+       3,
+       61
       ],
       [
        426,
@@ -9161,8 +9161,8 @@
        9,
        1,
        2,
-       1,
-       45
+       2,
+       61
       ],
       [
        464,
@@ -10148,7 +10148,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 49,
+     "points": 50,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -10229,8 +10229,8 @@
        10,
        1,
        2,
-       1,
-       45
+       2,
+       61
       ],
       [
        26,
@@ -11412,7 +11412,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 71,
+     "points": 74,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -11469,8 +11469,8 @@
        7,
        1,
        0,
-       1,
-       45
+       3,
+       61
       ],
       [
        40,
@@ -11493,8 +11493,8 @@
        10,
        1,
        0,
-       1,
-       45
+       2,
+       61
       ],
       [
        165,
