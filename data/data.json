@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T17:09:11.778Z",
+ "updated": "2026-10-11T17:26:34.130Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -214,7 +214,7 @@
    },
    {
     "kickoff": "2026-10-11T15:30:00Z",
-    "done": false,
+    "done": true,
     "h": 14,
     "a": 43
    },
@@ -235,7 +235,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 2,
-   "total": 443,
+   "total": 439,
    "chips": [
     {
      "name": "3xc",
@@ -1193,7 +1193,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 64,
+     "points": 62,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -1274,8 +1274,8 @@
        10,
        2,
        1,
-       7,
-       78
+       6,
+       79
       ],
       [
        165,
@@ -1329,7 +1329,7 @@
    "team": "Globo Gym United",
    "rank": 2,
    "lastRank": 1,
-   "total": 438,
+   "total": 439,
    "chips": [
     {
      "name": "3xc",
@@ -2231,7 +2231,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 50,
+     "points": 52,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -2264,8 +2264,8 @@
        4,
        1,
        0,
-       1,
-       12
+       4,
+       24
       ],
       [
        154,
@@ -2312,8 +2312,8 @@
        10,
        1,
        0,
-       7,
-       78
+       6,
+       79
       ],
       [
        569,
@@ -2367,7 +2367,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 3,
    "lastRank": 3,
-   "total": 404,
+   "total": 402,
    "chips": [],
    "gws": [
     {
@@ -3285,7 +3285,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 76,
+     "points": 75,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3366,8 +3366,8 @@
        10,
        1,
        2,
-       7,
-       78
+       6,
+       79
       ],
       [
        165,
@@ -3421,7 +3421,7 @@
    "team": "District 14 Graz",
    "rank": 4,
    "lastRank": 4,
-   "total": 399,
+   "total": 400,
    "chips": [
     {
      "name": "3xc",
@@ -4366,7 +4366,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 73,
+     "points": 75,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -4391,8 +4391,8 @@
        3,
        1,
        0,
-       1,
-       12
+       4,
+       24
       ],
       [
        8,
@@ -4455,8 +4455,8 @@
        11,
        1,
        2,
-       7,
-       78
+       6,
+       79
       ],
       [
        496,
@@ -4502,7 +4502,7 @@
    "team": "The Unbreakables",
    "rank": 5,
    "lastRank": 6,
-   "total": 391,
+   "total": 390,
    "chips": [
     {
      "name": "3xc",
@@ -5505,7 +5505,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 80,
+     "points": 81,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -5530,8 +5530,8 @@
        3,
        1,
        0,
-       1,
-       12
+       4,
+       24
       ],
       [
        115,
@@ -5586,8 +5586,8 @@
        10,
        2,
        1,
-       7,
-       78
+       6,
+       79
       ],
       [
        464,
@@ -5641,7 +5641,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 5,
-   "total": 380,
+   "total": 378,
    "chips": [
     {
      "name": "wildcard",
@@ -6794,7 +6794,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 64,
+     "points": 63,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -6883,8 +6883,8 @@
        11,
        1,
        0,
-       7,
-       78
+       6,
+       79
       ],
       [
        385,
@@ -6923,1094 +6923,14 @@
    ]
   },
   {
-   "id": 1279976,
-   "nick": "Alex",
-   "avatar": "alex",
-   "name": "Alex Preissler",
-   "team": "FC HelloT*tty82",
-   "rank": 7,
-   "lastRank": 8,
-   "total": 363,
-   "chips": [],
-   "gws": [
-    {
-     "gw": 1,
-     "points": 65,
-     "gross": 65,
-     "total": 65,
-     "bench": 9,
-     "transfers": 0,
-     "hits": 0,
-     "value": 100,
-     "bank": 0,
-     "chip": null,
-     "captain": "Haaland",
-     "captainPts": 4,
-     "captainBase": 2,
-     "captainGoals": 0,
-     "captainAssists": 0,
-     "benchPlayersPts": 9,
-     "red": 0,
-     "yellow": 0,
-     "goals": 3,
-     "assists": 4,
-     "ownGoals": 0,
-     "penMiss": 0,
-     "bonus": 6,
-     "cleanSheets": 2,
-     "autoSubs": 0,
-     "autoSubPts": 0,
-     "best": {
-      "name": "Palmer",
-      "pts": 13
-     },
-     "lateGain": 5,
-     "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
-     "lateAgainst": 0,
-     "lazyPts": null,
-     "transfersIn": [],
-     "leagueRank": 3
-    },
-    {
-     "gw": 2,
-     "points": 96,
-     "gross": 96,
-     "total": 161,
-     "bench": 13,
-     "transfers": 0,
-     "hits": 0,
-     "value": 100.2,
-     "bank": 0,
-     "chip": null,
-     "captain": "B.Fernandes",
-     "captainPts": 46,
-     "captainBase": 23,
-     "captainGoals": 3,
-     "captainAssists": 1,
-     "benchPlayersPts": 13,
-     "red": 0,
-     "yellow": 1,
-     "goals": 7,
-     "assists": 3,
-     "ownGoals": 1,
-     "penMiss": 0,
-     "bonus": 10,
-     "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
-     "best": {
-      "name": "B.Fernandes",
-      "pts": 23
-     },
-     "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
-     "lateAgainst": 0,
-     "lazyPts": 86,
-     "transfersIn": [],
-     "leagueRank": 3
-    },
-    {
-     "gw": 3,
-     "points": 42,
-     "gross": 42,
-     "total": 203,
-     "bench": 6,
-     "transfers": 1,
-     "hits": 0,
-     "value": 100.4,
-     "bank": 0,
-     "chip": null,
-     "captain": "Haaland",
-     "captainPts": 18,
-     "captainBase": 9,
-     "captainGoals": 1,
-     "captainAssists": 0,
-     "benchPlayersPts": 6,
-     "red": 0,
-     "yellow": 4,
-     "goals": 1,
-     "assists": 2,
-     "ownGoals": 0,
-     "penMiss": 0,
-     "bonus": 4,
-     "cleanSheets": 0,
-     "autoSubs": 0,
-     "autoSubPts": 0,
-     "best": {
-      "name": "Haaland",
-      "pts": 9
-     },
-     "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
-     "lateAgainst": 1,
-     "lazyPts": 37,
-     "transfersIn": [
-      {
-       "in": "Dedić",
-       "out": "Robertson",
-       "inPts": 1,
-       "outPts": 1
-      }
-     ],
-     "leagueRank": 5
-    },
-    {
-     "gw": 4,
-     "points": 62,
-     "gross": 62,
-     "total": 265,
-     "bench": 15,
-     "transfers": 1,
-     "hits": 0,
-     "value": 100.4,
-     "bank": 0,
-     "chip": null,
-     "captain": "Palmer",
-     "captainPts": 10,
-     "captainBase": 5,
-     "captainGoals": 0,
-     "captainAssists": 1,
-     "benchPlayersPts": 15,
-     "red": 0,
-     "yellow": 0,
-     "goals": 2,
-     "assists": 2,
-     "ownGoals": 0,
-     "penMiss": 0,
-     "bonus": 6,
-     "cleanSheets": 3,
-     "autoSubs": 0,
-     "autoSubPts": 0,
-     "best": {
-      "name": "João Pedro",
-      "pts": 12
-     },
-     "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
-     "lateAgainst": 0,
-     "lazyPts": 60,
-     "transfersIn": [
-      {
-       "in": "Konsa",
-       "out": "Shaw",
-       "inPts": 6,
-       "outPts": 0
-      }
-     ],
-     "leagueRank": 6
-    },
-    {
-     "gw": 5,
-     "points": 39,
-     "gross": 39,
-     "total": 304,
-     "bench": 0,
-     "transfers": 1,
-     "hits": 0,
-     "value": 100.6,
-     "bank": 0.3,
-     "chip": null,
-     "captain": "Haaland",
-     "captainPts": 12,
-     "captainBase": 6,
-     "captainGoals": 1,
-     "captainAssists": 0,
-     "benchPlayersPts": 0,
-     "red": 0,
-     "yellow": 2,
-     "goals": 1,
-     "assists": 1,
-     "ownGoals": 0,
-     "penMiss": 0,
-     "bonus": 0,
-     "cleanSheets": 1,
-     "autoSubs": 1,
-     "autoSubPts": 8,
-     "best": {
-      "name": "Gomez",
-      "pts": 8
-     },
-     "lateGain": 0,
-     "lateLoss": 0,
-     "lateInfo": [],
-     "lateFor": 0,
-     "lateAgainst": 0,
-     "lazyPts": 32,
-     "transfersIn": [
-      {
-       "in": "Delap",
-       "out": "Brobbey",
-       "inPts": 1,
-       "outPts": 17
-      }
-     ],
-     "leagueRank": 8
-    }
-   ],
-   "past": [
-    {
-     "season": "2015/16",
-     "points": 2176,
-     "overallRank": 67201
-    },
-    {
-     "season": "2016/17",
-     "points": 2246,
-     "overallRank": 32367
-    },
-    {
-     "season": "2017/18",
-     "points": 2138,
-     "overallRank": 313836
-    },
-    {
-     "season": "2018/19",
-     "points": 2191,
-     "overallRank": 305550
-    },
-    {
-     "season": "2019/20",
-     "points": 2070,
-     "overallRank": 1176326
-    },
-    {
-     "season": "2020/21",
-     "points": 2192,
-     "overallRank": 968250
-    },
-    {
-     "season": "2021/22",
-     "points": 2289,
-     "overallRank": 709220
-    },
-    {
-     "season": "2022/23",
-     "points": 2176,
-     "overallRank": 3009501
-    },
-    {
-     "season": "2023/24",
-     "points": 2386,
-     "overallRank": 429695
-    },
-    {
-     "season": "2024/25",
-     "points": 2370,
-     "overallRank": 801927
-    },
-    {
-     "season": "2025/26",
-     "points": 2201,
-     "overallRank": 888878
-    }
-   ],
-   "squads": [
-    {
-     "gw": 1,
-     "finished": true,
-     "chip": null,
-     "points": 65,
-     "hits": 0,
-     "subs": [],
-     "picks": [
-      [
-       109,
-       1,
-       1,
-       0,
-       6,
-       90
-      ],
-      [
-       8,
-       2,
-       1,
-       0,
-       9,
-       80
-      ],
-      [
-       502,
-       3,
-       1,
-       0,
-       3,
-       90
-      ],
-      [
-       423,
-       4,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       368,
-       5,
-       1,
-       0,
-       8,
-       90
-      ],
-      [
-       557,
-       6,
-       1,
-       0,
-       6,
-       75
-      ],
-      [
-       154,
-       7,
-       1,
-       0,
-       13,
-       82
-      ],
-      [
-       426,
-       8,
-       1,
-       2,
-       2,
-       90
-      ],
-      [
-       165,
-       9,
-       1,
-       0,
-       11,
-       90
-      ],
-      [
-       552,
-       10,
-       1,
-       0,
-       2,
-       66
-      ],
-      [
-       411,
-       11,
-       2,
-       1,
-       2,
-       90
-      ],
-      [
-       497,
-       12,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       305,
-       13,
-       0,
-       0,
-       2,
-       90
-      ],
-      [
-       127,
-       14,
-       0,
-       0,
-       6,
-       85
-      ],
-      [
-       175,
-       15,
-       0,
-       0,
-       1,
-       90
-      ]
-     ]
-    },
-    {
-     "gw": 2,
-     "finished": true,
-     "chip": null,
-     "points": 96,
-     "hits": 0,
-     "subs": [],
-     "picks": [
-      [
-       109,
-       1,
-       1,
-       0,
-       0,
-       90
-      ],
-      [
-       8,
-       2,
-       1,
-       0,
-       11,
-       90
-      ],
-      [
-       175,
-       3,
-       1,
-       0,
-       2,
-       90
-      ],
-      [
-       423,
-       4,
-       1,
-       0,
-       2,
-       72
-      ],
-      [
-       368,
-       5,
-       1,
-       0,
-       4,
-       90
-      ],
-      [
-       557,
-       6,
-       1,
-       0,
-       0,
-       45
-      ],
-      [
-       154,
-       7,
-       1,
-       0,
-       7,
-       90
-      ],
-      [
-       426,
-       8,
-       2,
-       1,
-       23,
-       90
-      ],
-      [
-       165,
-       9,
-       1,
-       0,
-       9,
-       90
-      ],
-      [
-       552,
-       10,
-       1,
-       0,
-       2,
-       63
-      ],
-      [
-       411,
-       11,
-       1,
-       2,
-       13,
-       90
-      ],
-      [
-       497,
-       12,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       127,
-       13,
-       0,
-       0,
-       5,
-       90
-      ],
-      [
-       305,
-       14,
-       0,
-       0,
-       6,
-       90
-      ],
-      [
-       502,
-       15,
-       0,
-       0,
-       2,
-       67
-      ]
-     ]
-    },
-    {
-     "gw": 3,
-     "finished": true,
-     "chip": null,
-     "points": 42,
-     "hits": 0,
-     "subs": [],
-     "picks": [
-      [
-       109,
-       1,
-       1,
-       0,
-       3,
-       90
-      ],
-      [
-       8,
-       2,
-       1,
-       0,
-       2,
-       66
-      ],
-      [
-       593,
-       3,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       423,
-       4,
-       1,
-       0,
-       4,
-       90
-      ],
-      [
-       368,
-       5,
-       1,
-       0,
-       3,
-       90
-      ],
-      [
-       557,
-       6,
-       1,
-       0,
-       5,
-       90
-      ],
-      [
-       154,
-       7,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       426,
-       8,
-       1,
-       2,
-       2,
-       90
-      ],
-      [
-       127,
-       9,
-       1,
-       0,
-       2,
-       90
-      ],
-      [
-       165,
-       10,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       411,
-       11,
-       2,
-       1,
-       9,
-       90
-      ],
-      [
-       497,
-       12,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       552,
-       13,
-       0,
-       0,
-       2,
-       90
-      ],
-      [
-       305,
-       14,
-       0,
-       0,
-       1,
-       90
-      ],
-      [
-       175,
-       15,
-       0,
-       0,
-       3,
-       90
-      ]
-     ]
-    },
-    {
-     "gw": 4,
-     "finished": true,
-     "chip": null,
-     "points": 62,
-     "hits": 0,
-     "subs": [],
-     "picks": [
-      [
-       109,
-       1,
-       1,
-       0,
-       8,
-       90
-      ],
-      [
-       8,
-       2,
-       1,
-       0,
-       6,
-       90
-      ],
-      [
-       593,
-       3,
-       1,
-       0,
-       0,
-       57
-      ],
-      [
-       31,
-       4,
-       1,
-       0,
-       6,
-       90
-      ],
-      [
-       368,
-       5,
-       1,
-       0,
-       3,
-       90
-      ],
-      [
-       557,
-       6,
-       1,
-       0,
-       3,
-       80
-      ],
-      [
-       154,
-       7,
-       2,
-       1,
-       5,
-       90
-      ],
-      [
-       426,
-       8,
-       1,
-       0,
-       2,
-       90
-      ],
-      [
-       127,
-       9,
-       1,
-       0,
-       3,
-       83
-      ],
-      [
-       165,
-       10,
-       1,
-       2,
-       12,
-       90
-      ],
-      [
-       411,
-       11,
-       1,
-       0,
-       9,
-       90
-      ],
-      [
-       497,
-       12,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       305,
-       13,
-       0,
-       0,
-       14,
-       90
-      ],
-      [
-       175,
-       14,
-       0,
-       0,
-       0,
-       90
-      ],
-      [
-       552,
-       15,
-       0,
-       0,
-       1,
-       90
-      ]
-     ]
-    },
-    {
-     "gw": 5,
-     "finished": true,
-     "chip": null,
-     "points": 39,
-     "hits": 0,
-     "subs": [
-      [
-       127,
-       165
-      ]
-     ],
-     "picks": [
-      [
-       109,
-       1,
-       1,
-       0,
-       6,
-       90
-      ],
-      [
-       305,
-       2,
-       1,
-       0,
-       2,
-       90
-      ],
-      [
-       31,
-       3,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       8,
-       4,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       557,
-       5,
-       1,
-       0,
-       2,
-       72
-      ],
-      [
-       154,
-       6,
-       1,
-       0,
-       2,
-       90
-      ],
-      [
-       426,
-       7,
-       1,
-       2,
-       2,
-       90
-      ],
-      [
-       368,
-       8,
-       1,
-       0,
-       2,
-       80
-      ],
-      [
-       127,
-       9,
-       1,
-       0,
-       8,
-       85
-      ],
-      [
-       411,
-       10,
-       2,
-       1,
-       6,
-       90
-      ],
-      [
-       167,
-       11,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       497,
-       12,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       165,
-       13,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       175,
-       14,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       593,
-       15,
-       0,
-       0,
-       0,
-       0
-      ]
-     ]
-    },
-    {
-     "gw": 6,
-     "finished": false,
-     "chip": null,
-     "points": 62,
-     "hits": 4,
-     "subs": [],
-     "picks": [
-      [
-       109,
-       1,
-       1,
-       0,
-       9,
-       90
-      ],
-      [
-       8,
-       2,
-       1,
-       0,
-       9,
-       81
-      ],
-      [
-       31,
-       3,
-       1,
-       0,
-       4,
-       90
-      ],
-      [
-       305,
-       4,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       453,
-       5,
-       1,
-       0,
-       0,
-       0
-      ],
-      [
-       268,
-       6,
-       1,
-       0,
-       2,
-       75
-      ],
-      [
-       154,
-       7,
-       2,
-       1,
-       8,
-       87
-      ],
-      [
-       426,
-       8,
-       1,
-       2,
-       1,
-       90
-      ],
-      [
-       401,
-       9,
-       1,
-       0,
-       1,
-       24
-      ],
-      [
-       165,
-       10,
-       1,
-       0,
-       12,
-       71
-      ],
-      [
-       411,
-       11,
-       1,
-       0,
-       7,
-       78
-      ],
-      [
-       497,
-       12,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       127,
-       13,
-       0,
-       0,
-       5,
-       87
-      ],
-      [
-       175,
-       14,
-       0,
-       0,
-       0,
-       0
-      ],
-      [
-       593,
-       15,
-       0,
-       0,
-       0,
-       0
-      ]
-     ]
-    }
-   ]
-  },
-  {
    "id": 5717008,
    "nick": "Favo",
    "avatar": "favo",
    "name": "Sascha Mair",
    "team": "FC Scheisshaus",
-   "rank": 8,
+   "rank": 7,
    "lastRank": 7,
-   "total": 361,
+   "total": 366,
    "chips": [
     {
      "name": "wildcard",
@@ -9088,7 +8008,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 60,
+     "points": 59,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -9138,7 +8058,7 @@
        1,
        0,
        10,
-       78
+       90
       ],
       [
        426,
@@ -9161,8 +8081,8 @@
        9,
        1,
        2,
-       7,
-       78
+       6,
+       79
       ],
       [
        464,
@@ -9217,6 +8137,1086 @@
    ]
   },
   {
+   "id": 1279976,
+   "nick": "Alex",
+   "avatar": "alex",
+   "name": "Alex Preissler",
+   "team": "FC HelloT*tty82",
+   "rank": 8,
+   "lastRank": 8,
+   "total": 361,
+   "chips": [],
+   "gws": [
+    {
+     "gw": 1,
+     "points": 65,
+     "gross": 65,
+     "total": 65,
+     "bench": 9,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 4,
+     "captainBase": 2,
+     "captainGoals": 0,
+     "captainAssists": 0,
+     "benchPlayersPts": 9,
+     "red": 0,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 4,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "cleanSheets": 2,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Palmer",
+      "pts": 13
+     },
+     "lateGain": 5,
+     "lateLoss": 0,
+     "lateInfo": [
+      "+5 Szoboszlai ⚽ 90+9'"
+     ],
+     "lateFor": 1,
+     "lateAgainst": 0,
+     "lazyPts": null,
+     "transfersIn": [],
+     "leagueRank": 3
+    },
+    {
+     "gw": 2,
+     "points": 96,
+     "gross": 96,
+     "total": 161,
+     "bench": 13,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 0,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 46,
+     "captainBase": 23,
+     "captainGoals": 3,
+     "captainAssists": 1,
+     "benchPlayersPts": 13,
+     "red": 0,
+     "yellow": 1,
+     "goals": 7,
+     "assists": 3,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 10,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "B.Fernandes",
+      "pts": 23
+     },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "lazyPts": 86,
+     "transfersIn": [],
+     "leagueRank": 3
+    },
+    {
+     "gw": 3,
+     "points": 42,
+     "gross": 42,
+     "total": 203,
+     "bench": 6,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 18,
+     "captainBase": 9,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 6,
+     "red": 0,
+     "yellow": 4,
+     "goals": 1,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "cleanSheets": 0,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 9
+     },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 1,
+     "lazyPts": 37,
+     "transfersIn": [
+      {
+       "in": "Dedić",
+       "out": "Robertson",
+       "inPts": 1,
+       "outPts": 1
+      }
+     ],
+     "leagueRank": 5
+    },
+    {
+     "gw": 4,
+     "points": 62,
+     "gross": 62,
+     "total": 265,
+     "bench": 15,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.4,
+     "bank": 0,
+     "chip": null,
+     "captain": "Palmer",
+     "captainPts": 10,
+     "captainBase": 5,
+     "captainGoals": 0,
+     "captainAssists": 1,
+     "benchPlayersPts": 15,
+     "red": 0,
+     "yellow": 0,
+     "goals": 2,
+     "assists": 2,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "cleanSheets": 3,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "João Pedro",
+      "pts": 12
+     },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "lazyPts": 60,
+     "transfersIn": [
+      {
+       "in": "Konsa",
+       "out": "Shaw",
+       "inPts": 6,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 6
+    },
+    {
+     "gw": 5,
+     "points": 39,
+     "gross": 39,
+     "total": 304,
+     "bench": 0,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.6,
+     "bank": 0.3,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 12,
+     "captainBase": 6,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 0,
+     "red": 0,
+     "yellow": 2,
+     "goals": 1,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 0,
+     "cleanSheets": 1,
+     "autoSubs": 1,
+     "autoSubPts": 8,
+     "best": {
+      "name": "Gomez",
+      "pts": 8
+     },
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "lazyPts": 32,
+     "transfersIn": [
+      {
+       "in": "Delap",
+       "out": "Brobbey",
+       "inPts": 1,
+       "outPts": 17
+      }
+     ],
+     "leagueRank": 8
+    }
+   ],
+   "past": [
+    {
+     "season": "2015/16",
+     "points": 2176,
+     "overallRank": 67201
+    },
+    {
+     "season": "2016/17",
+     "points": 2246,
+     "overallRank": 32367
+    },
+    {
+     "season": "2017/18",
+     "points": 2138,
+     "overallRank": 313836
+    },
+    {
+     "season": "2018/19",
+     "points": 2191,
+     "overallRank": 305550
+    },
+    {
+     "season": "2019/20",
+     "points": 2070,
+     "overallRank": 1176326
+    },
+    {
+     "season": "2020/21",
+     "points": 2192,
+     "overallRank": 968250
+    },
+    {
+     "season": "2021/22",
+     "points": 2289,
+     "overallRank": 709220
+    },
+    {
+     "season": "2022/23",
+     "points": 2176,
+     "overallRank": 3009501
+    },
+    {
+     "season": "2023/24",
+     "points": 2386,
+     "overallRank": 429695
+    },
+    {
+     "season": "2024/25",
+     "points": 2370,
+     "overallRank": 801927
+    },
+    {
+     "season": "2025/26",
+     "points": 2201,
+     "overallRank": 888878
+    }
+   ],
+   "squads": [
+    {
+     "gw": 1,
+     "finished": true,
+     "chip": null,
+     "points": 65,
+     "hits": 0,
+     "subs": [],
+     "picks": [
+      [
+       109,
+       1,
+       1,
+       0,
+       6,
+       90
+      ],
+      [
+       8,
+       2,
+       1,
+       0,
+       9,
+       80
+      ],
+      [
+       502,
+       3,
+       1,
+       0,
+       3,
+       90
+      ],
+      [
+       423,
+       4,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       368,
+       5,
+       1,
+       0,
+       8,
+       90
+      ],
+      [
+       557,
+       6,
+       1,
+       0,
+       6,
+       75
+      ],
+      [
+       154,
+       7,
+       1,
+       0,
+       13,
+       82
+      ],
+      [
+       426,
+       8,
+       1,
+       2,
+       2,
+       90
+      ],
+      [
+       165,
+       9,
+       1,
+       0,
+       11,
+       90
+      ],
+      [
+       552,
+       10,
+       1,
+       0,
+       2,
+       66
+      ],
+      [
+       411,
+       11,
+       2,
+       1,
+       2,
+       90
+      ],
+      [
+       497,
+       12,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       305,
+       13,
+       0,
+       0,
+       2,
+       90
+      ],
+      [
+       127,
+       14,
+       0,
+       0,
+       6,
+       85
+      ],
+      [
+       175,
+       15,
+       0,
+       0,
+       1,
+       90
+      ]
+     ]
+    },
+    {
+     "gw": 2,
+     "finished": true,
+     "chip": null,
+     "points": 96,
+     "hits": 0,
+     "subs": [],
+     "picks": [
+      [
+       109,
+       1,
+       1,
+       0,
+       0,
+       90
+      ],
+      [
+       8,
+       2,
+       1,
+       0,
+       11,
+       90
+      ],
+      [
+       175,
+       3,
+       1,
+       0,
+       2,
+       90
+      ],
+      [
+       423,
+       4,
+       1,
+       0,
+       2,
+       72
+      ],
+      [
+       368,
+       5,
+       1,
+       0,
+       4,
+       90
+      ],
+      [
+       557,
+       6,
+       1,
+       0,
+       0,
+       45
+      ],
+      [
+       154,
+       7,
+       1,
+       0,
+       7,
+       90
+      ],
+      [
+       426,
+       8,
+       2,
+       1,
+       23,
+       90
+      ],
+      [
+       165,
+       9,
+       1,
+       0,
+       9,
+       90
+      ],
+      [
+       552,
+       10,
+       1,
+       0,
+       2,
+       63
+      ],
+      [
+       411,
+       11,
+       1,
+       2,
+       13,
+       90
+      ],
+      [
+       497,
+       12,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       127,
+       13,
+       0,
+       0,
+       5,
+       90
+      ],
+      [
+       305,
+       14,
+       0,
+       0,
+       6,
+       90
+      ],
+      [
+       502,
+       15,
+       0,
+       0,
+       2,
+       67
+      ]
+     ]
+    },
+    {
+     "gw": 3,
+     "finished": true,
+     "chip": null,
+     "points": 42,
+     "hits": 0,
+     "subs": [],
+     "picks": [
+      [
+       109,
+       1,
+       1,
+       0,
+       3,
+       90
+      ],
+      [
+       8,
+       2,
+       1,
+       0,
+       2,
+       66
+      ],
+      [
+       593,
+       3,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       423,
+       4,
+       1,
+       0,
+       4,
+       90
+      ],
+      [
+       368,
+       5,
+       1,
+       0,
+       3,
+       90
+      ],
+      [
+       557,
+       6,
+       1,
+       0,
+       5,
+       90
+      ],
+      [
+       154,
+       7,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       426,
+       8,
+       1,
+       2,
+       2,
+       90
+      ],
+      [
+       127,
+       9,
+       1,
+       0,
+       2,
+       90
+      ],
+      [
+       165,
+       10,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       411,
+       11,
+       2,
+       1,
+       9,
+       90
+      ],
+      [
+       497,
+       12,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       552,
+       13,
+       0,
+       0,
+       2,
+       90
+      ],
+      [
+       305,
+       14,
+       0,
+       0,
+       1,
+       90
+      ],
+      [
+       175,
+       15,
+       0,
+       0,
+       3,
+       90
+      ]
+     ]
+    },
+    {
+     "gw": 4,
+     "finished": true,
+     "chip": null,
+     "points": 62,
+     "hits": 0,
+     "subs": [],
+     "picks": [
+      [
+       109,
+       1,
+       1,
+       0,
+       8,
+       90
+      ],
+      [
+       8,
+       2,
+       1,
+       0,
+       6,
+       90
+      ],
+      [
+       593,
+       3,
+       1,
+       0,
+       0,
+       57
+      ],
+      [
+       31,
+       4,
+       1,
+       0,
+       6,
+       90
+      ],
+      [
+       368,
+       5,
+       1,
+       0,
+       3,
+       90
+      ],
+      [
+       557,
+       6,
+       1,
+       0,
+       3,
+       80
+      ],
+      [
+       154,
+       7,
+       2,
+       1,
+       5,
+       90
+      ],
+      [
+       426,
+       8,
+       1,
+       0,
+       2,
+       90
+      ],
+      [
+       127,
+       9,
+       1,
+       0,
+       3,
+       83
+      ],
+      [
+       165,
+       10,
+       1,
+       2,
+       12,
+       90
+      ],
+      [
+       411,
+       11,
+       1,
+       0,
+       9,
+       90
+      ],
+      [
+       497,
+       12,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       305,
+       13,
+       0,
+       0,
+       14,
+       90
+      ],
+      [
+       175,
+       14,
+       0,
+       0,
+       0,
+       90
+      ],
+      [
+       552,
+       15,
+       0,
+       0,
+       1,
+       90
+      ]
+     ]
+    },
+    {
+     "gw": 5,
+     "finished": true,
+     "chip": null,
+     "points": 39,
+     "hits": 0,
+     "subs": [
+      [
+       127,
+       165
+      ]
+     ],
+     "picks": [
+      [
+       109,
+       1,
+       1,
+       0,
+       6,
+       90
+      ],
+      [
+       305,
+       2,
+       1,
+       0,
+       2,
+       90
+      ],
+      [
+       31,
+       3,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       8,
+       4,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       557,
+       5,
+       1,
+       0,
+       2,
+       72
+      ],
+      [
+       154,
+       6,
+       1,
+       0,
+       2,
+       90
+      ],
+      [
+       426,
+       7,
+       1,
+       2,
+       2,
+       90
+      ],
+      [
+       368,
+       8,
+       1,
+       0,
+       2,
+       80
+      ],
+      [
+       127,
+       9,
+       1,
+       0,
+       8,
+       85
+      ],
+      [
+       411,
+       10,
+       2,
+       1,
+       6,
+       90
+      ],
+      [
+       167,
+       11,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       497,
+       12,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       165,
+       13,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       175,
+       14,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       593,
+       15,
+       0,
+       0,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "gw": 6,
+     "finished": false,
+     "chip": null,
+     "points": 61,
+     "hits": 4,
+     "subs": [],
+     "picks": [
+      [
+       109,
+       1,
+       1,
+       0,
+       9,
+       90
+      ],
+      [
+       8,
+       2,
+       1,
+       0,
+       9,
+       81
+      ],
+      [
+       31,
+       3,
+       1,
+       0,
+       4,
+       90
+      ],
+      [
+       305,
+       4,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       453,
+       5,
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       268,
+       6,
+       1,
+       0,
+       2,
+       75
+      ],
+      [
+       154,
+       7,
+       2,
+       1,
+       8,
+       87
+      ],
+      [
+       426,
+       8,
+       1,
+       2,
+       1,
+       90
+      ],
+      [
+       401,
+       9,
+       1,
+       0,
+       1,
+       24
+      ],
+      [
+       165,
+       10,
+       1,
+       0,
+       12,
+       71
+      ],
+      [
+       411,
+       11,
+       1,
+       0,
+       6,
+       79
+      ],
+      [
+       497,
+       12,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       127,
+       13,
+       0,
+       0,
+       5,
+       87
+      ],
+      [
+       175,
+       14,
+       0,
+       0,
+       0,
+       0
+      ],
+      [
+       593,
+       15,
+       0,
+       0,
+       0,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": 6335161,
    "nick": "Amti",
    "avatar": "amti",
@@ -9224,7 +9224,7 @@
    "team": "Patrick's Team",
    "rank": 9,
    "lastRank": 9,
-   "total": 353,
+   "total": 351,
    "chips": [],
    "gws": [
     {
@@ -10148,7 +10148,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 55,
+     "points": 54,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -10229,8 +10229,8 @@
        10,
        1,
        2,
-       7,
-       78
+       6,
+       79
       ],
       [
        26,
@@ -10284,7 +10284,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 10,
    "lastRank": 10,
-   "total": 334,
+   "total": 339,
    "chips": [
     {
      "name": "wildcard",
@@ -11412,7 +11412,7 @@
      "gw": 6,
      "finished": false,
      "chip": null,
-     "points": 86,
+     "points": 85,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -11470,7 +11470,7 @@
        1,
        0,
        10,
-       78
+       90
       ],
       [
        40,
@@ -11493,8 +11493,8 @@
        10,
        1,
        0,
-       7,
-       78
+       6,
+       79
       ],
       [
        165,
