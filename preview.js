@@ -6,7 +6,10 @@ function renderPreview(d, hist, comp) {
   const n = d.next;
   if (!box || !n) { if (box) box.remove(); return; }
   const GW = n.gw, last = d.lastGW;
-  const ms = [...d.managers].sort((a, b) => a.rank - b.rank);
+  // Stand VOR der Runde (nach der letzten abgeschlossenen GW) – nicht der Live-Stand der laufenden GW
+  const totAt = m => m.gws.find(g => g.gw === d.lastGW)?.total ?? m.total;
+  const rankNow = m => m.gws.find(g => g.gw === d.lastGW)?.leagueRank ?? m.rank;
+  const ms = [...d.managers].sort((a, b) => rankNow(a) - rankNow(b));
   const byAv = Object.fromEntries(ms.map(m => [m.avatar, m]));
   const b = s => `<b>${esc(s)}</b>`;
 
@@ -23,8 +26,8 @@ function renderPreview(d, hist, comp) {
   const F = ms[0], S = ms[1], Z = ms[ms.length - 1], Z1 = ms[ms.length - 2];
   const hot = leaders(ms.map(m => ({ m })), x => form(x.m))[0].m;
   const cold = leaders(ms.map(m => ({ m })), x => form(x.m), -1)[0].m;
-  const climb = leaders(ms.map(m => ({ m })), x => (rankAt(x.m, Math.max(1, last - 2)) ?? x.m.rank) - x.m.rank)[0];
-  const fall = leaders(ms.map(m => ({ m })), x => (rankAt(x.m, Math.max(1, last - 2)) ?? x.m.rank) - x.m.rank, -1)[0];
+  const climb = leaders(ms.map(m => ({ m })), x => (rankAt(x.m, Math.max(1, last - 2)) ?? rankNow(x.m)) - rankNow(x.m))[0];
+  const fall = leaders(ms.map(m => ({ m })), x => (rankAt(x.m, Math.max(1, last - 2)) ?? rankNow(x.m)) - rankNow(x.m), -1)[0];
 
   // Liga-Historie: Titel & Stinker-Saisonen (echte Tabellen, sonst aus FPL-Punkten berechnet)
   const titles = {}, lanterns = {};
@@ -57,7 +60,7 @@ function renderPreview(d, hist, comp) {
   const who = m => { const k = nick(m); return k ? `${b(m.nick)}, ${k},` : b(m.nick); };
 
   // --- Absätze ---
-  const gapTop = F.total - S.total, gapBottom = Z1.total - Z.total;
+  const gapTop = totAt(F) - totAt(S), gapBottom = totAt(Z1) - totAt(Z);
   const head = pick([
     `Vorschau GW ${GW}: Wer stoppt ${F.nick}?`,
     `GW ${GW}: ${Z.nick} gegen den Abgrund`,
@@ -66,7 +69,10 @@ function renderPreview(d, hist, comp) {
   ]);
 
   const streak = winStreak(F);
-  const top = [
+  const top = gapTop === 0 ? [
+    `${who(F)} und ${b(S.nick)} gehen <b>punktgleich</b> in die Runde – an der Spitze ist nur Platz für einen.`,
+    pick([`Wer jetzt blinzelt, ist weg. Ein verpatzter Kapitän und der Thron wechselt den Besitzer.`, `Gleichstand ganz oben: Diese Gameweek entscheidet, wer sich König nennen darf und wer nur so tut.`]),
+  ].join(' ') : [
     `${who(F)} geht mit ${gapTop} Punkten Vorsprung in die Runde${streak >= 2 ? ` und hat die letzten ${streak} Runden alle gewonnen – langsam wird das unheimlich` : ''}.`,
     gapTop <= 15
       ? pick([`${b(S.nick)} sitzt nur ${gapTop} Punkte dahinter und schärft schon das Messer.`, `${b(S.nick)} (${gapTop} dahinter) hat jetzt die Chance auf den Königsmord – oder auf die nächste Enttäuschung.`])
@@ -76,7 +82,7 @@ function renderPreview(d, hist, comp) {
   ].filter(Boolean).slice(0, 2).join(' ');
 
   const bottom = [
-    pick([
+    gapBottom === 0 ? `Ganz unten teilen sich ${who(Z)} und ${b(Z1.nick)} punktgleich den Gestank – einer von beiden trägt nach dieser Runde den Stinker-Titel allein.` : pick([
       `Ganz unten müffelt ${who(Z)} als Stinker der Liga – ${gapBottom} Punkte hinter ${b(Z1.nick)}.`,
       `Im Keller brennt weiter das Licht bei ${who(Z)}. Abstand nach oben: ${gapBottom} Punkte. Abstand zur Würde: unmessbar.`,
     ]),
