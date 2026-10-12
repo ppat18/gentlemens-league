@@ -180,11 +180,28 @@ function render(d) {
   }).join('');
 
   // GW-Spalte wie bei FPL: Punkte vor Abzug der Hits, darunter klein der Abzug (z. B. 58 / −4)
+  // Laufende GW: Spielstatus je Verein (spielt gerade / noch nicht gespielt) für die Startelf jedes Managers
+  const curFx = liveGW && d.current && d.current.gw === liveGW ? d.current.fixtures : [];
+  const teamState = code => {
+    const own = curFx.filter(f => f.h === code || f.a === code);
+    if (!own.length) return null;
+    const now = Date.now();
+    if (own.some(f => !f.done && now >= new Date(f.kickoff).getTime())) return 'playing';
+    return own.some(f => !f.done) && !own.some(f => f.done) ? 'todo' : null;
+  };
+  const xiState = m => {
+    const l = liveOf(m), out = { playing: 0, todo: 0 };
+    if (!l || !curFx.length) return out;
+    for (const p of l.picks) if (p[2] > 0) { const st = teamState(d.players[p[0]]?.[3]); if (st) out[st]++; }
+    return out;
+  };
   const gwCell = m => {
     const l = liveGW ? liveOf(m) : null, g = liveGW ? null : gwOf(m);
     const gross = l ? l.points : g?.gross, hits = (l || g)?.hits || 0;
     if (gross == null) return '–';
-    return hits ? `${gross}<small class="hit" title="Minuspunkte durch Transfers">−${hits}</small>` : `${gross}`;
+    const todo = l ? xiState(m).todo : 0;
+    const sub = [hits ? `<span title="Minuspunkte durch Transfers">−${hits}</span>` : '', todo ? `<span class="todo" title="Spieler in der Startelf, die noch nicht gespielt haben">⏳${todo}</span>` : ''].filter(Boolean).join(' ');
+    return sub ? `${gross}<small class="hit">${sub}</small>` : `${gross}`;
   };
 
   // --- Tabelle ---
@@ -195,7 +212,7 @@ function render(d) {
     return `<tr class="${cls}">
       <td class="rank">${r}${mv}</td>
       <td><div class="who"><img class="av" src="${av(m)}" alt=""><div>${esc(m.nick)}${r === 1 ? ' 👑' : ''}${r === ms.length ? ' 💩' : ''}<small>${esc(m.team)}</small></div></div></td>
-      <td class="num gwp ${liveGW ? 'live' : ''}">${gwCell(m)}</td>
+      <td class="num gwp ${liveGW ? 'live' : ''} ${liveGW && xiState(m).playing ? 'playing' : ''}">${gwCell(m)}</td>
       <td class="num total">${m.total}</td>
     </tr>`;
   }).join('');

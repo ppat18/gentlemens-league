@@ -251,9 +251,9 @@ td.live{color:var(--red);font-weight:800}
 th.live{color:#ff8a80}
 .show-m{display:none}
 .live-tag{display:inline-block;background:var(--red);color:#fff;font:700 13px Oswald;letter-spacing:1.5px;padding:2px 8px;border-radius:6px;margin-left:4px;vertical-align:1px}
-.games-live .live-tag,.games-live td.live{animation:liveblink 1.2s ease-in-out infinite}
+.games-live .live-tag,.games-live td.live.playing{animation:liveblink 1.2s ease-in-out infinite}
 @keyframes liveblink{50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.games-live .live-tag,.games-live td.live{animation-duration:3s}}
+@media (prefers-reduced-motion:reduce){.games-live .live-tag,.games-live td.live.playing{animation-duration:3s}}
 #gw-col{white-space:nowrap}
 .chips th.chip-h{font-size:20px;text-align:center}
 .chips td.chip-cell{text-align:center;white-space:normal}
@@ -355,7 +355,8 @@ body{padding-bottom:80px}
 .refresh-btn.spin span{animation:rfspin .8s linear infinite}
 @keyframes rfspin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.refresh-btn.spin span{animation:none}}
-td.gwp small.hit{display:block;font:700 11px Inter;color:var(--red);line-height:1;margin-top:1px}
+td.gwp small.hit{display:block;font:700 11px Inter;color:var(--red);line-height:1;margin-top:1px;white-space:nowrap}
+td.gwp small.hit .todo{color:#6b7280}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
@@ -597,7 +598,7 @@ td.gwp small.hit{display:block;font:700 11px Inter;color:var(--red);line-height:
     <details><summary>Welche Uhrzeit gilt?</summary>
       <p>Alle Zeiten (Deadline, Anstoß, Aktualisierung) sind <b>österreichische Zeit</b> – egal, wo ihr gerade seid.</p></details>
     <details><summary>Was bedeutet „live“?</summary>
-      <p>Läuft eine Gameweek, steht oben <b>LIVE</b> (am Handy in der grünen Zeile unter den Reitern) und die Tabelle zeigt die aktuellen Rundenpunkte in Rot. <b>Blinken</b> die Punkte, wird gerade wirklich gespielt. Die Werte sind vorläufig, bis FPL die Runde abschließt. Zwischen den Runden zeigt die Spalte die Punkte der letzten Gameweek. Wie bei FPL stehen dort die Punkte <b>vor Abzug der Hits</b>, darunter klein in Rot der Abzug (z. B. 58 / −4); in den Gesamtpunkten ist er schon abgezogen.</p></details>
+      <p>Läuft eine Gameweek, steht oben <b>LIVE</b> (am Handy in der grünen Zeile unter den Reitern) und die Tabelle zeigt die aktuellen Rundenpunkte in Rot. <b>Blinken</b> die Punkte, hat der Manager gerade Spieler auf dem Platz. <b>⏳3</b> unter den Punkten heißt: 3 Spieler der Startelf haben noch nicht gespielt. Die Werte sind vorläufig, bis FPL die Runde abschließt. Zwischen den Runden zeigt die Spalte die Punkte der letzten Gameweek. Wie bei FPL stehen dort die Punkte <b>vor Abzug der Hits</b>, darunter klein in Rot der Abzug (z. B. 58 / −4); in den Gesamtpunkten ist er schon abgezogen.</p></details>
     <details><summary>Wie funktioniert der Spielkalender?</summary>
       <p>Unter der Vorschau: mit ‹ › oder durch Wischen durch alle Spieltage der Saison blättern. Laufende Spiele haben einen <b>roten, blinkenden Rahmen</b>. Unter jedem gestarteten Spiel stehen Tore ⚽, Assists 🅰️, Eigentore 🙈, Karten 🟨🟥, gehaltene 🧤 und verschossene ❌ Elfer sowie die <b>Bonuspunkte ⭐</b> – während des Spiels vorläufig aus dem BPS berechnet (wie bei FPL: 3-2-1, bei Gleichstand bekommen alle gleich viel), danach die offiziellen.</p></details>
     <details><summary>Wie lege ich die Seite als App aufs Handy?</summary>
