@@ -307,8 +307,8 @@ function renderCaptains(d, ms, liveGW) {
 }
 
 function renderNext(n) {
-  if (!n) { $('next-title').remove(); $('next').remove(); return; }
-  $('next-title').textContent = `Vorschau Gameweek ${n.gw}`;
+  if (!n) { $('next-title')?.remove(); return; } // #next bleibt für den Spielkalender
+  if ($('next-title')) $('next-title').textContent = `Vorschau Gameweek ${n.gw}`;
   const tz = { timeZone: 'Europe/Vienna' };
   const dl = new Date(n.deadline);
   const days = Math.ceil((dl - Date.now()) / 864e5);

@@ -4,7 +4,9 @@
 function renderPreview(d, hist, comp) {
   const box = $('preview-report');
   const n = d.next;
-  if (!box || !n) { if (box) box.remove(); return; }
+  // Vorschau nur zwischen den Runden: sobald die Deadline der nächsten GW vorbei ist (Runde läuft), ausblenden –
+  // sie erscheint wieder, wenn diese Runde abgeschlossen ist (dann für die folgende GW)
+  if (!box || !n || new Date(n.deadline) <= Date.now()) { if (box) box.remove(); $('next-title')?.remove(); return; }
   const GW = n.gw, last = d.lastGW;
   // Stand VOR der Runde (nach der letzten abgeschlossenen GW) – nicht der Live-Stand der laufenden GW
   const totAt = m => m.gws.find(g => g.gw === d.lastGW)?.total ?? m.total;
