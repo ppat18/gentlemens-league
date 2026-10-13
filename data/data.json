@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T09:17:46.383Z",
+ "updated": "2026-10-13T12:31:21.681Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -236,7 +236,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 2,
-   "total": 439,
+   "total": 442,
    "chips": [
     {
      "name": "3xc",
@@ -483,10 +483,10 @@
     },
     {
      "gw": 6,
-     "points": 62,
-     "gross": 62,
-     "total": 439,
-     "bench": 10,
+     "points": 65,
+     "gross": 65,
+     "total": 442,
+     "bench": 7,
      "transfers": 0,
      "hits": 0,
      "value": 101.2,
@@ -497,17 +497,17 @@
      "captainBase": 6,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 10,
+     "benchPlayersPts": 7,
      "red": 0,
-     "yellow": 2,
+     "yellow": 3,
      "goals": 4,
      "assists": 3,
      "ownGoals": 0,
      "penMiss": 0,
      "bonus": 5,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 3,
      "best": {
       "name": "João Pedro",
       "pts": 12
@@ -1234,9 +1234,14 @@
      "gw": 6,
      "finished": true,
      "chip": null,
-     "points": 62,
+     "points": 65,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       112,
+       368
+      ]
+     ],
      "picks": [
       [
        109,
@@ -1271,8 +1276,16 @@
        90
       ],
       [
-       154,
+       112,
        5,
+       1,
+       0,
+       3,
+       90
+      ],
+      [
+       154,
+       6,
        1,
        2,
        8,
@@ -1280,7 +1293,7 @@
       ],
       [
        68,
-       6,
+       7,
        1,
        0,
        1,
@@ -1288,7 +1301,7 @@
       ],
       [
        124,
-       7,
+       8,
        1,
        0,
        6,
@@ -1296,19 +1309,11 @@
       ],
       [
        15,
-       8,
+       9,
        1,
        0,
        1,
        89
-      ],
-      [
-       368,
-       9,
-       1,
-       0,
-       0,
-       0
       ],
       [
        411,
@@ -1335,12 +1340,12 @@
        90
       ],
       [
-       112,
+       368,
        13,
        0,
        0,
-       3,
-       90
+       0,
+       0
       ],
       [
        423,
@@ -2475,7 +2480,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 3,
    "lastRank": 3,
-   "total": 402,
+   "total": 404,
    "chips": [],
    "gws": [
     {
@@ -2712,10 +2717,10 @@
     },
     {
      "gw": 6,
-     "points": 75,
-     "gross": 75,
-     "total": 402,
-     "bench": 12,
+     "points": 77,
+     "gross": 77,
+     "total": 404,
+     "bench": 10,
      "transfers": 1,
      "hits": 0,
      "value": 100.7,
@@ -2726,7 +2731,7 @@
      "captainBase": 1,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 12,
+     "benchPlayersPts": 10,
      "red": 0,
      "yellow": 2,
      "goals": 7,
@@ -2735,8 +2740,8 @@
      "penMiss": 0,
      "bonus": 8,
      "cleanSheets": 2,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 2,
      "best": {
       "name": "De Cuyper",
       "pts": 15
@@ -3442,9 +3447,14 @@
      "gw": 6,
      "finished": true,
      "chip": null,
-     "points": 75,
+     "points": 77,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       346,
+       368
+      ]
+     ],
      "picks": [
       [
        109,
@@ -3487,16 +3497,8 @@
        90
       ],
       [
-       368,
-       6,
-       1,
-       0,
-       0,
-       0
-      ],
-      [
        124,
-       7,
+       6,
        1,
        0,
        6,
@@ -3504,7 +3506,7 @@
       ],
       [
        40,
-       8,
+       7,
        1,
        0,
        9,
@@ -3512,11 +3514,19 @@
       ],
       [
        286,
-       9,
+       8,
        1,
        0,
        6,
        26
+      ],
+      [
+       346,
+       9,
+       1,
+       0,
+       2,
+       90
       ],
       [
        411,
@@ -3543,12 +3553,12 @@
        90
       ],
       [
-       346,
+       368,
        13,
        0,
        0,
-       2,
-       90
+       0,
+       0
       ],
       [
        87,
@@ -3576,7 +3586,7 @@
    "avatar": "roli",
    "name": "Roland Kumpitsch",
    "team": "District 14 Graz",
-   "rank": 3,
+   "rank": 4,
    "lastRank": 4,
    "total": 402,
    "chips": [
