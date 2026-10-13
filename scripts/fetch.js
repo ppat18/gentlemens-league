@@ -201,8 +201,17 @@ async function get(url) {
     if (squadGW && !squads.some(s => s.gw === squadGW)) {
       squads.push(buildSquad(await get(`/entry/${e.entry}/event/${squadGW}/picks/`), squadGW));
     }
+    // Aktueller Teamwert wie auf der FPL-Seite: heutige Marktwerte des letzten Kaders + Bank
+    // (FPL-History liefert nur den Wert zur letzten Deadline; Preise ändern sich danach täglich)
+    let valueNow = null, bankNow = null;
+    const lastSq = squads[squads.length - 1];
+    const lastH = hist.current.find(h => h.event === lastSq?.gw);
+    if (lastSq && lastH) {
+      bankNow = lastH.bank / 10;
+      valueNow = Math.round(lastSq.picks.reduce((s, p) => s + (elements[p[0]]?.now_cost || 0), 0) + lastH.bank) / 10;
+    }
     managers.push({
-      id: e.entry, nick: meta.nick, avatar: meta.avatar,
+      id: e.entry, nick: meta.nick, avatar: meta.avatar, valueNow, bankNow,
       name: e.player_name, team: e.entry_name,
       rank: e.rank, lastRank: e.last_rank, total: e.total,
       chips: hist.chips, gws,

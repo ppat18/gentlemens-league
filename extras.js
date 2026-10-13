@@ -242,11 +242,13 @@ function renderChips(ms) {
 }
 
 // --- Teamwert-Ranking ---
-// FPL-Wert "value" enthält die Bank bereits (Start = 100,0 für alle)
+// FPL-Wert "value" enthält die Bank bereits (Start = 100,0 für alle). Bevorzugt der aktuelle Wert (heutige Preise,
+// wie auf der FPL-Seite), sonst der Wert zur letzten Deadline
 function renderValue(ms, GW) {
   const rows = ms.map(m => {
     const g = m.gws.find(x => x.gw === GW) || m.gws[m.gws.length - 1];
-    return { m, total: g.value, bank: g.bank, gain: Math.round((g.value - 100) * 10) / 10 };
+    const total = m.valueNow ?? g.value, bank = m.bankNow ?? g.bank;
+    return { m, total, bank, gain: Math.round((total - 100) * 10) / 10 };
   }).sort((a, b) => b.total - a.total || a.bank - b.bank);
   const max = Math.max(1, Math.ceil(Math.max(...rows.map(r => Math.abs(r.gain))) * 1.1));
   const mio = v => '£' + v.toLocaleString('de-AT', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' Mio';
