@@ -84,7 +84,9 @@ function render(d) {
   const liveOf = m => { const s = (m.squads || [])[(m.squads || []).length - 1]; return s && !s.finished && s.points != null ? s : null; };
   const liveS = ms.map(liveOf).find(Boolean);
   const liveGW = liveS ? liveS.gw : null;
-  $('gw').innerHTML = liveGW ? `<span class="hide-m">Gameweek</span><span class="show-m">GW</span> ${liveGW} <span class="live-tag">LIVE</span>` : `Gameweek ${GW}`;
+  // Alle Spiele der GW vorbei, FPL hat die Runde aber noch nicht abgeschlossen → kein LIVE mehr, „Endstand folgt“
+  const gwOver = !!liveGW && d.current?.gw === liveGW && d.current.fixtures.length > 0 && d.current.fixtures.every(f => f.done);
+  $('gw').innerHTML = liveGW ? (gwOver ? `<span class="hide-m">Gameweek</span><span class="show-m">GW</span> ${liveGW} · Endstand folgt` : `<span class="hide-m">Gameweek</span><span class="show-m">GW</span> ${liveGW} <span class="live-tag">LIVE</span>`) : `Gameweek ${GW}`;
   $('gw').classList.toggle('is-live', !!liveGW);
   // Laufen gerade wirklich Spiele? (Anstoß bis 2 h danach, noch nicht beendet) → GW-Punkte blinken rot
   const gamesLive = () => {
@@ -99,7 +101,7 @@ function render(d) {
   $('gw-col').textContent = `GW ${liveGW || GW}`;
   $('gw-col').classList.toggle('live', !!liveGW);
   $('gw-title').textContent = `Gameweek ${GW} – Auszeichnungen`;
-  $('updated').innerHTML = (liveGW ? `<span class="show-m"><span class="live-tag">LIVE</span> GW ${liveGW} läuft · </span>` : '') + `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
+  $('updated').innerHTML = (liveGW ? (gwOver ? `<span class="show-m">GW ${liveGW} beendet – offizieller Endstand von FPL folgt · </span>` : `<span class="show-m"><span class="live-tag">LIVE</span> GW ${liveGW} läuft · </span>`) : '') + `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
 
   // --- Hero ---
   $('hero').innerHTML = `
@@ -228,7 +230,7 @@ function render(d) {
   renderSeasonAwards(ms, GW);
 
   // --- Nächste Gameweek ---
-  renderCaptains(d, ms, liveGW);
+  renderCaptains(d, ms, gwOver ? null : liveGW);
   renderNext(d.next);
 
   // --- Saison-Statistik ---

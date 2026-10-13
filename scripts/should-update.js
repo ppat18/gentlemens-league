@@ -25,6 +25,13 @@ const AFTER_GW_MIN = 3 * 60; // Nachlauf nach dem letzten Spiel der Gameweek (Pa
       if (live) { update = true; reason = `Spiel läuft (Anstoß ${live.kickoff_time})`; }
       else if (allPlayed && now <= lastKo + (MATCH_MIN + AFTER_GW_MIN) * 60000) {
         update = true; reason = `GW ${cur.id} vorbei – Nachlauf bis 3 h nach dem letzten Spiel`;
+      } else if (allPlayed) {
+        // Alle Spiele vorbei, aber FPL schließt die Runde oft erst Stunden später ab (Bonus/Auto-Wechsel bestätigt).
+        // Sobald FPL abgeschlossen hat und unsere Seite das noch nicht weiß → sofort holen; bis dahin 1× pro Stunde.
+        let ourLast = null;
+        try { ourLast = (await (await fetch(`https://ppat18.github.io/gentlemens-league/data/data.json?x=${now}`)).json()).lastGW; } catch (e) { /* egal */ }
+        if (cur.finished && cur.data_checked && ourLast != null && ourLast < cur.id) { update = true; reason = `FPL hat GW ${cur.id} abgeschlossen – Endstand holen`; }
+        else if (!cur.data_checked && new Date(now).getUTCMinutes() < 10) { update = true; reason = `GW ${cur.id} vorbei, FPL-Abschluss steht aus – stündlicher Abgleich`; }
       }
     }
   } catch (e) {
