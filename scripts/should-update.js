@@ -28,9 +28,10 @@ const AFTER_GW_MIN = 3 * 60; // Nachlauf nach dem letzten Spiel der Gameweek (Pa
       } else if (allPlayed) {
         // Alle Spiele vorbei, aber FPL schließt die Runde oft erst Stunden später ab (Bonus/Auto-Wechsel bestätigt).
         // Sobald FPL abgeschlossen hat und unsere Seite das noch nicht weiß → sofort holen; bis dahin 1× pro Stunde.
-        let ourLast = null;
-        try { ourLast = (await (await fetch(`https://ppat18.github.io/gentlemens-league/data/data.json?x=${now}`)).json()).lastGW; } catch (e) { /* egal */ }
-        if (cur.finished && cur.data_checked && ourLast != null && ourLast < cur.id) { update = true; reason = `FPL hat GW ${cur.id} abgeschlossen – Endstand holen`; }
+        let ours = null;
+        try { ours = await (await fetch(`https://ppat18.github.io/gentlemens-league/data/data.json?x=${now}`)).json(); } catch (e) { /* egal */ }
+        // unsere Seite kennt die GW noch nicht oder nur vorläufig → nach dem FPL-Abschluss einmal den Endstand holen
+        if (cur.finished && cur.data_checked && ours && (ours.lastGW < cur.id || ours.provisionalGW === cur.id)) { update = true; reason = `FPL hat GW ${cur.id} abgeschlossen – Endstand holen`; }
         else if (!cur.data_checked && new Date(now).getUTCMinutes() < 10) { update = true; reason = `GW ${cur.id} vorbei, FPL-Abschluss steht aus – stündlicher Abgleich`; }
       }
     }

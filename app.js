@@ -101,7 +101,7 @@ function render(d) {
   $('gw-col').textContent = `GW ${liveGW || GW}`;
   $('gw-col').classList.toggle('live', !!liveGW);
   $('gw-title').textContent = `Gameweek ${GW} – Auszeichnungen`;
-  $('updated').innerHTML = (liveGW ? (gwOver ? `<span class="show-m">GW ${liveGW} beendet – offizieller Endstand von FPL folgt · </span>` : `<span class="show-m"><span class="live-tag">LIVE</span> GW ${liveGW} läuft · </span>`) : '') + `Stand nach Gameweek ${GW} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
+  $('updated').innerHTML = (liveGW ? (gwOver ? `<span class="show-m">GW ${liveGW} beendet – offizieller Endstand von FPL folgt · </span>` : `<span class="show-m"><span class="live-tag">LIVE</span> GW ${liveGW} läuft · </span>`) : '') + `Stand nach Gameweek ${GW}${d.provisionalGW === GW ? ' (vorläufig – FPL bestätigt noch)' : ''} · aktualisiert ${new Date(d.updated).toLocaleString('de-AT', { timeZone: 'Europe/Vienna', dateStyle: 'medium', timeStyle: 'short' })} Uhr (österr. Zeit)`;
 
   // --- Hero ---
   $('hero').innerHTML = `
@@ -110,7 +110,7 @@ function render(d) {
       <img class="av" src="${av(first)}" alt="${esc(first.nick)}">
       <span class="tag">Gott der Liga</span>
       <div class="name">${esc(first.nick)}</div>
-      <div class="pts">${esc(first.team)} · ${first.total} Punkte · +${first.total - ms[1].total} Vorsprung</div>
+      <div class="pts">${esc(first.team)} · ${first.total} Punkte · ${first.total === ms[1].total ? `punktgleich mit ${esc(ms[1].nick)}` : `+${first.total - ms[1].total} Vorsprung`}</div>
     </div>
     <div class="hcard lantern stinker">
       <div class="lamp">💩</div><br>

@@ -82,7 +82,8 @@ function renderReport(ms, GW) {
     `${b(L.m.nick)} kratzt ${L.v} magere Punkte zusammen – ${avg - L.v} unter dem Schnitt. Das Team ist anscheinend schon beim Aufwärmen eingeschlafen.`,
     `${L.v} Punkte für ${b(L.m.nick)}. Andere nennen das eine Katastrophe, ${esc(L.m.nick)} nennt es „Aufbauphase“.`,
   ]);
-  const top = pick([
+  // Punktgleich an der Spitze → eigener Text (nie „0 Punkte Vorsprung“)
+  const top = F.total === ms[1].total ? `${b(F.nick)} und ${b(ms[1].nick)} teilen sich <b>punktgleich</b> die Spitze – zwei Könige, ein Thron. Das geht nicht lange gut.` : pick([
     `An der Spitze thront ${b(F.nick)} mit ${F.total - ms[1].total} Punkten Vorsprung und blickt auf den Rest herab wie ein Gentleman auf verschütteten Tee.`,
     `${b(F.nick)} führt die Tabelle an. Der Rest der Liga hat offiziell den Kampf um Platz 2 eröffnet.`,
   ]);
@@ -114,7 +115,7 @@ function renderReport(ms, GW) {
   if (fall?.v >= 2) extras.push(`${b(fall.m.nick)} rutscht ${fall.v} Plätze ab. Der Fahrstuhl kennt nur eine Richtung.`);
 
   $('report').innerHTML = `
-    <div class="kicker">📰 Spieltags-Bericht · Gameweek ${GW}</div>
+    <div class="kicker">📰 Spieltags-Bericht · Gameweek ${GW}${window.LEAGUE?.provisionalGW === GW ? ' · vorläufig' : ''}</div>
     <h3>${esc(head)}</h3>
     <p>${win} ${lose}</p>
     <p style="margin-top:8px">${top} ${bottom} ${shuffle(extras).slice(0, 3).join(' ')}</p>

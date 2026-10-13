@@ -34,10 +34,23 @@ async function get(url) {
   const boot = await get('/bootstrap-static/');
   const players = Object.fromEntries(boot.elements.map(e => [e.id, e.web_name]));
   const finished = boot.events.filter(e => e.finished && e.data_checked).map(e => e.id);
-  const lastGW = Math.max(0, ...finished);
 
   const league = await get(`/leagues-classic/${LEAGUE_ID}/standings/`);
   const entries = league.standings.results;
+
+  // Laufende GW vorläufig als abgeschlossen werten, sobald alle Spiele vorbei sind und FPL die Rundenpunkte
+  // veröffentlicht hat (FPL schließt offiziell oft erst Stunden/einen Tag später ab) → Bericht, Awards usw. kommen sofort.
+  let provisionalGW = null;
+  const curEv0 = boot.events.find(e => e.is_current);
+  if (curEv0 && !finished.includes(curEv0.id) && curEv0.average_entry_score > 0 && entries.length) {
+    const fx0 = await get(`/fixtures/?event=${curEv0.id}`);
+    const probe = (await get(`/entry/${entries[0].entry}/history/`)).current.find(h => h.event === curEv0.id);
+    if (fx0.length && fx0.every(f => f.finished || f.finished_provisional) && probe?.points > 0) {
+      finished.push(curEv0.id);
+      provisionalGW = curEv0.id;
+    }
+  }
+  const lastGW = Math.max(0, ...finished);
 
   // Live-Daten je Spieltag (Punkte & Karten jedes PL-Spielers)
   const live = {};
@@ -262,6 +275,7 @@ async function get(url) {
     updated: new Date().toISOString(),
     league: { id: LEAGUE_ID, name: league.league.name },
     lastGW,
+    provisionalGW,
     next,
     current,
     managers,
