@@ -91,8 +91,10 @@
       FRM: m.gws.filter(g => g.gw > last - 3).reduce((a, g) => a + g.points, 0),
       BNK: -sum(m, 'bench'),
       DIS: -(sum(m, 'red') * 3 + sum(m, 'yellow') + sum(m, 'ownGoals') * 2),
-      GLU: sum(m, 'autoSubPts') + sum(m, 'bonus') / 2 - sum(m, 'bench') / 2 - (sum(m, 'red') * 3 + sum(m, 'yellow') + sum(m, 'ownGoals') * 2 + sum(m, 'penMiss') * 2) + sum(m, 'lateGain') - sum(m, 'lateLoss'),
+      GLU: 0,
     }));
+    // GLÜ = dieselbe Formel wie das Glück-o-Meter (extras.js luckParts)
+    if (typeof luckParts === 'function') { const lp = luckParts(ms); raw.forEach((r, i) => r.GLU = lp[i].raw); }
     const keys = ['TRA', 'KAP', 'FRM', 'BNK', 'DIS', 'GLU'];
     const out = {};
     raw.forEach(r => out[r.m.avatar] = {});
