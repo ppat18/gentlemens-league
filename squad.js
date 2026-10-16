@@ -20,7 +20,7 @@
   .sq-nav button:disabled{opacity:.25;cursor:default}
   .sq-place{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:7px 10px;background:#f3f5f9;font-size:13px;font-weight:600;color:#444}
   .sq-lazy{text-align:center;font-size:12px;font-weight:600;padding:5px 10px;background:#f3f5f9;border-top:1px solid #e6e8ee}
-  .sq-lazy.bad{color:var(--red)}.sq-lazy.good{color:#1e7a2f}
+  .sq-lazy.bad{color:var(--red)}.sq-lazy.good{color:#1e7a2f}.sq-lazy.none{color:#777;font-weight:500}
   .sq-tag{font:700 13px Oswald;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:999px}
   .sq-tag.win{background:var(--gold);color:var(--ink)}
   .sq-tag.last{background:var(--red);color:#fff}
@@ -145,7 +145,7 @@
       const d = gwData.lazyPts - gwData.points;
       placeHtml += `<div class="sq-lazy ${d > 0 ? 'bad' : 'good'}">🛋️ Ohne Transfers: ${gwData.lazyPts} Punkte · ${
         d > 0 ? `−${d} durch Transfers` : d < 0 ? `+${-d} durch Transfers` : 'Transfers ohne Auswirkung'}</div>`;
-    }
+    } else if (gwData && s.gw > 1) placeHtml += '<div class="sq-lazy none">🛋️ Keine Transfers in dieser Runde</div>';
 
     ov.innerHTML = `<div class="sq-panel" role="dialog" aria-label="Kader von ${esc(m.nick)}">
       <div class="sq-head">
