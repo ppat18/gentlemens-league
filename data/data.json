@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-16T22:06:31.680Z",
+ "updated": "2026-10-16T23:40:53.127Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -232,7 +232,7 @@
    "id": 5944301,
    "nick": "Patrick",
    "avatar": "patrick",
-   "valueNow": 101.4,
+   "valueNow": 101.5,
    "bankNow": 0,
    "name": "Patrick Pilko",
    "team": "Eat The Poor FC",
@@ -332,7 +332,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 113,
+     "lazyPts": 114,
      "transfersIn": [
       {
        "in": "Tavernier",
@@ -381,7 +381,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 52,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 1
     },
@@ -425,7 +425,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 86,
+     "lazyPts": 81,
      "transfersIn": [
       {
        "in": "Lacroix",
@@ -482,7 +482,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 41,
+     "lazyPts": 45,
      "transfersIn": [
       {
        "in": "Van Hecke",
@@ -531,7 +531,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 47,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 1
     }
@@ -1385,7 +1385,7 @@
    "id": 4797326,
    "nick": "Kai",
    "avatar": "kai",
-   "valueNow": 101.8,
+   "valueNow": 101.9,
    "bankNow": 0.1,
    "name": "Kai Reinisch",
    "team": "Globo Gym United",
@@ -1484,7 +1484,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 118,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 2
     },
@@ -1526,7 +1526,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 52,
+     "lazyPts": 68,
      "transfersIn": [
       {
        "in": "Schade",
@@ -1577,7 +1577,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 93,
+     "lazyPts": 89,
      "transfersIn": [
       {
        "in": "Konsa",
@@ -1626,7 +1626,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 53,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 1
     },
@@ -1670,7 +1670,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 50,
+     "lazyPts": 42,
      "transfersIn": [
       {
        "in": "Gonzalo",
@@ -2504,7 +2504,7 @@
    "id": 3730212,
    "nick": "Thomas",
    "avatar": "thomas",
-   "valueNow": 101.3,
+   "valueNow": 101.4,
    "bankNow": 1.1,
    "name": "Thomas Pirker",
    "team": "1. FC Wadenkrampf",
@@ -2595,7 +2595,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 100,
+     "lazyPts": 89,
      "transfersIn": [
       {
        "in": "Lewis-Potter",
@@ -2744,7 +2744,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 55,
+     "lazyPts": 52,
      "transfersIn": [
       {
        "in": "Belloumi",
@@ -2795,7 +2795,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 69,
+     "lazyPts": 76,
      "transfersIn": [
       {
        "in": "Rogers",
@@ -3723,7 +3723,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 108,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 4
     },
@@ -3765,7 +3765,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 41,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 3
     },
@@ -3807,7 +3807,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 66,
+     "lazyPts": 58,
      "transfersIn": [
       {
        "in": "Gibbs-White",
@@ -3868,7 +3868,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 33,
+     "lazyPts": 35,
      "transfersIn": [
       {
        "in": "Gvardiol",
@@ -3919,7 +3919,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 58,
+     "lazyPts": 75,
      "transfersIn": [
       {
        "in": "Barnes",
@@ -4925,7 +4925,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 50,
+     "lazyPts": 65,
      "transfersIn": [
       {
        "in": "Gvardiol",
@@ -4974,7 +4974,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 78,
+     "lazyPts": 86,
      "transfersIn": [
       {
        "in": "White",
@@ -5023,7 +5023,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 36,
+     "lazyPts": 29,
      "transfersIn": [
       {
        "in": "Calvert-Lewin",
@@ -5978,7 +5978,7 @@
    "id": 434292,
    "nick": "Christian",
    "avatar": "christian",
-   "valueNow": 101.8,
+   "valueNow": 101.9,
    "bankNow": 0.8,
    "name": "Christian Lorenz",
    "team": "CL1",
@@ -6075,7 +6075,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 67,
+     "lazyPts": 54,
      "transfersIn": [
       {
        "in": "Slater",
@@ -6358,7 +6358,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 35,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 9
     },
@@ -6403,7 +6403,7 @@
      "lateAgainst": 2,
      "knocks": [],
      "injured": null,
-     "lazyPts": 75,
+     "lazyPts": 73,
      "transfersIn": [
       {
        "in": "Barnes",
@@ -6452,7 +6452,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 50,
+     "lazyPts": 62,
      "transfersIn": [
       {
        "in": "Mykolenko",
@@ -6509,7 +6509,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 59,
+     "lazyPts": 67,
      "transfersIn": [
       {
        "in": "Kostoulas",
@@ -7432,7 +7432,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 88,
+     "lazyPts": 95,
      "transfersIn": [
       {
        "in": "Gakpo",
@@ -7481,7 +7481,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 66,
+     "lazyPts": 60,
      "transfersIn": [
       {
        "in": "Shaw",
@@ -7592,7 +7592,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 55,
+     "lazyPts": 58,
      "transfersIn": [
       {
        "in": "Buendía",
@@ -7695,7 +7695,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 43,
+     "lazyPts": 40,
      "transfersIn": [
       {
        "in": "Barry",
@@ -7747,7 +7747,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 60,
+     "lazyPts": 52,
      "transfersIn": [
       {
        "in": "Rogers",
@@ -8699,7 +8699,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 86,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 3
     },
@@ -8741,7 +8741,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 37,
+     "lazyPts": 42,
      "transfersIn": [
       {
        "in": "Dedić",
@@ -8790,7 +8790,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 60,
+     "lazyPts": 56,
      "transfersIn": [
       {
        "in": "Konsa",
@@ -8839,7 +8839,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 32,
+     "lazyPts": 55,
      "transfersIn": [
       {
        "in": "Delap",
@@ -8890,7 +8890,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 51,
+     "lazyPts": 60,
      "transfersIn": [
       {
        "in": "Marmoush",
@@ -9852,7 +9852,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 73,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 8
     },
@@ -9894,7 +9894,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 64,
+     "lazyPts": 68,
      "transfersIn": [
       {
        "in": "Wissa",
@@ -10055,7 +10055,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 43,
+     "lazyPts": 52,
      "transfersIn": [
       {
        "in": "Schade",
@@ -10892,7 +10892,7 @@
    "id": 2889833,
    "nick": "Andi",
    "avatar": "andi",
-   "valueNow": 102.2,
+   "valueNow": 102.4,
    "bankNow": 3.3,
    "name": "Andreas Hauth",
    "team": "Volle Attacke ihr �",
@@ -10989,7 +10989,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 62,
+     "lazyPts": 59,
      "transfersIn": [
       {
        "in": "De Cuyper",
@@ -11044,7 +11044,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 55,
+     "lazyPts": 72,
      "transfersIn": [
       {
        "in": "Igor Jesus",
@@ -11225,7 +11225,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 69,
+     "lazyPts": 72,
      "transfersIn": [
       {
        "in": "Akpom",
@@ -11280,7 +11280,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
-     "lazyPts": 39,
+     "lazyPts": null,
      "transfersIn": [],
      "leagueRank": 10
     },
@@ -11324,7 +11324,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": null,
-     "lazyPts": 62,
+     "lazyPts": 77,
      "transfersIn": [
       {
        "in": "Kostoulas",
