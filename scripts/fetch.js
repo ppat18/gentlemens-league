@@ -34,6 +34,16 @@ async function get(url) {
   const boot = await get('/bootstrap-static/');
   const players = Object.fromEntries(boot.elements.map(e => [e.id, e.web_name]));
   const finished = boot.events.filter(e => e.finished && e.data_checked).map(e => e.id);
+  // Verletztenliste für das Glück-o-Meter: wer vor der nächsten Deadline verletzt (oder ≤25 % Einsatzchance) gemeldet ist.
+  // Wird bis zur Deadline bei jedem Lauf überschrieben – danach bleibt der letzte Stand. FPL speichert keinen Verlauf.
+  const injFile = path.join(__dirname, '..', 'data', 'injuries.json');
+  const injuries = fs.existsSync(injFile) ? JSON.parse(fs.readFileSync(injFile, 'utf8')) : {};
+  const nextDl = boot.events.find(e => new Date(e.deadline_time) > new Date());
+  if (nextDl) {
+    injuries[nextDl.id] = boot.elements.filter(e => e.status === 'i' || (e.status === 'd' && e.chance_of_playing_next_round != null && e.chance_of_playing_next_round <= 25)).map(e => e.id);
+    fs.mkdirSync(path.dirname(injFile), { recursive: true });
+    fs.writeFileSync(injFile, JSON.stringify(injuries));
+  }
 
   const league = await get(`/leagues-classic/${LEAGUE_ID}/standings/`);
   const entries = league.standings.results;
@@ -162,6 +172,15 @@ async function get(url) {
           }
         }
       }
+      // Verletzungspech: Startelf-Spieler nach höchstens 20 Minuten raus (ohne Rot) – da hilft kein Auto-Wechsel;
+      // dazu Kaderspieler, die zur Deadline verletzt gemeldet waren (erst ab Beginn der Aufzeichnung)
+      const knocks = [];
+      for (const id of xi) {
+        const st = stats[id] || {}, min = st.minutes || 0;
+        if (st.starts && min >= 1 && min <= 20 && !st.red_cards) knocks.push({ name: players[id], min, pts: st.total_points || 0, mult: multOf(id) });
+      }
+      const injSet = new Set(injuries[h.event] || []);
+      const injured = injuries[h.event] ? picks.picks.filter(p => injSet.has(p.element)).map(p => players[p.element]) : null;
       const cap = picks.picks.find(p => p.is_captain);
       const capPts = (stats[cap.element]?.total_points || 0);
       // Punkte der 4 Bankspieler (Positionen 12–15) – für den Bench-Boost-Ertrag
@@ -192,7 +211,7 @@ async function get(url) {
         benchPlayersPts,
         red, yellow, goals, assists, ownGoals, penMiss, bonus, cleanSheets,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
-        lateGain, lateLoss, lateInfo, lateFor, lateAgainst,
+        lateGain, lateLoss, lateInfo, lateFor, lateAgainst, knocks, injured,
         lazyPts, // Punkte ohne jede Änderung zur Vorwoche (null in GW 1)
         transfersIn: tIn,
       });

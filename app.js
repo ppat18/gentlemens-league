@@ -510,6 +510,9 @@ function renderSeasonAwards(ms, GW) {
   add('🛋️ Aktionismus-Opfer', l, `${l[0].v} Punkte verschenkt durch Änderungen – Nichtstun wäre besser gewesen`, 1);
   l = leaders(all, x => sum(x.m, 'red') * 3 + sum(x.m, 'yellow'));
   add('🟥 Treter der Saison', l, `${sum(l[0].m, 'red')}× Rot, ${sum(l[0].m, 'yellow')}× Gelb`, 1);
+  const knocksOf = m => m.gws.reduce((a, g) => a + (g.knocks || []).length, 0), injOf = m => m.gws.reduce((a, g) => a + (g.injured || []).length, 0);
+  l = leaders(all, x => knocksOf(x.m) * 2 + injOf(x.m) / 2);
+  add('🤕 Stammkunde beim Physio', l, [knocksOf(l[0].m) && `${knocksOf(l[0].m)}× Startelf-Spieler früh verletzt raus`, injOf(l[0].m) && `${injOf(l[0].m)} Verletzte zur Deadline`].filter(Boolean).join(', '), 1);
   l = leaders(all, x => sum(x.m, 'goals'));
   add('⚽ Torfabrik', l, `${l[0].v} Tore der Startelf`);
 

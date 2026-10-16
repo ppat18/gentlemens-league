@@ -146,9 +146,16 @@ function luckParts(ms) {
       return { gw: g.gw, v, txt: `GW ${g.gw}: ${g.captain} ${goals}⚽ ${assists}🅰️ → ${v > 0 ? '+' : v < 0 ? '−' : '±'}${Math.abs(v)}` };
     });
     const tcLuck = tc.reduce((a, x) => a + x.v, 0);
+    // Verletzungen: Startelf-Spieler nach ≤20' raus (−2, Kapitän −4) · −½ je Kaderspieler, der zur Deadline verletzt war
+    const knocks = m.gws.flatMap(g => (g.knocks || []).map(k => ({ ...k, gw: g.gw })));
+    const knockLuck = knocks.reduce((a, k) => a + 2 * (k.mult || 1), 0);
+    const injGws = m.gws.filter(g => g.injured && g.injured.length);
+    const injN = injGws.reduce((a, g) => a + g.injured.length, 0), injLuck = injN / 2;
+    const injList = [...knocks.map(k => `GW ${k.gw}: ${k.name} nach ${k.min}' raus (${k.pts} Pkt.)${k.mult > 1 ? ' als Kapitän' : ''} → −${2 * (k.mult || 1)}`),
+      ...injGws.map(g => `GW ${g.gw}: ${g.injured.join(', ')} zur Deadline verletzt → −${(g.injured.length / 2).toLocaleString('de-AT')}`)];
     const bonusLuck = (bonus - bonusExp) / 3, benchLuck = bench / 3, lateLuck = (lateGain - lateLoss) / 2;
-    return { m, auto, bonus, bonusExp, bonusLuck, bench, benchLuck, bad, lateGain, lateLoss, lateLuck, lateList, tc, tcLuck,
-      raw: auto + bonusLuck - benchLuck - bad + lateLuck + tcLuck };
+    return { m, auto, bonus, bonusExp, bonusLuck, bench, benchLuck, bad, lateGain, lateLoss, lateLuck, lateList, tc, tcLuck, knocks, knockLuck, injN, injLuck, injList,
+      raw: auto + bonusLuck - benchLuck - bad + lateLuck + tcLuck - knockLuck - injLuck };
   });
 }
 
@@ -202,10 +209,11 @@ function renderLuck(ms) {
           ⏱️ Last-Minute (halb): ${fmt(r.lateLuck)} <small>(+${r.lateGain} / −${r.lateLoss})</small><br>
           ${r.lateList.length ? `<small style="opacity:.85">${r.lateList.map(esc).join('<br>')}</small><br>` : ''}
           ${r.tc.length ? `🃏 Triple Captain: ${r.tcLuck > 0 ? '+' : r.tcLuck < 0 ? '−' : '±'}${Math.abs(r.tcLuck)}<br><small style="opacity:.85">${r.tc.map(x => esc(x.txt)).join('<br>')}</small><br>` : ''}
+          ${r.injList.length ? `🤕 Verletzungen: −${(r.knockLuck + r.injLuck).toLocaleString('de-AT')}<br><small style="opacity:.85">${r.injList.map(esc).join('<br>')}</small><br>` : ''}
           <b>= ${fmt(r.luck)} gegenüber dem Liga-Schnitt</b></div>
       </div>`;
     }).join('')}
-    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + ⅓ der Bonuspunkte über/unter Erwartung (was bei der eigenen Punktzahl üblich ist) − ⅓ der Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer ± die Hälfte von Last-Minute-Glück (Tore/Vorlagen der Startelf ab der 90. Minute) und Last-Minute-Pech (Zu-null erst ab der 90. Minute verloren) ± Triple Captain (kein Tor &amp; kein Assist −5, ab dem 2. Tor +5 je Tor). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
+    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + ⅓ der Bonuspunkte über/unter Erwartung (was bei der eigenen Punktzahl üblich ist) − ⅓ der Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer ± die Hälfte von Last-Minute-Glück (Tore/Vorlagen der Startelf ab der 90. Minute) und Last-Minute-Pech (Zu-null erst ab der 90. Minute verloren) ± Triple Captain (kein Tor &amp; kein Assist −5, ab dem 2. Tor +5 je Tor) − Verletzungspech (Startelf-Spieler nach höchstens 20 Minuten raus −2, beim Kapitän −4; −½ für jeden Kaderspieler, der zur Deadline verletzt gemeldet war). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
 
   // Antippen (Handy): Details ein-/ausblenden, immer nur eine Zeile offen
   document.querySelectorAll('#luck .lrow').forEach(row => row.addEventListener('click', () => {
