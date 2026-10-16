@@ -117,7 +117,6 @@ async function get(url) {
     const transfers = await get(`/entry/${e.entry}/transfers/`);
     const gws = [];
     const squads = [];
-    let prevPicks = null; // Kader der Vorwoche (für "Hättest du nichts getan")
     for (const h of hist.current.filter(h => finished.includes(h.event))) {
       const picks = await get(`/entry/${e.entry}/event/${h.event}/picks/`);
       squads.push(buildSquad(picks, h.event));
@@ -139,14 +138,18 @@ async function get(url) {
       }
       // Glücksfaktor: Punkte durch automatische Einwechslungen
       const autoSubPts = picks.automatic_subs.reduce((a, x) => a + (stats[x.element_in]?.total_points || 0), 0);
-      // "Hättest du nichts getan": Startelf + Kapitän der Vorwoche, ohne Transfers/Chips, mit den Punkten dieser Runde
+      // "Ohne Transfers": Aufstellung und Kapitän dieser Runde, aber jeder in dieser Runde gekaufte Spieler gegen den
+      // verkauften zurückgetauscht (Ketten A→B→C zählen als A→C), keine Minuspunkte. Nur Transfers zählen – nicht
+      // Aufstellung, Kapitän oder Bank. null = keine Transfers in dieser Runde.
       let lazyPts = null;
-      if (prevPicks) {
-        lazyPts = prevPicks.picks.filter(p => p.position <= 11)
-          .reduce((a, p) => a + (stats[p.element]?.total_points || 0) * (p.is_captain ? 2 : 1), 0);
+      const trs = transfers.filter(t => t.event === h.event).reverse();   // FPL liefert den neuesten Transfer zuerst
+      if (trs.length) {
+        const orig = new Map();   // gekaufter Spieler → ursprünglich dafür verkaufter
+        for (const t of trs) { const o = orig.has(t.element_out) ? orig.get(t.element_out) : t.element_out; orig.delete(t.element_out); orig.set(t.element_in, o); }
+        const counted = id => { const p = picks.picks.find(x => x.element === id); return !p ? 0 : (picks.active_chip === 'bboost' || xi.has(id)) ? Math.max(1, p.multiplier) : 0; };
+        lazyPts = h.points;
+        for (const [inn, out] of orig) lazyPts += ((stats[out]?.total_points || 0) - (stats[inn]?.total_points || 0)) * counted(inn);
       }
-      // Free Hit gilt nur eine Runde – danach zählt wieder der Kader davor
-      if (picks.active_chip !== 'freehit') prevPicks = picks;
       // Last-Minute: Tore/Vorlagen eigener Startelf-Spieler ab 90' (+) und spät verlorenes Zu-null (−)
       const multOf = id => Math.max(1, picks.picks.find(p => p.element === id)?.multiplier || 1);
       let lateGain = 0, lateLoss = 0, lateFor = 0, lateAgainst = 0; const lateInfo = [];
@@ -212,7 +215,7 @@ async function get(url) {
         red, yellow, goals, assists, ownGoals, penMiss, bonus, cleanSheets,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
         lateGain, lateLoss, lateInfo, lateFor, lateAgainst, knocks, injured,
-        lazyPts, // Punkte ohne jede Änderung zur Vorwoche (null in GW 1)
+        lazyPts, // Punkte ohne die Transfers dieser Runde (null = keine Transfers)
         transfersIn: tIn,
       });
     }

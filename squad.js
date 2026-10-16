@@ -139,12 +139,12 @@
         : net === Math.min(...all) ? '<span class="sq-tag last">💩 Stinker der Woche</span>' : '';
       placeHtml = `<div class="sq-place">${tag}<span>Rundenplatz ${place} von ${all.length}${s.finished ? '' : ' (vorläufig)'}</span></div>`;
     }
-    // "Hättest du nichts getan": Vorwochen-Elf mit den Punkten dieser Runde
+    // "Ohne Transfers": diese Elf, aber gekaufte Spieler gegen die verkauften getauscht (berechnet in fetch.js)
     const gwData = m.gws.find(g => g.gw === s.gw);
     if (gwData && gwData.lazyPts != null) {
       const d = gwData.lazyPts - gwData.points;
-      placeHtml += `<div class="sq-lazy ${d > 0 ? 'bad' : 'good'}">🛋️ Ohne Änderungen: ${gwData.lazyPts} Punkte · ${
-        d > 0 ? `−${d} durch Aktionismus` : d < 0 ? `+${-d} durch kluge Wechsel` : 'genau gleich'}</div>`;
+      placeHtml += `<div class="sq-lazy ${d > 0 ? 'bad' : 'good'}">🛋️ Ohne Transfers: ${gwData.lazyPts} Punkte · ${
+        d > 0 ? `−${d} durch Transfers` : d < 0 ? `+${-d} durch Transfers` : 'Transfers ohne Auswirkung'}</div>`;
     }
 
     ov.innerHTML = `<div class="sq-panel" role="dialog" aria-label="Kader von ${esc(m.nick)}">

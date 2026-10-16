@@ -156,7 +156,7 @@ function render(d) {
   if (hits[0]?.v > 0) add('🔪 Hit-König', hits, `−${hits[0].v} Punkte für Zusatztransfers`, 1);
   // Hätte er nur nichts getan: Vorwochen-Elf hätte mehr geholt
   const lazy = leaders(cur, x => x.g.lazyPts != null ? x.g.lazyPts - x.g.points : null);
-  if (lazy[0]?.v > 0) add('🛋️ Hätte er nur nichts getan', lazy, `Ohne Änderungen ${lazy[0].g.lazyPts} statt ${lazy[0].g.points} Punkte (−${lazy[0].v})`, 1);
+  if (lazy[0]?.v > 0) add('🛋️ Hätte er nur nichts getan', lazy, `Ohne seine Transfers ${lazy[0].g.lazyPts} statt ${lazy[0].g.points} Punkte (−${lazy[0].v})`, 1);
   const climb = leaders(cur, x => prevRank(x.m) ? prevRank(x.m) - x.g.leagueRank : null);
   if (climb[0]?.v > 0) add('🚀 Aufsteiger', climb, `+${climb[0].v} Plätze in der Tabelle`);
   const fall = leaders(cur, x => prevRank(x.m) ? prevRank(x.m) - x.g.leagueRank : null, -1);
@@ -507,7 +507,7 @@ function renderSeasonAwards(ms, GW) {
   l = leaders(all, x => sum(x.m, 'hits'));
   add('🔪 Hit-König', l, `−${l[0].v} Punkte für Zusatztransfers`, 1);
   l = leaders(all, x => x.m.gws.reduce((a, g) => a + (g.lazyPts != null ? g.lazyPts - g.points : 0), 0));
-  add('🛋️ Aktionismus-Opfer', l, `${l[0].v} Punkte verschenkt durch Änderungen – Nichtstun wäre besser gewesen`, 1);
+  add('🛋️ Aktionismus-Opfer', l, `${l[0].v} Punkte verschenkt durch Transfers (inkl. Minuspunkte) – ohne Transfers wäre es besser gewesen`, 1);
   l = leaders(all, x => sum(x.m, 'red') * 3 + sum(x.m, 'yellow'));
   add('🟥 Treter der Saison', l, `${sum(l[0].m, 'red')}× Rot, ${sum(l[0].m, 'yellow')}× Gelb`, 1);
   const knocksOf = m => m.gws.reduce((a, g) => a + (g.knocks || []).length, 0), injOf = m => m.gws.reduce((a, g) => a + (g.injured || []).length, 0);
