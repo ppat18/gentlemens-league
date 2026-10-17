@@ -243,6 +243,17 @@ function renderChips(ms) {
       : c.key === 'bboost'
         ? { gw: g.gw, pts: g.points, label: `Bank ${g.benchPlayersPts ?? '?'} GW ${g.gw}` }
         : { gw: g.gw, pts: g.points, label: `GW ${g.gw}` }) }));
+    // Chip der laufenden Gameweek: gleich mit Live-Punkten zeigen (FPL gibt ihn ab der Deadline preis)
+    const ls = (m.squads || [])[(m.squads || []).length - 1];
+    const lc = ls && !ls.finished && ls.chip && !m.gws.some(g => g.gw === ls.gw) && cells.find(x => x.c.key === ls.chip);
+    if (lc) {
+      const P = (window.LEAGUE && window.LEAGUE.players) || {}, picks = ls.picks || [];
+      const cap = picks.find(p => p[2] === 3) || picks.find(p => p[3] === 1);
+      const bench = picks.filter(p => p[1] >= 12).reduce((a, p) => a + (p[4] || 0), 0);
+      lc.uses.push(ls.chip === '3xc' ? { gw: ls.gw, pts: cap ? (cap[4] || 0) * 3 : 0, label: `${cap ? (P[cap[0]] || ['?'])[0] : '?'} GW ${ls.gw} · live` }
+        : ls.chip === 'bboost' ? { gw: ls.gw, pts: ls.points || 0, label: `Bank ${bench} GW ${ls.gw} · live` }
+        : { gw: ls.gw, pts: ls.points || 0, label: `GW ${ls.gw} · live` });
+    }
     const all = cells.flatMap(x => x.uses);
     return { m, cells, total: all.reduce((a, u) => a + u.pts, 0), used: all.length };
   });
