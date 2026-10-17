@@ -43,6 +43,34 @@
   .pl-own .av{width:34px;height:34px}
   .pl-own .c{background:var(--gold);color:var(--ink);font:700 10px Oswald;padding:1px 6px;border-radius:999px}
   .pl-muted{color:#777;font-size:13px}
+  .sf{padding:14px 16px 12px;background:#fff;border-bottom:1px solid #e6e8ee}
+  .sf-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .sf-t{font:700 12px Oswald;letter-spacing:1.2px;text-transform:uppercase;color:#777}
+  .sf-l{font:700 28px/1.1 Oswald;text-transform:uppercase}
+  .sf-l.l0{color:#7a4a1e}.sf-l.l1{color:#3b7ea8}.sf-l.l2{color:#666}.sf-l.l3{color:#e07a10}.sf-l.l4{color:#e0312f}
+  .sf-q{font-size:14px;color:#444;margin-top:2px}
+  .sf-wrap{position:relative;margin:34px 34px 6px}
+  .sf-wrap.drips{margin-bottom:44px}
+  .sf-bar{position:relative;height:16px;border-radius:999px;background:linear-gradient(90deg,#6b3e14 0%,#a0703a 18%,#9cc6e0 38%,#d9dce3 55%,#ffb347 75%,#ff5a1f 90%,#e0312f 100%)}
+  .sf-bar::before,.sf-bar::after{position:absolute;top:50%;transform:translateY(-50%);font-size:24px}
+  .sf-bar::before{content:"🚽";left:-32px}.sf-bar::after{content:"🔥";right:-32px}
+  .sf-bar i{position:absolute;z-index:2;top:-24px;transform:translateX(-50%);font-size:30px;font-style:normal;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+  .sf-ends{display:flex;justify-content:space-between;font:700 12px Oswald;letter-spacing:1.5px;text-transform:uppercase;margin:0 2px}
+  .sf-ends span:first-child{color:#7a4a1e}.sf-ends span:last-child{color:#e0312f}
+  /* unten: es tropft braun von der Skala */
+  .sf-drip{position:absolute;top:9px;width:9px;height:13px;margin-left:-4px;background:#6b3e14;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;opacity:0;animation:sfdrip 2.4s ease-in infinite}
+  @keyframes sfdrip{0%{transform:translateY(0) scale(.3);opacity:0}18%{transform:translateY(2px) scale(1);opacity:1}100%{transform:translateY(44px) scale(.7,1.2);opacity:0}}
+  /* oben: die Skala zittert, glüht und brennt */
+  .sf-flame{position:absolute;bottom:6px;margin-left:-11px;font-size:22px;font-style:normal;transform-origin:bottom center;animation:sfflame .65s ease-in-out infinite alternate}
+  @keyframes sfflame{0%{transform:translateY(0) scale(.8) rotate(-7deg);opacity:.7}100%{transform:translateY(-7px) scale(1.15) rotate(7deg);opacity:1}}
+  .sf-wrap.shake1{animation:sfshake .5s linear infinite}
+  .sf-wrap.shake2{animation:sfshake .26s linear infinite}
+  .sf-wrap.shake2 .sf-bar{animation:sfglow .9s ease-in-out infinite alternate}
+  @keyframes sfshake{0%,100%{transform:translate(0,0) rotate(0)}25%{transform:translate(-1.5px,1px) rotate(-.5deg)}75%{transform:translate(1.5px,-1px) rotate(.5deg)}}
+  @keyframes sfglow{from{box-shadow:0 0 6px 1px rgba(255,90,31,.45)}to{box-shadow:0 0 20px 6px rgba(255,90,31,.9)}}
+  @media (prefers-reduced-motion:reduce){.sf-wrap,.sf-bar,.sf-flame,.sf-drip{animation:none!important}.sf-drip{opacity:.85;transform:translateY(8px)}}
+  .sf-last{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:#777;align-items:center}
+  .sf-last b{display:inline-block;min-width:30px;text-align:center;padding:2px 6px;border-radius:7px;font:700 13px Oswald;color:#fff}
   .pr-head{font:700 20px/1.2 Oswald;text-transform:uppercase;margin-bottom:8px}
   .pr-head.up{color:#1e7a2f}.pr-head.down{color:var(--red)}.pr-head.flat{color:var(--navy)}
   .pr-bar{position:relative;height:14px;border-radius:999px;background:linear-gradient(90deg,#e0312f 0%,#f4b8b7 33%,#e6e8ee 50%,#bfe3a0 67%,#8dc63f 100%);margin:16px 0 4px}
@@ -90,6 +118,40 @@
     }
     gave.sort((a, b) => b.pts - a.pts);
     return { owners, gave, total: gave.reduce((a, x) => a + x.pts, 0), managers: L.managers.length };
+  }
+
+  // Shit-to-Fire-Skala: Punkte der letzten 4 Gameweeks (Doppelspieltage addiert, nicht gespielt = 0)
+  const SF = [
+    ['💩', 'Spielt wie ein Haufen', 'Gerade höchstens zum Bankwärmen gut.'],
+    ['🧊', 'Eiskalt', 'Kaum der Rede wert. Wo ist die Form hin?'],
+    ['😐', 'Durchwachsen', 'Mal so, mal so – Lotterie mit Trikot.'],
+    ['🌶️', 'Heiß', 'Da geht was. Man riecht schon den Rauch.'],
+    ['🔥', 'ON FIRE', 'Nicht verkaufen. Auf gar keinen Fall.'],
+  ];
+  function fireScale(hist) {
+    const by = {}, now = Date.now();
+    for (const h of hist) if (h[3] && new Date(h[3]).getTime() < now) by[h[0]] = (by[h[0]] || 0) + h[7];
+    const gws = Object.keys(by).map(Number).sort((a, b) => a - b).slice(-4);
+    if (!gws.length) return '';
+    const avg = gws.reduce((a, g) => a + by[g], 0) / gws.length;
+    const lvl = avg < 2 ? 0 : avg < 3.5 ? 1 : avg < 5.5 ? 2 : avg < 8 ? 3 : 4;
+    const pos = Math.max(2, Math.min(98, avg / 10 * 100));
+    // Effekte: unten tropft es (Stufe 0 stark, 1 leicht), oben brennt es (Stufe 3 ein paar Flammen, 4 überall), Mitte = Ruhe
+    const spread = (n, a, b) => Array.from({ length: n }, (_, i) => a + (b - a) * (n === 1 ? 0.5 : i / (n - 1)));
+    const fx = lvl <= 1
+      ? spread(lvl === 0 ? 7 : 3, 4, lvl === 0 ? 40 : 30).map((x, i) => `<span class="sf-drip" style="left:${x.toFixed(1)}%;animation-delay:${(i * 0.37 % 2.4).toFixed(2)}s;animation-duration:${(2 + (i % 3) * 0.35).toFixed(2)}s"></span>`).join('')
+      : lvl >= 3
+        ? spread(lvl === 4 ? 8 : 3, lvl === 4 ? 52 : 74, 97).map((x, i) => `<i class="sf-flame" style="left:${x.toFixed(1)}%;animation-delay:${(i * 0.13).toFixed(2)}s;font-size:${lvl === 4 ? 20 + (i % 3) * 4 : 18}px">🔥</i>`).join('')
+        : '';
+    const col = v => v >= 10 ? '#e0312f' : v >= 6 ? '#ff8a1f' : v >= 3 ? '#9aa0ad' : '#7a4a1e';
+    return `<div class="sf"><div class="sf-top"><span class="sf-t">Shit-to-Fire-Skala</span><span class="pl-muted">Ø ${avg.toFixed(1)} Punkte in den letzten ${gws.length} Gameweeks</span></div>
+      <div class="sf-l l${lvl}">${SF[lvl][0]} ${SF[lvl][1]}</div><div class="sf-q">${SF[lvl][2]}</div>
+      <div class="sf-wrap ${lvl === 4 ? 'shake2' : lvl === 3 ? 'shake1' : lvl <= 1 ? 'drips' : ''}">
+        <div class="sf-bar" role="img" aria-label="${SF[lvl][1]}"><i style="left:${pos}%">${SF[lvl][0]}</i></div>
+        ${fx}
+      </div>
+      <div class="sf-ends"><span>Klo</span><span>Feuer</span></div>
+      <div class="sf-last">Letzte Spiele: ${gws.map(g => `<b style="background:${col(by[g])}" title="Gameweek ${g}">${by[g]}</b>`).join('')}</div></div>`;
   }
 
   // nächster Preisänderungs-Termin: FPL ändert Preise täglich gegen 01:30 Uhr britischer Zeit
@@ -212,6 +274,7 @@
           <div class="price"><b>£${p.cost.toFixed(1)}</b><small>${sign(p.cost - p.costStart)} seit Saisonstart · ${sign(p.costEvent)} diese Runde</small></div>
         </div>
         ${news}
+        ${fireScale(d.history)}
         <div class="pl-tiles">${tiles.map(([k, v, s]) => `<div><b>${v}</b><span>${k}</span>${s ? `<em>${s}</em>` : ''}</div>`).join('')}</div>
       </div>
       <div class="mp-grid">
