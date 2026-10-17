@@ -1,22 +1,41 @@
-// Gentlemen's League – Kader-Ansicht: Tippen auf ein Manager-Foto oder einen Namen öffnet den aktuellsten Kader auf einem Spielfeld.
+// Gentlemen's League – Manager-Seite (#manager/<FPL-ID>): Kader auf dem Spielfeld je Gameweek, die Runde im Detail
+// und der Saisonverlauf. Ersetzt das frühere Kader-Pop-up (Patrick, 17.10.2026). Spieler antippen → Spielerseite (spieler.js).
 // (nutzt av, esc aus app.js; Daten aus window.LEAGUE, gesetzt in app.js)
 
 (function () {
   const css = `
-  .sq-overlay{position:fixed;inset:0;z-index:100;background:rgba(10,10,30,.72);display:flex;align-items:flex-start;justify-content:center;padding:24px 12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  .sq-panel{width:100%;max-width:560px;background:var(--card);border-radius:22px;overflow:clip;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-  .sq-overlay.in .sq-panel{animation:sqIn .22s ease-out}
-  @keyframes sqIn{from{transform:translateY(16px);opacity:0}to{transform:none;opacity:1}}
-  .sq-head{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff}
-  .sq-head .av{width:56px;height:56px;border:3px solid var(--lime);flex:none}
-  .sq-head .nm{font:700 24px/1 Oswald;text-transform:uppercase}
-  .sq-head .tm{font-size:13px;color:var(--lime-2);font-weight:600;margin-top:3px}
-  .sq-head .gw{margin-left:auto;text-align:right;font:700 26px/1 Oswald;color:var(--gold)}
-  .sq-head .gw small{display:block;font:600 11px Inter;color:#fff;opacity:.8;margin-top:3px}
-  .sq-x{background:rgba(255,255,255,.18);color:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:28px;line-height:1;cursor:pointer;flex:none}
-  .sq-chip{display:inline-block;background:var(--gold);color:var(--ink);font:700 11px Oswald;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-top:4px}
-  .sq-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;background:var(--lime);color:var(--navy);font:700 17px Oswald;text-transform:uppercase;letter-spacing:.5px}
-  .sq-nav button{width:40px;height:34px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:700 24px/1 Inter;cursor:pointer}
+  .mp-back{display:inline-flex;align-items:center;gap:6px;margin:18px 0 10px;background:rgba(255,255,255,.16);color:#fff;border:0;border-radius:999px;padding:8px 16px 8px 12px;font:700 15px Oswald;text-transform:uppercase;letter-spacing:.6px;cursor:pointer;text-decoration:none}
+  .mp-back:hover{background:rgba(255,255,255,.26)}
+  .mp-card{background:var(--card);border-radius:20px;overflow:clip;box-shadow:0 6px 18px rgba(0,0,0,.25);color:var(--ink);min-width:0}
+  .mp-hero{display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff}
+  .mp-hero .av{width:78px;height:78px;border:3px solid var(--lime);flex:none;cursor:default}
+  .mp-hero .nm{font:700 30px/1 Oswald;text-transform:uppercase}
+  .mp-hero .tm{font-size:14px;color:var(--lime-2);font-weight:600;margin-top:4px}
+  .mp-hero .fn{font-size:12px;opacity:.75;margin-top:2px}
+  .mp-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:1px;background:#e6e8ee}
+  .mp-kpis div{background:#fff;padding:10px 8px;text-align:center}
+  .mp-kpis b{display:block;font:700 22px/1.1 Oswald;color:var(--navy);font-variant-numeric:tabular-nums}
+  .mp-kpis span{font-size:11px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.4px}
+  .mp-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;align-items:start;margin-top:16px}
+  @media (max-width:860px){.mp-grid{grid-template-columns:1fr}}
+  .mp-sec{padding:12px 14px}
+  .mp-sec h3{font:700 16px Oswald;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;color:var(--navy)}
+  .mp-line{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #eceef3;font-size:14px}
+  .mp-line:last-child{border:0}
+  .mp-line b{font-variant-numeric:tabular-nums;text-align:right}
+  .mp-tr{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid #eceef3;font-size:14px}
+  .mp-tr:last-child{border:0}
+  .mp-tr .in{color:#1e7a2f;font-weight:600}.mp-tr .out{color:var(--red);text-align:right;font-weight:600}
+  .mp-tr small{font-weight:400;color:#777}
+  .mp-hist{width:100%;border-collapse:collapse;font-size:13px}
+  .mp-hist th{position:sticky;top:0;z-index:1}
+  .mp-hist td{padding:6px 8px;border-bottom:1px solid #eceef3;font-variant-numeric:tabular-nums}
+  .mp-hist tr.on td{background:rgba(141,198,63,.25);font-weight:700}
+  .mp-hist tbody tr{cursor:pointer}
+  .mp-hist .num{text-align:right}
+  .mp-scroll{max-height:420px;overflow:auto}
+  .sq-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;background:var(--lime);color:var(--navy);font:700 17px Oswald;text-transform:uppercase;letter-spacing:.5px;text-align:center}
+  .sq-nav button{width:40px;height:34px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:700 24px/1 Inter;cursor:pointer;flex:none}
   .sq-nav button:disabled{opacity:.25;cursor:default}
   .sq-place{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:7px 10px;background:#f3f5f9;font-size:13px;font-weight:600;color:#444}
   .sq-lazy{text-align:center;font-size:12px;font-weight:600;padding:5px 10px;background:#f3f5f9;border-top:1px solid #e6e8ee}
@@ -28,7 +47,9 @@
   .sq-pitch::before{content:"";position:absolute;left:12%;right:12%;top:0;height:54px;border:2px solid rgba(255,255,255,.35);border-top:0}
   .sq-pitch::after{content:"";position:absolute;left:50%;bottom:-40px;width:110px;height:80px;border:2px solid rgba(255,255,255,.35);border-radius:50%;transform:translateX(-50%)}
   .sq-row{position:relative;z-index:1;display:flex;justify-content:center;gap:4px;margin:6px 0 12px}
-  .sq-p{width:19%;max-width:92px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+  .sq-p{width:19%;max-width:92px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;cursor:pointer;border-radius:8px}
+  .sq-p:hover .n{background:var(--lime-2)}
+  .sq-p:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
   .sq-p img{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.4))}
   .sq-p .n{margin-top:3px;width:100%;background:#fff;color:var(--ink);font:600 11px/1.25 Inter;padding:2px 3px;border-radius:5px 5px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .sq-p .pt{width:100%;background:var(--navy);color:#fff;font:700 13px/1.35 Oswald;border-radius:0 0 5px 5px}
@@ -52,13 +73,13 @@
   .sq-foot{font-size:12px;color:#777;padding:8px 14px 14px;text-align:center}
   img.av{cursor:pointer}
   img.av[src$="unknown.svg"]{cursor:default}
-  @media (max-width:600px){.sq-overlay{padding:0}.sq-panel{border-radius:0;min-height:100%}.sq-head{padding-top:calc(12px + env(safe-area-inset-top,0px))}}
-  @media (max-width:420px){.sq-p img{width:32px;height:32px}.sq-p .n{font-size:10px}.sq-head .nm{font-size:20px}.sq-head .gw{font-size:22px}}
+  @media (max-width:420px){.sq-p img{width:32px;height:32px}.sq-p .n{font-size:10px}.mp-hero .nm{font-size:24px}.mp-hero .av{width:64px;height:64px}.sq-nav{font-size:15px}}
   `;
   const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
-  const TYPES = { 1: 'Tor', 2: 'Abwehr', 3: 'Mittelfeld', 4: 'Sturm' };
   const chipName = { wildcard: 'Wildcard', freehit: 'Free Hit', bboost: 'Bench Boost', '3xc': 'Triple Captain', manager: 'Assistant Manager' };
+  const page = () => document.getElementById('page-manager');
+  let cur = { id: null, idx: null };
 
   // Kompakte Kaderdaten (siehe fetch.js) in lesbare Objekte umwandeln
   function expand(s) {
@@ -73,35 +94,26 @@
     };
   }
 
-  function open(m) {
-    const list = m.squads || [];
-    if (!list.length) return;
-    let idx = list.length - 1; // neueste Gameweek zuerst
+  // Manager-Seite öffnen (statt Pop-up): eigene Adresse, Zurück-Knopf des Browsers funktioniert
+  function open(m) { if (m && m.squads && m.squads.length) location.hash = '#manager/' + m.id; }
+  window.openManager = open;
 
-    const ov = document.createElement('div');
-    ov.className = 'sq-overlay';
-    const close = () => { ov.remove(); document.body.style.overflow = ''; document.removeEventListener('keydown', keys); };
-    const go = d => { const n = idx + d; if (n >= 0 && n < list.length) { idx = n; draw(); } };
-    const keys = e => { if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') go(-1); else if (e.key === 'ArrowRight') go(1); };
-    ov.addEventListener('click', e => {
-      if (e.target === ov || e.target.closest('.sq-x')) close();
-      else if (e.target.closest('.sq-prev')) go(-1);
-      else if (e.target.closest('.sq-next')) go(1);
-    });
-    // Wischen am Handy: nach links = neuere, nach rechts = ältere Gameweek
-    let x0 = null;
-    ov.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
-    ov.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 60) go(dx < 0 ? 1 : -1); x0 = null; });
-    document.addEventListener('keydown', keys);
-    document.body.style.overflow = 'hidden';
-    document.body.appendChild(ov);
-
-    function draw() {
+  function render(id, gw) {
+    const L = window.LEAGUE, el = page();
+    if (!L || !el) return;
+    const m = L.managers.find(x => String(x.id) === String(id));
+    if (!m || !(m.squads || []).length) { el.innerHTML = '<a class="mp-back" href="#start" data-back>‹ Zurück</a><p style="color:#fff">Manager nicht gefunden.</p>'; return; }
+    const list = m.squads;
+    if (cur.id !== m.id) cur = { id: m.id, idx: list.length - 1 };
+    if (gw) { const i = list.findIndex(s => s.gw === Number(gw)); if (i >= 0) cur.idx = i; }
+    const idx = cur.idx;
     const s = expand(list[idx]);
+    const g = m.gws.find(x => x.gw === s.gw);
     const subIn = new Set(s.subs.map(x => x.in)), subOut = new Set(s.subs.map(x => x.out));
+
     // Laufende GW: Spielstatus je Verein (noch nicht gespielt / spielt gerade / fertig)
-    const cur = window.LEAGUE?.current;
-    const fx = !s.finished && cur && cur.gw === s.gw ? cur.fixtures : [];
+    const curFx = L.current;
+    const fx = !s.finished && curFx && curFx.gw === s.gw ? curFx.fixtures : [];
     const tz = { timeZone: 'Europe/Vienna' };
     const status = code => {
       const own = fx.filter(f => f.h === code || f.a === code);
@@ -112,16 +124,15 @@
       if (next && !own.some(f => f.done)) return { cls: 'todo', ko: new Date(next.kickoff).toLocaleString('de-AT', { ...tz, weekday: 'short', hour: '2-digit', minute: '2-digit' }) };
       return null;
     };
-    const anyStatus = fx.length > 0;
     const card = (p, bench) => {
       const shown = bench && s.chip !== 'bboost' ? p.pts : p.pts * Math.max(p.mult, 1);
-      const st = status(p.teamCode);
-      return `<div class="sq-p ${bench && !subIn.has(p.id) && s.chip !== 'bboost' ? 'dim' : ''} ${st ? st.cls : ''}" title="${esc(p.name)} (${esc(p.team)}) · ${st?.ko ? 'Anstoß ' + st.ko : p.minutes + ' Min.'}">
+      const stt = status(p.teamCode);
+      return `<div class="sq-p ${bench && !subIn.has(p.id) && s.chip !== 'bboost' ? 'dim' : ''} ${stt ? stt.cls : ''}" data-player="${p.id}" role="link" tabindex="0" title="${esc(p.name)} (${esc(p.team)}) · ${stt?.ko ? 'Anstoß ' + stt.ko : p.minutes + ' Min.'} – antippen für alle Infos">
         ${p.cap ? `<span class="cv c">${p.mult === 3 ? '3×' : 'C'}</span>` : p.vice ? '<span class="cv">V</span>' : ''}
         ${subIn.has(p.id) ? '<span class="sub in">↑</span>' : subOut.has(p.id) ? '<span class="sub out">↓</span>' : ''}
         <img src="assets/badges/${p.teamCode}.png" alt="${esc(p.team)}" onerror="this.style.visibility='hidden'">
         <div class="n">${esc(p.name)}</div>
-        <div class="pt ${shown >= 10 && !st ? 'hi' : ''}">${st?.ko ? st.ko : shown}</div>
+        <div class="pt ${shown >= 10 && !stt ? 'hi' : ''}">${stt?.ko ? stt.ko : shown}</div>
       </div>`;
     };
     const xi = s.picks.filter(p => p.pos <= 11), bench = s.picks.filter(p => p.pos > 11);
@@ -131,7 +142,7 @@
 
     // Rundenplatz in der Liga (Netto-Punkte dieser Gameweek aller Manager)
     const netOf = x => { const q = (x.squads || []).find(q => q.gw === s.gw); return q && q.points != null ? q.points - (q.hits || 0) : null; };
-    const all = window.LEAGUE.managers.map(netOf).filter(v => v != null);
+    const all = L.managers.map(netOf).filter(v => v != null);
     let placeHtml = '';
     if (net != null && all.length > 1) {
       const place = all.filter(v => v > net).length + 1;
@@ -140,40 +151,114 @@
       placeHtml = `<div class="sq-place">${tag}<span>Rundenplatz ${place} von ${all.length}${s.finished ? '' : ' (vorläufig)'}</span></div>`;
     }
     // "Ohne Transfers": diese Elf, aber gekaufte Spieler gegen die verkauften getauscht (berechnet in fetch.js)
-    const gwData = m.gws.find(g => g.gw === s.gw);
-    if (gwData && gwData.lazyPts != null) {
-      const d = gwData.lazyPts - gwData.points;
-      placeHtml += `<div class="sq-lazy ${d > 0 ? 'bad' : 'good'}">🛋️ Ohne Transfers: ${gwData.lazyPts} Punkte · ${
+    if (g && g.lazyPts != null) {
+      const d = g.lazyPts - g.points;
+      placeHtml += `<div class="sq-lazy ${d > 0 ? 'bad' : 'good'}">🛋️ Ohne Transfers: ${g.lazyPts} Punkte · ${
         d > 0 ? `−${d} durch Transfers` : d < 0 ? `+${-d} durch Transfers` : 'Transfers ohne Auswirkung'}</div>`;
-    } else if (gwData && s.gw > 1) placeHtml += '<div class="sq-lazy none">🛋️ Keine Transfers in dieser Runde</div>';
+    } else if (g && s.gw > 1) placeHtml += '<div class="sq-lazy none">🛋️ Keine Transfers in dieser Runde</div>';
 
-    ov.innerHTML = `<div class="sq-panel" role="dialog" aria-label="Kader von ${esc(m.nick)}">
-      <div class="sq-head">
-        <img class="av" src="${av(m)}" alt="">
-        <div><div class="nm">${esc(m.nick)}</div><div class="tm">${esc(m.team)}</div>${s.chip ? `<span class="sq-chip">🃏 ${chipName[s.chip] || s.chip}</span>` : ''}</div>
-        <div class="gw">${net ?? '–'}<small>Punkte${s.hits ? ` (−${s.hits})` : ''}</small></div>
-        <button class="sq-x" aria-label="Schließen">×</button>
+    // Kennzahlen oben
+    const last = m.gws[m.gws.length - 1];
+    const chipsLeft = Math.max(0, 8 - (m.chips || []).length);
+    const kpis = [
+      ['Platz', `${m.rank}.`], ['Gesamt', m.total], ['Letzte GW', last ? last.points : '–'],
+      ['Teamwert', `£${Number(m.valueNow ?? last?.value ?? 0).toFixed(1)}`], ['Bank', `£${Number(m.bankNow ?? last?.bank ?? 0).toFixed(1)}`], ['Chips übrig', chipsLeft],
+    ];
+
+    // Diese Runde im Detail
+    const cap = s.picks.find(p => p.cap), vice = s.picks.find(p => p.vice);
+    const benchPts = bench.reduce((a, p) => a + (p.pts || 0), 0);
+    const trs = (g && g.transfersIn) || [];
+    const round = `
+      ${s.chip ? `<div class="mp-line"><span>Chip</span><b>🃏 ${chipName[s.chip] || s.chip}</b></div>` : ''}
+      <div class="mp-line"><span>Kapitän</span><b>${cap ? `${esc(cap.name)} · ${cap.pts * Math.max(cap.mult, 1)} P.` : '–'}</b></div>
+      <div class="mp-line"><span>Vize</span><b>${vice ? esc(vice.name) : '–'}</b></div>
+      <div class="mp-line"><span>Punkte auf der Bank</span><b>${s.chip === 'bboost' ? `${benchPts} (zählen – Bench Boost)` : benchPts}</b></div>
+      <div class="mp-line"><span>Transfers</span><b>${g ? g.transfers : '–'}${s.hits ? ` (−${s.hits} Punkte)` : ''}</b></div>
+      ${s.subs.length ? `<div class="mp-line"><span>Auto-Einwechslungen</span><b>${s.subs.length}</b></div>` : ''}
+      ${trs.length ? `<h3 style="margin-top:12px">Transfers dieser Runde</h3>${trs.map(t => `<div class="mp-tr"><span class="in">⬆ ${esc(t.in)} <small>${t.inPts} P.</small></span><span>⇄</span><span class="out"><small>${t.outPts} P.</small> ${esc(t.out)} ⬇</span></div>`).join('')}` : ''}`;
+
+    // Saisonverlauf (antippen = diese Gameweek zeigen)
+    const hist = [...m.gws].reverse().map(x => `<tr data-gw="${x.gw}" class="${x.gw === s.gw ? 'on' : ''}">
+      <td>${x.gw}</td><td class="num">${x.points}</td><td class="num">${x.leagueRank != null ? x.leagueRank + '.' : '–'}</td><td>${esc(x.captain || '–')}</td><td>${x.chip ? chipName[x.chip] || x.chip : ''}</td><td class="num">${x.transfers}${x.hits ? ` (−${x.hits})` : ''}</td></tr>`).join('');
+
+    el.innerHTML = `
+      <a class="mp-back" href="#start" data-back>‹ Zurück</a>
+      <div class="mp-card">
+        <div class="mp-hero">
+          <img class="av" src="${av(m)}" alt="">
+          <div style="min-width:0"><div class="nm">${esc(m.nick)}</div><div class="tm">${esc(m.team)}</div><div class="fn">${esc(m.name)}</div></div>
+        </div>
+        <div class="mp-kpis">${kpis.map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('')}</div>
       </div>
-      <div class="sq-nav">
-        <button class="sq-prev" ${idx === 0 ? 'disabled' : ''} aria-label="Ältere Gameweek">‹</button>
-        <span>Gameweek ${s.gw}${s.finished ? '' : ' · läuft'}</span>
-        <button class="sq-next" ${idx === list.length - 1 ? 'disabled' : ''} aria-label="Neuere Gameweek">›</button>
-      </div>
-      ${placeHtml}
-      <div class="sq-pitch">${rows}</div>
-      <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
-      <div class="sq-foot">${s.finished ? `Endstand Gameweek ${s.gw}` : `Gameweek ${s.gw} läuft – Punkte werden bei jeder Aktualisierung nachgetragen`} · ↑↓ = automatische Einwechslung${anyStatus ? '<br><span class="sq-legend"><span><i style="background:#b9bfcc"></i>noch nicht gespielt (mit Anstoß)</span><span><i style="background:var(--red)"></i>spielt gerade</span></span>' : ''}</div>
-    </div>`;
-    }
-    ov.classList.add('in');
-    draw();
-    setTimeout(() => ov.classList.remove('in'), 300); // Animation nur beim Öffnen, nicht beim Blättern
+      <div class="mp-grid">
+        <div class="mp-card">
+          <div class="sq-nav">
+            <button class="sq-prev" ${idx === 0 ? 'disabled' : ''} aria-label="Ältere Gameweek">‹</button>
+            <span>Gameweek ${s.gw}${s.finished ? '' : ' · läuft'} · ${net ?? '–'} P.${s.hits ? ` (−${s.hits})` : ''}</span>
+            <button class="sq-next" ${idx === list.length - 1 ? 'disabled' : ''} aria-label="Neuere Gameweek">›</button>
+          </div>
+          ${placeHtml}
+          <div class="sq-pitch">${rows}</div>
+          <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
+          <div class="sq-foot">Spieler antippen für alle Infos (Spiele, nächste Gegner, Form, Preis) · ↑↓ = automatische Einwechslung${fx.length ? '<br><span class="sq-legend"><span><i style="background:#b9bfcc"></i>noch nicht gespielt (mit Anstoß)</span><span><i style="background:var(--red)"></i>spielt gerade</span></span>' : ''}</div>
+        </div>
+        <div style="display:grid;gap:16px;min-width:0">
+          <div class="mp-card mp-sec"><h3>Gameweek ${s.gw} im Detail</h3>${round}</div>
+          <div class="mp-card"><div class="mp-sec" style="padding-bottom:4px"><h3>Saisonverlauf</h3></div>
+            <div class="mp-scroll"><table class="mp-hist"><thead><tr><th>GW</th><th class="num">Pkt.</th><th class="num" title="Platz in der Tabelle nach dieser Runde">Tabelle</th><th>Kapitän</th><th>Chip</th><th class="num">Trf.</th></tr></thead><tbody>${hist}</tbody></table></div>
+          </div>
+        </div>
+      </div>`;
   }
+  // Zurück: innerhalb der Seite = Browser-Zurück; kam man direkt über einen Link, geht's zur Startseite
+  window.glBack = e => { if ((window.glNavDepth || 0) > 0) { e.preventDefault(); history.back(); } };
 
-  // Spitzname, Teamname oder Spielername eines Managers öffnet ebenfalls den Kader
-  // (nicht in Links/Knöpfen und nicht in den Glück-o-Meter-Zeilen, die beim Antippen ihre Details zeigen)
+  // Klicks auf der Manager-Seite: Gameweek blättern, Spieler öffnen, Saisonzeile wählen, zurück
+  document.addEventListener('click', e => {
+    const el = page();
+    if (!el || el.hidden || !el.contains(e.target)) return;
+    if (e.target.closest('[data-back]')) return window.glBack(e);
+    const m = window.LEAGUE && window.LEAGUE.managers.find(x => x.id === cur.id);
+    if (!m) return;
+    const step = d => { const n = cur.idx + d; if (n >= 0 && n < m.squads.length) { cur.idx = n; render(m.id); } };
+    if (e.target.closest('.sq-prev')) return step(-1);
+    if (e.target.closest('.sq-next')) return step(1);
+    const pl = e.target.closest('[data-player]');
+    if (pl) { location.hash = `#spieler/${pl.dataset.player}`; return; }
+    const tr = e.target.closest('tr[data-gw]');
+    if (tr) { render(m.id, tr.dataset.gw); el.querySelector('.sq-nav').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+  document.addEventListener('keydown', e => {
+    const el = page();
+    if (!el || el.hidden) return;
+    const pl = e.target.closest && e.target.closest('[data-player]');
+    if (e.key === 'Enter' && pl) { location.hash = `#spieler/${pl.dataset.player}`; return; }
+    const m = window.LEAGUE && window.LEAGUE.managers.find(x => x.id === cur.id);
+    if (!m) return;
+    if (e.key === 'ArrowLeft' && cur.idx > 0) { cur.idx--; render(m.id); }
+    if (e.key === 'ArrowRight' && cur.idx < m.squads.length - 1) { cur.idx++; render(m.id); }
+  });
+  // Wischen am Handy über dem Spielfeld: nach links = neuere, nach rechts = ältere Gameweek
+  let x0 = null;
+  document.addEventListener('touchstart', e => { x0 = e.target.closest && e.target.closest('#page-manager .sq-pitch, #page-manager .sq-bench') ? e.touches[0].clientX : null; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    const m = window.LEAGUE && window.LEAGUE.managers.find(x => x.id === cur.id);
+    if (!m || Math.abs(dx) < 60) return;
+    const n = cur.idx + (dx < 0 ? 1 : -1);
+    if (n >= 0 && n < m.squads.length) { cur.idx = n; render(m.id); }
+  });
+
+  // Route aus app.js: #manager/<id> (wartet, bis die Daten geladen sind)
+  const whenData = fn => { if (window.LEAGUE) fn(); else { const t = setInterval(() => { if (window.LEAGUE) { clearInterval(t); fn(); } }, 150); } };
+  document.addEventListener('route', e => { if (e.detail.page === 'manager') whenData(() => render(e.detail.arg)); });
+
+  // Spitzname, Teamname oder Spielername eines Managers öffnet die Manager-Seite
+  // (nicht in Links/Knöpfen, nicht auf der Manager-/Spielerseite selbst und nicht in den Glück-o-Meter-Zeilen)
   const byText = el => {
-    if (!window.LEAGUE || !el || el.nodeType !== 1 || el.closest('a,button,input,select,textarea,.sq-overlay,#luck,.tip')) return null;
+    if (!window.LEAGUE || !el || el.nodeType !== 1 || el.closest('a,button,input,select,textarea,#page-manager,#page-spieler,#luck,.tip')) return null;
     const t = (el.textContent || '').replace(/\s+/g, ' ').trim();
     if (!t || t.length > 40) return null;
     const hits = window.LEAGUE.managers.filter(x => x.squads && x.squads.length && [x.nick, x.team, x.name].includes(t));
@@ -185,10 +270,10 @@
     if (m) { e.stopPropagation(); open(m); }
   }, true);
 
-  // Ein Klick-Handler für alle Manager-Fotos auf der Seite
+  // Ein Klick-Handler für alle Manager-Fotos auf der Seite (Spielerseite: Besitzer-Fotos führen zum Manager)
   document.addEventListener('click', e => {
     const img = e.target.closest('img.av');
-    if (!img || img.closest('.sq-overlay') || !window.LEAGUE) return;
+    if (!img || img.closest('#page-manager .mp-hero') || !window.LEAGUE) return;
     const hit = (img.getAttribute('src') || '').match(/avatars\/([a-z0-9_-]+)\.webp/i);
     if (!hit) return;
     const m = window.LEAGUE.managers.find(x => x.avatar === hit[1]);

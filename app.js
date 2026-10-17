@@ -36,14 +36,17 @@ function topPct(rank, season) {
 }
 
 // --- Reiter ---
+// Unterseiten mit Adresse: #manager/<FPL-ID> (squad.js) und #spieler/<Spieler-ID> (spieler.js)
 function showPage() {
-  const page = (location.hash || '#start').slice(1);
+  const [page, arg] = (location.hash || '#start').slice(1).split('/');
   const exists = document.getElementById('page-' + page) ? page : 'start';
   document.querySelectorAll('.page').forEach(p => p.hidden = p.id !== 'page-' + exists);
   document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.page === exists));
   window.scrollTo(0, 0);
+  if (arg) document.dispatchEvent(new CustomEvent('route', { detail: { page: exists, arg: decodeURIComponent(arg) } }));
 }
-addEventListener('hashchange', showPage);
+// zählt Seitenwechsel innerhalb der Seite – „Zurück“ nutzt dann den Browser-Verlauf
+addEventListener('hashchange', () => { window.glNavDepth = (window.glNavDepth || 0) + 1; showPage(); });
 showPage();
 
 Promise.all([
