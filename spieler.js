@@ -43,6 +43,16 @@
   .pl-own .av{width:34px;height:34px}
   .pl-own .c{background:var(--gold);color:var(--ink);font:700 10px Oswald;padding:1px 6px;border-radius:999px}
   .pl-muted{color:#777;font-size:13px}
+  .pr-head{font:700 20px/1.2 Oswald;text-transform:uppercase;margin-bottom:8px}
+  .pr-head.up{color:#1e7a2f}.pr-head.down{color:var(--red)}.pr-head.flat{color:var(--navy)}
+  .pr-bar{position:relative;height:14px;border-radius:999px;background:linear-gradient(90deg,#e0312f 0%,#f4b8b7 33%,#e6e8ee 50%,#bfe3a0 67%,#8dc63f 100%);margin:16px 0 4px}
+  .pr-bar i{position:absolute;top:-5px;width:6px;height:24px;margin-left:-3px;border-radius:3px;background:var(--ink);box-shadow:0 0 0 2px #fff}
+  .pr-scale{display:flex;justify-content:space-between;font-size:11px;color:#777}
+  .pr-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #eceef3;font-size:14px}
+  .pr-row:last-child{border:0}
+  .pr-row small{display:block;color:#777;font-size:12px}
+  .pr-v{font-weight:700;white-space:nowrap}.pr-v.up{color:#1e7a2f}.pr-v.down{color:var(--red)}
+  .pr-dots{letter-spacing:1px;font-size:11px;white-space:nowrap}
   .pl-load{color:#fff;padding:30px 0;text-align:center;font-weight:600}
   @media (max-width:520px){.pl-hero{flex-wrap:wrap}.pl-hero .price{margin-left:0;text-align:left;width:100%;display:flex;align-items:baseline;gap:10px}.pl-hero .nm{font-size:28px}}
   `;
@@ -80,6 +90,35 @@
     }
     gave.sort((a, b) => b.pts - a.pts);
     return { owners, gave, total: gave.reduce((a, x) => a + x.pts, 0), managers: L.managers.length };
+  }
+
+  // nächster Preisänderungs-Termin: FPL ändert Preise täglich gegen 01:30 Uhr britischer Zeit
+  function nextChange(offset) {
+    const uk = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+    let t = Math.ceil(Date.now() / 1800_000) * 1800_000, found = -1;
+    for (let i = 0; i < 24 * 2 * 5; i++, t += 1800_000) if (uk.format(t) === '01:30' && ++found === offset) return t;
+    return null;
+  }
+  // offizielle FPL-Preisprognose: Fortschritt (±100 % = Änderung) + Prognose für die nächsten 3 Nächte
+  function priceBox(p) {
+    const pr = p.price;
+    if (!pr || pr.pct == null) return '';
+    const when = off => { const t = nextChange(off); return t ? new Date(t).toLocaleString('de-AT', { ...tz, weekday: 'short', day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''; };
+    const verdict = v => v >= 100 ? ['up', '📈 steigt +£0.1'] : v <= -100 ? ['down', '📉 fällt −£0.1'] : ['', 'bleibt'];
+    const dots = l => { const a = Math.min(5, Math.abs(l || 0)); return '●'.repeat(a) + '○'.repeat(5 - a); };
+    const first = (pr.proj || []).find(x => Math.abs(x[1]) >= 100);
+    const head = pr.locked ? ['flat', `🔒 Preis gesperrt bis ${new Date(pr.locked).toLocaleString('de-AT', { ...tz, weekday: 'short', hour: '2-digit', minute: '2-digit' })}`]
+      : !first ? ['flat', '➖ Preis bleibt vorerst stabil']
+      : [first[1] > 0 ? 'up' : 'down', `${first[1] > 0 ? '📈 Steigt' : '📉 Fällt'} voraussichtlich ${['heute Nacht', 'morgen Nacht', 'in 2 Nächten'][first[0]] || 'bald'}`];
+    const pos = Math.max(0, Math.min(100, (Math.max(-150, Math.min(150, pr.pct)) + 150) / 3));
+    // nach der ersten erwarteten Änderung beginnt FPL wieder bei 0 % – spätere Nächte sind dann offen
+    const rows = (pr.proj || []).map(([off, v, l]) => { const after = first && off > first[0]; const [cls, txt] = after ? ['', 'danach offen'] : verdict(v); return `<div class="pr-row"><span>${['Heute Nacht', 'Morgen Nacht', 'Übermorgen'][off] || 'Nacht ' + (off + 1)}<small>${when(off)} Uhr${after ? '' : ` · ${v > 0 ? '+' : ''}${v}%`}</small></span><span class="pr-v ${cls}">${txt}</span><span class="pr-dots" title="Sicherheit der FPL-Prognose">${after ? '' : dots(l)}</span></div>`; }).join('');
+    return `<div class="mp-card mp-sec"><h3>Preis-Prognose</h3>
+      <div class="pr-head ${head[0]}">${head[1]}</div>
+      <div class="pr-bar" title="${pr.pct}% auf dem Weg zur nächsten Preisänderung"><i style="left:${pos}%"></i></div>
+      <div class="pr-scale"><span>fällt (−100%)</span><span>jetzt ${pr.pct > 0 ? '+' : ''}${pr.pct}%</span><span>steigt (+100%)</span></div>
+      ${rows}
+      <p class="pl-muted" style="margin-top:8px">${pr.calibrating ? 'FPL kalibriert gerade die Preise – Prognose unsicher. ' : ''}Offizielle Prognose von FPL, keine Garantie. Preise ändern sich täglich gegen 02:30 Uhr österreichischer Zeit (01:30 in UK)${pr.hourly ? ` · aktuell ca. ${Math.abs(pr.hourly).toLocaleString('de-AT')} Netto-Transfers pro Stunde` : ''}. ● = Sicherheit der Prognose.</p></div>`;
   }
 
   function chart(hist) {
@@ -181,9 +220,9 @@
             ${d.fixtures.length ? `<p class="pl-muted" style="margin-top:8px">Schwierigkeit der nächsten ${Math.min(5, d.fixtures.length)} Spiele: Ø ${nextAvg.toFixed(1)} von 5 (1 = leicht, 5 = sehr schwer)</p>` : ''}</div>
           <div class="mp-card mp-sec"><h3>Punkte je Gameweek</h3>${chart(d.history)}</div>
         </div>
-        <div class="mp-card mp-sec"><h3>In unserer Liga</h3>
+        <div style="display:grid;gap:16px;min-width:0">${priceBox(p)}<div class="mp-card mp-sec"><h3>In unserer Liga</h3>
           <p class="pl-muted" style="margin-bottom:8px">${L.owners.length} von ${L.managers} Managern haben ihn${L.owners.some(o => o.cap) ? `, ${L.owners.filter(o => o.cap).length}× Kapitän` : ''} (aktuelle Gameweek)</p>
-          ${own}${gave}</div>
+          ${own}${gave}</div></div>
       </div>
       <div class="mp-card" style="margin-top:16px"><div class="mp-sec" style="padding-bottom:4px"><h3>Spiele dieser Saison</h3></div>
         <div class="pl-x"><table class="pl-tbl"><thead><tr><th>GW</th><th>Gegner</th><th>Ergebnis</th><th class="num">Min.</th><th class="num">Pkt.</th><th class="num">T</th><th class="num">V</th>
