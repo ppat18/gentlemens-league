@@ -4,8 +4,9 @@
 
 (function () {
   const css = `
-  .mp-back{display:inline-flex;align-items:center;gap:6px;margin:18px 0 10px;background:rgba(255,255,255,.16);color:#fff;border:0;border-radius:999px;padding:8px 16px 8px 12px;font:700 15px Oswald;text-transform:uppercase;letter-spacing:.6px;cursor:pointer;text-decoration:none}
-  .mp-back:hover{background:rgba(255,255,255,.26)}
+  /* bleibt beim Scrollen oben links sichtbar (lange Spielerseiten) */
+  .mp-back{position:sticky;top:calc(10px + env(safe-area-inset-top,0px));z-index:30;display:flex;width:max-content;align-items:center;gap:6px;margin:18px 0 10px;background:var(--navy);color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 16px 8px 12px;font:700 15px Oswald;text-transform:uppercase;letter-spacing:.6px;cursor:pointer;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+  .mp-back:hover{background:var(--navy-2);border-color:#fff}
   .mp-card{background:var(--card);border-radius:20px;overflow:clip;box-shadow:0 6px 18px rgba(0,0,0,.25);color:var(--ink);min-width:0}
   .mp-hero{display:flex;align-items:center;gap:14px;padding:16px;background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff}
   .mp-hero .av{width:78px;height:78px;border:3px solid var(--lime);flex:none;cursor:default}
