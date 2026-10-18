@@ -299,7 +299,7 @@ function renderCaptains(d, ms, liveGW) {
     const c = s && s.picks.find(p => p[3] === 1);
     if (!c) continue;
     const g = groups[c[0]] ||= { id: c[0], pts: c[4], min: c[5], who: [] };
-    g.who.push({ m, tc: s.chip === '3xc' });
+    g.who.push({ m, tc: s.chip === '3xc', mult: c[2] > 1 ? c[2] : (s.chip === '3xc' ? 3 : 2) });
   }
   const status = code => {
     const now = Date.now();
@@ -311,20 +311,36 @@ function renderCaptains(d, ms, liveGW) {
     return { txt: 'fertig', live: false };
   };
   const list = Object.values(groups).sort((x, y) => y.who.length - x.who.length || y.pts - x.pts);
+  const nm = id => (d.players[id] || ['?'])[0];
+  const n = list.reduce((a, g) => a + g.who.length, 0);
+  // frecher Überblick: Herde oder geteilte Liga, Einzelgänger, bester Kapitän bisher
+  const sum = [];
+  if (list.length === 1 && n > 1) sum.push(`🐑 Herdentrieb: <b>alle ${n} Manager</b> haben <b>${esc(nm(list[0].id))}</b> als Kapitän`);
+  else if (list.length > 1 && list[0].who.length / n >= 0.6) sum.push(`🐑 <b>${list[0].who.length} von ${n}</b> laufen der Herde nach: <b>${esc(nm(list[0].id))}</b>`);
+  else if (list.length > 2) sum.push(`🎲 Liga gespalten – <b>${list.length} verschiedene Kapitäne</b>`);
+  const wolves = list.length > 1 ? list.filter(g => g.who.length === 1) : [];
+  if (wolves.length) sum.push(`🦄 Einzelgänger: ${wolves.map(g => `<b>${esc(g.who[0].m.nick)}</b> (${esc(nm(g.id))})`).join(', ')}`);
+  if (list.length > 1 && list.some(g => g.pts > 0)) {
+    const best = [...list].sort((x, y) => y.pts - x.pts)[0];
+    sum.push(`👑 Bester Riecher bisher: <b>${esc(nm(best.id))}</b> – ${best.pts} Punkte`);
+  }
+  if (list.some(g => g.who.some(x => x.tc))) sum.push(`3️⃣ Triple Captain: ${list.flatMap(g => g.who.filter(x => x.tc).map(x => `<b>${esc(x.m.nick)}</b>`)).join(', ')}`);
   el.innerHTML = `<h2>©️ Kapitäne der Gameweek ${liveGW}</h2>
+    ${sum.length ? `<div class="caps-sum">${sum.map(x => `<span>${x}</span>`).join('')}</div>` : ''}
     <div class="caps">${list.map(g => {
       const p = d.players[g.id] || ['?', 0, '', 0];
       const st = status(p[3]);
       return `<div class="cap ${st.live ? 'live' : ''}">
         <div class="cap-top">
           <img class="badge" src="assets/badges/${p[3]}.png" alt="" onerror="this.style.visibility='hidden'">
-          <div class="cap-name"><b>${esc(p[0])}</b><small>${st.txt}</small></div>
-          <div class="cap-pts">${g.pts}<small>Punkte</small></div>
+          <div class="cap-name"><a href="#spieler/${g.id}" title="Alle Infos zu ${esc(p[0])}"><b>${esc(p[0])}</b></a><small>${st.txt}</small>
+            <div class="cap-x">${g.who.length} von ${n} Managern · als Kapitän ${g.pts * 2} Punkte${g.who.some(x => x.tc) ? ` · Triple Captain ${g.pts * 3}` : ''}</div></div>
+          <div class="cap-pts">${g.pts}<small>Punkte live</small></div>
         </div>
-        <div class="cap-who">${g.who.map(x => `<span><img class="av" src="${av(x.m)}" alt="">${esc(x.m.nick)}${x.tc ? ' <i class="tc" title="Triple Captain">3×</i>' : ''}</span>`).join('')}</div>
+        <div class="cap-who">${g.who.map(x => `<span><img class="av" src="${av(x.m)}" alt="">${esc(x.m.nick)}${x.tc ? ' <i class="tc" title="Triple Captain">3×</i>' : ''}<b class="cp" title="Kapitänspunkte">${g.pts * x.mult}</b></span>`).join('')}</div>
       </div>`;
     }).join('')}</div>
-    <p class="foot">Punkte = Live-Punkte des Spielers (ohne Kapitänsfaktor). Der Block verschwindet, sobald die Gameweek abgeschlossen ist.</p>`;
+    <p class="foot">Große Zahl = Live-Punkte des Spielers; neben jedem Manager = was ihm der Kapitän bringt (×2, Triple Captain ×3). Spieler antippen für alle Infos. Der Block verschwindet, sobald die Gameweek abgeschlossen ist.</p>`;
   el.hidden = false;
 }
 
