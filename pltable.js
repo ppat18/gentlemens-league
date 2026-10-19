@@ -9,12 +9,12 @@
     btn: '🏆 Premier-League-Tabelle', title: '🏆 Premier-League-Tabelle', back: '‹ Zurück', pos: '#', team: 'Verein', p: 'Sp.', w: 'S', d: 'U', l: 'N',
     goals: 'Tore', gd: 'Diff.', pts: 'Pkt.', form: 'Form', live: 'Live-Stand: laufende Spiele sind schon eingerechnet', after: 'Stand nach Gameweek',
     note: 'S = Sieg · U = Unentschieden · N = Niederlage · Form = letzte 5 Spiele (neueste rechts). 🟦 Champions League · 🟧 Europa League · 🟥 Abstieg. Berechnet aus den offiziellen Spieldaten.',
-    win: 'Sieg', draw: 'Remis', loss: 'Niederlage', loading: 'Tabelle wird geladen …', locale: 'de-AT',
+    more: 'Spiele der nächsten Gameweek', win: 'Sieg', draw: 'Remis', loss: 'Niederlage', loading: 'Tabelle wird geladen …', locale: 'de-AT',
   } : {
     btn: '🏆 Premier League table', title: '🏆 Premier League table', back: '‹ Back', pos: '#', team: 'Club', p: 'P', w: 'W', d: 'D', l: 'L',
     goals: 'Goals', gd: 'GD', pts: 'Pts', form: 'Form', live: 'Live table: matches in progress are included', after: 'Standings after gameweek',
     note: 'W = win · D = draw · L = loss · Form = last 5 matches (latest on the right). 🟦 Champions League · 🟧 Europa League · 🟥 relegation. Calculated from the official match data.',
-    win: 'Win', draw: 'Draw', loss: 'Loss', loading: 'Loading the table …', locale: 'en-GB',
+    more: 'matches of the next gameweek', win: 'Win', draw: 'Draw', loss: 'Loss', loading: 'Loading the table …', locale: 'en-GB',
   };
   const css = `
   .cal-table{display:flex;justify-content:center;margin:10px 0 2px}
@@ -74,7 +74,10 @@
     try { F = await (await fetch('data/fixtures.json', { cache: 'no-cache' })).json(); } catch { return; }
     const rows = table(F);
     const anyLive = rows.some(r => r.live);
-    const lastDone = Math.max(0, ...F.fixtures.filter(f => f.done).map(f => f.gw));
+    // last gameweek with every match finished, plus how many matches of later gameweeks are already in
+    const gwsAll = [...new Set(F.fixtures.map(f => f.gw))];
+    const lastDone = Math.max(0, ...gwsAll.filter(g => F.fixtures.filter(f => f.gw === g).every(f => f.done)));
+    const extra = F.fixtures.filter(f => f.gw > lastDone && (f.done || isLive(f))).length;
     const res = { W: T.win, D: T.draw, L: T.loss };
     el.innerHTML = `<a class="mp-back" href="#start" data-back>${T.back}</a>
       <h2>${T.title}</h2>
@@ -90,7 +93,7 @@
             <td>${r.gf}:${r.ga}</td><td>${gd > 0 ? '+' : ''}${gd}</td><td class="pts">${r.pts}</td>
             <td class="hide-s"><span class="form">${r.res.slice(-5).map(x => `<i class="${x.r}${x.live ? ' live' : ''}" title="${res[x.r]}">${T[x.r.toLowerCase()]}</i>`).join('')}</span></td></tr>`;
         }).join('')}</tbody></table></section>
-      <p class="plt-note">${lastDone ? `${T.after} ${lastDone}${anyLive ? ' + live' : ''} · ` : ''}${T.note}</p>`;
+      <p class="plt-note">${lastDone ? `${T.after} ${lastDone}${extra ? ` + ${extra} ${T.more}` : ''} · ` : ''}${T.note}</p>`;
   }
 
   // Knopf im Spielkalender (calendar.js zeichnet #next neu → Knopf danach einfügen)
