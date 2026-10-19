@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T22:01:14.308Z",
+ "updated": "2026-10-19T22:16:13.800Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -1438,7 +1438,7 @@
      "gw": 7,
      "finished": true,
      "chip": null,
-     "points": 69,
+     "points": 73,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -2729,7 +2729,7 @@
      "gw": 7,
      "finished": true,
      "chip": null,
-     "points": 48,
+     "points": 50,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -9730,7 +9730,7 @@
      "gw": 7,
      "finished": true,
      "chip": "3xc",
-     "points": 59,
+     "points": 65,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -11057,7 +11057,7 @@
      "gw": 7,
      "finished": true,
      "chip": null,
-     "points": 56,
+     "points": 65,
      "hits": 0,
      "subs": [],
      "picks": [
