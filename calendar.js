@@ -27,10 +27,14 @@
   const ICON = { g: '⚽', og: '🙈', as: '🅰️', yc: '🟨', rc: '🟥', ps: '🧤', pm: '❌' };
   const TITLE = { g: 'Tor', og: 'Eigentor', as: 'Assist', yc: 'Gelbe Karte', rc: 'Rote Karte', ps: 'Elfer gehalten', pm: 'Elfer verschossen' };
 
+  // "45+2'" → 45.02 (sort key); unknown minute → last
+  const minOf = x => { const m = /^(\d+)(?:\+(\d+))?/.exec(x[2]?.[0] || ''); return m ? +m[1] + (+m[2] || 0) / 100 : 999; };
   function events(f, s) {
     const out = [];
     for (const k of ['g', 'og', 'as', 'yc', 'rc', 'ps', 'pm']) {
-      const l = (f.ev?.[k]?.[s] || []).map(([id, n]) => `${name(id)}${n > 1 ? ` <b>×${n}</b>` : ''}`);
+      // [id, n, ["14'", "67'"]] – the minutes, when known; otherwise ×n. Ordered by the first minute.
+      const l = [...(f.ev?.[k]?.[s] || [])].sort((x, y) => minOf(x) - minOf(y))
+        .map(([id, n, m]) => `<span class="evp">${name(id)}${m ? ` <span class="evm">${m.join(', ')}</span>` : n > 1 ? ` <b>×${n}</b>` : ''}</span>`);
       if (l.length) out.push(`<div title="${TITLE[k]}">${ICON[k]} ${l.join(', ')}</div>`);
     }
     return out.join('');

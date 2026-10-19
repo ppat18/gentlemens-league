@@ -60,6 +60,9 @@ function buildFixtures(boot, all) {
 
 async function writeFixtures(boot, get) {
   const data = buildFixtures(boot, await get('/fixtures/'));
+  // Minuten der Ereignisse (PL-Schnittstelle) – darf den Kalender nie blockieren
+  try { console.log('Minuten:', await require('./matchmins').addMatchMins(data, boot), 'Spiele neu geholt'); }
+  catch (err) { console.warn('Minuten nicht verfügbar:', err.message); }
   const file = path.join(__dirname, '..', 'data', 'fixtures.json');
   fs.writeFileSync(file, JSON.stringify(data));
   return data.fixtures.length;
