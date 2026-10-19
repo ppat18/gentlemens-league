@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T22:31:05.244Z",
+ "updated": "2026-10-19T22:46:08.741Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -537,10 +537,10 @@
     },
     {
      "gw": 7,
-     "points": 69,
-     "gross": 69,
-     "total": 511,
-     "bench": 0,
+     "points": 73,
+     "gross": 73,
+     "total": 515,
+     "bench": 5,
      "transfers": 2,
      "hits": 0,
      "value": 101.6,
@@ -573,7 +573,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 69,
+     "lazyPts": 73,
      "transfersIn": [
       {
        "in": "Thomas",
@@ -1886,10 +1886,10 @@
     },
     {
      "gw": 7,
-     "points": 48,
-     "gross": 48,
-     "total": 487,
-     "bench": 10,
+     "points": 50,
+     "gross": 50,
+     "total": 489,
+     "bench": 11,
      "transfers": 0,
      "hits": 0,
      "value": 101.9,
@@ -3170,7 +3170,7 @@
      "points": 78,
      "gross": 78,
      "total": 480,
-     "bench": 6,
+     "bench": 8,
      "transfers": 0,
      "hits": 0,
      "value": 101,
@@ -5871,7 +5871,7 @@
      "points": 56,
      "gross": 56,
      "total": 460,
-     "bench": 15,
+     "bench": 17,
      "transfers": 1,
      "hits": 0,
      "value": 101.4,
@@ -8831,9 +8831,9 @@
     },
     {
      "gw": 7,
-     "points": 59,
-     "gross": 59,
-     "total": 427,
+     "points": 65,
+     "gross": 65,
+     "total": 433,
      "bench": 9,
      "transfers": 1,
      "hits": 0,
@@ -8871,7 +8871,7 @@
      "injured": [
       "Tzolis"
      ],
-     "lazyPts": 56,
+     "lazyPts": 62,
      "transfersIn": [
       {
        "in": "Solanke",
@@ -10169,10 +10169,10 @@
     },
     {
      "gw": 7,
-     "points": 56,
-     "gross": 56,
-     "total": 419,
-     "bench": 8,
+     "points": 65,
+     "gross": 65,
+     "total": 428,
+     "bench": 9,
      "transfers": 0,
      "hits": 0,
      "value": 100.5,
@@ -13028,7 +13028,7 @@
      "points": 51,
      "gross": 55,
      "total": 404,
-     "bench": 11,
+     "bench": 13,
      "transfers": 2,
      "hits": 4,
      "value": 100,
