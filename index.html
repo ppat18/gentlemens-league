@@ -375,6 +375,10 @@ body.bowling-mode{background:
   repeating-linear-gradient(90deg,#c98f55 0 38px,#b97d45 38px 40px,#d39b60 40px 78px,#b97d45 78px 80px),
   #c98f55;background-attachment:fixed}
 body.bowling-mode .pitch-lines{display:none}
+body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width:min(46vw,340px);aspect-ratio:139/100;background:url(assets/bowling/pins.svg) no-repeat center/contain;opacity:.55;pointer-events:none;z-index:0}
+.bw-hero{background:url(assets/bowling/pins.svg) no-repeat right 10px bottom 6px/min(38%,230px) auto,linear-gradient(160deg,#1b0d2e,#3a0f4d 60%,#5b1446) !important}
+#bowling{position:relative;z-index:1}
+@media (max-width:480px){.bw-hero{background:url(assets/bowling/pins.svg) no-repeat right 6px bottom 4px/34% auto,linear-gradient(160deg,#1b0d2e,#3a0f4d 60%,#5b1446) !important}}
 #bowling{--bw-ink:#2b1406}
 .bw-hero{position:relative;overflow:hidden;margin-top:18px;border-radius:20px;padding:22px 18px;text-align:center;color:#fff;
   background:linear-gradient(160deg,#1b0d2e,#3a0f4d 60%,#5b1446);border:4px solid #ff4fb8;box-shadow:0 0 0 3px rgba(255,79,184,.25),0 10px 28px rgba(0,0,0,.35)}

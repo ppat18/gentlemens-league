@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278 200">
+  <defs>
+    <linearGradient id="pin" x1="0" x2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#f4efe6"/><stop offset="1" stop-color="#cfc6b8"/></linearGradient>
+    <radialGradient id="ball" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#c58bff"/><stop offset=".45" stop-color="#7b2ff7"/><stop offset="1" stop-color="#2a0b5c"/></radialGradient>
+    <g id="p">
+      <path d="M0 -78 C10 -78 12 -66 10 -56 C8 -48 5 -44 5 -38 C5 -30 18 -20 18 2 C18 22 10 34 9 42 L-9 42 C-10 34 -18 22 -18 2 C-18 -20 -5 -30 -5 -38 C-5 -44 -8 -48 -10 -56 C-12 -66 -10 -78 0 -78 Z" fill="url(#pin)" stroke="#8a7d6b" stroke-width="1.5"/>
+      <path d="M-6.5 -50 Q0 -47 6.5 -50 L7 -45 Q0 -42 -7 -45 Z M-6 -41 Q0 -38 6 -41 L5.8 -37 Q0 -34 -5.8 -37 Z" fill="#e0312f"/>
+    </g>
+  </defs>
+  <ellipse cx="135" cy="186" rx="118" ry="9" fill="#000" opacity=".22"/>
+  <use href="#p" transform="translate(150 142) rotate(-14)"/>
+  <use href="#p" transform="translate(196 140)"/>
+  <use href="#p" transform="translate(234 146) rotate(18)"/>
+  <circle cx="72" cy="140" r="44" fill="url(#ball)"/>
+  <circle cx="60" cy="118" r="6" fill="#170530"/><circle cx="78" cy="113" r="6" fill="#170530"/><circle cx="74" cy="134" r="7" fill="#170530"/>
+  <path d="M40 112 Q46 100 58 96" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".35"/>
+  <g stroke="#ffd166" stroke-width="3" stroke-linecap="round" opacity=".9"><path d="M125 70 l10 -12"/><path d="M118 56 l4 -16"/><path d="M138 82 l15 -6"/></g>
+</svg>

@@ -62,6 +62,7 @@ for (const b of fresh) {
   const round = Math.max(0, ...ev.games.filter(g => g.lane === b.lane).map(g => g.round)) + 1;
   ev.games.push({ round, lane: b.lane, players: b.players });
 }
+if (!fresh.length) { console.log(`OK – keine neuen Spiele am ${inp.date} (${boards.length} schon vorhanden) – nichts geändert`); process.exit(0); }
 data.evenings.sort((a, b) => a.date.localeCompare(b.date));
 fs.writeFileSync(FILE, JSON.stringify(data, null, 2) + '\n');
 const guests = [...new Set(fresh.flatMap(b => b.players.map(p => p.who)).filter(w => w.startsWith('gast:')))];
