@@ -104,6 +104,7 @@ function drawBowling(d, B, box) {
 
   box.innerHTML = `
     <div class="bw-hero"><div class="bw-lights"></div>
+      <button type="button" class="bw-upload">📸 Bowling-Abend hochladen</button>
       <h2>🎳 Gentlemen's Bowling</h2>
       <p>${evenings.length} Abend${evenings.length === 1 ? '' : 'e'} · ${rows.reduce((a, r) => a + r.games, 0)} Einzelspiele · ${rows.reduce((a, r) => a + r.strikes, 0)} Strikes</p>
     </div>
@@ -123,3 +124,70 @@ function drawBowling(d, B, box) {
   const mark = () => document.body.classList.toggle('bowling-mode', (location.hash || '').startsWith('#bowling'));
   addEventListener('hashchange', mark); mark();
 })();
+
+// ---------- Upload: Fotos der Anzeigetafeln → KI liest aus → erscheint automatisch ----------
+const BOWL_API = 'https://gentlemens-liga-wecker.ppat18usa.workers.dev/bowling/upload';
+// Foto verkleinern (max. 1600 px, JPEG) – spart Upload-Zeit und KI-Kosten
+function bowlShrink(file) {
+  return new Promise((res, rej) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => {
+      const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+      res(c.toDataURL('image/jpeg', 0.85));
+    };
+    img.onerror = () => rej(new Error('Bild nicht lesbar: ' + file.name));
+    img.src = url;
+  });
+}
+function bowlUploadDialog() {
+  const d = window.LEAGUE; if (!d) return;
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Vienna' }).format(new Date());
+  let code = ''; try { code = localStorage.getItem('bowl-code') || ''; } catch (e) { /* egal */ }
+  const ov = document.createElement('div');
+  ov.className = 'bw-modal';
+  ov.innerHTML = `<form class="bw-dialog">
+    <button type="button" class="bw-x" aria-label="Schließen">×</button>
+    <h3>📸 Bowling-Abend hochladen</h3>
+    <p class="bw-hint">Fotos der Anzeigetafeln – die KI liest jedes Spiel Wurf für Wurf aus und trägt alles automatisch ein.</p>
+    <label>Datum<input type="date" name="date" value="${today}" required></label>
+    <label>Wer lädt hoch?<select name="uploader" required><option value="">– bitte wählen –</option>
+      ${[...d.managers].sort((a, b) => a.nick.localeCompare(b.nick)).map(m => `<option value="${esc(m.avatar)}">${esc(m.nick)}</option>`).join('')}</select></label>
+    <label>Bowlingcenter <small>(optional)</small><input name="place" placeholder="z. B. Kino Bowling"></label>
+    <label>Fotos<input type="file" name="photos" accept="image/*" multiple required></label>
+    <label>Liga-Code<input name="code" value="${esc(code)}" autocomplete="off" required></label>
+    <button class="bw-send" type="submit">🎳 Hochladen & auslesen</button>
+    <div class="bw-status" aria-live="polite"></div>
+  </form>`;
+  document.body.appendChild(ov);
+  const close = () => ov.remove();
+  ov.addEventListener('click', e => { if (e.target === ov || e.target.closest('.bw-x')) close(); });
+  const form = ov.querySelector('form'), status = ov.querySelector('.bw-status'), btn = ov.querySelector('.bw-send');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const f = new FormData(form), files = [...form.photos.files].slice(0, 12);
+    btn.disabled = true;
+    try {
+      status.textContent = `Fotos werden vorbereitet (${files.length}) …`;
+      const images = await Promise.all(files.map(bowlShrink));
+      status.textContent = `KI liest ${files.length} Anzeigetafel${files.length > 1 ? 'n' : ''} … das dauert ca. 30–60 Sekunden.`;
+      const r = await fetch(BOWL_API, { method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ code: f.get('code'), date: f.get('date'), uploader: f.get('uploader'), place: f.get('place'), images }) });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.error || 'Fehler ' + r.status);
+      try { localStorage.setItem('bowl-code', f.get('code')); } catch (e2) { /* egal */ }
+      const nick = a => d.managers.find(m => m.avatar === a)?.nick || String(a).replace(/^gast:/, '');
+      status.innerHTML = `<b>✅ ${out.added.length} Spiel${out.added.length === 1 ? '' : 'e'} eingetragen.</b><br>`
+        + out.added.map(g => `Bahn ${g.lane ?? '?'}: ` + g.players.map(p => `${esc(nick(p.who))} ${p.score}${p.unsure ? ' ⚠️' : ''}`).join(', ')).join('<br>')
+        + (out.unsure?.length ? '<br><small>⚠️ = rechnerisch nicht ganz sicher, Endpunkte stimmen aber.</small>' : '')
+        + (out.errors?.length ? `<br><small>Nicht lesbar: ${out.errors.map(esc).join(' · ')}</small>` : '')
+        + (out.note ? `<br><small>${esc(out.note)}</small>` : '')
+        + '<br><small>Die Seite zeigt es in ca. 2 Minuten (dann 🔄 tippen).</small>';
+    } catch (err) {
+      status.innerHTML = `<b>❌ ${esc(err.message)}</b>`;
+      btn.disabled = false;
+    }
+  });
+}
+document.addEventListener('click', e => { if (e.target.closest('.bw-upload')) bowlUploadDialog(); });

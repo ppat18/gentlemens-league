@@ -427,6 +427,19 @@ body.bowling-mode .pitch-lines{display:none}
 .bw-board td .rl i{color:#ff4fb8;font-style:normal}
 .bw-board td.nm{text-align:left;font:700 13px Inter;white-space:nowrap;padding:4px 8px}
 .bw-board td.sum{font-size:17px;color:#ffd166}
+.bw-upload{position:relative;z-index:1;display:inline-block;margin-bottom:12px;border:3px solid #ffd166;background:linear-gradient(135deg,#ff4fb8,#7b2ff7);color:#fff;font:700 15px Oswald;letter-spacing:.8px;text-transform:uppercase;border-radius:999px;padding:9px 18px;cursor:pointer;box-shadow:0 0 16px rgba(255,79,184,.6)}
+.bw-upload:active{transform:scale(.97)}
+.bw-modal{position:fixed;inset:0;z-index:150;background:rgba(20,8,30,.75);display:flex;align-items:flex-start;justify-content:center;padding:24px 12px;overflow-y:auto}
+.bw-dialog{position:relative;width:100%;max-width:440px;background:#fffaf2;border:4px solid #ff4fb8;border-radius:18px;padding:18px 16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.bw-dialog h3{font:700 22px Oswald;text-transform:uppercase;color:#2b1406;margin-right:30px}
+.bw-hint{font-size:13px;color:#6b5040}
+.bw-dialog label{display:flex;flex-direction:column;gap:4px;font:700 13px Inter;color:#2b1406}
+.bw-dialog label small{font-weight:400;color:#8a7060}
+.bw-dialog input,.bw-dialog select{font:16px Inter;padding:9px 10px;border:2px solid #d9c3a5;border-radius:10px;background:#fff}
+.bw-send{margin-top:4px;border:0;border-radius:999px;padding:12px;font:700 16px Oswald;letter-spacing:.8px;text-transform:uppercase;background:linear-gradient(135deg,#ffd166,#ff8c42);color:#2b1406;cursor:pointer}
+.bw-send:disabled{opacity:.5}
+.bw-x{position:absolute;top:8px;right:10px;border:0;background:none;font-size:28px;line-height:1;cursor:pointer;color:#7b2ff7}
+.bw-status{font-size:13.5px;line-height:1.5;color:#2b1406}
 /* König */
 .king{margin-top:26px;position:relative;border-radius:24px;padding:30px 20px;text-align:center;color:#fff;overflow:hidden;
   background:radial-gradient(circle at 50% 10%,rgba(255,220,100,.6),transparent 55%),linear-gradient(160deg,var(--navy),var(--navy-2))}
