@@ -167,19 +167,18 @@ function renderComps(d, comp, hist) {
     }
     return Object.values(s);
   };
-  // Sortierung: Punkte, dann direkter Vergleich (Punkte, Tordifferenz, Tore), dann gesamt
+  // Sortierung: Punkte, dann Tordifferenz, dann geschossene Tore, erst danach der direkte Vergleich
   const sortGroup = (rows, games) => {
-    const cmpBasic = (a, b) => b.P - a.P;
+    const cmpBasic = (a, b) => (b.P - a.P) || ((b.gf - b.ga) - (a.gf - a.ga)) || (b.gf - a.gf);
     rows.sort(cmpBasic);
     const out = [];
     for (let i = 0; i < rows.length;) {
-      let j = i; while (j < rows.length && rows[j].P === rows[i].P) j++;
+      let j = i; while (j < rows.length && cmpBasic(rows[j], rows[i]) === 0) j++;
       const tied = rows.slice(i, j);
       if (tied.length > 1) {
         const ids = tied.map(r => r.t);
         const h2h = Object.fromEntries(table(ids, games.filter(g => ids.includes(g.h) && ids.includes(g.a))).map(r => [r.t, r]));
-        tied.sort((a, b) => (h2h[b.t].P - h2h[a.t].P) || ((h2h[b.t].gf - h2h[b.t].ga) - (h2h[a.t].gf - h2h[a.t].ga)) ||
-          (h2h[b.t].gf - h2h[a.t].gf) || ((b.gf - b.ga) - (a.gf - a.ga)) || (b.gf - a.gf));
+        tied.sort((a, b) => (h2h[b.t].P - h2h[a.t].P) || ((h2h[b.t].gf - h2h[b.t].ga) - (h2h[a.t].gf - h2h[a.t].ga)) || (h2h[b.t].gf - h2h[a.t].gf));
       }
       out.push(...tied); i = j;
     }
