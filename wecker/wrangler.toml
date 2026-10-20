@@ -1,0 +1,11 @@
+# Liga-Wecker (Cloudflare Worker) – startet die Aktualisierung der Liga-Seite zuverlässig
+# Hochladen: npx wrangler deploy --config wecker/wrangler.toml
+# Schlüssel (macht Patrick selbst): npx wrangler secret put GH_TOKEN --config wecker/wrangler.toml
+name = "gentlemens-liga-wecker"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+preview_urls = false
+
+[triggers]
+crons = ["*/10 * * * *"]
