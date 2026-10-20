@@ -3,7 +3,7 @@
 // Entscheidung wie scripts/should-update.js: Spiel läuft · bis 3 h nach dem letzten Spiel der GW ·
 // GW vorbei, FPL hat noch nicht abgeschlossen → stündlich · FPL hat abgeschlossen, Seite zeigt noch vorläufig → sofort.
 // Secret GH_TOKEN (fine-grained, nur Repo gentlemens-league, Actions: read & write) setzt Patrick selbst.
-import { handleBowlingUpload } from './bowling.js';
+import { handleBowling } from './bowling.js';
 
 const REPO = 'ppat18/gentlemens-league';
 const SITE = 'https://ppat18.github.io/gentlemens-league';
@@ -60,15 +60,15 @@ export default {
   // Statusabfrage im Browser (startet nichts): zeigt nur, was der Wecker gerade entscheiden würde
   async fetch(req, env) {
     const url = new URL(req.url);
-    // Bowling-Upload von der Liga-Seite (CORS nur für die eigene Seite)
-    if (url.pathname === '/bowling/upload') {
+    // Bowling-Briefkasten (Upload von der Liga-Seite, Abholung durch die geplante Claude-Aufgabe)
+    if (url.pathname.startsWith('/bowling/')) {
       const origin = req.headers.get('Origin') || '';
       const allow = origin === 'https://ppat18.github.io' || /^http:\/\/localhost:\d+$/.test(origin) ? origin : 'https://ppat18.github.io';
-      const cors = { 'Access-Control-Allow-Origin': allow, 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'content-type', Vary: 'Origin' };
+      const cors = { 'Access-Control-Allow-Origin': allow, 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'content-type', Vary: 'Origin' };
       if (req.method === 'OPTIONS') return new Response(null, { headers: cors });
-      if (req.method !== 'POST') return new Response('POST only', { status: 405, headers: cors });
       let out;
-      try { out = await handleBowlingUpload(req, env); } catch (e) { out = { status: 500, error: String(e.message || e).slice(0, 300) }; }
+      try { out = await handleBowling(req, env, url); } catch (e) { out = { status: 500, error: String(e.message || e).slice(0, 300) }; }
+      if (out.raw) return new Response(out.raw, { headers: { ...cors, 'content-type': out.type, 'cache-control': 'no-store' } });
       return new Response(JSON.stringify(out), { status: out.status || 200, headers: { ...cors, 'content-type': 'application/json; charset=utf-8' } });
     }
     // /check: prüft nur, ob der Schlüssel GitHub lesen darf (startet nichts)
@@ -78,6 +78,6 @@ export default {
       return new Response(JSON.stringify({ github: r.status, letzterLauf: j?.workflow_runs?.[0]?.created_at || null }), { headers: { 'content-type': 'application/json' } });
     }
     const d = await decide(Date.now());
-    return new Response(JSON.stringify({ ...d, token: !!env.GH_TOKEN, bowling: { ki: !!env.ANTHROPIC_API_KEY, code: !!env.BOWLING_CODE } }, null, 1), { headers: { 'content-type': 'application/json; charset=utf-8' } });
+    return new Response(JSON.stringify({ ...d, token: !!env.GH_TOKEN, bowling: { briefkasten: !!env.BOWL_INBOX, code: !!env.BOWLING_CODE } }, null, 1), { headers: { 'content-type': 'application/json; charset=utf-8' } });
   },
 };

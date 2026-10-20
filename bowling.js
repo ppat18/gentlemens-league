@@ -150,14 +150,14 @@ function bowlUploadDialog() {
   ov.innerHTML = `<form class="bw-dialog">
     <button type="button" class="bw-x" aria-label="Schließen">×</button>
     <h3>📸 Bowling-Abend hochladen</h3>
-    <p class="bw-hint">Fotos der Anzeigetafeln – die KI liest jedes Spiel Wurf für Wurf aus und trägt alles automatisch ein.</p>
+    <p class="bw-hint">Fotos der Anzeigetafeln hochladen – sie werden automatisch ausgelesen (Wurf für Wurf) und spätestens am nächsten Morgen eingetragen.</p>
     <label>Datum<input type="date" name="date" value="${today}" required></label>
     <label>Wer lädt hoch?<select name="uploader" required><option value="">– bitte wählen –</option>
       ${[...d.managers].sort((a, b) => a.nick.localeCompare(b.nick)).map(m => `<option value="${esc(m.avatar)}">${esc(m.nick)}</option>`).join('')}</select></label>
     <label>Bowlingcenter <small>(optional)</small><input name="place" placeholder="z. B. Kino Bowling"></label>
     <label>Fotos<input type="file" name="photos" accept="image/*" multiple required></label>
     <label>Liga-Code<input name="code" value="${esc(code)}" autocomplete="off" required></label>
-    <button class="bw-send" type="submit">🎳 Hochladen & auslesen</button>
+    <button class="bw-send" type="submit">🎳 Hochladen</button>
     <div class="bw-status" aria-live="polite"></div>
   </form>`;
   document.body.appendChild(ov);
@@ -171,19 +171,14 @@ function bowlUploadDialog() {
     try {
       status.textContent = `Fotos werden vorbereitet (${files.length}) …`;
       const images = await Promise.all(files.map(bowlShrink));
-      status.textContent = `KI liest ${files.length} Anzeigetafel${files.length > 1 ? 'n' : ''} … das dauert ca. 30–60 Sekunden.`;
+      status.textContent = `${files.length} Foto${files.length > 1 ? 's werden' : ' wird'} hochgeladen …`;
       const r = await fetch(BOWL_API, { method: 'POST', headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ code: f.get('code'), date: f.get('date'), uploader: f.get('uploader'), place: f.get('place'), images }) });
       const out = await r.json();
       if (!r.ok) throw new Error(out.error || 'Fehler ' + r.status);
       try { localStorage.setItem('bowl-code', f.get('code')); } catch (e2) { /* egal */ }
-      const nick = a => d.managers.find(m => m.avatar === a)?.nick || String(a).replace(/^gast:/, '');
-      status.innerHTML = `<b>✅ ${out.added.length} Spiel${out.added.length === 1 ? '' : 'e'} eingetragen.</b><br>`
-        + out.added.map(g => `Bahn ${g.lane ?? '?'}: ` + g.players.map(p => `${esc(nick(p.who))} ${p.score}${p.unsure ? ' ⚠️' : ''}`).join(', ')).join('<br>')
-        + (out.unsure?.length ? '<br><small>⚠️ = rechnerisch nicht ganz sicher, Endpunkte stimmen aber.</small>' : '')
-        + (out.errors?.length ? `<br><small>Nicht lesbar: ${out.errors.map(esc).join(' · ')}</small>` : '')
-        + (out.note ? `<br><small>${esc(out.note)}</small>` : '')
-        + '<br><small>Die Seite zeigt es in ca. 2 Minuten (dann 🔄 tippen).</small>';
+      form.querySelectorAll('input, select').forEach(x => x.disabled = true);
+      status.innerHTML = `<b>✅ Danke! ${out.queued} Foto${out.queued === 1 ? ' ist' : 's sind'} angekommen.</b><br>Sie werden automatisch ausgelesen und spätestens am nächsten Morgen (österreichische Zeit) hier eingetragen.`;
     } catch (err) {
       status.innerHTML = `<b>❌ ${esc(err.message)}</b>`;
       btn.disabled = false;

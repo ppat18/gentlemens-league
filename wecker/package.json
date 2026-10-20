@@ -1,9 +1,0 @@
-{
-  "name": "gentlemens-liga-wecker",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@anthropic-ai/sdk": "latest",
-    "zod": "latest"
-  }
-}

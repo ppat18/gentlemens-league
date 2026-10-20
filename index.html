@@ -150,8 +150,8 @@ tr.last td{background:#ffe6e4}
 @media (max-width:480px){.fx-list{grid-template-columns:1fr}.fx .full{display:none}.fx .short{display:inline}}
 .fx-note{color:#fff;opacity:.8;font-size:12px;margin-top:8px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 /* Reiter */
-.tabs{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:6px;overflow-x:auto}
-.tabs a{color:#fff;text-decoration:none;font:600 15px Oswald;letter-spacing:.5px;text-transform:uppercase;padding:10px 16px;border-radius:12px 12px 0 0;white-space:nowrap;opacity:.75}
+.tabs{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;gap:4px 5px}
+.tabs a{color:#fff;text-decoration:none;font:600 13.5px Oswald;letter-spacing:.4px;text-transform:uppercase;padding:8px 12px;border-radius:12px 12px 0 0;white-space:nowrap;opacity:.75}
 .tabs a:hover{opacity:1;background:rgba(255,255,255,.08)}
 .tabs a.on{background:var(--lime);color:var(--navy);opacity:1}
 .intro{color:#fff;opacity:.9;margin:-6px 0 16px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
@@ -367,8 +367,8 @@ body{padding-bottom:80px}
 td.gwp small.hit{display:block;font:700 11px Inter;color:var(--red);line-height:1;margin-top:1px;white-space:nowrap}
 td.gwp small.hit .todo{color:#6b7280}
 /* ---------- Bowling ---------- */
-.tabs a.tab-bowling{background:linear-gradient(135deg,#ff4fb8,#7b2ff7);opacity:1;color:#fff}
-.tabs a.tab-bowling.on{background:linear-gradient(135deg,#ffd166,#ff8c42);color:#2b1406}
+.tabs a.tab-bowling{background:linear-gradient(135deg,#8b5a2b,#5c3a1a);opacity:1;color:#ffe9c7}
+.tabs a.tab-bowling.on{background:linear-gradient(135deg,#d39b60,#b97d45);color:#2b1406}
 body.bowling-mode{background:
   radial-gradient(ellipse at 50% -10%,rgba(255,79,184,.35),transparent 55%),
   radial-gradient(ellipse at 10% 30%,rgba(123,47,247,.25),transparent 45%),
@@ -553,10 +553,10 @@ body.bowling-mode .pitch-lines{display:none}
     <a href="#cl" data-page="cl">⭐ Champions League</a>
     <a href="#cup" data-page="cup">🥊 Cup</a>
     <a href="#bingo" data-page="bingo">🍺 Bier-Bingo</a>
-    <a href="#bowling" data-page="bowling" class="tab-bowling">🎳 Bowling</a>
     <a href="#archiv" data-page="archiv">📚 Archiv</a>
     <a href="#hall-of-fame" data-page="hall-of-fame">🏆 Hall of Fame</a>
     <a href="#faq" data-page="faq">❓ FAQ</a>
+    <a href="#bowling" data-page="bowling" class="tab-bowling">🎳 Bowling</a>
   </nav>
   <div class="demo" id="updated"></div>
 </header>

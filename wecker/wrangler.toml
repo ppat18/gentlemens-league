@@ -9,3 +9,8 @@ preview_urls = false
 
 [triggers]
 crons = ["*/10 * * * *"]
+
+# privater Briefkasten für Bowling-Fotos (60 Tage, bis die geplante Claude-Aufgabe sie abholt)
+[[kv_namespaces]]
+binding = "BOWL_INBOX"
+id = "9350ce6b9d9c400ca6749f481050f3c0"
