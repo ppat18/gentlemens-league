@@ -57,6 +57,12 @@ export default {
   },
   // Statusabfrage im Browser (startet nichts): zeigt nur, was der Wecker gerade entscheiden würde
   async fetch(req, env) {
+    // /check: prüft nur, ob der Schlüssel GitHub lesen darf (startet nichts)
+    if (new URL(req.url).pathname === '/check') {
+      const r = await gh(env, '/actions/workflows/update.yml/runs?per_page=1');
+      const j = r.ok ? await r.json() : null;
+      return new Response(JSON.stringify({ github: r.status, letzterLauf: j?.workflow_runs?.[0]?.created_at || null }), { headers: { 'content-type': 'application/json' } });
+    }
     const d = await decide(Date.now());
     return new Response(JSON.stringify({ ...d, token: !!env.GH_TOKEN }, null, 1), { headers: { 'content-type': 'application/json; charset=utf-8' } });
   },
