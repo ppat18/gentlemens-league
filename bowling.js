@@ -111,10 +111,10 @@ function drawBowling(d, B, box) {
     <h3 class="bw-h">🏅 Auszeichnungen</h3>
     <div class="bw-awards">${awards.map(([ic, t, r, txt]) => r ? `<div class="bw-award"><div class="ic">${ic}</div>${face(r.who)}<div><small>${t}</small><b>${esc(nick(r.who))}</b><span>${txt(r)}</span></div></div>` : '').join('')}</div>
     <h3 class="bw-h">📊 Gesamtwertung</h3>
-    <div class="bw-tbl"><table><thead><tr><th>#</th><th>Spieler</th><th class="num">Ø</th><th class="num">Bestes</th><th class="num">Spiele</th><th class="num">💥 Strikes</th><th class="num">🧹 Spares</th><th class="num">Spare-%</th><th class="num">🕳️ Fehl</th><th class="num">🎳 Splits</th><th class="num">🏆 Abende</th></tr></thead><tbody>
-      ${rows.map((r, i) => `<tr><td class="rank">${i + 1}</td><td><div class="who">${face(r.who)}<div>${esc(nick(r.who))}</div></div></td><td class="num"><b>${f1(r.avg)}</b></td><td class="num">${r.best}</td><td class="num">${r.games}</td><td class="num">${r.strikes}</td><td class="num">${r.spares}</td><td class="num">${pct(r.spares, r.spareChances)}</td><td class="num">${r.misses}</td><td class="num">${r.splits}</td><td class="num">${r.wins}</td></tr>`).join('')}
+    <div class="bw-tbl"><table><thead><tr><th>#</th><th>Spieler</th><th class="num">Ø</th><th class="num">Bestes</th><th class="num">Spiele</th><th class="num">💥 Strikes</th><th class="num">🧹 Spares</th><th class="num">Spare-%</th><th class="num">🕳️ Fehl</th><th class="num">🎳 Splits</th><th class="num">Abende</th><th class="num">🏆 Siege</th></tr></thead><tbody>
+      ${rows.map((r, i) => `<tr><td class="rank">${i + 1}</td><td><div class="who">${face(r.who)}<div>${esc(nick(r.who))}</div></div></td><td class="num"><b>${f1(r.avg)}</b></td><td class="num">${r.best}</td><td class="num">${r.games}</td><td class="num">${r.strikes}</td><td class="num">${r.spares}</td><td class="num">${pct(r.spares, r.spareChances)}</td><td class="num">${r.misses}</td><td class="num">${r.splits}</td><td class="num">${r.nights}</td><td class="num">${r.wins}</td></tr>`).join('')}
     </tbody></table></div>
-    <p class="bw-note">Ø = Durchschnitt pro Spiel. Spare-% = verwertete Spare-Chancen (jeder Frame ohne Strike). Fehl = Würfe mit 0 Pins. 🏆 Abende = wie oft jemand den besten Schnitt des Abends hatte.</p>
+    <p class="bw-note">Ø = Durchschnitt pro Spiel. Spare-% = verwertete Spare-Chancen (jeder Frame ohne Strike). Fehl = Würfe mit 0 Pins. Abende = gespielte Bowling-Abende. 🏆 Siege = wie oft jemand den besten Schnitt des Abends hatte.</p>
     <h3 class="bw-h">🗓️ Bowling-Abende</h3>
     ${evHtml}`;
 }

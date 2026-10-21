@@ -103,6 +103,10 @@ tr.last td{background:#ffe6e4}
 .who small{display:block;color:#777;font-weight:400;font-size:12px}
 .total{font:700 20px Oswald;color:var(--navy)}
 .scroll{overflow-x:auto}
+/* breite Tabellen: Namensspalte bleibt beim seitlichen Schieben stehen (sticky.js) */
+td.stick,th.stick{position:sticky;left:0;z-index:2}
+td.stick{background:var(--stick-bg,#fff);box-shadow:4px 0 5px -3px rgba(0,0,0,.25)}
+th.stick{z-index:3;box-shadow:4px 0 5px -3px rgba(0,0,0,.25)}
 .stats th,.stats td{white-space:nowrap}
 .stats td.best{color:#1e9e3a;font-weight:800}.stats td.worst{color:var(--red);font-weight:800}
 .stats th.sortable{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
@@ -404,6 +408,8 @@ body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width
 .bw-tbl{background:#fffaf2;border-radius:14px;overflow-x:auto;box-shadow:0 6px 16px rgba(43,20,6,.3);border:4px solid #7b2ff7}
 .bw-tbl table{width:100%;border-collapse:collapse;font-size:14px}
 .bw-tbl th{background:#2b1406;color:#ffd166;font:700 12px Oswald;text-transform:uppercase;letter-spacing:.5px;padding:7px 6px;text-align:left;white-space:nowrap}
+.bw-tbl th.num{text-align:right}
+.bw-tbl{--stick-bg:#fffaf2}.bw-board{--stick-bg:#13233d}.bw-board th.stick{background:#13233d}
 .bw-tbl td{padding:6px;border-bottom:1px solid #f0e2cf;white-space:nowrap}
 .bw-tbl td.bw-top{background:#ffd166;font-weight:800}
 .bw-tbl .who .av{width:30px;height:30px;border:2px solid #ff4fb8}
@@ -752,6 +758,7 @@ body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width
 document.getElementById('refresh-btn').onclick = function () { this.classList.add('spin'); location.reload(); };
 </script>
 <script src="nobreak.js?v=__BUILD__"></script>
+<script src="sticky.js?v=__BUILD__"></script>
 <script src="extras.js?v=__BUILD__"></script>
 <script src="comps.js?v=__BUILD__"></script>
 <script src="squad.js?v=__BUILD__"></script>
