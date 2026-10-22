@@ -36,7 +36,8 @@
 
   // --- Aufstellung ---
   const rows = [1, 2, 3, 4].map(t => S.xi.xi.filter(id => P[id].pos === t));
-  const xp = id => `<div class="xp">${id === cap ? '<span class="tag c">C</span>' : id === vice ? '<span class="tag v">V</span>' : ''}${badge(P[id])}<div class="n">${esc(P[id].name)}</div><div class="v">${n1(nextXP(id))}</div></div>`;
+  // Spielerkarte: Wappen mit Kapitänsbinde, Name, Prognose; Bank mit Einwechsel-Reihenfolge
+  const xp = (id, sub) => `<div class="xp"><div class="bdg">${badge(P[id])}${id === cap ? '<span class="arm c">C</span>' : id === vice ? '<span class="arm vc">V</span>' : ''}${sub ? `<span class="arm sub">${sub}</span>` : ''}</div><div class="n">${esc(P[id].name)}</div><div class="pt">${n1(nextXP(id))}</div></div>`;
 
   // --- Transfers ---
   const singleRows = S.singles.map(s => `<tr><td>${pl(s.out)}</td><td>${pl(s.inn, P[s.inn].owners.length ? ` <span class="tag" title="In der Liga bei: ${esc(P[s.inn].owners.join(', '))}">👥${P[s.inn].owners.length}</span>` : '')}</td>
@@ -80,8 +81,8 @@
   ${injured.length ? `<div class="card red" style="margin-top:12px"><b>🚑 Sorgenkinder:</b> ${injured.map(id => `${esc(P[id].name)} ${flag(P[id])} <span class="muted">${esc(P[id].news)}</span>`).join(' · ')}</div>` : ''}
 
   <h2>📋 Beste Aufstellung <small>${S.xi.formation} · Prognose ${n1(S.xi.total)} Pkt. inkl. Kapitän</small></h2>
-  <div class="card navy"><div class="xi">${rows.map(r => `<div class="xrow">${r.map(xp).join('')}</div>`).join('')}</div>
-    <div class="benchrow">${S.xi.bench.map(xp).join('')}</div>
+  <div class="card navy"><div class="pitch"><div class="xi">${rows.map(r => `<div class="xrow">${r.map(id => xp(id)).join('')}</div>`).join('')}</div>
+    <div class="bench"><span class="bl">Bank</span><div class="benchrow">${S.xi.bench.map((id, i) => xp(id, i ? i : 'TW')).join('')}</div></div></div>
     <p class="muted" style="margin-top:6px">Bank in Einwechsel-Reihenfolge. Zahlen = erwartete Punkte in GW ${S.nextGW} (ohne Kapitänsfaktor).</p></div>
 
   <h2>🔁 Transfer-Vorschläge <small>Punkte-Plus über ${S.gws.length} Spieltage</small></h2>

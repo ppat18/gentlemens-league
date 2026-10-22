@@ -49,15 +49,26 @@ td.num,th.num{text-align:right;white-space:nowrap}
 .fx{display:inline-block;min-width:44px;text-align:center;border-radius:6px;padding:3px 4px;font:700 11px Inter}
 .f1,.f2{background:#1e9e3a;color:#fff}.f3{background:#d7dbe6}.f4{background:#f08a24;color:#fff}.f5{background:var(--red);color:#fff}.f0{background:#eee;color:#999}
 .fx small{display:block;font:600 10px Inter;opacity:.9}
-.xi{display:flex;flex-direction:column;gap:8px;background:linear-gradient(180deg,#3a8f3d,#2f7d32);border-radius:12px;padding:12px 6px}
-.xrow{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
-.xp{width:76px;text-align:center;color:#fff;font-size:11.5px;position:relative}
-.xp img{width:30px;height:30px;object-fit:contain}
-.xp .n{background:#fff;color:var(--ink);font-weight:700;border-radius:5px 5px 0 0;padding:1px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.xp .v{background:var(--navy);border-radius:0 0 5px 5px;font:700 12px Oswald;padding:1px}
-.xp .tag{position:absolute;top:-4px;right:6px}
-.benchrow{display:flex;justify-content:center;gap:6px;margin-top:8px;padding-top:8px;border-top:1px dashed #cfd3dd}
-.benchrow .xp{color:var(--ink)}
+/* Spielfeld: gestreifter Rasen mit Linien, Wappen + Kapitänsbinde, Name, Prognose; Bank darunter (22.10.2026) */
+.pitch{border-radius:14px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.xi{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:14px;padding:22px 6px 20px;
+  background:repeating-linear-gradient(180deg,#3d9441 0 46px,#358a39 46px 92px)}
+.xi::before{content:"";position:absolute;left:50%;top:-1px;width:min(62%,330px);height:72px;transform:translateX(-50%);border:2px solid rgba(255,255,255,.35);border-top:0;border-radius:0 0 6px 6px}
+.xi::after{content:"";position:absolute;left:50%;bottom:-46px;width:120px;height:92px;transform:translateX(-50%);border:2px solid rgba(255,255,255,.3);border-radius:50%}
+.xrow{position:relative;z-index:1;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.xp{width:84px;text-align:center;font-size:11.5px}
+.xp .bdg{position:relative;width:40px;height:40px;margin:0 auto 3px}
+.xp .bdg img{width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 3px 3px rgba(0,0,0,.35))}
+.xp .arm{position:absolute;right:-12px;top:-4px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:700 11px Inter;box-shadow:0 2px 4px rgba(0,0,0,.35)}
+.xp .arm.c{background:var(--gold);color:var(--ink)}
+.xp .arm.vc{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.xp .arm.sub{background:#d7dbe6;color:var(--ink);font-size:9.5px;width:22px;left:-12px;right:auto}
+.xp .n{background:#fff;color:var(--ink);font-weight:700;border-radius:6px 6px 0 0;padding:2px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xp .pt{background:var(--navy);color:#fff;border-radius:0 0 6px 6px;font:700 13px Oswald;padding:1px}
+.bench{background:linear-gradient(180deg,#e9edf5,#dfe4ee);padding:10px 6px 12px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.bench .bl{font:700 11px Oswald;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.benchrow{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.bench .xp .pt{background:#5b5f7a}
 .rate{display:flex;align-items:center;gap:14px}
 .grade{font:700 54px/1 Oswald;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--lime);flex:none}
 .bar{height:8px;border-radius:99px;background:#e3e6ee;overflow:hidden}
@@ -68,7 +79,7 @@ td.num,th.num{text-align:right;white-space:nowrap}
 .tabs button{border:0;border-radius:999px;padding:6px 12px;font:700 12px Oswald;text-transform:uppercase;background:rgba(255,255,255,.85);color:var(--navy);cursor:pointer}
 .tabs button.on{background:var(--lime)}
 .note{color:#fff;opacity:.85;font-size:12px;margin-top:8px;text-shadow:0 1px 2px rgba(0,0,0,.4)}
-@media (max-width:480px){.tbl .pl .pos{display:none}.tbl .pl{gap:5px}header h1{font-size:22px}.pills{margin-left:0}.xp{width:62px;font-size:10.5px}.xp img{width:26px;height:26px}td,th{padding:5px 4px}}
+@media (max-width:480px){.tbl .pl .pos{display:none}.tbl .pl{gap:5px}header h1{font-size:22px}.pills{margin-left:0}.xp{width:66px;font-size:10.5px}.xp .bdg,.xp .bdg img{width:32px;height:32px}.xrow,.benchrow{gap:5px}td,th{padding:5px 4px}}
 td.stick,th.stick{position:sticky;left:0;z-index:2}td.stick{background:var(--card);box-shadow:4px 0 5px -3px rgba(0,0,0,.25)}th.stick{z-index:3;box-shadow:4px 0 5px -3px rgba(0,0,0,.25)}
 </style>
 </head>
