@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T09:53:29.523Z",
+ "updated": "2026-10-22T01:55:28.500Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -2861,7 +2861,7 @@
    "id": 2634875,
    "nick": "Roli",
    "avatar": "roli",
-   "valueNow": 101,
+   "valueNow": 101.1,
    "bankNow": 1,
    "name": "Roland Kumpitsch",
    "team": "District 14 Graz",
@@ -4177,7 +4177,7 @@
    "id": 3730212,
    "nick": "Thomas",
    "avatar": "thomas",
-   "valueNow": 102,
+   "valueNow": 102.1,
    "bankNow": 0,
    "name": "Thomas Pirker",
    "team": "1. FC Wadenkrampf",
