@@ -43,8 +43,13 @@
   function card(f) {
     const h = F.teams[f.h], a = F.teams[f.a], live = isLive(f), started = f.hs != null;
     const time = f.ko ? new Date(f.ko).toLocaleTimeString('de-AT', { ...TZ, hour: '2-digit', minute: '2-digit' }) : '–';
-    const mid = !started ? `<div class="time">${time}</div>`
-      : `<div class="score"><b>${f.hs} : ${f.as}</b><small>${live ? `<span class="live-tag">LIVE</span>${f.min ? ` ${f.min}'` : ''}` : f.done ? 'Ende' : 'Pause'}</small></div>`;
+    // am Spieltag selbst: Countdown bis zum Anstoß (wird jede Minute neu gezeichnet)
+    const day = d => new Date(d).toLocaleDateString('de-AT', TZ);
+    const left = f.ko ? ko(f) - Date.now() : 0;
+    const cd = left > 0 && day(f.ko) === day(Date.now()) ? `<small>in ${left >= 3600000 ? Math.floor(left / 3600000) + ' Std. ' : ''}${Math.floor(left % 3600000 / 60000)} Min.</small>` : '';
+    // gestartet, aber nicht mehr im Live-Fenster → vorbei (FPL meldet „beendet“ oft erst später)
+    const mid = !started ? `<div class="time">${time}${cd}</div>`
+      : `<div class="score"><b>${f.hs} : ${f.as}</b><small>${live ? `<span class="live-tag">LIVE</span>${f.min ? ` ${f.min}'` : ''}` : 'Ende'}</small></div>`;
     let det = '';
     if (started) {
       const eh = events(f, 'h'), ea = events(f, 'a');
