@@ -123,29 +123,18 @@ function renderReport(ms, GW) {
 }
 
 // --- Glück-o-Meter ---
-// Glück-o-Meter-Formel (auch für GLÜ in der Sammelkarte, squad.js). Ziel: echtes Glück statt Können messen.
-//  · Bonus: nur der Teil über/unter dem, was bei der eigenen Punktzahl üblich ist (Liga-Schnitt Bonus je Punkt), davon ⅓
-//  · Bankpunkte ⅓ (oft eigene Aufstellungs-Entscheidung) · Last-Minute halb (wer viele Angreifer hat, profitiert öfter)
-//  · Auto-Wechsel, Karten/Eigentore/Elfer und Triple Captain voll
+// Glück-o-Meter-Formel. Ziel: Glück messen, nicht Können – deshalb zählt, was die Startelf ÜBER oder UNTER der
+// Erwartung bekommen hat (FPL liefert je Spieler und Spiel die erwarteten Tore/Vorlagen/Gegentore, xG/xA/xGC):
+//  · 🎯 Abschluss-Glück: (Tore − xG) × Torpunkte + (Vorlagen − xA) × 3   (wer gute Spieler hat, hat auch hohes xG → neutral)
+//  · 🧤 Zu-null-Glück: (Zu-null − Wahrscheinlichkeit e^−xGC) × Zu-null-Punkte   · 🥅 Gegentor-Glück (TW/VT): −(Gegentore − xGC)/2
+//    – alles × Kapitänsfaktor (damit ist auch Triple-Captain-Glück drin)
+//  · 🔄 Auto-Wechsel halb (die Bank hat man selbst gewählt) · 🟥 Karten/Eigentore/Elfer voll · 🤕 Verletzungspech voll
+//  Nicht mehr drin: Bonus, Bankpunkte, Last-Minute (steckt schon im Abschluss-Glück) – das hing zu sehr am Können.
 function luckParts(ms) {
   const sum = (m, k) => m.gws.reduce((a, g) => a + (g[k] || 0), 0);
-  const pts = m => m.gws.reduce((a, g) => a + (g.gross ?? g.points ?? 0), 0);
-  const allPts = ms.reduce((a, m) => a + pts(m), 0);
-  const ratio = allPts ? ms.reduce((a, m) => a + sum(m, 'bonus'), 0) / allPts : 0;
   return ms.map(m => {
-    const auto = sum(m, 'autoSubPts'), bonus = sum(m, 'bonus'), bench = sum(m, 'bench');
-    const bonusExp = Math.round(pts(m) * ratio * 10) / 10;
+    const fin = sum(m, 'finLuck'), cs = sum(m, 'csLuck'), gc = sum(m, 'gcLuck'), auto = sum(m, 'autoSubPts');
     const bad = sum(m, 'red') * 3 + sum(m, 'yellow') + sum(m, 'ownGoals') * 2 + sum(m, 'penMiss') * 2;
-    // Last-Minute: Tore/Vorlagen ab 90' (+) und spät verlorenes Zu-null (−)
-    const lateGain = sum(m, 'lateGain'), lateLoss = sum(m, 'lateLoss');
-    const lateList = m.gws.flatMap(g => (g.lateInfo || []).map(t => `GW ${g.gw}: ${t}`));
-    // Triple Captain: kein Tor & kein Assist = −5 · ab dem 2. Tor +5 je Tor
-    const tc = m.gws.filter(g => g.chip === '3xc').map(g => {
-      const goals = g.captainGoals || 0, assists = g.captainAssists || 0;
-      const v = !goals && !assists ? -5 : goals >= 2 ? 5 * (goals - 1) : 0;
-      return { gw: g.gw, v, txt: `GW ${g.gw}: ${g.captain} ${goals}⚽ ${assists}🅰️ → ${v > 0 ? '+' : v < 0 ? '−' : '±'}${Math.abs(v)}` };
-    });
-    const tcLuck = tc.reduce((a, x) => a + x.v, 0);
     // Verletzungen: Startelf-Spieler nach ≤20' raus (−2, Kapitän −4) · −½ je Kaderspieler, der zur Deadline verletzt war
     const knocks = m.gws.flatMap(g => (g.knocks || []).map(k => ({ ...k, gw: g.gw })));
     const knockLuck = knocks.reduce((a, k) => a + 2 * (k.mult || 1), 0);
@@ -153,9 +142,8 @@ function luckParts(ms) {
     const injN = injGws.reduce((a, g) => a + g.injured.length, 0), injLuck = injN / 2;
     const injList = [...knocks.map(k => `GW ${k.gw}: ${k.name} nach ${k.min}' raus (${k.pts} Pkt.)${k.mult > 1 ? ' als Kapitän' : ''} → −${2 * (k.mult || 1)}`),
       ...injGws.map(g => `GW ${g.gw}: ${g.injured.join(', ')} zur Deadline verletzt → −${(g.injured.length / 2).toLocaleString('de-AT')}`)];
-    const bonusLuck = (bonus - bonusExp) / 3, benchLuck = bench / 3, lateLuck = (lateGain - lateLoss) / 2;
-    return { m, auto, bonus, bonusExp, bonusLuck, bench, benchLuck, bad, lateGain, lateLoss, lateLuck, lateList, tc, tcLuck, knocks, knockLuck, injN, injLuck, injList,
-      raw: auto + bonusLuck - benchLuck - bad + lateLuck + tcLuck - knockLuck - injLuck };
+    return { m, fin, cs, gc, auto, autoLuck: auto / 2, bad, knocks, knockLuck, injN, injLuck, injList,
+      raw: fin + cs + gc + auto / 2 - bad - knockLuck - injLuck };
   });
 }
 
@@ -202,18 +190,16 @@ function renderLuck(ms) {
         <div class="ltrack"><div class="lbar ${r.luck >= 0 ? 'pos' : 'neg'}" style="width:max(0px, calc(${w}% - 2px))"></div></div>
         <div class="lval">${fmt(r.luck)}</div>
         <div class="tip"><b>${esc(r.m.nick)}</b><br>
-          🔄 Auto-Einwechslungen: +${r.auto}<br>
-          ⭐ Bonus über/unter Erwartung (⅓): ${fmt(Math.round(r.bonusLuck * 10) / 10)} <small>(${r.bonus} statt erwartet ${r.bonusExp.toLocaleString('de-AT')})</small><br>
-          🪑 Bankpunkte (⅓): −${(Math.round(r.benchLuck * 10) / 10).toLocaleString('de-AT')}<br>
+          🎯 Abschluss-Glück (Tore/Vorlagen vs. erwartet): ${fmt(Math.round(r.fin * 10) / 10)}<br>
+          🧤 Zu-null-Glück: ${fmt(Math.round(r.cs * 10) / 10)}<br>
+          🥅 Gegentor-Glück: ${fmt(Math.round(r.gc * 10) / 10)}<br>
+          🔄 Auto-Einwechslungen (½): +${(Math.round(r.autoLuck * 10) / 10).toLocaleString('de-AT')}<br>
           🟥 Karten, Eigentore, Elfer: −${r.bad}<br>
-          ⏱️ Last-Minute (halb): ${fmt(r.lateLuck)} <small>(+${r.lateGain} / −${r.lateLoss})</small><br>
-          ${r.lateList.length ? `<small style="opacity:.85">${r.lateList.map(esc).join('<br>')}</small><br>` : ''}
-          ${r.tc.length ? `🃏 Triple Captain: ${r.tcLuck > 0 ? '+' : r.tcLuck < 0 ? '−' : '±'}${Math.abs(r.tcLuck)}<br><small style="opacity:.85">${r.tc.map(x => esc(x.txt)).join('<br>')}</small><br>` : ''}
           ${r.injList.length ? `🤕 Verletzungen: −${(r.knockLuck + r.injLuck).toLocaleString('de-AT')}<br><small style="opacity:.85">${r.injList.map(esc).join('<br>')}</small><br>` : ''}
           <b>= ${fmt(r.luck)} gegenüber dem Liga-Schnitt</b></div>
       </div>`;
     }).join('')}
-    <p class="lnote">So wird gerechnet: Punkte durch automatische Einwechslungen + ⅓ der Bonuspunkte über/unter Erwartung (was bei der eigenen Punktzahl üblich ist) − ⅓ der Bankpunkte − Minuspunkte durch Karten, Eigentore und verschossene Elfer ± die Hälfte von Last-Minute-Glück (Tore/Vorlagen der Startelf ab der 90. Minute) und Last-Minute-Pech (Zu-null erst ab der 90. Minute verloren) ± Triple Captain (kein Tor &amp; kein Assist −5, ab dem 2. Tor +5 je Tor) − Verletzungspech (Startelf-Spieler nach höchstens 20 Minuten raus −2, beim Kapitän −4; −½ für jeden Kaderspieler, der zur Deadline verletzt gemeldet war). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
+    <p class="lnote">So wird gerechnet: Gemessen wird, was deine Startelf <b>über oder unter der Erwartung</b> bekommen hat – FPL liefert für jeden Spieler die erwarteten Tore, Vorlagen und Gegentore (xG/xA/xGC). 🎯 Abschluss-Glück = (Tore − erwartete Tore) × Torpunkte + (Vorlagen − erwartete) × 3 · 🧤 Zu-null-Glück = Zu-null gegenüber der erwarteten Chance darauf · 🥅 Gegentor-Glück (Tormann/Verteidiger) – jeweils mal Kapitänsfaktor. Dazu die Hälfte der Auto-Einwechslungen, minus Karten, Eigentore und verschossene Elfer und minus Verletzungspech (Startelf-Spieler nach höchstens 20 Minuten raus −2, beim Kapitän −4; −½ für jeden Kaderspieler, der zur Deadline verletzt gemeldet war). Angezeigt wird der Abstand zum Liga-Schnitt. Mit der Maus über einen Namen fahren (oder antippen) zeigt die Details.</p>`;
 
   // Antippen (Handy): Details ein-/ausblenden, immer nur eine Zeile offen
   document.querySelectorAll('#luck .lrow').forEach(row => row.addEventListener('click', () => {

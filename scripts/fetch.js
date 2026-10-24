@@ -136,6 +136,21 @@ async function get(url) {
         goals += s.goals_scored || 0; assists += s.assists || 0;
         ownGoals += s.own_goals || 0; penMiss += s.penalties_missed || 0;
       }
+      // Glück im engeren Sinn (für das Glück-o-Meter): was die Startelf über/unter der Erwartung bekommen hat
+      //  · Abschluss: (Tore − xG) × Torpunkte + (Vorlagen − xA) × 3
+      //  · Zu-null: (Zu-null − Wahrscheinlichkeit e^−xGC) × Zu-null-Punkte (ab 60 Minuten)
+      //  · Gegentore (TW/VT): −(Gegentore − xGC) / 2      – jeweils × Kapitänsfaktor
+      const luckMult = Object.fromEntries(picks.picks.map(p => [p.element, p.multiplier || 1]));
+      const luckSubIn = new Set(picks.automatic_subs.map(x => x.element_in));
+      let finLuck = 0, csLuck = 0, gcLuck = 0;
+      for (const id of xi) {
+        const s = stats[id] || {}, pos = elements[id]?.element_type, m = luckSubIn.has(id) ? 1 : (luckMult[id] || 1);
+        if (!pos || !s.minutes) continue;
+        finLuck += ((s.goals_scored || 0) - Number(s.expected_goals || 0)) * GOAL_PTS[pos] * m + ((s.assists || 0) - Number(s.expected_assists || 0)) * ASSIST_PTS * m;
+        if (s.minutes >= 60 && CS_PTS[pos]) csLuck += ((s.clean_sheets ? 1 : 0) - Math.exp(-Number(s.expected_goals_conceded || 0))) * CS_PTS[pos] * m;
+        if (pos <= 2) gcLuck -= ((s.goals_conceded || 0) - Number(s.expected_goals_conceded || 0)) / 2 * m;
+      }
+      const r1l = v => Math.round(v * 10) / 10;
       // Glücksfaktor: Punkte durch automatische Einwechslungen
       const autoSubPts = picks.automatic_subs.reduce((a, x) => a + (stats[x.element_in]?.total_points || 0), 0);
       // "Ohne Transfers": Aufstellung und Kapitän dieser Runde, aber jeder in dieser Runde gekaufte Spieler gegen den
@@ -214,6 +229,7 @@ async function get(url) {
         benchPlayersPts,
         red, yellow, goals, assists, ownGoals, penMiss, bonus, cleanSheets,
         autoSubs: picks.automatic_subs.length, autoSubPts, best,
+        finLuck: r1l(finLuck), csLuck: r1l(csLuck), gcLuck: r1l(gcLuck),
         lateGain, lateLoss, lateInfo, lateFor, lateAgainst, knocks, injured,
         lazyPts, // Punkte ohne die Transfers dieser Runde (null = keine Transfers)
         transfersIn: tIn,
