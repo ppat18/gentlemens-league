@@ -239,6 +239,18 @@ async function get(url) {
     if (squadGW && !squads.some(s => s.gw === squadGW)) {
       squads.push(buildSquad(await get(`/entry/${e.entry}/event/${squadGW}/picks/`), squadGW));
     }
+    // Transfers je Gameweek (Transfer-Block der laufenden GW): [rein, raus, Punkte rein, Punkte raus, Min. rein, Min. raus]
+    for (const sq of squads) {
+      const st = live[sq.gw] || {};
+      sq.tr = transfers.filter(t => t.event === sq.gw).reverse().map(t => {
+        for (const id of [t.element_in, t.element_out]) {
+          const el = elements[id], tm = el && teamById[el.team];
+          if (el && !squadPlayers[id]) squadPlayers[id] = [el.web_name, el.element_type, tm.short_name, tm.code];
+        }
+        return [t.element_in, t.element_out, st[t.element_in]?.total_points ?? 0, st[t.element_out]?.total_points ?? 0,
+          st[t.element_in]?.minutes ?? 0, st[t.element_out]?.minutes ?? 0];
+      });
+    }
     // Aktueller Teamwert wie auf der FPL-Seite: heutige Marktwerte des letzten Kaders + Bank
     // (FPL-History liefert nur den Wert zur letzten Deadline; Preise ändern sich danach täglich)
     let valueNow = null, bankNow = null;

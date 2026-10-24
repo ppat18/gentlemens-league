@@ -234,6 +234,7 @@ function render(d) {
 
   // --- Nächste Gameweek ---
   renderCaptains(d, ms, gwOver ? null : liveGW);
+  renderTransfers(d, ms, gwOver ? null : liveGW, teamState);
   renderNext(d.next);
 
   // --- Saison-Statistik ---
@@ -341,6 +342,65 @@ function renderCaptains(d, ms, liveGW) {
       </div>`;
     }).join('')}</div>
     <p class="foot">Große Zahl = Live-Punkte des Spielers; neben jedem Manager = was ihm der Kapitän bringt (×2, Triple Captain ×3). Spieler antippen für alle Infos. Der Block verschwindet, sobald die Gameweek abgeschlossen ist.</p>`;
+  el.hidden = false;
+}
+
+// Transfers der laufenden Gameweek: erscheint mit dem Start der GW, verschwindet, wenn sie vorbei ist (wie die Kapitäne).
+// Je Manager: raus ➜ rein mit Live-Punkten und Bilanz (Punkte der Neuen − Punkte der Verkauften − Hit).
+// Bis 10 Manager ist alles aufgeklappt, in größeren Ligen tippt man einen Manager an.
+function renderTransfers(d, ms, liveGW, teamState) {
+  const el = $('trans');
+  if (!el) return;
+  if (!liveGW) { el.hidden = true; el.innerHTML = ''; return; }
+  const p = id => d.players[id] || ['?', 0, '', 0];
+  const CHIP = { wildcard: '♻️ Wildcard', freehit: '🎯 Free Hit' };
+  const rows = ms.map(m => {
+    const s = (m.squads || []).find(x => x.gw === liveGW);
+    if (!s || !s.tr) return null;
+    const delta = s.tr.reduce((a, t) => a + t[2] - t[3], 0);
+    return { m, tr: s.tr, chip: CHIP[s.chip] || '', hits: s.hits || 0, bal: delta - (s.hits || 0) };
+  }).filter(Boolean);
+  if (!rows.length) { el.hidden = true; el.innerHTML = ''; return; }
+  const moved = rows.filter(r => r.tr.length), still = rows.filter(r => !r.tr.length);
+  // Spielstand eines Spielers: spielt gerade / noch nicht gespielt
+  const state = (id, min) => {
+    const st = teamState(p(id)[3]);
+    return st === 'playing' ? ' <span class="tr-live" title="spielt gerade">●</span>'
+      : st === 'todo' && !min ? ' <span class="tr-todo" title="hat noch nicht gespielt">⏳</span>' : '';
+  };
+  const pl = (id, pts, min, cls) => `<span class="tr-p ${cls}"><a href="#spieler/${id}">${esc(p(id)[0])}</a><b>${pts}</b>${state(id, min)}</span>`;
+  const sgn = v => v > 0 ? '+' + v : v < 0 ? '−' + -v : '±0';
+  // Überblick: Anzahl, Hits, meistgekauft/-verkauft, bester & schlechtester Transfer bisher
+  const all = moved.flatMap(r => r.tr.map(t => ({ r, t, d: t[2] - t[3] })));
+  const sum = [];
+  const hitN = moved.filter(r => r.hits).length, hitPts = moved.reduce((a, r) => a + r.hits, 0);
+  if (all.length) sum.push(`🔁 <b>${all.length} Transfer${all.length === 1 ? '' : 's'}</b> von ${moved.length} Manager${moved.length === 1 ? '' : 'n'}${hitN ? ` · 🔪 ${hitN}× Hit (−${hitPts})` : ''}`);
+  const top = idx => {
+    const c = {};
+    for (const x of all) c[x.t[idx]] = (c[x.t[idx]] || 0) + 1;
+    const [id, n] = Object.entries(c).sort((a, b) => b[1] - a[1])[0] || [];
+    return n > 1 ? { id, n } : null;
+  };
+  const tin = top(0), tout = top(1);
+  if (tin) sum.push(`🔥 Meistgekauft: <b>${esc(p(tin.id)[0])}</b> (${tin.n}×)`);
+  if (tout) sum.push(`🗑️ Meistverkauft: <b>${esc(p(tout.id)[0])}</b> (${tout.n}×)`);
+  if (all.some(x => x.t[4] || x.t[5])) {
+    const sorted = [...all].sort((a, b) => b.d - a.d), best = sorted[0], worst = sorted[sorted.length - 1];
+    if (best.d > 0) sum.push(`💡 Bester Transfer bisher: <b>${esc(best.r.m.nick)}</b> – ${esc(p(best.t[0])[0])} statt ${esc(p(best.t[1])[0])} (${sgn(best.d)})`);
+    if (worst.d < 0) sum.push(`🤦 Flop bisher: <b>${esc(worst.r.m.nick)}</b> – ${esc(p(worst.t[0])[0])} statt ${esc(p(worst.t[1])[0])} (${sgn(worst.d)})`);
+  }
+  const open = ms.length <= 10 ? ' open' : '';
+  moved.sort((a, b) => b.tr.length - a.tr.length || b.bal - a.bal);
+  el.innerHTML = `<h2>🔁 Transfers der Gameweek ${liveGW}</h2>
+    ${sum.length ? `<div class="caps-sum">${sum.map(x => `<span>${x}</span>`).join('')}</div>` : ''}
+    <div class="trs">${moved.map(r => `<details class="tr-m"${open}>
+      <summary><img class="av" src="${av(r.m)}" alt=""><span class="tr-who"><b>${esc(r.m.nick)}</b>
+        <small>${r.tr.length} Transfer${r.tr.length === 1 ? '' : 's'}${r.hits ? ` · <span class="tr-hit">−${r.hits} Hit</span>` : ''}${r.chip ? ` · ${r.chip}` : ''}</small></span>
+        <span class="tr-bal ${r.bal > 0 ? 'pos' : r.bal < 0 ? 'neg' : ''}" title="Punkte der Neuen − Punkte der Verkauften${r.hits ? ' − Hit' : ''}">${sgn(r.bal)}</span></summary>
+      <div class="tr-list">${r.tr.map(t => `<div class="tr-row">${pl(t[1], t[3], t[5], 'out')}<span class="tr-arr">➜</span>${pl(t[0], t[2], t[4], 'in')}</div>`).join('')}</div>
+    </details>`).join('')}</div>
+    ${still.length ? `<p class="tr-none">🔒 Keine Transfers: ${still.map(r => esc(r.m.nick)).join(', ')}</p>` : ''}
+    <p class="foot">Links verkauft (rot), rechts gekauft (grün), jeweils mit den Live-Punkten dieser Gameweek. ● spielt gerade · ⏳ noch nicht gespielt. Bilanz = Punkte der Neuen − Punkte der Verkauften − Hit.${open ? '' : ' Manager antippen zum Aufklappen.'} Der Block verschwindet, sobald die Gameweek abgeschlossen ist.</p>`;
   el.hidden = false;
 }
 
