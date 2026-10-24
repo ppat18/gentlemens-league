@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T12:35:37.745Z",
+ "updated": "2026-10-24T12:46:13.026Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -238,7 +238,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 1,
-   "total": 517,
+   "total": 529,
    "chips": [
     {
      "name": "3xc",
@@ -1648,7 +1648,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 2,
+     "points": 14,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -1729,8 +1729,8 @@
        10,
        2,
        1,
-       1,
-       45
+       7,
+       56
       ],
       [
        165,
@@ -1796,7 +1796,7 @@
    "team": "Globo Gym United",
    "rank": 2,
    "lastRank": 2,
-   "total": 494,
+   "total": 506,
    "chips": [
     {
      "name": "3xc",
@@ -3158,7 +3158,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 5,
+     "points": 17,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3192,7 +3192,7 @@
        1,
        0,
        1,
-       45
+       56
       ],
       [
        154,
@@ -3239,8 +3239,8 @@
        10,
        2,
        1,
-       1,
-       45
+       7,
+       56
       ],
       [
        379,
@@ -3314,7 +3314,7 @@
    "team": "District 14 Graz",
    "rank": 3,
    "lastRank": 3,
-   "total": 484,
+   "total": 497,
    "chips": [
     {
      "name": "3xc",
@@ -4693,7 +4693,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 5,
+     "points": 17,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -4743,7 +4743,7 @@
        1,
        0,
        1,
-       1
+       11
       ],
       [
        154,
@@ -4782,8 +4782,8 @@
        11,
        2,
        1,
-       1,
-       45
+       7,
+       56
       ],
       [
        496,
@@ -4799,7 +4799,7 @@
        0,
        0,
        1,
-       45
+       56
       ],
       [
        127,
@@ -4824,7 +4824,7 @@
        453,
        1,
        0,
-       1,
+       11,
        0
       ]
      ]
@@ -4841,7 +4841,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 4,
-   "total": 473,
+   "total": 485,
    "chips": [],
    "gws": [
     {
@@ -6221,7 +6221,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 4,
+     "points": 16,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -6302,8 +6302,8 @@
        10,
        2,
        1,
-       1,
-       45
+       7,
+       56
       ],
       [
        165,
@@ -6369,7 +6369,7 @@
    "team": "The Unbreakables",
    "rank": 5,
    "lastRank": 5,
-   "total": 462,
+   "total": 474,
    "chips": [
     {
      "name": "3xc",
@@ -7902,7 +7902,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 4,
+     "points": 15,
      "hits": 8,
      "subs": [],
      "picks": [
@@ -7928,7 +7928,7 @@
        1,
        0,
        1,
-       45
+       56
       ],
       [
        115,
@@ -7967,8 +7967,8 @@
        8,
        1,
        0,
-       1,
-       45
+       0,
+       56
       ],
       [
        165,
@@ -7983,8 +7983,8 @@
        10,
        2,
        1,
-       1,
-       45
+       7,
+       56
       ],
       [
        379,
@@ -8066,7 +8066,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 6,
-   "total": 459,
+   "total": 465,
    "chips": [
     {
      "name": "wildcard",
@@ -9982,7 +9982,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 4,
+     "points": 10,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -10024,7 +10024,7 @@
        1,
        0,
        1,
-       45
+       56
       ],
       [
        154,
@@ -10071,8 +10071,8 @@
        11,
        1,
        2,
-       1,
-       45
+       7,
+       56
       ],
       [
        250,
@@ -10130,7 +10130,7 @@
    "team": "FC Scheisshaus",
    "rank": 7,
    "lastRank": 7,
-   "total": 438,
+   "total": 444,
    "chips": [
     {
      "name": "wildcard",
@@ -11827,7 +11827,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 2,
+     "points": 8,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -11908,8 +11908,8 @@
        10,
        1,
        2,
-       1,
-       45
+       7,
+       56
       ],
       [
        526,
@@ -11975,7 +11975,7 @@
    "team": "FC HelloT*tty82",
    "rank": 8,
    "lastRank": 8,
-   "total": 431,
+   "total": 437,
    "chips": [],
    "gws": [
     {
@@ -13374,7 +13374,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 3,
+     "points": 9,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -13463,8 +13463,8 @@
        11,
        1,
        0,
-       1,
-       45
+       7,
+       56
       ],
       [
        497,
@@ -13513,7 +13513,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 9,
-   "total": 417,
+   "total": 423,
    "chips": [
     {
      "name": "wildcard",
@@ -15316,7 +15316,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 1,
+     "points": 7,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -15397,8 +15397,8 @@
        10,
        1,
        2,
-       1,
-       45
+       7,
+       56
       ],
       [
        165,
@@ -15455,7 +15455,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 10,
-   "total": 407,
+   "total": 419,
    "chips": [],
    "gws": [
     {
@@ -16871,7 +16871,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 2,
+     "points": 14,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -16952,8 +16952,8 @@
        10,
        2,
        1,
-       1,
-       45
+       7,
+       56
       ],
       [
        165,
@@ -16992,8 +16992,8 @@
        15,
        0,
        0,
-       1,
-       45
+       0,
+       56
       ]
      ],
      "tr": [
