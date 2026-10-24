@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T00:06:10.304Z",
+ "updated": "2026-10-24T00:21:09.075Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -4573,7 +4573,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 3,
-   "total": 462,
+   "total": 471,
    "chips": [],
    "gws": [
     {
@@ -9187,7 +9187,7 @@
    "team": "FC Scheisshaus",
    "rank": 7,
    "lastRank": 7,
-   "total": 434,
+   "total": 437,
    "chips": [
     {
      "name": "wildcard",
@@ -12245,7 +12245,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 10,
-   "total": 414,
+   "total": 416,
    "chips": [
     {
      "name": "wildcard",
@@ -13905,7 +13905,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 9,
-   "total": 404,
+   "total": 405,
    "chips": [],
    "gws": [
     {
