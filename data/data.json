@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T00:46:07.063Z",
+ "updated": "2026-10-24T00:57:34.014Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -278,6 +278,9 @@
       "name": "Ødegaard",
       "pts": 11
      },
+     "finLuck": 3.9,
+     "csLuck": 0.7,
+     "gcLuck": -0.2,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -322,6 +325,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "finLuck": 24.7,
+     "csLuck": -1.4,
+     "gcLuck": -0.3,
      "lateGain": 5,
      "lateLoss": 1,
      "lateInfo": [
@@ -374,6 +380,9 @@
       "name": "Tavernier",
       "pts": 10
      },
+     "finLuck": -15.5,
+     "csLuck": -8.9,
+     "gcLuck": 0,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -416,6 +425,9 @@
       "name": "Groß",
       "pts": 17
      },
+     "finLuck": 15.6,
+     "csLuck": 10.5,
+     "gcLuck": 2.7,
      "lateGain": 3,
      "lateLoss": 0,
      "lateInfo": [
@@ -473,6 +485,9 @@
       "name": "Groß",
       "pts": 14
      },
+     "finLuck": 4.5,
+     "csLuck": -4.4,
+     "gcLuck": -3.7,
      "lateGain": 6,
      "lateLoss": 0,
      "lateInfo": [
@@ -524,6 +539,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 14.8,
+     "csLuck": -5.7,
+     "gcLuck": 0.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -566,6 +584,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 2,
+     "csLuck": 6.5,
+     "gcLuck": 1.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -1746,6 +1767,9 @@
       "name": "Palmer",
       "pts": 13
      },
+     "finLuck": 2.2,
+     "csLuck": -3.3,
+     "gcLuck": -0.2,
      "lateGain": 6,
      "lateLoss": 0,
      "lateInfo": [
@@ -1790,6 +1814,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "finLuck": 30.8,
+     "csLuck": -4.9,
+     "gcLuck": -0.6,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -1834,6 +1861,9 @@
       "name": "Isak",
       "pts": 13
      },
+     "finLuck": -7,
+     "csLuck": 0,
+     "gcLuck": 0.7,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -1883,6 +1913,9 @@
       "name": "Groß",
       "pts": 17
      },
+     "finLuck": 21.5,
+     "csLuck": 11.6,
+     "gcLuck": 2.9,
      "lateGain": 3,
      "lateLoss": 0,
      "lateInfo": [
@@ -1934,6 +1967,9 @@
       "name": "Groß",
       "pts": 14
      },
+     "finLuck": 4,
+     "csLuck": -2.4,
+     "gcLuck": -2.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -1976,6 +2012,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 13.3,
+     "csLuck": -4.5,
+     "gcLuck": -1.8,
      "lateGain": 0,
      "lateLoss": 2,
      "lateInfo": [
@@ -2045,6 +2084,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 3.4,
+     "csLuck": 0.2,
+     "gcLuck": 0.6,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -3167,6 +3209,9 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "finLuck": -2.5,
+     "csLuck": -0.6,
+     "gcLuck": 0.3,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -3211,6 +3256,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "finLuck": 21.5,
+     "csLuck": -1.8,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -3253,6 +3301,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "finLuck": -8.7,
+     "csLuck": -5.9,
+     "gcLuck": 0.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -3295,6 +3346,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 7.8,
+     "csLuck": 8.2,
+     "gcLuck": 2.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -3356,6 +3410,9 @@
       "name": "Ajer",
       "pts": 7
      },
+     "finLuck": -9.1,
+     "csLuck": -1.6,
+     "gcLuck": -1.9,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -3405,6 +3462,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 21.7,
+     "csLuck": -2.8,
+     "gcLuck": 0,
      "lateGain": 0,
      "lateLoss": 1,
      "lateInfo": [
@@ -3456,6 +3516,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 11,
+     "csLuck": 7.3,
+     "gcLuck": 1.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -4607,6 +4670,9 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "finLuck": -3.4,
+     "csLuck": -3.2,
+     "gcLuck": -0.5,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -4651,6 +4717,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "finLuck": 19.8,
+     "csLuck": -2,
+     "gcLuck": -0.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -4700,6 +4769,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "finLuck": -8.2,
+     "csLuck": -6.2,
+     "gcLuck": 0.7,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -4749,6 +4821,9 @@
       "name": "Groß",
       "pts": 17
      },
+     "finLuck": 9.4,
+     "csLuck": 9.1,
+     "gcLuck": 2.1,
      "lateGain": 3,
      "lateLoss": 0,
      "lateInfo": [
@@ -4800,6 +4875,9 @@
       "name": "Groß",
       "pts": 14
      },
+     "finLuck": -4.6,
+     "csLuck": 5.5,
+     "gcLuck": 1.4,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -4849,6 +4927,9 @@
       "name": "De Cuyper",
       "pts": 15
      },
+     "finLuck": 22.4,
+     "csLuck": 0.8,
+     "gcLuck": 0.9,
      "lateGain": 0,
      "lateLoss": 2,
      "lateInfo": [
@@ -4900,6 +4981,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 5.9,
+     "csLuck": 6.8,
+     "gcLuck": 1.4,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -6054,6 +6138,9 @@
       "name": "Kayode",
       "pts": 13
      },
+     "finLuck": -7.7,
+     "csLuck": -4,
+     "gcLuck": -0.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -6096,6 +6183,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 11.4,
+     "csLuck": -1.7,
+     "gcLuck": 0.6,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -6151,6 +6241,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "finLuck": 5.3,
+     "csLuck": 3.5,
+     "gcLuck": 1.8,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -6200,6 +6293,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 14.1,
+     "csLuck": 8.3,
+     "gcLuck": 1.9,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -6249,6 +6345,9 @@
       "name": "Tzolakis",
       "pts": 6
      },
+     "finLuck": -11.4,
+     "csLuck": 0.1,
+     "gcLuck": -0.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -6340,6 +6439,9 @@
       "name": "De Cuyper",
       "pts": 15
      },
+     "finLuck": 23.6,
+     "csLuck": 0.2,
+     "gcLuck": 0.5,
      "lateGain": 0,
      "lateLoss": 1,
      "lateInfo": [
@@ -6397,6 +6499,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 6.1,
+     "csLuck": 7.8,
+     "gcLuck": 1.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -7566,6 +7671,9 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "finLuck": 3.3,
+     "csLuck": -6.2,
+     "gcLuck": -1.2,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -7610,6 +7718,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 10.2,
+     "csLuck": 2,
+     "gcLuck": 0.8,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -7893,6 +8004,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "finLuck": -1.8,
+     "csLuck": -5.5,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -7935,6 +8049,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 8.5,
+     "csLuck": 3.5,
+     "gcLuck": -0.1,
      "lateGain": 5,
      "lateLoss": 4,
      "lateInfo": [
@@ -7987,6 +8104,9 @@
       "name": "Trafford",
       "pts": 10
      },
+     "finLuck": -6.6,
+     "csLuck": 5.7,
+     "gcLuck": 2.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -8042,6 +8162,9 @@
       "name": "De Cuyper",
       "pts": 15
      },
+     "finLuck": 15.8,
+     "csLuck": -4.7,
+     "gcLuck": -1.2,
      "lateGain": 0,
      "lateLoss": 1,
      "lateInfo": [
@@ -8093,6 +8216,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 8.9,
+     "csLuck": 5.6,
+     "gcLuck": 0.9,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -9237,6 +9363,9 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "finLuck": -1.2,
+     "csLuck": -1.4,
+     "gcLuck": 0,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -9281,6 +9410,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 11.5,
+     "csLuck": 2.2,
+     "gcLuck": 0.6,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -9330,6 +9462,9 @@
       "name": "Gakpo",
       "pts": 11
      },
+     "finLuck": -4.1,
+     "csLuck": -4.9,
+     "gcLuck": 0.8,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -9439,6 +9574,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 1.6,
+     "csLuck": 5,
+     "gcLuck": 1.4,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -9544,6 +9682,9 @@
       "name": "Cherki",
       "pts": 8
      },
+     "finLuck": -4.7,
+     "csLuck": 0.3,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -9593,6 +9734,9 @@
       "name": "Cherki",
       "pts": 10
      },
+     "finLuck": 6.2,
+     "csLuck": -1.1,
+     "gcLuck": 0.9,
      "lateGain": 0,
      "lateLoss": 6,
      "lateInfo": [
@@ -9645,6 +9789,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 7.4,
+     "csLuck": 2.7,
+     "gcLuck": 0.9,
      "lateGain": 3,
      "lateLoss": 0,
      "lateInfo": [
@@ -10822,6 +10969,9 @@
       "name": "Palmer",
       "pts": 13
      },
+     "finLuck": 5,
+     "csLuck": -1.1,
+     "gcLuck": 0.1,
      "lateGain": 5,
      "lateLoss": 0,
      "lateInfo": [
@@ -10866,6 +11016,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "finLuck": 20.4,
+     "csLuck": -3,
+     "gcLuck": -0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -10908,6 +11061,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "finLuck": -6,
+     "csLuck": -6.7,
+     "gcLuck": 0,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -10957,6 +11113,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 5.2,
+     "csLuck": 10.8,
+     "gcLuck": 1.9,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -11006,6 +11165,9 @@
       "name": "Gomez",
       "pts": 8
      },
+     "finLuck": -7.6,
+     "csLuck": 1.2,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -11055,6 +11217,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 17.3,
+     "csLuck": -3.4,
+     "gcLuck": 0.4,
      "lateGain": 0,
      "lateLoss": 1,
      "lateInfo": [
@@ -11118,6 +11283,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 4.1,
+     "csLuck": 6.8,
+     "gcLuck": 1.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -12290,6 +12458,9 @@
       "name": "João Pedro",
       "pts": 11
      },
+     "finLuck": -1.7,
+     "csLuck": -3,
+     "gcLuck": -0.9,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -12332,6 +12503,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 7.4,
+     "csLuck": -2,
+     "gcLuck": 0.1,
      "lateGain": 0,
      "lateLoss": 4,
      "lateInfo": [
@@ -12389,6 +12563,9 @@
       "name": "Haaland",
       "pts": 9
      },
+     "finLuck": -9.6,
+     "csLuck": -5.2,
+     "gcLuck": -0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -12570,6 +12747,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 13.8,
+     "csLuck": 9.1,
+     "gcLuck": 1.7,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -12625,6 +12805,9 @@
       "name": "Cherki",
       "pts": 8
      },
+     "finLuck": -7.7,
+     "csLuck": 0.8,
+     "gcLuck": 0.6,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -12667,6 +12850,9 @@
       "name": "De Cuyper",
       "pts": 15
      },
+     "finLuck": 23.7,
+     "csLuck": -2.5,
+     "gcLuck": -0.5,
      "lateGain": 0,
      "lateLoss": 1,
      "lateInfo": [
@@ -12730,6 +12916,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 12.5,
+     "csLuck": 3.8,
+     "gcLuck": 1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -13939,6 +14128,9 @@
       "name": "Kayode",
       "pts": 13
      },
+     "finLuck": 4.4,
+     "csLuck": -0.7,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -13981,6 +14173,9 @@
       "name": "B.Fernandes",
       "pts": 23
      },
+     "finLuck": 19.2,
+     "csLuck": -5.2,
+     "gcLuck": -1.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -14023,6 +14218,9 @@
       "name": "Mitchell",
       "pts": 15
      },
+     "finLuck": 7.1,
+     "csLuck": 0.1,
+     "gcLuck": 0.9,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -14072,6 +14270,9 @@
       "name": "João Pedro",
       "pts": 12
      },
+     "finLuck": 2.8,
+     "csLuck": 5.8,
+     "gcLuck": 1.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -14121,6 +14322,9 @@
       "name": "Semenyo",
       "pts": 17
      },
+     "finLuck": 1.4,
+     "csLuck": 1.6,
+     "gcLuck": -0.8,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -14182,6 +14386,9 @@
       "name": "Verbruggen",
       "pts": 9
      },
+     "finLuck": 5.6,
+     "csLuck": 1.9,
+     "gcLuck": 1.7,
      "lateGain": 0,
      "lateLoss": 2,
      "lateInfo": [
@@ -14239,6 +14446,9 @@
       "name": "Haaland",
       "pts": 13
      },
+     "finLuck": 3.8,
+     "csLuck": 5.7,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
