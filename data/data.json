@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T17:14:10.868Z",
+ "updated": "2026-10-24T17:25:12.905Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -238,7 +238,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 1,
-   "total": 554,
+   "total": 553,
    "chips": [
     {
      "name": "3xc",
@@ -281,12 +281,10 @@
      "finLuck": 3.9,
      "csLuck": 0.7,
      "gcLuck": -0.2,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -328,13 +326,10 @@
      "finLuck": 24.7,
      "csLuck": -1.4,
      "gcLuck": -0.3,
-     "lateGain": 5,
-     "lateLoss": 1,
-     "lateInfo": [
-      "−1 Tavernier 🧤 90+1'",
-      "+5 Groß ⚽ 90+6'"
-     ],
-     "lateFor": 1,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -387,7 +382,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": null,
@@ -428,11 +423,9 @@
      "finLuck": 15.6,
      "csLuck": 10.5,
      "gcLuck": 2.7,
-     "lateGain": 3,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+3 Groß 🅰️ 90+4'"
-     ],
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -488,13 +481,11 @@
      "finLuck": 4.5,
      "csLuck": -4.4,
      "gcLuck": -3.7,
-     "lateGain": 6,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+6 Van Hecke ⚽ 90+8'"
-     ],
-     "lateFor": 1,
-     "lateAgainst": 1,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 45,
@@ -1674,7 +1665,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        4,
@@ -1690,7 +1681,7 @@
        1,
        2,
        1,
-       40
+       45
       ],
       [
        68,
@@ -1745,8 +1736,8 @@
        12,
        0,
        0,
-       1,
-       40
+       5,
+       45
       ],
       [
        173,
@@ -1796,7 +1787,7 @@
    "team": "Globo Gym United",
    "rank": 2,
    "lastRank": 2,
-   "total": 519,
+   "total": 518,
    "chips": [
     {
      "name": "3xc",
@@ -1839,12 +1830,10 @@
      "finLuck": 2.2,
      "csLuck": -3.3,
      "gcLuck": -0.2,
-     "lateGain": 6,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+6 Gvardiol ⚽ 90+1'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -1886,12 +1875,10 @@
      "finLuck": 30.8,
      "csLuck": -4.9,
      "gcLuck": -0.6,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Groß ⚽ 90+6'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -1937,7 +1924,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 68,
@@ -1985,11 +1972,9 @@
      "finLuck": 21.5,
      "csLuck": 11.6,
      "gcLuck": 2.9,
-     "lateGain": 3,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+3 Groß 🅰️ 90+4'"
-     ],
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -2085,12 +2070,10 @@
      "csLuck": -4.5,
      "gcLuck": -1.8,
      "lateGain": 0,
-     "lateLoss": 2,
-     "lateInfo": [
-      "−2 B.Fernandes 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 42,
@@ -3200,7 +3183,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        480,
@@ -3255,8 +3238,8 @@
        12,
        0,
        0,
-       1,
-       40
+       5,
+       45
       ],
       [
        175,
@@ -3314,7 +3297,7 @@
    "team": "District 14 Graz",
    "rank": 3,
    "lastRank": 3,
-   "total": 517,
+   "total": 516,
    "chips": [
     {
      "name": "3xc",
@@ -3357,12 +3340,10 @@
      "finLuck": -2.5,
      "csLuck": -0.6,
      "gcLuck": 0.3,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -3408,7 +3389,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": null,
@@ -3453,7 +3434,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": null,
@@ -3611,10 +3592,8 @@
      "csLuck": -2.8,
      "gcLuck": 0,
      "lateGain": 0,
-     "lateLoss": 1,
-     "lateInfo": [
-      "−1 Mbeumo 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -4751,7 +4730,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        427,
@@ -4790,8 +4769,8 @@
        12,
        0,
        0,
-       1,
-       40
+       5,
+       45
       ],
       [
        391,
@@ -4938,7 +4917,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 75,
@@ -4996,7 +4975,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 65,
@@ -5191,10 +5170,8 @@
      "csLuck": 0.2,
      "gcLuck": 0.5,
      "lateGain": 0,
-     "lateLoss": 1,
-     "lateInfo": [
-      "−1 Mbeumo 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -6432,7 +6409,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        53,
@@ -6575,12 +6552,10 @@
      "finLuck": -3.4,
      "csLuck": -3.2,
      "gcLuck": -0.5,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -6678,7 +6653,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 50,
@@ -6726,11 +6701,9 @@
      "finLuck": 9.4,
      "csLuck": 9.1,
      "gcLuck": 2.1,
-     "lateGain": 3,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+3 Groß 🅰️ 90+4'"
-     ],
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -6833,10 +6806,8 @@
      "csLuck": 0.8,
      "gcLuck": 0.9,
      "lateGain": 0,
-     "lateLoss": 2,
-     "lateInfo": [
-      "−2 B.Fernandes 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -7984,7 +7955,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        286,
@@ -8015,8 +7986,8 @@
        12,
        0,
        0,
-       1,
-       40
+       5,
+       45
       ],
       [
        346,
@@ -8066,7 +8037,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 6,
-   "total": 470,
+   "total": 469,
    "chips": [
     {
      "name": "wildcard",
@@ -8109,12 +8080,10 @@
      "finLuck": 3.3,
      "csLuck": -6.2,
      "gcLuck": -1.2,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -8487,14 +8456,11 @@
      "finLuck": 8.5,
      "csLuck": 3.5,
      "gcLuck": -0.1,
-     "lateGain": 5,
-     "lateLoss": 4,
-     "lateInfo": [
-      "−4 Trafford 🧤 90'",
-      "+5 Saka ⚽ 90+7'"
-     ],
-     "lateFor": 1,
-     "lateAgainst": 2,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 73,
@@ -8601,12 +8567,10 @@
      "csLuck": -4.7,
      "gcLuck": -1.2,
      "lateGain": 0,
-     "lateLoss": 1,
-     "lateInfo": [
-      "−1 Mbeumo 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 67,
@@ -10032,7 +9996,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        427,
@@ -10048,7 +10012,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        453,
@@ -10113,7 +10077,7 @@
        12,
        1,
        0,
-       40,
+       45,
        0
       ]
      ]
@@ -10130,7 +10094,7 @@
    "team": "FC HelloT*tty82",
    "rank": 7,
    "lastRank": 8,
-   "total": 463,
+   "total": 462,
    "chips": [],
    "gws": [
     {
@@ -10167,12 +10131,10 @@
      "finLuck": 5,
      "csLuck": -1.1,
      "gcLuck": 0.1,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -10263,7 +10225,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 42,
@@ -10416,10 +10378,8 @@
      "csLuck": -3.4,
      "gcLuck": 0.4,
      "lateGain": 0,
-     "lateLoss": 1,
-     "lateInfo": [
-      "−1 B.Fernandes 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -11587,7 +11547,7 @@
        1,
        2,
        1,
-       40
+       45
       ],
       [
        426,
@@ -11603,7 +11563,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        165,
@@ -11721,12 +11681,10 @@
      "finLuck": -1.2,
      "csLuck": -1.4,
      "gcLuck": 0,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Szoboszlai ⚽ 90+9'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -11932,12 +11890,10 @@
      "finLuck": 1.6,
      "csLuck": 5,
      "gcLuck": 1.4,
-     "lateGain": 5,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+5 Saka ⚽ 90+7'"
-     ],
-     "lateFor": 1,
+     "lateInfo": [],
+     "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
      "injured": null,
@@ -12093,13 +12049,10 @@
      "csLuck": -1.1,
      "gcLuck": 0.9,
      "lateGain": 0,
-     "lateLoss": 6,
-     "lateInfo": [
-      "−4 Shaw 🧤 90+2'",
-      "−2 B.Fernandes 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 52,
@@ -12147,11 +12100,9 @@
      "finLuck": 7.4,
      "csLuck": 2.7,
      "gcLuck": 0.9,
-     "lateGain": 3,
+     "lateGain": 0,
      "lateLoss": 0,
-     "lateInfo": [
-      "+3 Solanke 🅰️ 90+6'"
-     ],
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -13431,7 +13382,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        16,
@@ -13462,8 +13413,8 @@
        12,
        0,
        0,
-       1,
-       40
+       5,
+       45
       ],
       [
        249,
@@ -13607,12 +13558,10 @@
      "csLuck": -2,
      "gcLuck": 0.1,
      "lateGain": 0,
-     "lateLoss": 4,
-     "lateInfo": [
-      "−4 Petrović 🧤 90+1'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 59,
@@ -13954,12 +13903,10 @@
      "csLuck": -2.5,
      "gcLuck": -0.5,
      "lateGain": 0,
-     "lateLoss": 1,
-     "lateInfo": [
-      "−1 Cunha 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 77,
@@ -14023,7 +13970,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": [
       "Gakpo"
@@ -15382,7 +15329,7 @@
        1,
        0,
        1,
-       40
+       45
       ],
       [
        138,
@@ -15586,7 +15533,7 @@
      "lateLoss": 0,
      "lateInfo": [],
      "lateFor": 0,
-     "lateAgainst": 1,
+     "lateAgainst": 0,
      "knocks": [],
      "injured": null,
      "lazyPts": 68,
@@ -15751,10 +15698,8 @@
      "csLuck": 1.9,
      "gcLuck": 1.7,
      "lateGain": 0,
-     "lateLoss": 2,
-     "lateInfo": [
-      "−2 B.Fernandes 🧤 90+2'"
-     ],
+     "lateLoss": 0,
+     "lateInfo": [],
      "lateFor": 0,
      "lateAgainst": 0,
      "knocks": [],
@@ -16968,8 +16913,8 @@
        12,
        0,
        0,
-       1,
-       40
+       5,
+       45
       ],
       [
        338,
