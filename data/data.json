@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T20:56:09.445Z",
+ "updated": "2026-10-25T21:03:19.020Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -8984,8 +8984,8 @@
       "pts": 10
      },
      "finLuck": -0.8,
-     "csLuck": -2.3,
-     "gcLuck": 0,
+     "csLuck": -2.4,
+     "gcLuck": -0.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
