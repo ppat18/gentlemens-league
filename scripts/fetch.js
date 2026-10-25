@@ -86,7 +86,8 @@ async function get(url) {
       finished: finished.includes(gw),
       chip: p.active_chip,
       // Laufende GW: FPL aktualisiert entry_history.points erst spät → Live-Punkte selbst aus Spielerpunkte × Multiplikator
-      points: finished.includes(gw)
+      // vorläufig beendete GW (provisionalGW): FPL-Wert hinkt hinterher (25.10.2026: 12 statt 33) → wie laufende GW rechnen
+      points: finished.includes(gw) && gw !== provisionalGW
         ? (p.entry_history?.points ?? null)
         : Math.max(p.entry_history?.points ?? 0, p.picks.reduce((s, x) => s + (stats[x.element]?.total_points ?? 0) * x.multiplier, 0)),
       hits: p.entry_history?.event_transfers_cost ?? 0,
@@ -117,10 +118,15 @@ async function get(url) {
     const transfers = await get(`/entry/${e.entry}/transfers/`);
     const gws = [];
     const squads = [];
-    for (const h of hist.current.filter(h => finished.includes(h.event))) {
+    for (let h of hist.current.filter(h => finished.includes(h.event))) {
       const picks = await get(`/entry/${e.entry}/event/${h.event}/picks/`);
       squads.push(buildSquad(picks, h.event));
       const stats = live[h.event];
+      // vorläufig beendete GW: Punkte und Gesamtstand aus den Live-Punkten, solange FPLs Verlauf noch hinterherhinkt
+      if (h.event === provisionalGW) {
+        const liveSum = picks.picks.reduce((a, x) => a + (stats?.[x.element]?.total_points ?? 0) * x.multiplier, 0);
+        if (liveSum > h.points) h = { ...h, total_points: h.total_points + liveSum - h.points, points: liveSum };
+      }
       // Startelf nach Auto-Wechseln
       const xi = new Set(picks.picks.filter(p => p.multiplier > 0).map(p => p.element));
       for (const s of picks.automatic_subs) { xi.delete(s.element_out); xi.add(s.element_in); }
