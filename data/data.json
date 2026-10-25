@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T21:36:15.049Z",
+ "updated": "2026-10-25T21:51:12.379Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -642,9 +642,9 @@
       "name": "Gabriel",
       "pts": 17
      },
-     "finLuck": 1.9,
-     "csLuck": 1.7,
-     "gcLuck": 0.1,
+     "finLuck": 2.4,
+     "csLuck": 2.3,
+     "gcLuck": 0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -2252,7 +2252,7 @@
       "name": "Isak",
       "pts": 9
      },
-     "finLuck": -3.3,
+     "finLuck": -3,
      "csLuck": 0.7,
      "gcLuck": 0.5,
      "lateGain": 0,
@@ -3819,8 +3819,8 @@
       "pts": 14
      },
      "finLuck": 1.2,
-     "csLuck": -1.8,
-     "gcLuck": 0.3,
+     "csLuck": -1.3,
+     "gcLuck": 0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -5402,9 +5402,9 @@
       "name": "Tavernier",
       "pts": 10
      },
-     "finLuck": -1.3,
-     "csLuck": -4.2,
-     "gcLuck": -0.4,
+     "finLuck": -0.9,
+     "csLuck": -3.1,
+     "gcLuck": 0,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -7043,9 +7043,9 @@
       "name": "Konsa",
       "pts": 14
      },
-     "finLuck": 2.7,
-     "csLuck": -3.4,
-     "gcLuck": -1.4,
+     "finLuck": 2.5,
+     "csLuck": -2.9,
+     "gcLuck": -1.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -8984,8 +8984,8 @@
       "pts": 10
      },
      "finLuck": -0.8,
-     "csLuck": -2.4,
-     "gcLuck": -0.1,
+     "csLuck": -2,
+     "gcLuck": 0.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -10462,7 +10462,7 @@
    "team": "FC Scheisshaus",
    "rank": 7,
    "lastRank": 7,
-   "total": 474,
+   "total": 475,
    "chips": [
     {
      "name": "wildcard",
@@ -10965,9 +10965,9 @@
     },
     {
      "gw": 8,
-     "points": 38,
-     "gross": 38,
-     "total": 474,
+     "points": 39,
+     "gross": 39,
+     "total": 475,
      "bench": 11,
      "transfers": 1,
      "hits": 0,
@@ -10986,17 +10986,17 @@
      "assists": 1,
      "ownGoals": 0,
      "penMiss": 0,
-     "bonus": 6,
+     "bonus": 7,
      "cleanSheets": 1,
      "autoSubs": 0,
      "autoSubPts": 0,
      "best": {
-      "name": "Bobb",
+      "name": "Dedić",
       "pts": 11
      },
      "finLuck": 5.7,
-     "csLuck": 1.5,
-     "gcLuck": 1,
+     "csLuck": 1.9,
+     "gcLuck": 1.1,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -11006,7 +11006,7 @@
      "injured": [
       "Shaw"
      ],
-     "lazyPts": 35,
+     "lazyPts": 36,
      "transfersIn": [
       {
        "in": "Madueke",
@@ -12213,7 +12213,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 38,
+     "points": 39,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -12246,7 +12246,7 @@
        4,
        1,
        0,
-       10,
+       11,
        90
       ],
       [
@@ -12739,7 +12739,7 @@
      "captainBase": 0,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 14,
+     "benchPlayersPts": 15,
      "red": 1,
      "yellow": 0,
      "goals": 3,
@@ -12754,9 +12754,9 @@
       "name": "Konsa",
       "pts": 14
      },
-     "finLuck": 9.6,
-     "csLuck": 0.3,
-     "gcLuck": 0.5,
+     "finLuck": 9.7,
+     "csLuck": 0.8,
+     "gcLuck": 0.7,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -13926,7 +13926,7 @@
        15,
        0,
        0,
-       10,
+       11,
        90
       ]
      ],
@@ -14501,9 +14501,9 @@
       "name": "Leno",
       "pts": 8
      },
-     "finLuck": -5.3,
-     "csLuck": -0.9,
-     "gcLuck": -0.5,
+     "finLuck": -5.8,
+     "csLuck": -0.5,
+     "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -16341,9 +16341,9 @@
       "name": "Haaland",
       "pts": 8
      },
-     "finLuck": 1.2,
-     "csLuck": -3.8,
-     "gcLuck": -1,
+     "finLuck": 1.7,
+     "csLuck": -3.2,
+     "gcLuck": -0.8,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
