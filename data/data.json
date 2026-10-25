@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T19:16:24.700Z",
+ "updated": "2026-10-25T19:31:08.444Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -7044,7 +7044,7 @@
       "pts": 14
      },
      "finLuck": 2.7,
-     "csLuck": -3.3,
+     "csLuck": -3.4,
      "gcLuck": -1.4,
      "lateGain": 0,
      "lateLoss": 0,
@@ -16341,7 +16341,7 @@
       "name": "Haaland",
       "pts": 8
      },
-     "finLuck": 1.1,
+     "finLuck": 1.2,
      "csLuck": -3.8,
      "gcLuck": -1,
      "lateGain": 0,
