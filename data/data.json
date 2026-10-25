@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T18:51:44.900Z",
+ "updated": "2026-10-25T18:52:37.755Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -613,9 +613,9 @@
     },
     {
      "gw": 8,
-     "points": 42,
-     "gross": 42,
-     "total": 557,
+     "points": 57,
+     "gross": 57,
+     "total": 572,
      "bench": 10,
      "transfers": 1,
      "hits": 0,
@@ -654,7 +654,7 @@
      "injured": [
       "Shaw"
      ],
-     "lazyPts": 40,
+     "lazyPts": 55,
      "transfersIn": [
       {
        "in": "Mbeumo",
@@ -1702,7 +1702,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 42,
+     "points": 57,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -2223,9 +2223,9 @@
     },
     {
      "gw": 8,
-     "points": 27,
-     "gross": 27,
-     "total": 516,
+     "points": 43,
+     "gross": 43,
+     "total": 532,
      "bench": 12,
      "transfers": 2,
      "hits": 0,
@@ -2262,7 +2262,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 18,
+     "lazyPts": 34,
      "transfersIn": [
       {
        "in": "Isak",
@@ -3270,7 +3270,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 27,
+     "points": 43,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3789,9 +3789,9 @@
     },
     {
      "gw": 8,
-     "points": 34,
-     "gross": 34,
-     "total": 514,
+     "points": 41,
+     "gross": 41,
+     "total": 521,
      "bench": 11,
      "transfers": 1,
      "hits": 0,
@@ -3828,7 +3828,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 41,
+     "lazyPts": 48,
      "transfersIn": [
       {
        "in": "Foden",
@@ -4857,7 +4857,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 34,
+     "points": 41,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -5373,9 +5373,9 @@
     },
     {
      "gw": 8,
-     "points": 20,
-     "gross": 20,
-     "total": 489,
+     "points": 37,
+     "gross": 37,
+     "total": 506,
      "bench": 9,
      "transfers": 1,
      "hits": 0,
@@ -5412,7 +5412,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 10,
+     "lazyPts": 27,
      "transfersIn": [
       {
        "in": "Tavernier",
@@ -5421,7 +5421,7 @@
        "outPts": 0
       }
      ],
-     "leagueRank": 5
+     "leagueRank": 4
     }
    ],
    "past": [
@@ -6437,7 +6437,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 20,
+     "points": 37,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -7014,9 +7014,9 @@
     },
     {
      "gw": 8,
-     "points": 26,
-     "gross": 34,
-     "total": 492,
+     "points": 38,
+     "gross": 46,
+     "total": 504,
      "bench": 0,
      "transfers": 3,
      "hits": 8,
@@ -7053,7 +7053,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 26,
+     "lazyPts": 38,
      "transfersIn": [
       {
        "in": "Kamada",
@@ -7074,7 +7074,7 @@
        "outPts": 0
       }
      ],
-     "leagueRank": 4
+     "leagueRank": 5
     }
    ],
    "past": [
@@ -8182,7 +8182,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 34,
+     "points": 46,
      "hits": 8,
      "subs": [],
      "picks": [
@@ -8954,9 +8954,9 @@
     },
     {
      "gw": 8,
-     "points": 12,
-     "gross": 12,
-     "total": 467,
+     "points": 33,
+     "gross": 33,
+     "total": 488,
      "bench": 8,
      "transfers": 1,
      "hits": 0,
@@ -8993,7 +8993,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 11,
+     "lazyPts": 32,
      "transfersIn": [
       {
        "in": "Rogers",
@@ -10314,7 +10314,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 12,
+     "points": 33,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -10965,9 +10965,9 @@
     },
     {
      "gw": 8,
-     "points": 26,
-     "gross": 26,
-     "total": 462,
+     "points": 38,
+     "gross": 38,
+     "total": 474,
      "bench": 11,
      "transfers": 1,
      "hits": 0,
@@ -11006,7 +11006,7 @@
      "injured": [
       "Shaw"
      ],
-     "lazyPts": 23,
+     "lazyPts": 35,
      "transfersIn": [
       {
        "in": "Madueke",
@@ -12213,7 +12213,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 26,
+     "points": 38,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -12725,9 +12725,9 @@
     },
     {
      "gw": 8,
-     "points": 33,
-     "gross": 33,
-     "total": 461,
+     "points": 42,
+     "gross": 42,
+     "total": 470,
      "bench": 2,
      "transfers": 0,
      "hits": 0,
@@ -13805,7 +13805,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 33,
+     "points": 42,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -14472,9 +14472,9 @@
     },
     {
      "gw": 8,
-     "points": 18,
-     "gross": 18,
-     "total": 434,
+     "points": 24,
+     "gross": 24,
+     "total": 440,
      "bench": 2,
      "transfers": 0,
      "hits": 0,
@@ -15792,7 +15792,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 18,
+     "points": 24,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -16312,9 +16312,9 @@
     },
     {
      "gw": 8,
-     "points": 17,
-     "gross": 17,
-     "total": 422,
+     "points": 31,
+     "gross": 31,
+     "total": 436,
      "bench": 12,
      "transfers": 1,
      "hits": 0,
@@ -16358,7 +16358,7 @@
       }
      ],
      "injured": [],
-     "lazyPts": 12,
+     "lazyPts": 26,
      "transfersIn": [
       {
        "in": "Evanilson",
@@ -17406,7 +17406,7 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 17,
+     "points": 31,
      "hits": 0,
      "subs": [],
      "picks": [
