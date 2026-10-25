@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T22:16:43.490Z",
+ "updated": "2026-10-25T09:37:54.145Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -238,7 +238,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 1,
-   "total": 557,
+   "total": 558,
    "chips": [
     {
      "name": "3xc",
@@ -1648,7 +1648,7 @@
      "gw": 8,
      "finished": false,
      "chip": null,
-     "points": 42,
+     "points": 43,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -1681,7 +1681,7 @@
        4,
        1,
        0,
-       16,
+       17,
        90
       ],
       [
@@ -3314,7 +3314,7 @@
    "team": "District 14 Graz",
    "rank": 3,
    "lastRank": 3,
-   "total": 514,
+   "total": 513,
    "chips": [
     {
      "name": "3xc",
@@ -4710,7 +4710,7 @@
        2,
        1,
        0,
-       15,
+       14,
        90
       ],
       [
@@ -4835,13 +4835,13 @@
    "id": 2776955,
    "nick": "Max",
    "avatar": "max",
-   "valueNow": 101.6,
+   "valueNow": 101.5,
    "bankNow": 0,
    "name": "Markus Reinisch",
    "team": "The Unbreakables",
    "rank": 4,
    "lastRank": 5,
-   "total": 492,
+   "total": 491,
    "chips": [
     {
      "name": "3xc",
@@ -6391,7 +6391,7 @@
        2,
        1,
        0,
-       15,
+       14,
        90
       ],
       [
@@ -6532,7 +6532,7 @@
    "id": 3730212,
    "nick": "Thomas",
    "avatar": "thomas",
-   "valueNow": 102.1,
+   "valueNow": 102,
    "bankNow": 5.6,
    "name": "Thomas Pirker",
    "team": "1. FC Wadenkrampf",
@@ -11975,7 +11975,7 @@
    "team": "FC HelloT*tty82",
    "rank": 8,
    "lastRank": 8,
-   "total": 461,
+   "total": 460,
    "chips": [],
    "gws": [
     {
@@ -13399,7 +13399,7 @@
        3,
        1,
        0,
-       15,
+       14,
        90
       ],
       [
