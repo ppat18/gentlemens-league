@@ -1,21 +1,51 @@
 {
- "updated": "2026-10-25T18:21:31.708Z",
+ "updated": "2026-10-25T18:30:10.779Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
  },
- "lastGW": 7,
- "provisionalGW": null,
+ "lastGW": 8,
+ "provisionalGW": 8,
  "next": {
-  "gw": 8,
-  "deadline": "2026-10-23T17:30:00Z",
+  "gw": 9,
+  "deadline": "2026-10-31T11:00:00Z",
   "fixtures": [
    {
-    "kickoff": "2026-10-23T19:00:00Z",
+    "kickoff": "2026-10-31T12:30:00Z",
     "home": {
-     "name": "Ipswich Town",
-     "short": "IPS",
-     "code": 40
+     "name": "Chelsea",
+     "short": "CHE",
+     "code": 8
+    },
+    "away": {
+     "name": "Man Utd",
+     "short": "MUN",
+     "code": 1
+    },
+    "homeDiff": 4,
+    "awayDiff": 4
+   },
+   {
+    "kickoff": "2026-10-31T15:00:00Z",
+    "home": {
+     "name": "Bournemouth",
+     "short": "BOU",
+     "code": 91
+    },
+    "away": {
+     "name": "Leeds",
+     "short": "LEE",
+     "code": 2
+    },
+    "homeDiff": 3,
+    "awayDiff": 3
+   },
+   {
+    "kickoff": "2026-10-31T15:00:00Z",
+    "home": {
+     "name": "Brentford",
+     "short": "BRE",
+     "code": 94
     },
     "away": {
      "name": "Nott'm Forest",
@@ -23,104 +53,44 @@
      "code": 17
     },
     "homeDiff": 3,
-    "awayDiff": 2
-   },
-   {
-    "kickoff": "2026-10-24T11:30:00Z",
-    "home": {
-     "name": "Aston Villa",
-     "short": "AVL",
-     "code": 7
-    },
-    "away": {
-     "name": "Man City",
-     "short": "MCI",
-     "code": 43
-    },
-    "homeDiff": 4,
     "awayDiff": 3
    },
    {
-    "kickoff": "2026-10-24T14:00:00Z",
-    "home": {
-     "name": "Arsenal",
-     "short": "ARS",
-     "code": 3
-    },
-    "away": {
-     "name": "Everton",
-     "short": "EVE",
-     "code": 11
-    },
-    "homeDiff": 3,
-    "awayDiff": 5
-   },
-   {
-    "kickoff": "2026-10-24T14:00:00Z",
+    "kickoff": "2026-10-31T15:00:00Z",
     "home": {
      "name": "Coventry City",
      "short": "COV",
      "code": 9
     },
     "away": {
-     "name": "Fulham",
-     "short": "FUL",
-     "code": 54
+     "name": "Sunderland",
+     "short": "SUN",
+     "code": 56
     },
-    "homeDiff": 2,
+    "homeDiff": 3,
     "awayDiff": 2
    },
    {
-    "kickoff": "2026-10-24T16:30:00Z",
-    "home": {
-     "name": "Chelsea",
-     "short": "CHE",
-     "code": 8
-    },
-    "away": {
-     "name": "Spurs",
-     "short": "TOT",
-     "code": 6
-    },
-    "homeDiff": 2,
-    "awayDiff": 4
-   },
-   {
-    "kickoff": "2026-10-25T14:00:00Z",
-    "home": {
-     "name": "Crystal Palace",
-     "short": "CRY",
-     "code": 31
-    },
-    "away": {
-     "name": "Newcastle",
-     "short": "NEW",
-     "code": 4
-    },
-    "homeDiff": 3,
-    "awayDiff": 3
-   },
-   {
-    "kickoff": "2026-10-25T14:00:00Z",
+    "kickoff": "2026-10-31T15:00:00Z",
     "home": {
      "name": "Hull City",
      "short": "HUL",
      "code": 88
     },
     "away": {
-     "name": "Brentford",
-     "short": "BRE",
-     "code": 94
+     "name": "Ipswich Town",
+     "short": "IPS",
+     "code": 40
     },
-    "homeDiff": 3,
+    "homeDiff": 2,
     "awayDiff": 2
    },
    {
-    "kickoff": "2026-10-25T14:00:00Z",
+    "kickoff": "2026-10-31T15:00:00Z",
     "home": {
-     "name": "Liverpool",
-     "short": "LIV",
-     "code": 14
+     "name": "Man City",
+     "short": "MCI",
+     "code": 43
     },
     "away": {
      "name": "Brighton",
@@ -128,34 +98,64 @@
      "code": 36
     },
     "homeDiff": 3,
+    "awayDiff": 5
+   },
+   {
+    "kickoff": "2026-10-31T17:30:00Z",
+    "home": {
+     "name": "Spurs",
+     "short": "TOT",
+     "code": 6
+    },
+    "away": {
+     "name": "Crystal Palace",
+     "short": "CRY",
+     "code": 31
+    },
+    "homeDiff": 2,
+    "awayDiff": 3
+   },
+   {
+    "kickoff": "2026-10-31T20:00:00Z",
+    "home": {
+     "name": "Aston Villa",
+     "short": "AVL",
+     "code": 7
+    },
+    "away": {
+     "name": "Fulham",
+     "short": "FUL",
+     "code": 54
+    },
+    "homeDiff": 2,
+    "awayDiff": 3
+   },
+   {
+    "kickoff": "2026-11-01T16:30:00Z",
+    "home": {
+     "name": "Liverpool",
+     "short": "LIV",
+     "code": 14
+    },
+    "away": {
+     "name": "Arsenal",
+     "short": "ARS",
+     "code": 3
+    },
+    "homeDiff": 4,
     "awayDiff": 4
    },
    {
-    "kickoff": "2026-10-25T14:00:00Z",
+    "kickoff": "2026-11-02T20:00:00Z",
     "home": {
-     "name": "Man Utd",
-     "short": "MUN",
-     "code": 1
+     "name": "Newcastle",
+     "short": "NEW",
+     "code": 4
     },
     "away": {
-     "name": "Bournemouth",
-     "short": "BOU",
-     "code": 91
-    },
-    "homeDiff": 3,
-    "awayDiff": 4
-   },
-   {
-    "kickoff": "2026-10-25T16:30:00Z",
-    "home": {
-     "name": "Sunderland",
-     "short": "SUN",
-     "code": 56
-    },
-    "away": {
-     "name": "Leeds",
-     "short": "LEE",
-     "code": 2
+     "name": "Everton",
+     "short": "EVE",
+     "code": 11
     },
     "homeDiff": 3,
     "awayDiff": 3
@@ -221,7 +221,7 @@
    },
    {
     "kickoff": "2026-10-25T16:30:00Z",
-    "done": false,
+    "done": true,
     "h": 56,
     "a": 2
    }
@@ -607,6 +607,60 @@
        "out": "Szoboszlai",
        "inPts": 1,
        "outPts": 1
+      }
+     ],
+     "leagueRank": 1
+    },
+    {
+     "gw": 8,
+     "points": 42,
+     "gross": 42,
+     "total": 557,
+     "bench": 10,
+     "transfers": 1,
+     "hits": 0,
+     "value": 102.2,
+     "bank": 1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 16,
+     "captainBase": 8,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 10,
+     "red": 1,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 0,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 8,
+     "cleanSheets": 2,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Gabriel",
+      "pts": 17
+     },
+     "finLuck": 1.9,
+     "csLuck": 1.7,
+     "gcLuck": 0.1,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [
+      "Shaw"
+     ],
+     "lazyPts": 40,
+     "transfersIn": [
+      {
+       "in": "Mbeumo",
+       "out": "Semenyo",
+       "inPts": 2,
+       "outPts": 0
       }
      ],
      "leagueRank": 1
@@ -1646,9 +1700,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 57,
+     "points": 42,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -2165,6 +2219,64 @@
      "injured": [],
      "lazyPts": null,
      "transfersIn": [],
+     "leagueRank": 2
+    },
+    {
+     "gw": 8,
+     "points": 27,
+     "gross": 27,
+     "total": 516,
+     "bench": 12,
+     "transfers": 2,
+     "hits": 0,
+     "value": 102.1,
+     "bank": 1,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 16,
+     "captainBase": 8,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 14,
+     "red": 1,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 7,
+     "cleanSheets": 2,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Isak",
+      "pts": 9
+     },
+     "finLuck": -3.3,
+     "csLuck": 0.7,
+     "gcLuck": 0.5,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": 18,
+     "transfersIn": [
+      {
+       "in": "Isak",
+       "out": "Gonzalo",
+       "inPts": 9,
+       "outPts": 2
+      },
+      {
+       "in": "Gibbs-White",
+       "out": "B.Fernandes",
+       "inPts": 2,
+       "outPts": 0
+      }
+     ],
      "leagueRank": 2
     }
    ],
@@ -3156,9 +3268,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 43,
+     "points": 27,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3673,6 +3785,58 @@
      "injured": [],
      "lazyPts": null,
      "transfersIn": [],
+     "leagueRank": 3
+    },
+    {
+     "gw": 8,
+     "points": 34,
+     "gross": 34,
+     "total": 514,
+     "bench": 11,
+     "transfers": 1,
+     "hits": 0,
+     "value": 101.3,
+     "bank": 0.3,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 16,
+     "captainBase": 8,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 13,
+     "red": 1,
+     "yellow": 0,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Konsa",
+      "pts": 14
+     },
+     "finLuck": 1.2,
+     "csLuck": -1.8,
+     "gcLuck": 0.3,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": 41,
+     "transfersIn": [
+      {
+       "in": "Foden",
+       "out": "Barnes",
+       "inPts": 1,
+       "outPts": 8
+      }
+     ],
      "leagueRank": 3
     }
    ],
@@ -4691,9 +4855,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 41,
+     "points": 34,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -5206,6 +5370,58 @@
       }
      ],
      "leagueRank": 4
+    },
+    {
+     "gw": 8,
+     "points": 20,
+     "gross": 20,
+     "total": 489,
+     "bench": 9,
+     "transfers": 1,
+     "hits": 0,
+     "value": 102.1,
+     "bank": 5.6,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 16,
+     "captainBase": 8,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 19,
+     "red": 0,
+     "yellow": 2,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 4,
+     "cleanSheets": 0,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Tavernier",
+      "pts": 10
+     },
+     "finLuck": -1.3,
+     "csLuck": -4.2,
+     "gcLuck": -0.4,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": 10,
+     "transfersIn": [
+      {
+       "in": "Tavernier",
+       "out": "B.Fernandes",
+       "inPts": 10,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 5
     }
    ],
    "past": [
@@ -6219,9 +6435,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 37,
+     "points": 20,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -6795,6 +7011,70 @@
       }
      ],
      "leagueRank": 5
+    },
+    {
+     "gw": 8,
+     "points": 26,
+     "gross": 34,
+     "total": 492,
+     "bench": 0,
+     "transfers": 3,
+     "hits": 8,
+     "value": 101.6,
+     "bank": 0,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 16,
+     "captainBase": 8,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 14,
+     "red": 0,
+     "yellow": 3,
+     "goals": 3,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 7,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Konsa",
+      "pts": 14
+     },
+     "finLuck": 2.7,
+     "csLuck": -3.3,
+     "gcLuck": -1.4,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": 26,
+     "transfersIn": [
+      {
+       "in": "Kamada",
+       "out": "Yarmoliuk",
+       "inPts": 2,
+       "outPts": 0
+      },
+      {
+       "in": "Isak",
+       "out": "Wissa",
+       "inPts": 9,
+       "outPts": 1
+      },
+      {
+       "in": "Cherki",
+       "out": "Saka",
+       "inPts": 0,
+       "outPts": 0
+      }
+     ],
+     "leagueRank": 4
     }
    ],
    "past": [
@@ -7900,9 +8180,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 46,
+     "points": 34,
      "hits": 8,
      "subs": [],
      "picks": [
@@ -8668,6 +8948,58 @@
        "out": "Thiaw",
        "inPts": 0,
        "outPts": 1
+      }
+     ],
+     "leagueRank": 6
+    },
+    {
+     "gw": 8,
+     "points": 12,
+     "gross": 12,
+     "total": 467,
+     "bench": 8,
+     "transfers": 1,
+     "hits": 0,
+     "value": 102.3,
+     "bank": 1.5,
+     "chip": null,
+     "captain": "João Pedro",
+     "captainPts": 0,
+     "captainBase": 0,
+     "captainGoals": 0,
+     "captainAssists": 0,
+     "benchPlayersPts": 12,
+     "red": 1,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 5,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Trafford",
+      "pts": 10
+     },
+     "finLuck": -0.8,
+     "csLuck": -2.3,
+     "gcLuck": 0,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": 11,
+     "transfersIn": [
+      {
+       "in": "Rogers",
+       "out": "Saka",
+       "inPts": 1,
+       "outPts": 0
       }
      ],
      "leagueRank": 6
@@ -9980,9 +10312,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 33,
+     "points": 12,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -10627,6 +10959,60 @@
        "out": "Wissa",
        "inPts": 4,
        "outPts": 1
+      }
+     ],
+     "leagueRank": 7
+    },
+    {
+     "gw": 8,
+     "points": 26,
+     "gross": 26,
+     "total": 462,
+     "bench": 11,
+     "transfers": 1,
+     "hits": 0,
+     "value": 101.7,
+     "bank": 1.9,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 0,
+     "captainBase": 0,
+     "captainGoals": 0,
+     "captainAssists": 0,
+     "benchPlayersPts": 12,
+     "red": 0,
+     "yellow": 3,
+     "goals": 2,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 6,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Bobb",
+      "pts": 11
+     },
+     "finLuck": 5.7,
+     "csLuck": 1.5,
+     "gcLuck": 1,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [
+      "Shaw"
+     ],
+     "lazyPts": 23,
+     "transfersIn": [
+      {
+       "in": "Madueke",
+       "out": "Tzolis",
+       "inPts": 3,
+       "outPts": 0
       }
      ],
      "leagueRank": 7
@@ -11825,9 +12211,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 38,
+     "points": 26,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -12326,6 +12712,51 @@
      "finLuck": 4.1,
      "csLuck": 6.8,
      "gcLuck": 1.5,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": null,
+     "transfersIn": [],
+     "leagueRank": 8
+    },
+    {
+     "gw": 8,
+     "points": 33,
+     "gross": 33,
+     "total": 461,
+     "bench": 2,
+     "transfers": 0,
+     "hits": 0,
+     "value": 100.8,
+     "bank": 0.3,
+     "chip": null,
+     "captain": "B.Fernandes",
+     "captainPts": 0,
+     "captainBase": 0,
+     "captainGoals": 0,
+     "captainAssists": 0,
+     "benchPlayersPts": 14,
+     "red": 1,
+     "yellow": 0,
+     "goals": 3,
+     "assists": 1,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Konsa",
+      "pts": 14
+     },
+     "finLuck": 9.6,
+     "csLuck": 0.3,
+     "gcLuck": 0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -13372,9 +13803,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 42,
+     "points": 33,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -14037,6 +14468,51 @@
        "outPts": 0
       }
      ],
+     "leagueRank": 9
+    },
+    {
+     "gw": 8,
+     "points": 18,
+     "gross": 18,
+     "total": 434,
+     "bench": 2,
+     "transfers": 0,
+     "hits": 0,
+     "value": 102.9,
+     "bank": 1.8,
+     "chip": null,
+     "captain": "João Pedro",
+     "captainPts": 0,
+     "captainBase": 0,
+     "captainGoals": 0,
+     "captainAssists": 0,
+     "benchPlayersPts": 11,
+     "red": 0,
+     "yellow": 3,
+     "goals": 1,
+     "assists": 0,
+     "ownGoals": 0,
+     "penMiss": 0,
+     "bonus": 4,
+     "cleanSheets": 1,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Leno",
+      "pts": 8
+     },
+     "finLuck": -5.3,
+     "csLuck": -0.9,
+     "gcLuck": -0.5,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [],
+     "injured": [],
+     "lazyPts": null,
+     "transfersIn": [],
      "leagueRank": 9
     }
    ],
@@ -15314,9 +15790,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 24,
+     "points": 18,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -15830,6 +16306,65 @@
        "out": "Schade",
        "inPts": 0,
        "outPts": 0
+      }
+     ],
+     "leagueRank": 10
+    },
+    {
+     "gw": 8,
+     "points": 17,
+     "gross": 17,
+     "total": 422,
+     "bench": 12,
+     "transfers": 1,
+     "hits": 0,
+     "value": 100.2,
+     "bank": 0.9,
+     "chip": null,
+     "captain": "Haaland",
+     "captainPts": 16,
+     "captainBase": 8,
+     "captainGoals": 1,
+     "captainAssists": 0,
+     "benchPlayersPts": 19,
+     "red": 0,
+     "yellow": 1,
+     "goals": 2,
+     "assists": 0,
+     "ownGoals": 1,
+     "penMiss": 0,
+     "bonus": 2,
+     "cleanSheets": 0,
+     "autoSubs": 0,
+     "autoSubPts": 0,
+     "best": {
+      "name": "Haaland",
+      "pts": 8
+     },
+     "finLuck": 1.1,
+     "csLuck": -3.8,
+     "gcLuck": -1,
+     "lateGain": 0,
+     "lateLoss": 0,
+     "lateInfo": [],
+     "lateFor": 0,
+     "lateAgainst": 0,
+     "knocks": [
+      {
+       "name": "F.Kadıoğlu",
+       "min": 5,
+       "pts": 1,
+       "mult": 1
+      }
+     ],
+     "injured": [],
+     "lazyPts": 12,
+     "transfersIn": [
+      {
+       "in": "Evanilson",
+       "out": "Wissa",
+       "inPts": 6,
+       "outPts": 1
       }
      ],
      "leagueRank": 10
@@ -16869,9 +17404,9 @@
     },
     {
      "gw": 8,
-     "finished": false,
+     "finished": true,
      "chip": null,
-     "points": 31,
+     "points": 17,
      "hits": 0,
      "subs": [],
      "picks": [
