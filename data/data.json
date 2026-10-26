@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T23:01:54.692Z",
+ "updated": "2026-10-26T00:02:22.467Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -3420,7 +3420,7 @@
    "id": 2634875,
    "nick": "Roli",
    "avatar": "roli",
-   "valueNow": 101.2,
+   "valueNow": 101.3,
    "bankNow": 0.3,
    "name": "Roland Kumpitsch",
    "team": "District 14 Graz",
@@ -6579,7 +6579,7 @@
    "id": 2776955,
    "nick": "Max",
    "avatar": "max",
-   "valueNow": 101.5,
+   "valueNow": 101.6,
    "bankNow": 0,
    "name": "Markus Reinisch",
    "team": "The Unbreakables",
@@ -10456,7 +10456,7 @@
    "id": 5717008,
    "nick": "Favo",
    "avatar": "favo",
-   "valueNow": 101.4,
+   "valueNow": 101.3,
    "bankNow": 1.9,
    "name": "Sascha Mair",
    "team": "FC Scheisshaus",
@@ -12355,7 +12355,7 @@
    "id": 1279976,
    "nick": "Alex",
    "avatar": "alex",
-   "valueNow": 100.7,
+   "valueNow": 100.8,
    "bankNow": 0.3,
    "name": "Alex Preissler",
    "team": "FC HelloT*tty82",
