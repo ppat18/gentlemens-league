@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T10:50:04.668Z",
+ "updated": "2026-10-26T11:01:29.079Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -238,7 +238,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 1,
-   "total": 572,
+   "total": 573,
    "chips": [
     {
      "name": "3xc",
@@ -1850,7 +1850,7 @@
    "team": "Globo Gym United",
    "rank": 2,
    "lastRank": 2,
-   "total": 532,
+   "total": 534,
    "chips": [
     {
      "name": "3xc",
@@ -3426,7 +3426,7 @@
    "team": "District 14 Graz",
    "rank": 3,
    "lastRank": 3,
-   "total": 521,
+   "total": 522,
    "chips": [
     {
      "name": "3xc",
@@ -5005,7 +5005,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 4,
-   "total": 506,
+   "total": 508,
    "chips": [],
    "gws": [
     {
@@ -6585,7 +6585,7 @@
    "team": "The Unbreakables",
    "rank": 5,
    "lastRank": 5,
-   "total": 504,
+   "total": 506,
    "chips": [
     {
      "name": "3xc",
@@ -8346,7 +8346,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 6,
-   "total": 488,
+   "total": 498,
    "chips": [
     {
      "name": "wildcard",
@@ -10462,7 +10462,7 @@
    "team": "FC Scheisshaus",
    "rank": 7,
    "lastRank": 7,
-   "total": 475,
+   "total": 485,
    "chips": [
     {
      "name": "wildcard",
@@ -12361,7 +12361,7 @@
    "team": "FC HelloT*tty82",
    "rank": 8,
    "lastRank": 8,
-   "total": 470,
+   "total": 473,
    "chips": [],
    "gws": [
     {
@@ -13944,7 +13944,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 9,
-   "total": 440,
+   "total": 451,
    "chips": [
     {
      "name": "wildcard",
@@ -15931,7 +15931,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 10,
-   "total": 436,
+   "total": 443,
    "chips": [],
    "gws": [
     {
