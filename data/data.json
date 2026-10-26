@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T11:01:29.079Z",
+ "updated": "2026-10-26T12:01:20.596Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -613,10 +613,10 @@
     },
     {
      "gw": 8,
-     "points": 57,
-     "gross": 57,
-     "total": 572,
-     "bench": 10,
+     "points": 58,
+     "gross": 58,
+     "total": 573,
+     "bench": 9,
      "transfers": 1,
      "hits": 0,
      "value": 102.2,
@@ -627,7 +627,7 @@
      "captainBase": 8,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 10,
+     "benchPlayersPts": 9,
      "red": 1,
      "yellow": 0,
      "goals": 3,
@@ -636,15 +636,15 @@
      "penMiss": 0,
      "bonus": 8,
      "cleanSheets": 2,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 1,
      "best": {
       "name": "Gabriel",
       "pts": 17
      },
-     "finLuck": 2.4,
+     "finLuck": 2.2,
      "csLuck": 2.3,
-     "gcLuck": 0.3,
+     "gcLuck": 0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -654,7 +654,7 @@
      "injured": [
       "Shaw"
      ],
-     "lazyPts": 55,
+     "lazyPts": 56,
      "transfersIn": [
       {
        "in": "Mbeumo",
@@ -1702,9 +1702,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 57,
+     "points": 58,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       173,
+       165
+      ]
+     ],
      "picks": [
       [
        109,
@@ -1739,16 +1744,32 @@
        90
       ],
       [
-       154,
+       173,
        5,
+       1,
+       0,
+       1,
+       59
+      ],
+      [
+       154,
+       6,
        1,
        2,
        -1,
        79
       ],
       [
+       427,
+       7,
+       1,
+       0,
+       2,
+       90
+      ],
+      [
        68,
-       6,
+       8,
        1,
        0,
        10,
@@ -1756,7 +1777,7 @@
       ],
       [
        124,
-       7,
+       9,
        1,
        0,
        0,
@@ -1764,35 +1785,19 @@
       ],
       [
        15,
-       8,
+       10,
        1,
        0,
        3,
        90
       ],
       [
-       427,
-       9,
-       1,
-       0,
-       2,
-       90
-      ],
-      [
        411,
-       10,
+       11,
        2,
        1,
        8,
        90
-      ],
-      [
-       165,
-       11,
-       1,
-       0,
-       0,
-       0
       ],
       [
        496,
@@ -1803,12 +1808,12 @@
        90
       ],
       [
-       173,
+       165,
        13,
        0,
        0,
-       1,
-       59
+       0,
+       0
       ],
       [
        423,
@@ -2223,9 +2228,9 @@
     },
     {
      "gw": 8,
-     "points": 43,
-     "gross": 43,
-     "total": 532,
+     "points": 45,
+     "gross": 45,
+     "total": 534,
      "bench": 12,
      "transfers": 2,
      "hits": 0,
@@ -2237,7 +2242,7 @@
      "captainBase": 8,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 14,
+     "benchPlayersPts": 12,
      "red": 1,
      "yellow": 1,
      "goals": 2,
@@ -2246,15 +2251,15 @@
      "penMiss": 0,
      "bonus": 7,
      "cleanSheets": 2,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 2,
      "best": {
       "name": "Isak",
       "pts": 9
      },
-     "finLuck": -3,
-     "csLuck": 0.7,
-     "gcLuck": 0.5,
+     "finLuck": -3.1,
+     "csLuck": -1.6,
+     "gcLuck": 0.3,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -2262,7 +2267,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 34,
+     "lazyPts": 36,
      "transfersIn": [
       {
        "in": "Isak",
@@ -3270,9 +3275,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 43,
+     "points": 45,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       175,
+       165
+      ]
+     ],
      "picks": [
       [
        250,
@@ -3291,36 +3301,36 @@
        22
       ],
       [
-       449,
+       391,
        3,
        1,
        0,
-       5,
+       1,
        90
       ],
       [
-       391,
+       449,
        4,
        1,
        0,
-       1,
+       5,
        90
       ],
       [
-       154,
+       175,
        5,
-       1,
-       0,
-       -1,
-       79
-      ],
-      [
-       480,
-       6,
        1,
        0,
        2,
        90
+      ],
+      [
+       154,
+       6,
+       1,
+       0,
+       -1,
+       79
       ],
       [
        124,
@@ -3339,12 +3349,12 @@
        61
       ],
       [
-       165,
+       480,
        9,
        1,
        0,
-       0,
-       0
+       2,
+       90
       ],
       [
        411,
@@ -3371,12 +3381,12 @@
        90
       ],
       [
-       175,
+       165,
        13,
        0,
        0,
-       2,
-       90
+       0,
+       0
       ],
       [
        259,
@@ -3789,10 +3799,10 @@
     },
     {
      "gw": 8,
-     "points": 41,
-     "gross": 41,
-     "total": 521,
-     "bench": 11,
+     "points": 42,
+     "gross": 42,
+     "total": 522,
+     "bench": 12,
      "transfers": 1,
      "hits": 0,
      "value": 101.3,
@@ -3803,7 +3813,7 @@
      "captainBase": 8,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 13,
+     "benchPlayersPts": 12,
      "red": 1,
      "yellow": 0,
      "goals": 2,
@@ -3812,15 +3822,15 @@
      "penMiss": 0,
      "bonus": 4,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 1,
      "best": {
       "name": "Konsa",
       "pts": 14
      },
-     "finLuck": 1.2,
-     "csLuck": -1.5,
-     "gcLuck": 0.3,
+     "finLuck": -1.6,
+     "csLuck": -3.7,
+     "gcLuck": -0.4,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -3828,7 +3838,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 48,
+     "lazyPts": 49,
      "transfersIn": [
       {
        "in": "Foden",
@@ -4857,9 +4867,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 41,
+     "points": 42,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       391,
+       165
+      ]
+     ],
      "picks": [
       [
        109,
@@ -4870,16 +4885,8 @@
        90
       ],
       [
-       31,
-       2,
-       1,
-       0,
-       14,
-       90
-      ],
-      [
        87,
-       3,
+       2,
        1,
        0,
        2,
@@ -4887,35 +4894,43 @@
       ],
       [
        8,
-       4,
+       3,
        1,
        0,
        1,
        22
       ],
       [
-       480,
-       5,
+       31,
+       4,
        1,
        0,
-       2,
+       14,
        90
       ],
       [
-       398,
-       6,
+       391,
+       5,
        1,
        0,
        1,
-       45
+       90
       ],
       [
        154,
-       7,
+       6,
        1,
        0,
        -1,
        79
+      ],
+      [
+       398,
+       7,
+       1,
+       0,
+       1,
+       45
       ],
       [
        427,
@@ -4926,20 +4941,20 @@
        90
       ],
       [
-       346,
+       480,
        9,
        1,
        0,
        2,
-       84
+       90
       ],
       [
-       165,
+       346,
        10,
        1,
-       2,
        0,
-       0
+       2,
+       84
       ],
       [
        411,
@@ -4958,12 +4973,12 @@
        90
       ],
       [
-       391,
+       165,
        13,
        0,
+       2,
        0,
-       1,
-       90
+       0
       ],
       [
        127,
@@ -5373,10 +5388,10 @@
     },
     {
      "gw": 8,
-     "points": 37,
-     "gross": 37,
-     "total": 506,
-     "bench": 9,
+     "points": 39,
+     "gross": 39,
+     "total": 508,
+     "bench": 17,
      "transfers": 1,
      "hits": 0,
      "value": 102.1,
@@ -5387,7 +5402,7 @@
      "captainBase": 8,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 19,
+     "benchPlayersPts": 17,
      "red": 0,
      "yellow": 2,
      "goals": 2,
@@ -5396,13 +5411,13 @@
      "penMiss": 0,
      "bonus": 4,
      "cleanSheets": 0,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 2,
      "best": {
       "name": "Tavernier",
       "pts": 10
      },
-     "finLuck": -1.2,
+     "finLuck": -1.3,
      "csLuck": -3.1,
      "gcLuck": 0,
      "lateGain": 0,
@@ -5412,7 +5427,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 27,
+     "lazyPts": 29,
      "transfersIn": [
       {
        "in": "Tavernier",
@@ -6437,9 +6452,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 37,
+     "points": 39,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       346,
+       165
+      ]
+     ],
      "picks": [
       [
        109,
@@ -6522,12 +6542,12 @@
        90
       ],
       [
-       165,
+       346,
        11,
        1,
-       2,
        0,
-       0
+       2,
+       84
       ],
       [
        496,
@@ -6538,12 +6558,12 @@
        90
       ],
       [
-       346,
+       165,
        13,
        0,
-       0,
        2,
-       84
+       0,
+       0
       ],
       [
        87,
@@ -7014,10 +7034,10 @@
     },
     {
      "gw": 8,
-     "points": 38,
-     "gross": 46,
-     "total": 504,
-     "bench": 0,
+     "points": 40,
+     "gross": 48,
+     "total": 506,
+     "bench": 12,
      "transfers": 3,
      "hits": 8,
      "value": 101.6,
@@ -7028,7 +7048,7 @@
      "captainBase": 8,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 14,
+     "benchPlayersPts": 12,
      "red": 0,
      "yellow": 3,
      "goals": 3,
@@ -7037,14 +7057,14 @@
      "penMiss": 0,
      "bonus": 7,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 2,
      "best": {
       "name": "Konsa",
       "pts": 14
      },
-     "finLuck": 2.5,
-     "csLuck": -2.9,
+     "finLuck": 2,
+     "csLuck": -3.3,
      "gcLuck": -1.2,
      "lateGain": 0,
      "lateLoss": 0,
@@ -8182,9 +8202,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 46,
+     "points": 48,
      "hits": 8,
-     "subs": [],
+     "subs": [
+      [
+       214,
+       165
+      ]
+     ],
      "picks": [
       [
        412,
@@ -8203,7 +8228,7 @@
        90
       ],
       [
-       391,
+       115,
        3,
        1,
        0,
@@ -8211,7 +8236,7 @@
        90
       ],
       [
-       115,
+       391,
        4,
        1,
        0,
@@ -8219,12 +8244,12 @@
        90
       ],
       [
-       399,
+       40,
        5,
        1,
        0,
-       0,
-       45
+       1,
+       90
       ],
       [
        427,
@@ -8235,12 +8260,12 @@
        90
       ],
       [
-       40,
+       399,
        7,
        1,
        0,
-       1,
-       90
+       0,
+       45
       ],
       [
        53,
@@ -8251,12 +8276,12 @@
        65
       ],
       [
-       165,
+       214,
        9,
        1,
-       2,
        0,
-       0
+       2,
+       90
       ],
       [
        411,
@@ -8283,12 +8308,12 @@
        90
       ],
       [
-       214,
+       165,
        13,
        0,
-       0,
        2,
-       90
+       0,
+       0
       ],
       [
        88,
@@ -8954,10 +8979,10 @@
     },
     {
      "gw": 8,
-     "points": 33,
-     "gross": 33,
-     "total": 488,
-     "bench": 8,
+     "points": 43,
+     "gross": 43,
+     "total": 498,
+     "bench": 10,
      "transfers": 1,
      "hits": 0,
      "value": 102.3,
@@ -8968,7 +8993,7 @@
      "captainBase": 0,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 12,
+     "benchPlayersPts": 10,
      "red": 1,
      "yellow": 1,
      "goals": 2,
@@ -8977,13 +9002,13 @@
      "penMiss": 0,
      "bonus": 5,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 2,
      "best": {
       "name": "Trafford",
       "pts": 10
      },
-     "finLuck": -0.8,
+     "finLuck": -0.5,
      "csLuck": -2,
      "gcLuck": 0.1,
      "lateGain": 0,
@@ -8993,7 +9018,7 @@
      "lateAgainst": 0,
      "knocks": [],
      "injured": [],
-     "lazyPts": 32,
+     "lazyPts": 42,
      "transfersIn": [
       {
        "in": "Rogers",
@@ -10314,9 +10339,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 33,
+     "points": 43,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       138,
+       165
+      ]
+     ],
      "picks": [
       [
        385,
@@ -10327,7 +10357,7 @@
        90
       ],
       [
-       115,
+       391,
        2,
        1,
        0,
@@ -10343,65 +10373,65 @@
        90
       ],
       [
-       8,
+       115,
        4,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       8,
+       5,
        1,
        0,
        1,
        22
       ],
       [
-       391,
-       5,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
-       154,
-       6,
-       1,
-       0,
-       -1,
-       79
-      ],
-      [
        427,
-       7,
+       6,
        1,
        0,
        2,
        90
       ],
       [
-       40,
-       8,
-       1,
-       0,
-       1,
-       90
-      ],
-      [
        453,
-       9,
+       7,
        1,
        0,
        8,
        76
       ],
       [
-       165,
-       10,
-       2,
+       154,
+       8,
        1,
        0,
-       0
+       -1,
+       79
+      ],
+      [
+       40,
+       9,
+       1,
+       0,
+       1,
+       90
+      ],
+      [
+       138,
+       10,
+       1,
+       0,
+       2,
+       90
       ],
       [
        411,
        11,
-       1,
+       2,
        2,
        8,
        90
@@ -10415,12 +10445,12 @@
        90
       ],
       [
-       138,
+       165,
        13,
        0,
+       1,
        0,
-       2,
-       90
+       0
       ],
       [
        290,
@@ -10965,10 +10995,10 @@
     },
     {
      "gw": 8,
-     "points": 39,
-     "gross": 39,
-     "total": 475,
-     "bench": 11,
+     "points": 49,
+     "gross": 49,
+     "total": 485,
+     "bench": 10,
      "transfers": 1,
      "hits": 0,
      "value": 101.7,
@@ -10979,7 +11009,7 @@
      "captainBase": 0,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 12,
+     "benchPlayersPts": 10,
      "red": 0,
      "yellow": 3,
      "goals": 2,
@@ -10988,13 +11018,13 @@
      "penMiss": 0,
      "bonus": 7,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 2,
      "best": {
       "name": "Dedić",
       "pts": 11
      },
-     "finLuck": 5.7,
+     "finLuck": 6.6,
      "csLuck": 1.9,
      "gcLuck": 1.1,
      "lateGain": 0,
@@ -11006,7 +11036,7 @@
      "injured": [
       "Shaw"
      ],
-     "lazyPts": 36,
+     "lazyPts": 46,
      "transfersIn": [
       {
        "in": "Madueke",
@@ -12213,9 +12243,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 39,
+     "points": 49,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       249,
+       426
+      ]
+     ],
      "picks": [
       [
        109,
@@ -12226,11 +12261,11 @@
        90
       ],
       [
-       259,
+       593,
        2,
        1,
        0,
-       1,
+       11,
        90
       ],
       [
@@ -12242,40 +12277,8 @@
        22
       ],
       [
-       593,
+       259,
        4,
-       1,
-       0,
-       11,
-       90
-      ],
-      [
-       264,
-       5,
-       1,
-       0,
-       11,
-       80
-      ],
-      [
-       399,
-       6,
-       1,
-       0,
-       0,
-       45
-      ],
-      [
-       426,
-       7,
-       2,
-       1,
-       0,
-       0
-      ],
-      [
-       40,
-       8,
        1,
        0,
        1,
@@ -12283,27 +12286,59 @@
       ],
       [
        16,
-       9,
+       5,
        1,
        0,
        3,
        90
       ],
       [
-       411,
-       10,
+       40,
+       6,
        1,
-       2,
+       0,
+       1,
+       90
+      ],
+      [
+       399,
+       7,
+       1,
+       0,
+       0,
+       45
+      ],
+      [
+       264,
        8,
+       1,
+       0,
+       11,
+       80
+      ],
+      [
+       249,
+       9,
+       1,
+       0,
+       2,
        90
       ],
       [
        526,
-       11,
+       10,
        1,
        0,
        1,
        25
+      ],
+      [
+       411,
+       11,
+       2,
+       2,
+       8,
+       90
       ],
       [
        496,
@@ -12314,12 +12349,12 @@
        90
       ],
       [
-       249,
+       426,
        13,
        0,
+       1,
        0,
-       2,
-       90
+       0
       ],
       [
        115,
@@ -12725,10 +12760,10 @@
     },
     {
      "gw": 8,
-     "points": 42,
-     "gross": 42,
-     "total": 470,
-     "bench": 2,
+     "points": 45,
+     "gross": 45,
+     "total": 473,
+     "bench": 11,
      "transfers": 0,
      "hits": 0,
      "value": 100.8,
@@ -12739,7 +12774,7 @@
      "captainBase": 0,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 15,
+     "benchPlayersPts": 11,
      "red": 1,
      "yellow": 0,
      "goals": 3,
@@ -12748,15 +12783,15 @@
      "penMiss": 0,
      "bonus": 4,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 2,
+     "autoSubPts": 4,
      "best": {
       "name": "Konsa",
       "pts": 14
      },
-     "finLuck": 9.7,
-     "csLuck": 0.8,
-     "gcLuck": 0.7,
+     "finLuck": 7.5,
+     "csLuck": -2.4,
+     "gcLuck": 0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -13805,9 +13840,18 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 42,
+     "points": 45,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       127,
+       426
+      ],
+      [
+       175,
+       165
+      ]
+     ],
      "picks": [
       [
        109,
@@ -13818,12 +13862,12 @@
        90
       ],
       [
-       8,
+       305,
        2,
        1,
        0,
-       1,
-       22
+       2,
+       90
       ],
       [
        31,
@@ -13834,20 +13878,20 @@
        90
       ],
       [
-       305,
+       8,
        4,
+       1,
+       0,
+       1,
+       22
+      ],
+      [
+       175,
+       5,
        1,
        0,
        2,
        90
-      ],
-      [
-       453,
-       5,
-       1,
-       0,
-       8,
-       76
       ],
       [
        268,
@@ -13860,42 +13904,42 @@
       [
        154,
        7,
-       1,
+       2,
        2,
        -1,
        79
       ],
       [
-       426,
+       127,
        8,
-       2,
        1,
        0,
-       0
+       2,
+       90
       ],
       [
-       401,
+       453,
        9,
        1,
        0,
-       2,
-       64
-      ],
-      [
-       165,
-       10,
-       1,
-       0,
-       0,
-       0
+       8,
+       76
       ],
       [
        411,
-       11,
+       10,
        1,
        0,
        8,
        90
+      ],
+      [
+       401,
+       11,
+       1,
+       0,
+       2,
+       64
       ],
       [
        497,
@@ -13906,20 +13950,20 @@
        0
       ],
       [
-       127,
+       426,
        13,
        0,
+       1,
        0,
-       2,
-       90
+       0
       ],
       [
-       175,
+       165,
        14,
        0,
        0,
-       2,
-       90
+       0,
+       0
       ],
       [
        593,
@@ -14472,10 +14516,10 @@
     },
     {
      "gw": 8,
-     "points": 24,
-     "gross": 24,
-     "total": 440,
-     "bench": 2,
+     "points": 35,
+     "gross": 35,
+     "total": 451,
+     "bench": 8,
      "transfers": 0,
      "hits": 0,
      "value": 102.9,
@@ -14486,7 +14530,7 @@
      "captainBase": 0,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 11,
+     "benchPlayersPts": 8,
      "red": 0,
      "yellow": 3,
      "goals": 1,
@@ -14495,14 +14539,14 @@
      "penMiss": 0,
      "bonus": 4,
      "cleanSheets": 1,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "autoSubs": 1,
+     "autoSubPts": 3,
      "best": {
       "name": "Leno",
       "pts": 8
      },
-     "finLuck": -5.8,
-     "csLuck": -0.5,
+     "finLuck": -6.4,
+     "csLuck": 0.3,
      "gcLuck": -0.3,
      "lateGain": 0,
      "lateLoss": 0,
@@ -15792,9 +15836,14 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 24,
+     "points": 35,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       367,
+       165
+      ]
+     ],
      "picks": [
       [
        250,
@@ -15829,16 +15878,8 @@
        45
       ],
       [
-       94,
-       5,
-       1,
-       0,
-       2,
-       61
-      ],
-      [
        428,
-       6,
+       5,
        1,
        0,
        1,
@@ -15846,7 +15887,7 @@
       ],
       [
        399,
-       7,
+       6,
        1,
        0,
        0,
@@ -15854,35 +15895,43 @@
       ],
       [
        40,
-       8,
+       7,
        1,
        0,
        1,
        90
       ],
       [
-       138,
-       9,
+       94,
+       8,
        1,
        0,
        2,
+       61
+      ],
+      [
+       367,
+       9,
+       1,
+       0,
+       3,
        90
       ],
       [
        411,
        10,
-       1,
+       2,
        2,
        8,
        90
       ],
       [
-       165,
+       138,
        11,
-       2,
        1,
        0,
-       0
+       2,
+       90
       ],
       [
        109,
@@ -15893,12 +15942,12 @@
        90
       ],
       [
-       367,
+       165,
        13,
        0,
+       1,
        0,
-       3,
-       90
+       0
       ],
       [
        305,
@@ -16312,9 +16361,9 @@
     },
     {
      "gw": 8,
-     "points": 31,
-     "gross": 31,
-     "total": 436,
+     "points": 38,
+     "gross": 38,
+     "total": 443,
      "bench": 12,
      "transfers": 1,
      "hits": 0,
@@ -16326,24 +16375,24 @@
      "captainBase": 8,
      "captainGoals": 1,
      "captainAssists": 0,
-     "benchPlayersPts": 19,
+     "benchPlayersPts": 12,
      "red": 0,
-     "yellow": 1,
+     "yellow": 3,
      "goals": 2,
      "assists": 0,
      "ownGoals": 1,
      "penMiss": 0,
      "bonus": 2,
-     "cleanSheets": 0,
-     "autoSubs": 0,
-     "autoSubPts": 0,
+     "cleanSheets": 1,
+     "autoSubs": 2,
+     "autoSubPts": 7,
      "best": {
       "name": "Haaland",
       "pts": 8
      },
-     "finLuck": 1.4,
-     "csLuck": -3.2,
-     "gcLuck": -0.8,
+     "finLuck": 0.1,
+     "csLuck": -0.4,
+     "gcLuck": -0.4,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -16358,7 +16407,7 @@
       }
      ],
      "injured": [],
-     "lazyPts": 26,
+     "lazyPts": 33,
      "transfersIn": [
       {
        "in": "Evanilson",
@@ -17406,9 +17455,18 @@
      "gw": 8,
      "finished": true,
      "chip": null,
-     "points": 31,
+     "points": 38,
      "hits": 0,
-     "subs": [],
+     "subs": [
+      [
+       338,
+       426
+      ],
+      [
+       330,
+       165
+      ]
+     ],
      "picks": [
       [
        109,
@@ -17419,16 +17477,8 @@
        90
       ],
       [
-       113,
-       2,
-       1,
-       0,
-       1,
-       5
-      ],
-      [
        8,
-       3,
+       2,
        1,
        0,
        1,
@@ -17436,34 +17486,42 @@
       ],
       [
        204,
-       4,
+       3,
        1,
        0,
        1,
        90
       ],
       [
-       286,
+       113,
+       4,
+       1,
+       0,
+       1,
+       5
+      ],
+      [
+       330,
        5,
+       1,
+       0,
+       5,
+       90
+      ],
+      [
+       286,
+       6,
        1,
        0,
        4,
        85
       ],
       [
-       426,
-       6,
-       1,
-       2,
-       0,
-       0
-      ],
-      [
-       124,
+       338,
        7,
        1,
        0,
-       0,
+       2,
        90
       ],
       [
@@ -17475,12 +17533,12 @@
        45
       ],
       [
-       79,
+       124,
        9,
        1,
        0,
-       6,
-       86
+       0,
+       90
       ],
       [
        411,
@@ -17491,12 +17549,12 @@
        90
       ],
       [
-       165,
+       79,
        11,
        1,
        0,
-       0,
-       0
+       6,
+       86
       ],
       [
        496,
@@ -17507,20 +17565,20 @@
        90
       ],
       [
-       338,
+       426,
        13,
        0,
-       0,
        2,
-       90
+       0,
+       0
       ],
       [
-       330,
+       165,
        14,
        0,
        0,
-       5,
-       90
+       0,
+       0
       ],
       [
        32,
