@@ -3,6 +3,40 @@
 const fs = require('fs');
 const path = require('path');
 
+// FPL-Regeln für noch nicht abgerechnete Gameweeks (30.10.2026, GW8: Kapitän spielte nicht, Vize wurde nicht verdoppelt):
+// Kapitän ohne Minuten → Vize bekommt den Kapitäns-Multiplikator; Starter ohne Minuten → erster Bankspieler, der gespielt
+// hat (Torwart nur für Torwart, gültige Formation). Gleiche Logik wie Your Mini League (platform/src/fplrules.js).
+const MIN_OF = { 2: 3, 3: 2, 4: 1 }, MAX_OF = { 2: 5, 3: 5, 4: 3 };
+
+function applyFplRules(picks, chip, info) {
+  const out = picks.map(p => [...p]);
+  const cap = out.find(p => p[3] === 1), vc = out.find(p => p[3] === 2);
+  const bench = out.filter(p => p[1] > 11).sort((a, b) => a[1] - b[1]);
+  // already processed by FPL: the captain's multiplier was moved or a bench player counts
+  if (!cap || cap[2] === 0 || (chip !== 'bboost' && bench.some(p => p[2] > 0))) return { picks: out, subs: [] };
+  const dead = p => { const i = info(p[0]); return !!i.done && !(i.min > 0); };
+  const subs = [];
+  if (chip !== 'bboost') {
+    const count = t => out.filter(p => p[2] > 0 && info(p[0]).type === t).length;
+    for (const s of out.filter(p => p[1] <= 11 && p[2] > 0 && dead(p))) {
+      const t = info(s[0]).type;
+      const b = bench.find(b => {
+        if (b[2] > 0 || !(info(b[0]).min > 0)) return false;
+        const bt = info(b[0]).type;
+        if (t === 1 || bt === 1) return t === bt;                 // goalkeeper only for goalkeeper
+        return bt === t || (count(t) - 1 >= MIN_OF[t] && count(bt) + 1 <= MAX_OF[bt]);
+      });
+      if (!b) continue;
+      b[2] = 1; s[2] = 0; subs.push([b[0], s[0]]);
+    }
+  }
+  if (dead(cap)) {
+    cap[2] = 0;
+    if (vc && vc[2] > 0 && info(vc[0]).min > 0) vc[2] = chip === '3xc' ? 3 : 2;
+  }
+  return { picks: out, subs };
+}
+
 const LEAGUE_ID = 243508;
 const API = 'https://fantasy.premierleague.com/api';
 
@@ -77,6 +111,16 @@ async function get(url) {
   }
   const elements = Object.fromEntries(boot.elements.map(e => [e.id, e]));
   const teamById = Object.fromEntries(boot.teams.map(t => [t.id, t]));
+  const fxDone = {};
+  const rule = async (p, gw) => {
+    if (boot.events.find(e => e.id === gw)?.data_checked) return p;   // von FPL endgültig abgerechnet
+    if (!fxDone[gw]) { const d = {}; for (const f of await get(`/fixtures/?event=${gw}`)) for (const t of [f.team_h, f.team_a]) d[t] = (d[t] ?? true) && !!(f.finished || f.finished_provisional); fxDone[gw] = d; }
+    const stats = live[gw] || {}, done = fxDone[gw];
+    const info = el => ({ min: stats[el]?.minutes || 0, type: elements[el]?.element_type || 0, done: done[elements[el]?.team] ?? true });
+    const r = applyFplRules(p.picks.map(x => [x.element, x.position, x.multiplier, x.is_captain ? 1 : x.is_vice_captain ? 2 : 0]), p.active_chip, info);
+    const mult = Object.fromEntries(r.picks.map(x => [x[0], x[2]]));
+    return { ...p, picks: p.picks.map(x => ({ ...x, multiplier: mult[x.element] })), automatic_subs: p.automatic_subs.length ? p.automatic_subs : r.subs.map(([i, o]) => ({ element_in: i, element_out: o })) };
+  };
   // Kader platzsparend: Spieler-Stammdaten einmal in "players", je Gameweek nur die Aufstellung
   const squadPlayers = {}; // id -> [Name, Typ (1 TW, 2 VT, 3 MF, 4 ST), Verein kurz, Vereinscode]
   const buildSquad = (p, gw) => {
@@ -119,7 +163,7 @@ async function get(url) {
     const gws = [];
     const squads = [];
     for (let h of hist.current.filter(h => finished.includes(h.event))) {
-      const picks = await get(`/entry/${e.entry}/event/${h.event}/picks/`);
+      const picks = await rule(await get(`/entry/${e.entry}/event/${h.event}/picks/`), h.event);
       squads.push(buildSquad(picks, h.event));
       const stats = live[h.event];
       // vorläufig beendete GW: Punkte und Gesamtstand aus den Live-Punkten, solange FPLs Verlauf noch hinterherhinkt
@@ -205,7 +249,8 @@ async function get(url) {
       }
       const injSet = new Set(injuries[h.event] || []);
       const injured = injuries[h.event] ? picks.picks.filter(p => injSet.has(p.element)).map(p => players[p.element]) : null;
-      const cap = picks.picks.find(p => p.is_captain);
+      // tatsächlicher Kapitän: der Vize, wenn der Kapitän nicht gespielt hat (FPL-Regel)
+      const cap = picks.picks.find(p => p.multiplier > 1) || picks.picks.find(p => p.is_captain);
       const capPts = (stats[cap.element]?.total_points || 0);
       // Punkte der 4 Bankspieler (Positionen 12–15) – für den Bench-Boost-Ertrag
       const benchPlayersPts = picks.picks.filter(p => p.position > 11)
@@ -243,7 +288,7 @@ async function get(url) {
     }
     // Laufende Gameweek (Deadline vorbei, noch nicht fertig) zusätzlich anhängen
     if (squadGW && !squads.some(s => s.gw === squadGW)) {
-      squads.push(buildSquad(await get(`/entry/${e.entry}/event/${squadGW}/picks/`), squadGW));
+      squads.push(buildSquad(await rule(await get(`/entry/${e.entry}/event/${squadGW}/picks/`), squadGW), squadGW));
     }
     // Transfers je Gameweek (Transfer-Block der laufenden GW): [rein, raus, Punkte rein, Punkte raus, Min. rein, Min. raus]
     for (const sq of squads) {
