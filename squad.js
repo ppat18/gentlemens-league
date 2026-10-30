@@ -57,6 +57,10 @@
   .sq-p .pt.hi{background:var(--lime);color:var(--navy)}
   .sq-p .cv{position:absolute;top:-4px;right:12%;width:20px;height:20px;border-radius:50%;background:var(--ink);color:#fff;font:700 11px/20px Oswald;box-shadow:0 0 0 2px #fff}
   .sq-p .cv.c{background:var(--gold);color:var(--ink)}
+  .sq-p .cv.swap i{position:absolute;right:-7px;bottom:-6px;width:14px;height:14px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 0 0 1.5px #fff}
+  .sq-p .cv.swap i svg{width:10px;height:10px;display:block}
+  .cv-swap{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:var(--red);vertical-align:-2px;margin:0 2px}
+  .cv-swap svg{width:10px;height:10px;display:block}
   .sq-p .sub{position:absolute;top:-4px;left:12%;width:18px;height:18px;border-radius:50%;font:700 12px/18px Inter;color:#fff;box-shadow:0 0 0 2px #fff}
   .sq-p .sub.in{background:#1e9e3a}.sq-p .sub.out{background:var(--red)}
   .sq-p.dim{opacity:.5}
@@ -129,7 +133,7 @@
       const shown = bench && s.chip !== 'bboost' ? p.pts : p.pts * Math.max(p.mult, 1);
       const stt = status(p.teamCode);
       return `<div class="sq-p ${bench && !subIn.has(p.id) && s.chip !== 'bboost' ? 'dim' : ''} ${stt ? stt.cls : ''}" data-player="${p.id}" role="link" tabindex="0" title="${esc(p.name)} (${esc(p.team)}) · ${stt?.ko ? 'Anstoß ' + stt.ko : p.minutes + ' Min.'} – antippen für alle Infos">
-        ${p.cap ? `<span class="cv c">${p.mult === 3 ? '3×' : 'C'}</span>` : p.vice ? '<span class="cv">V</span>' : ''}
+        ${p.cap ? `<span class="cv c${s.cvSwap ? ' swap' : ''}"${s.cvSwap ? ` title="Vize-Kapitän ist eingesprungen – der Kapitän hat nicht gespielt"` : ''}>${p.mult === 3 ? '3×' : 'C'}${s.cvSwap ? '<i><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4h7M7 2l2 2-2 2M10 8H3M5 6 3 8l2 2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></i>' : ''}</span>` : p.vice ? `<span class="cv"${s.cvSwap ? ` title="War Kapitän, hat aber nicht gespielt – der Vize bekommt die Kapitänspunkte"` : ''}>V</span>` : ''}
         ${subIn.has(p.id) ? '<span class="sub in">↑</span>' : subOut.has(p.id) ? '<span class="sub out">↓</span>' : ''}
         <img src="assets/badges/${p.teamCode}.png" alt="${esc(p.team)}" onerror="this.style.visibility='hidden'">
         <div class="n">${esc(p.name)}</div>
@@ -172,7 +176,7 @@
     const trs = (g && g.transfersIn) || [];
     const round = `
       ${s.chip ? `<div class="mp-line"><span>Chip</span><b>🃏 ${chipName[s.chip] || s.chip}</b></div>` : ''}
-      <div class="mp-line"><span>Kapitän</span><b>${cap ? `${esc(cap.name)} · ${cap.pts * Math.max(cap.mult, 1)} P.` : '–'}</b></div>
+      <div class="mp-line"><span>Kapitän</span><b>${cap ? `${esc(cap.name)} · ${cap.pts * Math.max(cap.mult, 1)} P.${s.cvSwap && vice ? ` <small>(<span class="cv-swap"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4h7M7 2l2 2-2 2M10 8H3M5 6 3 8l2 2" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Vize eingesprungen – ${esc(vice.name)} hat nicht gespielt)</small>` : ''}` : '–'}</b></div>
       <div class="mp-line"><span>Vize</span><b>${vice ? esc(vice.name) : '–'}</b></div>
       <div class="mp-line"><span>Punkte auf der Bank</span><b>${s.chip === 'bboost' ? `${benchPts} (zählen – Bench Boost)` : benchPts}</b></div>
       <div class="mp-line"><span>Transfers</span><b>${g ? g.transfers : '–'}${s.hits ? ` (−${s.hits} Punkte)` : ''}</b></div>
@@ -202,7 +206,7 @@
           ${placeHtml}
           <div class="sq-pitch">${rows}</div>
           <div class="sq-bench"><h4>Bank</h4><div class="sq-row">${bench.map(p => card(p, true)).join('')}</div></div>
-          <div class="sq-foot">Spieler antippen für alle Infos (Spiele, nächste Gegner, Form, Preis) · ↑↓ = automatische Einwechslung${fx.length ? '<br><span class="sq-legend"><span><i style="background:#b9bfcc"></i>noch nicht gespielt (mit Anstoß)</span><span><i style="background:var(--red)"></i>spielt gerade</span></span>' : ''}</div>
+          <div class="sq-foot">Spieler antippen für alle Infos (Spiele, nächste Gegner, Form, Preis) · ↑↓ = automatische Einwechslung${s.cvSwap ? ' · C mit Pfeilen = Vize-Kapitän eingesprungen, weil der Kapitän nicht gespielt hat' : ''}${fx.length ? '<br><span class="sq-legend"><span><i style="background:#b9bfcc"></i>noch nicht gespielt (mit Anstoß)</span><span><i style="background:var(--red)"></i>spielt gerade</span></span>' : ''}</div>
         </div>
         <div style="display:grid;gap:16px;min-width:0">
           <div class="mp-card mp-sec"><h3>Gameweek ${s.gw} im Detail</h3>${round}</div>

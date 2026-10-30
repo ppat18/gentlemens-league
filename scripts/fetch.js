@@ -136,6 +136,8 @@ async function get(url) {
         : Math.max(p.entry_history?.points ?? 0, p.picks.reduce((s, x) => s + (stats[x.element]?.total_points ?? 0) * x.multiplier, 0)),
       hits: p.entry_history?.event_transfers_cost ?? 0,
       subs: p.automatic_subs.map(s => [s.element_in, s.element_out]),
+      // Vize hat die Kapitänspunkte bekommen (Kapitän ohne Einsatz) → C und V sind getauscht, Kader-Ansicht zeigt C mit Pfeilen
+      cvSwap: ((c, v) => !!(c && v && v.multiplier > 1 && c.multiplier <= 1))(p.picks.find(y => y.is_captain), p.picks.find(y => y.is_vice_captain)) || undefined,
       // [Spieler-ID, Position 1–15, Multiplikator, 1 = Kapitän / 2 = Vize, Punkte, Minuten]
       // Kapitän hat nicht gespielt → der Vize bekommt die Kapitänspunkte, dann tauschen auch C und V (Patrick 30.10.2026)
       picks: p.picks.map((x, _, all) => {
