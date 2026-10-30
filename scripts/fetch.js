@@ -137,10 +137,13 @@ async function get(url) {
       hits: p.entry_history?.event_transfers_cost ?? 0,
       subs: p.automatic_subs.map(s => [s.element_in, s.element_out]),
       // [Spieler-ID, Position 1–15, Multiplikator, 1 = Kapitän / 2 = Vize, Punkte, Minuten]
-      picks: p.picks.map(x => {
+      // Kapitän hat nicht gespielt → der Vize bekommt die Kapitänspunkte, dann tauschen auch C und V (Patrick 30.10.2026)
+      picks: p.picks.map((x, _, all) => {
+        const cap = all.find(y => y.is_captain), vc = all.find(y => y.is_vice_captain);
+        const swap = cap && vc && vc.multiplier > 1 && cap.multiplier <= 1;
         const el = elements[x.element], t = teamById[el.team];
         squadPlayers[x.element] = [el.web_name, el.element_type, t.short_name, t.code];
-        return [x.element, x.position, x.multiplier, x.is_captain ? 1 : x.is_vice_captain ? 2 : 0,
+        return [x.element, x.position, x.multiplier, x.is_captain ? (swap ? 2 : 1) : x.is_vice_captain ? (swap ? 1 : 2) : 0,
           stats[x.element]?.total_points ?? 0, stats[x.element]?.minutes ?? 0];
       }),
     };
