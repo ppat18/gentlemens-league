@@ -136,6 +136,14 @@ th.stick{z-index:3;box-shadow:4px 0 5px -3px rgba(0,0,0,.25)}
 .fx-ev .evm{color:#6b7280;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .fx-bonus{margin-top:6px;font-size:12.5px;color:#555;display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}
 .fx-bonus i{font-style:normal;color:#999}
+.fx-more{margin-top:6px;font-size:12.5px;color:#555}
+.fx-more summary{cursor:pointer;color:var(--navy);font-weight:600;list-style:none}
+.fx-more summary::-webkit-details-marker{display:none}
+.fx-more summary::after{content:' ▾';color:#9aa0b0}.fx-more[open] summary::after{content:' ▴'}
+.fxm{display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;margin-top:4px}
+.fxm-t{grid-column:1/-1;margin-top:6px;font-weight:700;color:#333;text-align:center}
+.fxm-c{display:flex;flex-direction:column;align-items:flex-end;gap:1px}.fxm-c.a{align-items:flex-start}
+.fxm-c b{font-weight:700;color:#333}.fxm-c .hit,.fxm-c .hit b{color:#1e7a2f}
 .fx-bonus span b{display:inline-block;min-width:16px;text-align:center;background:var(--navy);color:var(--lime);border-radius:5px;font-size:11px;padding:0 3px;margin-right:2px}
 .cal-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
 .cal-btn{width:44px;height:44px;border-radius:50%;border:0;background:var(--lime);color:var(--navy);font:700 28px/1 Oswald;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.25);flex:none}

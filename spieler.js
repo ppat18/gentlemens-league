@@ -35,6 +35,7 @@
   .pl-tbl td{padding:6px 7px;border-bottom:1px solid #eceef3;font-variant-numeric:tabular-nums}
   .pl-tbl .num{text-align:right}
   .pl-tbl tr.live td{background:rgba(224,49,47,.08)}
+  .pl-tbl td.dc-hit{color:#1e7a2f;font-weight:700}
   .pl-tbl .opp{display:flex;align-items:center;gap:6px}
   .pl-tbl .opp img{width:18px;height:18px;object-fit:contain}
   .pl-x{overflow-x:auto}
@@ -248,7 +249,7 @@
       const res = h[4] == null ? '–' : `${h[4]}:${h[5]} ${h[4] > h[5] ? 'S' : h[4] < h[5] ? 'N' : 'U'}`;
       return `<tr class="${live ? 'live' : ''}"><td>${h[0]}</td><td><span class="opp"><img src="${badge(t[2])}" alt="" onerror="this.style.visibility='hidden'">${esc(t[1])} (${h[2] ? 'H' : 'A'})</span></td>
         <td>${res}</td><td class="num">${h[6]}</td><td class="num"><b>${h[7]}</b></td><td class="num">${h[8]}</td><td class="num">${h[9]}</td>
-        ${isDef ? `<td class="num">${h[10]}</td><td class="num">${h[11]}</td>` : ''}${isGK ? `<td class="num">${h[22]}</td>` : ''}
+        ${isDef ? `<td class="num">${h[10]}</td><td class="num">${h[11]}</td>` : ''}${isGK ? `<td class="num">${h[22]}</td>` : `<td class="num${h[23] >= (isDef ? 10 : 12) ? ' dc-hit' : ''}">${h[23] ?? '–'}</td>`}
         <td class="num">${h[12]}</td><td class="num">${h[13]}</td><td class="num">${h[14] ?? '–'}</td><td class="num">${h[15] ?? '–'}</td>
         <td class="num">£${h[17].toFixed(1)}</td><td class="num">${(h[18] / 1000).toFixed(0)}k</td></tr>`;
     }).join('');
@@ -289,9 +290,9 @@
       </div>
       <div class="mp-card" style="margin-top:16px"><div class="mp-sec" style="padding-bottom:4px"><h3>Spiele dieser Saison</h3></div>
         <div class="pl-x"><table class="pl-tbl"><thead><tr><th>GW</th><th>Gegner</th><th>Ergebnis</th><th class="num">Min.</th><th class="num">Pkt.</th><th class="num">T</th><th class="num">V</th>
-          ${isDef ? '<th class="num">Zu-0</th><th class="num">GT</th>' : ''}${isGK ? '<th class="num">Par.</th>' : ''}<th class="num">Bonus</th><th class="num">BPS</th><th class="num">xG</th><th class="num">xA</th><th class="num">Preis</th><th class="num">Besitz</th></tr></thead>
+          ${isDef ? '<th class="num">Zu-0</th><th class="num">GT</th>' : ''}${isGK ? '<th class="num">Par.</th>' : '<th class="num" title="Defensiv-Beiträge">DB</th>'}<th class="num">Bonus</th><th class="num">BPS</th><th class="num">xG</th><th class="num">xA</th><th class="num">Preis</th><th class="num">Besitz</th></tr></thead>
           <tbody>${rows || '<tr><td colspan="14">Noch keine Spiele.</td></tr>'}</tbody></table></div>
-        <p class="pl-muted" style="padding:6px 14px 12px">T = Tore · V = Vorlagen · GT = Gegentore · Besitz = Anzahl FPL-Manager · Rot hinterlegt = läuft gerade</p>
+        <p class="pl-muted" style="padding:6px 14px 12px">T = Tore · V = Vorlagen · GT = Gegentore · DB = Defensiv-Beiträge (grün = +2 Punkte: 10 als Verteidiger, 12 als Mittelfeldspieler/Stürmer) · Besitz = Anzahl FPL-Manager · Rot hinterlegt = läuft gerade</p>
       </div>
       ${past ? `<div class="mp-card" style="margin-top:16px"><div class="mp-sec" style="padding-bottom:4px"><h3>Frühere Saisons</h3></div>
         <div class="pl-x"><table class="pl-tbl"><thead><tr><th>Saison</th><th class="num">Pkt.</th><th class="num">Min.</th><th class="num">T</th><th class="num">V</th><th class="num">Zu-0</th><th class="num">Bonus</th><th class="num">Preis</th></tr></thead><tbody>${past}</tbody></table></div></div>` : ''}

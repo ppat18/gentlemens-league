@@ -41,6 +41,22 @@ function buildFixtures(boot, all) {
       const h = side(f, key, 'h'), a = side(f, key, 'a');
       if (h.length || a.length) ev[k] = { h, a };
     }
+    // Defensiv-Beiträge (Patrick 31.10.2026): 2 Punkte ab 10 CBIT als Verteidiger / 12 CBIRT als Mittelfeld oder Sturm
+    // (nie für Torhüter) → wer es geschafft hat, steht als 🛡️-Ereignis da; Top 5 je Seite plus Paraden und BPS unter „mehr“
+    const typ = {};
+    for (const e of boot.elements) typ[e.id] = e.element_type;
+    const dcHit = (id, v) => typ[id] === 2 ? v >= 10 : typ[id] >= 3 ? v >= 12 : false;
+    const top = (key, s, n) => [...stat(f, key)[s]].sort((p, q) => q.value - p.value).slice(0, n);
+    const hits = s => stat(f, 'defensive_contribution')[s].filter(x => dcHit(x.element, x.value)).map(x => (used.add(x.element), [x.element, 1]));
+    const dh = hits('h'), da = hits('a');
+    if (dh.length || da.length) ev.dc = { h: dh, a: da };
+    const more = {};
+    for (const [key, k, n] of [['saves', 'sv', 3], ['defensive_contribution', 'dc', 5], ['bps', 'bps', 3]]) {
+      const pick = s => top(key, s, n).filter(x => x.value > 0).map(x => (used.add(x.element), k === 'dc' ? [x.element, x.value, dcHit(x.element, x.value) ? 1 : 0] : [x.element, x.value]));
+      const h = pick('h'), a = pick('a');
+      if (h.length || a.length) more[k] = { h, a };
+    }
+    if (Object.keys(more).length) o.more = more;
     o.ev = ev;
     // Bonus: offiziell, sobald vergeben – sonst live aus dem BPS (vorläufig)
     const official = [...stat(f, 'bonus').h, ...stat(f, 'bonus').a];

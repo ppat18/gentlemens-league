@@ -24,20 +24,30 @@
   const badge = t => `<img src="assets/badges/${t.code}.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">`;
   const dot = x => x ? `<i class="fdr fdr${x}" title="Schwierigkeit ${x}/5"></i>` : '';
   const name = id => esc((F.players[id] || ['?'])[0]);
-  const ICON = { g: '⚽', og: '🙈', as: '🅰️', yc: '🟨', rc: '🟥', ps: '🧤', pm: '❌' };
-  const TITLE = { g: 'Tor', og: 'Eigentor', as: 'Assist', yc: 'Gelbe Karte', rc: 'Rote Karte', ps: 'Elfer gehalten', pm: 'Elfer verschossen' };
+  const ICON = { g: '⚽', og: '🙈', as: '🅰️', dc: '🛡️', yc: '🟨', rc: '🟥', ps: '🧤', pm: '❌' };
+  const TITLE = { g: 'Tor', og: 'Eigentor', as: 'Assist', yc: 'Gelbe Karte', rc: 'Rote Karte', ps: 'Elfer gehalten', pm: 'Elfer verschossen', dc: 'Defensiv-Beitrag (+2 Punkte)' };
 
   // "45+2'" → 45.02 (sort key); unknown minute → last
   const minOf = x => { const m = /^(\d+)(?:\+(\d+))?/.exec(x[2]?.[0] || ''); return m ? +m[1] + (+m[2] || 0) / 100 : 999; };
   function events(f, s) {
     const out = [];
-    for (const k of ['g', 'og', 'as', 'yc', 'rc', 'ps', 'pm']) {
+    for (const k of ['g', 'og', 'as', 'dc', 'yc', 'rc', 'ps', 'pm']) {
       // [id, n, ["14'", "67'"]] – the minutes, when known; otherwise ×n. Ordered by the first minute.
       const l = [...(f.ev?.[k]?.[s] || [])].sort((x, y) => minOf(x) - minOf(y))
         .map(([id, n, m]) => `<span class="evp">${name(id)}${m ? ` <span class="evm">${m.join(', ')}</span>` : n > 1 ? ` <b>×${n}</b>` : ''}</span>`);
       if (l.length) out.push(`<div title="${TITLE[k]}">${ICON[k]} ${l.join(', ')}</div>`);
     }
     return out.join('');
+  }
+
+  // mehr Statistik unter einem Spiel (wie im FPL-Matchcenter): Paraden, Defensiv-Beiträge (✓ = 2 Punkte geschafft), BPS
+  function more(f) {
+    const m = f.more;
+    if (!m) return '';
+    const col = (k, s) => (m[k]?.[s] || []).map(([id, v, hit]) => `<span class="${hit ? 'hit' : ''}">${name(id)} <b>${v}</b>${hit ? ' ✓' : ''}</span>`).join('');
+    const rows = [['sv', '✋ Paraden'], ['dc', '🛡️ Defensiv-Beiträge'], ['bps', '📈 Bonuspunkte-System (BPS)']]
+      .filter(([k]) => m[k]).map(([k, t]) => `<div class="fxm-t">${t}</div><div class="fxm-c">${col(k, 'h')}</div><div class="fxm-c a">${col(k, 'a')}</div>`).join('');
+    return `<details class="fx-more"><summary>📊 Paraden, Defensive &amp; BPS</summary><div class="fxm">${rows}</div></details>`;
   }
 
   function card(f) {
@@ -55,7 +65,8 @@
       const eh = events(f, 'h'), ea = events(f, 'a');
       const bonus = (f.bonus || []).map(([id, p]) => `<span><b>${p}</b> ${name(id)}</span>`).join('');
       det = (eh || ea ? `<div class="fx-ev"><div>${eh}</div><div class="a">${ea}</div></div>` : '')
-        + (bonus ? `<div class="fx-bonus"><span>⭐ Bonus${f.bonusLive ? ' <i>(vorläufig)</i>' : ''}:</span>${bonus}</div>` : '');
+        + (bonus ? `<div class="fx-bonus"><span>⭐ Bonus${f.bonusLive ? ' <i>(vorläufig)</i>' : ''}:</span>${bonus}</div>` : '')
+        + more(f);
     }
     return `<div class="fx${live ? ' fx-live' : ''}${f.done ? ' fx-done' : ''}">
       <div class="fx-row">
@@ -95,7 +106,7 @@
       ${deadline}
       ${Object.entries(byDay).map(([day, l]) => `<div class="fx-day">${day}</div><div class="fx-list">${l.map(card).join('')}</div>`).join('')}
       <p class="fx-note">‹ › oder wischen = anderer Spieltag. Punkte = FPL-Schwierigkeit: 🟢 leicht · ⚪ mittel · 🟠 schwer · 🔴 sehr schwer.
-      ⚽ Tor · 🅰️ Assist · 🙈 Eigentor · 🟨🟥 Karten · 🧤 Elfer gehalten · ❌ Elfer verschossen · ⭐ Bonus (live vorläufig aus dem BPS). Zeiten in österreichischer Zeit.</p>`;
+      ⚽ Tor · 🅰️ Assist · 🙈 Eigentor · 🛡️ Defensiv-Beitrag (+2: 10 Klärungen, Blocks, abgefangene Bälle &amp; Tacklings als Verteidiger, 12 inkl. Ballgewinne als Mittelfeldspieler/Stürmer) · 🟨🟥 Karten · 🧤 Elfer gehalten · ❌ Elfer verschossen · ⭐ Bonus (live vorläufig aus dem BPS). Zeiten in österreichischer Zeit.</p>`;
     el.querySelectorAll('.cal-btn').forEach(b => b.onclick = () => go(+b.dataset.d));
   }
 
