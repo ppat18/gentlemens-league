@@ -42,6 +42,11 @@
   .pl-own{display:flex;flex-wrap:wrap;gap:10px}
   .pl-own div{display:flex;align-items:center;gap:7px;background:#f3f5f9;border-radius:999px;padding:4px 12px 4px 4px;font-size:13px;font-weight:600}
   .pl-own .av{width:34px;height:34px}
+  .pl-sw{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .pl-sw span{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:700;border-radius:999px;padding:3px 10px 3px 3px}
+  .pl-sw .av{width:26px;height:26px}
+  .pl-sw span.up{background:#e3f4e1}.pl-sw span.up b{color:#1e7a32}
+  .pl-sw span.down{background:#fbe5e4}.pl-sw span.down b{color:#b3261e}
   .pl-own .c{background:var(--gold);color:var(--ink);font:700 10px Oswald;padding:1px 6px;border-radius:999px}
   .pl-muted{color:#777;font-size:13px}
   .sf{padding:14px 16px 12px;background:#fff;border-bottom:1px solid #e6e8ee}
@@ -107,18 +112,21 @@
   // Liga-Extras: aktuelle Besitzer, Kapitäne, Punkte für die Liga (aus den Kaderdaten aller Runden)
   function leagueInfo(id) {
     const L = window.LEAGUE;
-    const owners = [], gave = [];
+    const owners = [], gave = [], mult = [];
     for (const m of L.managers) {
       const sq = m.squads || [];
       const last = sq[sq.length - 1];
       const p = last && last.picks.find(x => x[0] === id);
+      if (last) mult.push({ m, v: p ? p[2] || 0 : 0 });
       if (p) owners.push({ m, cap: p[3] === 1, vice: p[3] === 2, bench: p[1] > 11, tc: p[3] === 1 && p[2] === 3 });
       // Punkte, die er diesem Manager gebracht hat: Punkte × Faktor (Bank = 0, Kapitän = 2, Triple Captain = 3)
       const pts = sq.reduce((a, s) => { const q = s.picks.find(x => x[0] === id); return a + (q ? (q[4] || 0) * (q[2] || 0) : 0); }, 0);
       if (pts) gave.push({ m, pts });
     }
     gave.sort((a, b) => b.pts - a.pts);
-    return { owners, gave, total: gave.reduce((a, x) => a + x.pts, 0), managers: L.managers.length };
+    // Liga-Besitz (EO) inkl. Kapitän: durchschnittlicher Faktor – 100 % = einmal Startelf pro Manager
+    const eo = mult.length ? mult.reduce((a, x) => a + x.v, 0) / mult.length : 0;
+    return { owners, gave, mult, eo, total: gave.reduce((a, x) => a + x.pts, 0), managers: L.managers.length };
   }
 
   // Shit-to-Fire-Skala: Punkte der letzten 4 Gameweeks (Doppelspieltage addiert, nicht gespielt = 0)
@@ -265,6 +273,13 @@
          <p class="pl-muted">${L.gave.slice(1, 6).map(x => `${esc(x.m.nick)} ${x.pts}`).join(' · ')}</p>`
       : '<p class="pl-muted" style="margin-top:8px">Hat noch für niemanden aus der Liga gepunktet.</p>';
 
+    // „Wenn er trifft“: Gewinn oder Verlust gegenüber dem Liga-Schnitt je Manager (eigener Faktor − Liga-EO) × Torpunkte
+    const goal = { GKP: 10, DEF: 6, MID: 5, FWD: 4 }[p.position] || 4;
+    const n1 = v => (Math.round(v * 10) / 10).toLocaleString('de-AT', { maximumFractionDigits: 1 });
+    const sw = L.mult.map(x => ({ m: x.m, v: (x.v - L.eo) * goal })).filter(x => Math.abs(x.v) > 0.05).sort((a, b) => b.v - a.v);
+    const swChip = x => `<span class="${x.v > 0 ? 'up' : 'down'}"><img class="av" src="${av(x.m)}" alt="">${esc(x.m.nick)} <b>${x.v > 0 ? '+' : '−'}${n1(Math.abs(x.v))}</b></span>`;
+    const swing = sw.length ? `<p style="font-size:14px;margin:12px 0 0">⚽ <b>Wenn er trifft</b> (${goal} Punkte) – im Vergleich zum Liga-Schnitt:</p>
+      <div class="pl-sw">${sw.filter(x => x.v > 0).map(swChip).join('')}</div><div class="pl-sw">${sw.filter(x => x.v < 0).map(swChip).join('')}</div>` : '';
     const news = p.news ? `<div class="pl-news ${p.status}">${STATUS[p.status] ? STATUS[p.status] + ': ' : ''}${esc(p.news)}${p.chance != null ? ` · Einsatzchance ${p.chance}%` : ''}</div>` : '';
     el.innerHTML = `
       <a class="mp-back" href="#start" data-back>‹ Zurück</a>
@@ -278,15 +293,16 @@
         ${fireScale(d.history)}
         <div class="pl-tiles">${tiles.map(([k, v, s]) => `<div><b>${v}</b><span>${k}</span>${s ? `<em>${s}</em>` : ''}</div>`).join('')}</div>
       </div>
+      <div class="mp-card mp-sec" style="margin-top:16px"><h3>In unserer Liga</h3>
+        <p class="pl-muted" style="margin-bottom:8px">${L.owners.length} von ${L.managers} Managern haben ihn${L.owners.some(o => o.cap) ? `, ${L.owners.filter(o => o.cap).length}× Kapitän` : ''} · Liga-Besitz (EO) ${Math.round(L.eo * 100)} % (aktuelle Gameweek)</p>
+        ${own}${swing}${gave}</div>
       <div class="mp-grid">
         <div style="display:grid;gap:16px;min-width:0">
           <div class="mp-card mp-sec"><h3>Nächste Spiele</h3><div class="pl-fx">${fx || '<p class="pl-muted">Keine Spiele angesetzt.</p>'}</div>
             ${d.fixtures.length ? `<p class="pl-muted" style="margin-top:8px">Schwierigkeit der nächsten ${Math.min(5, d.fixtures.length)} Spiele: Ø ${nextAvg.toFixed(1)} von 5 (1 = leicht, 5 = sehr schwer)</p>` : ''}</div>
           <div class="mp-card mp-sec"><h3>Punkte je Gameweek</h3>${chart(d.history)}</div>
         </div>
-        <div style="display:grid;gap:16px;min-width:0">${priceBox(p)}<div class="mp-card mp-sec"><h3>In unserer Liga</h3>
-          <p class="pl-muted" style="margin-bottom:8px">${L.owners.length} von ${L.managers} Managern haben ihn${L.owners.some(o => o.cap) ? `, ${L.owners.filter(o => o.cap).length}× Kapitän` : ''} (aktuelle Gameweek)</p>
-          ${own}${gave}</div></div>
+        <div style="display:grid;gap:16px;min-width:0">${priceBox(p)}</div>
       </div>
       <div class="mp-card" style="margin-top:16px"><div class="mp-sec" style="padding-bottom:4px"><h3>Spiele dieser Saison</h3></div>
         <div class="pl-x"><table class="pl-tbl"><thead><tr><th>GW</th><th>Gegner</th><th>Ergebnis</th><th class="num">Min.</th><th class="num">Pkt.</th><th class="num">T</th><th class="num">V</th>
