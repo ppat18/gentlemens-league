@@ -5,6 +5,7 @@
   const TZ = { timeZone: 'Europe/Vienna' };
   const LIVE_MIN = 120; // Anstoß bis Spielende inkl. Halbzeit/Nachspielzeit
   let F = null, gw = null, timer = null;
+  const openFx = new Set(); // Spiele mit offener Statistik – bleiben offen, wenn der Kalender jede Minute neu zeichnet
 
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const ko = f => f.ko ? new Date(f.ko).getTime() : 0;
@@ -47,7 +48,7 @@
     const col = (k, s) => (m[k]?.[s] || []).map(([id, v, hit]) => `<span class="${hit ? 'hit' : ''}">${name(id)} <b>${v}</b>${hit ? ' ✓' : ''}</span>`).join('');
     const rows = [['sv', '✋ Paraden'], ['dc', '🛡️ Defensiv-Beiträge'], ['bps', '📈 Bonuspunkte-System (BPS)']]
       .filter(([k]) => m[k]).map(([k, t]) => `<div class="fxm-t">${t}</div><div class="fxm-c">${col(k, 'h')}</div><div class="fxm-c a">${col(k, 'a')}</div>`).join('');
-    return `<details class="fx-more"><summary>📊 Paraden, Defensive &amp; BPS</summary><div class="fxm">${rows}</div></details>`;
+    return `<details class="fx-more" data-id="${f.id}"${openFx.has(f.id) ? ' open' : ''}><summary>📊 Paraden, Defensive &amp; BPS</summary><div class="fxm">${rows}</div></details>`;
   }
 
   function card(f) {
@@ -108,6 +109,13 @@
       <p class="fx-note">‹ › oder wischen = anderer Spieltag. Punkte = FPL-Schwierigkeit: 🟢 leicht · ⚪ mittel · 🟠 schwer · 🔴 sehr schwer.
       ⚽ Tor · 🅰️ Assist · 🙈 Eigentor · 🛡️ Defensiv-Beitrag (+2: 10 Klärungen, Blocks, abgefangene Bälle &amp; Tacklings als Verteidiger, 12 inkl. Ballgewinne als Mittelfeldspieler/Stürmer) · 🟨🟥 Karten · 🧤 Elfer gehalten · ❌ Elfer verschossen · ⭐ Bonus (live vorläufig aus dem BPS). Zeiten in österreichischer Zeit.</p>`;
     el.querySelectorAll('.cal-btn').forEach(b => b.onclick = () => go(+b.dataset.d));
+    // irgendwo aufs Spiel tippen (Patrick 31.10.2026) → Statistik auf / zu
+    el.querySelectorAll('.fx-more').forEach(d => {
+      d.ontoggle = () => d.open ? openFx.add(+d.dataset.id) : openFx.delete(+d.dataset.id);
+      const fx = d.closest('.fx');
+      fx.classList.add('fx-tap');
+      fx.onclick = e => { if (!e.target.closest('summary, a, .fxm')) d.open = !d.open; };
+    });
   }
 
   function go(d) {
