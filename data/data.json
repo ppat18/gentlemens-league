@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T17:00:24.866Z",
+ "updated": "2026-10-31T17:11:02.481Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -185,7 +185,7 @@
    },
    {
     "kickoff": "2026-10-31T15:00:00Z",
-    "done": false,
+    "done": true,
     "h": 9,
     "a": 56
    },
