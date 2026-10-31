@@ -580,6 +580,40 @@ body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width
   .hide-m{display:none}
   .hcard .av{width:140px;height:140px}
 }
+/* Deadline Day (dday.js) */
+#dday h2{margin-top:22px}
+#dday .foot{margin-top:10px}
+.dd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:start}
+.dd-card{background:var(--card);border-radius:16px;padding:12px 14px;box-shadow:0 4px 12px rgba(0,0,0,.2);min-width:0}
+.dd-card h3{font:700 18px Oswald;text-transform:uppercase;color:var(--navy);margin:0 0 8px}
+.dd-row{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-top:1px solid #eceef3}
+.dd-row:first-of-type{border-top:0}
+.dd-who{display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;flex:0 0 120px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dd-who img.av,.dd-sw img.av{width:28px;height:28px}
+.dd-what{flex:1;min-width:0;font-size:13.5px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.dd-mv s{color:#a33;text-decoration-thickness:1px}
+.dd-mv b{color:#1e7a32}
+.dd-mut{color:#777;font-size:12.5px}
+.dd-chip{background:var(--gold, #f2c230);color:var(--navy);border-radius:6px;font-size:12px;font-weight:700;padding:1px 6px}
+.dd-hit{background:#e0312f;color:#fff;border-radius:6px;font-size:12px;font-weight:700;padding:1px 6px}
+.dd-tbl{overflow-x:auto}
+.dd-tbl table{width:100%;border-collapse:collapse;font-size:13.5px}
+.dd-tbl th{font:700 11px Oswald;text-transform:uppercase;color:#667;text-align:left;padding:4px 6px;border-bottom:2px solid #eceef3}
+.dd-tbl td{padding:5px 6px;border-bottom:1px solid #f0f1f5}
+.dd-tbl .num{text-align:right;font-variant-numeric:tabular-nums}
+.dd-pl{display:flex;align-items:center;gap:6px;color:inherit;text-decoration:none}
+.dd-pl img.badge{width:22px;height:22px;object-fit:contain}
+.dd-bar{position:relative;min-width:70px;height:18px;background:#eef0f5;border-radius:9px;overflow:hidden}
+.dd-bar i{position:absolute;inset:0 auto 0 0;background:var(--lime, #8dc63f)}
+.dd-bar span{position:relative;font:700 12px Oswald;color:var(--navy);padding-right:6px;line-height:18px}
+.dd-diff{font-size:13.5px;margin:8px 0 0}
+.dd-pick{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.dd-pick button{border:2px solid #dfe3ea;background:#fff;border-radius:999px;padding:4px 10px;font:700 13px Inter;cursor:pointer;color:var(--navy)}
+.dd-pick button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.dd-sw{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.dd-sw span{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700;border-radius:999px;padding:3px 10px 3px 3px}
+.dd-sw span.up{background:#e3f4e1}.dd-sw span.up b{color:#1e7a32}
+.dd-sw span.down{background:#fbe5e4}.dd-sw span.down b{color:#b3261e}
 </style>
 </head>
 <body>
@@ -616,6 +650,7 @@ body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width
   <section class="next" id="next"></section>
   <section id="caps" hidden></section>
   <section id="trans" hidden></section>
+  <section id="dday" hidden></section>
 
   <section class="hero" id="hero"></section>
 
@@ -797,6 +832,7 @@ document.getElementById('refresh-btn').onclick = function () { this.classList.ad
 <script src="comps.js?v=__BUILD__"></script>
 <script src="squad.js?v=__BUILD__"></script>
 <script src="spieler.js?v=__BUILD__"></script>
+<script src="dday.js?v=__BUILD__"></script>
 <script src="preview.js?v=__BUILD__"></script>
 <script src="bingo.js?v=__BUILD__"></script>
 <script src="bowling.js?v=__BUILD__"></script>

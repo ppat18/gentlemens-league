@@ -235,6 +235,7 @@ function render(d) {
   // --- Nächste Gameweek ---
   renderCaptains(d, ms, gwOver ? null : liveGW);
   renderTransfers(d, ms, gwOver ? null : liveGW, teamState);
+  if (typeof renderDeadlineDay === "function") renderDeadlineDay(d, ms, gwOver ? null : liveGW);
   renderNext(d.next);
 
   // --- Saison-Statistik ---
