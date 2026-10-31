@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T13:43:23.950Z",
+ "updated": "2026-10-31T13:46:11.165Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -5456,7 +5456,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 4,
-   "total": 505,
+   "total": 513,
    "chips": [],
    "gws": [
     {
@@ -7189,7 +7189,7 @@
    "team": "The Unbreakables",
    "rank": 5,
    "lastRank": 5,
-   "total": 504,
+   "total": 512,
    "chips": [
     {
      "name": "3xc",
@@ -9103,7 +9103,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 6,
-   "total": 501,
+   "total": 509,
    "chips": [
     {
      "name": "wildcard",
@@ -11365,7 +11365,7 @@
    "team": "FC Scheisshaus",
    "rank": 7,
    "lastRank": 7,
-   "total": 487,
+   "total": 495,
    "chips": [
     {
      "name": "wildcard",
@@ -15159,7 +15159,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 9,
-   "total": 448,
+   "total": 456,
    "chips": [
     {
      "name": "wildcard",
@@ -17308,7 +17308,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 10,
-   "total": 444,
+   "total": 452,
    "chips": [
     {
      "name": "wildcard",
