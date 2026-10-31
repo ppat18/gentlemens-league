@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T13:46:11.165Z",
+ "updated": "2026-10-31T13:56:21.258Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -238,7 +238,7 @@
    "team": "Eat The Poor FC",
    "rank": 1,
    "lastRank": 1,
-   "total": 571,
+   "total": 574,
    "chips": [
     {
      "name": "3xc",
@@ -1847,7 +1847,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 2,
+     "points": 5,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -1888,8 +1888,8 @@
        5,
        1,
        0,
-       1,
-       53
+       3,
+       63
       ],
       [
        68,
@@ -1920,8 +1920,8 @@
        9,
        1,
        0,
-       1,
-       53
+       2,
+       63
       ],
       [
        411,
@@ -2003,7 +2003,7 @@
    "team": "Globo Gym United",
    "rank": 2,
    "lastRank": 2,
-   "total": 535,
+   "total": 537,
    "chips": [
     {
      "name": "3xc",
@@ -3576,7 +3576,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 1,
+     "points": 3,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -3617,8 +3617,8 @@
        5,
        1,
        0,
-       1,
-       53
+       3,
+       63
       ],
       [
        480,
@@ -3724,7 +3724,7 @@
    "team": "District 14 Graz",
    "rank": 3,
    "lastRank": 3,
-   "total": 524,
+   "total": 527,
    "chips": [
     {
      "name": "3xc",
@@ -5300,7 +5300,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 2,
+     "points": 5,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -5357,16 +5357,16 @@
        7,
        1,
        0,
-       1,
-       53
+       3,
+       63
       ],
       [
        427,
        8,
        1,
        0,
-       1,
-       53
+       2,
+       63
       ],
       [
        346,
@@ -5456,7 +5456,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 4,
-   "total": 513,
+   "total": 514,
    "chips": [],
    "gws": [
     {
@@ -7033,7 +7033,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 9,
+     "points": 10,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -7098,8 +7098,8 @@
        8,
        1,
        0,
-       9,
-       53
+       10,
+       63
       ],
       [
        286,
@@ -7189,7 +7189,7 @@
    "team": "The Unbreakables",
    "rank": 5,
    "lastRank": 5,
-   "total": 512,
+   "total": 514,
    "chips": [
     {
      "name": "3xc",
@@ -8947,7 +8947,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 10,
+     "points": 12,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -8996,16 +8996,16 @@
        6,
        1,
        0,
-       1,
-       53
+       2,
+       63
       ],
       [
        40,
        7,
        1,
        2,
-       9,
-       53
+       10,
+       63
       ],
       [
        53,
@@ -9085,9 +9085,9 @@
        57,
        412,
        0,
-       2,
+       3,
        0,
-       53
+       63
       ]
      ]
     }
@@ -9103,7 +9103,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 6,
-   "total": 509,
+   "total": 513,
    "chips": [
     {
      "name": "wildcard",
@@ -11217,7 +11217,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 11,
+     "points": 15,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -11258,16 +11258,16 @@
        5,
        1,
        0,
-       1,
-       53
+       3,
+       63
       ],
       [
        427,
        6,
        1,
        0,
-       1,
-       53
+       2,
+       63
       ],
       [
        453,
@@ -11282,8 +11282,8 @@
        8,
        1,
        0,
-       9,
-       53
+       10,
+       63
       ],
       [
        138,
@@ -11365,7 +11365,7 @@
    "team": "FC Scheisshaus",
    "rank": 7,
    "lastRank": 7,
-   "total": 495,
+   "total": 497,
    "chips": [
     {
      "name": "wildcard",
@@ -13262,7 +13262,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 10,
+     "points": 12,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -13319,16 +13319,16 @@
        7,
        1,
        2,
-       1,
-       53
+       2,
+       63
       ],
       [
        40,
        8,
        1,
        0,
-       9,
-       53
+       10,
+       63
       ],
       [
        411,
@@ -13410,7 +13410,7 @@
    "team": "FC HelloT*tty82",
    "rank": 8,
    "lastRank": 8,
-   "total": 474,
+   "total": 476,
    "chips": [],
    "gws": [
     {
@@ -14995,7 +14995,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 1,
+     "points": 3,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -15052,8 +15052,8 @@
        7,
        1,
        0,
-       1,
-       53
+       3,
+       63
       ],
       [
        512,
@@ -15141,9 +15141,9 @@
        512,
        426,
        0,
-       1,
+       2,
        0,
-       53
+       63
       ]
      ]
     }
@@ -15159,7 +15159,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 9,
-   "total": 456,
+   "total": 457,
    "chips": [
     {
      "name": "wildcard",
@@ -17144,7 +17144,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 9,
+     "points": 10,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -17209,8 +17209,8 @@
        8,
        1,
        0,
-       9,
-       53
+       10,
+       63
       ],
       [
        166,
@@ -17274,9 +17274,9 @@
        68,
        428,
        0,
-       1,
+       2,
        0,
-       53
+       63
       ],
       [
        166,
@@ -17308,7 +17308,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 10,
-   "total": 452,
+   "total": 453,
    "chips": [
     {
      "name": "wildcard",
@@ -18938,7 +18938,7 @@
      "gw": 9,
      "finished": false,
      "chip": "wildcard",
-     "points": 9,
+     "points": 10,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -18987,8 +18987,8 @@
        6,
        1,
        2,
-       9,
-       53
+       10,
+       63
       ],
       [
        68,
@@ -19123,10 +19123,10 @@
       [
        40,
        426,
-       9,
-       1,
-       53,
-       53
+       10,
+       2,
+       63,
+       63
       ],
       [
        379,
