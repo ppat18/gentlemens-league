@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T21:17:29.910Z",
+ "updated": "2026-11-02T21:26:23.079Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -2003,7 +2003,7 @@
    "team": "Globo Gym United",
    "rank": 2,
    "lastRank": 2,
-   "total": 579,
+   "total": 580,
    "chips": [
     {
      "name": "3xc",
@@ -3601,8 +3601,8 @@
        3,
        1,
        0,
-       1,
-       55
+       2,
+       67
       ],
       [
        391,
@@ -9103,7 +9103,7 @@
    "team": "CL1",
    "rank": 6,
    "lastRank": 6,
-   "total": 546,
+   "total": 547,
    "chips": [
     {
      "name": "wildcard",
@@ -11217,7 +11217,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 48,
+     "points": 49,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -11274,8 +11274,8 @@
        7,
        1,
        0,
-       1,
-       55
+       2,
+       67
       ],
       [
        40,
@@ -11338,8 +11338,8 @@
        15,
        0,
        0,
-       1,
-       55
+       8,
+       67
       ]
      ],
      "tr": [
@@ -11365,7 +11365,7 @@
    "team": "FC HelloT*tty82",
    "rank": 7,
    "lastRank": 8,
-   "total": 535,
+   "total": 536,
    "chips": [],
    "gws": [
     {
@@ -12991,8 +12991,8 @@
        5,
        1,
        0,
-       1,
-       55
+       2,
+       67
       ],
       [
        67,
@@ -13063,8 +13063,8 @@
        14,
        0,
        0,
-       1,
-       55
+       2,
+       67
       ],
       [
        175,
@@ -13114,7 +13114,7 @@
    "team": "FC Scheisshaus",
    "rank": 8,
    "lastRank": 7,
-   "total": 528,
+   "total": 530,
    "chips": [
     {
      "name": "wildcard",
@@ -15011,7 +15011,7 @@
      "gw": 9,
      "finished": false,
      "chip": null,
-     "points": 43,
+     "points": 45,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -15044,8 +15044,8 @@
        4,
        1,
        0,
-       1,
-       55
+       2,
+       67
       ],
       [
        264,
@@ -15100,8 +15100,8 @@
        11,
        1,
        0,
-       8,
-       55
+       9,
+       67
       ],
       [
        109,
@@ -17313,7 +17313,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 10,
-   "total": 491,
+   "total": 492,
    "chips": [
     {
      "name": "wildcard",
@@ -18943,7 +18943,7 @@
      "gw": 9,
      "finished": false,
      "chip": "wildcard",
-     "points": 48,
+     "points": 49,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -18976,8 +18976,8 @@
        4,
        1,
        0,
-       1,
-       55
+       2,
+       67
       ],
       [
        286,
@@ -19112,9 +19112,9 @@
       [
        449,
        204,
-       1,
+       2,
        3,
-       55,
+       67,
        90
       ],
       [
