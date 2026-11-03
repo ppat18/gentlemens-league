@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-03T15:01:22.121Z",
+ "updated": "2026-11-03T15:21:20.329Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
  },
  "lastGW": 9,
- "provisionalGW": 9,
+ "provisionalGW": null,
  "next": {
   "gw": 10,
   "deadline": "2026-11-06T18:30:00Z",
