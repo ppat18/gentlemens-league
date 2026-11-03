@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T12:01:20.418Z",
+ "updated": "2026-11-03T12:40:53.825Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -37,7 +37,7 @@
      "short": "TOT",
      "code": 6
     },
-    "homeDiff": 2,
+    "homeDiff": 3,
     "awayDiff": 3
    },
    {
@@ -83,7 +83,7 @@
      "code": 43
     },
     "homeDiff": 4,
-    "awayDiff": 3
+    "awayDiff": 2
    },
    {
     "kickoff": "2026-11-08T14:00:00Z",
@@ -113,7 +113,7 @@
      "code": 14
     },
     "homeDiff": 4,
-    "awayDiff": 3
+    "awayDiff": 2
    },
    {
     "kickoff": "2026-11-08T14:00:00Z",
@@ -158,7 +158,7 @@
      "code": 7
     },
     "homeDiff": 3,
-    "awayDiff": 4
+    "awayDiff": 3
    }
   ]
  },
