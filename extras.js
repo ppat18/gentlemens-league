@@ -1,5 +1,9 @@
 // Gentlemen's League – Spieltags-Bericht, Glück-o-Meter, Teamwert-Ranking, Tabellenverlauf
 // (nutzt $, av, esc, leaders aus app.js)
+// Punkte einer Gameweek für alle Wochen-Statistiken: wie bei FPL OHNE Transfer-Minuspunkte (Patrick 2.11.2026).
+// Nur die Gesamttabelle (und „Hätte er nur nichts getan“) rechnet mit dem Abzug.
+function gwp(g) { return g.gross ?? g.points; }
+
 
 // --- Tabellenverlauf (Platz je Gameweek) ---
 function renderRankChart(ms) {
@@ -61,9 +65,9 @@ function renderReport(ms, GW) {
   const cur = ms.map(m => ({ m, g: gwOf(m) })).filter(x => x.g);
   if (!cur.length) return;
   const b = s => `<b>${esc(s)}</b>`;
-  const W = leaders(cur, x => x.g.points)[0], L = leaders(cur, x => x.g.points, -1)[0];
+  const W = leaders(cur, x => gwp(x.g))[0], L = leaders(cur, x => gwp(x.g), -1)[0];
   const F = ms[0], Z = ms[ms.length - 1];
-  const avg = Math.round(cur.reduce((a, x) => a + x.g.points, 0) / cur.length);
+  const avg = Math.round(cur.reduce((a, x) => a + gwp(x.g), 0) / cur.length);
 
   const head = pick([
     `${W.m.nick} glänzt, ${L.m.nick} blamiert sich`,
@@ -106,9 +110,9 @@ function renderReport(ms, GW) {
   const cards = leaders(cur, x => x.g.red * 3 + x.g.yellow)[0];
   if (cards.v >= 3) extras.push(`${b(cards.m.nick)} stellt mit ${cards.g.red ? cards.g.red + '× Rot und ' : ''}${cards.g.yellow}× Gelb die unfairste Truppe der Liga. Das ist kein Fußball mehr, das ist Wrestling.`);
   if (new Set(cur.map(x => x.g.captain)).size === 1) extras.push(`Alle ${cur.length} hatten ${esc(cur[0].g.captain)} als Kapitän. Mutig wie eine Herde Schafe im Gewitter.`);
-  for (const x of cur.filter(x => x.g.chip && x.g.points < avg)) {
+  for (const x of cur.filter(x => x.g.chip && gwp(x.g) < avg)) {
     const chip = { wildcard: 'die Wildcard', freehit: 'den Free Hit', bboost: 'den Bench Boost', '3xc': 'den Triple Captain' }[x.g.chip] || x.g.chip;
-    extras.push(`${b(x.m.nick)} zündet ${chip} und holt damit sagenhafte ${x.g.points} Punkte – unter dem Schnitt. Feuerwerk mit nassen Streichhölzern.`);
+    extras.push(`${b(x.m.nick)} zündet ${chip} und holt damit sagenhafte ${gwp(x.g)} Punkte – unter dem Schnitt. Feuerwerk mit nassen Streichhölzern.`);
   }
   const prev = m => gwOf(m, GW - 1)?.leagueRank;
   const fall = leaders(cur, x => prev(x.m) ? x.g.leagueRank - prev(x.m) : null)[0];
@@ -227,8 +231,8 @@ function renderChips(ms) {
     const cells = CHIPS.map(c => ({ c, uses: m.gws.filter(g => g.chip === c.key).map(g => c.key === '3xc'
       ? { gw: g.gw, pts: g.captainPts, label: `${g.captain} GW ${g.gw}` }
       : c.key === 'bboost'
-        ? { gw: g.gw, pts: g.points, label: `Bank ${g.benchPlayersPts ?? '?'} GW ${g.gw}` }
-        : { gw: g.gw, pts: g.points, label: `GW ${g.gw}` }) }));
+        ? { gw: g.gw, pts: gwp(g), label: `Bank ${g.benchPlayersPts ?? '?'} GW ${g.gw}` }
+        : { gw: g.gw, pts: gwp(g), label: `GW ${g.gw}` }) }));
     // Chip der laufenden Gameweek: gleich mit Live-Punkten zeigen (FPL gibt ihn ab der Deadline preis)
     const ls = (m.squads || [])[(m.squads || []).length - 1];
     const lc = ls && !ls.finished && ls.chip && !m.gws.some(g => g.gw === ls.gw) && cells.find(x => x.c.key === ls.chip);

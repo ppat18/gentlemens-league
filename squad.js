@@ -143,16 +143,16 @@
     const xi = s.picks.filter(p => p.pos <= 11), bench = s.picks.filter(p => p.pos > 11);
     const rows = [1, 2, 3, 4].map(t => xi.filter(p => p.type === t)).filter(r => r.length)
       .map(r => `<div class="sq-row">${r.map(p => card(p, false)).join('')}</div>`).join('');
-    const net = s.points != null ? s.points - (s.hits || 0) : null;
+    const gross = s.points ?? null;
 
-    // Rundenplatz in der Liga (Netto-Punkte dieser Gameweek aller Manager)
-    const netOf = x => { const q = (x.squads || []).find(q => q.gw === s.gw); return q && q.points != null ? q.points - (q.hits || 0) : null; };
-    const all = L.managers.map(netOf).filter(v => v != null);
+    // Rundenplatz in der Liga (Punkte dieser Gameweek aller Manager, ohne Transfer-Minuspunkte)
+    const grossOf = x => (x.squads || []).find(q => q.gw === s.gw)?.points ?? null;
+    const all = L.managers.map(grossOf).filter(v => v != null);
     let placeHtml = '';
-    if (net != null && all.length > 1) {
-      const place = all.filter(v => v > net).length + 1;
-      const tag = net === Math.max(...all) ? '<span class="sq-tag win">🥇 Rundensieger</span>'
-        : net === Math.min(...all) ? '<span class="sq-tag last">💩 Stinker der Woche</span>' : '';
+    if (gross != null && all.length > 1) {
+      const place = all.filter(v => v > gross).length + 1;
+      const tag = gross === Math.max(...all) ? '<span class="sq-tag win">🥇 Rundensieger</span>'
+        : gross === Math.min(...all) ? '<span class="sq-tag last">💩 Stinker der Woche</span>' : '';
       placeHtml = `<div class="sq-place">${tag}<span>Rundenplatz ${place} von ${all.length}${s.finished ? '' : ' (vorläufig)'}</span></div>`;
     }
     // "Ohne Transfers": diese Elf, aber gekaufte Spieler gegen die verkauften getauscht (berechnet in fetch.js)
@@ -166,7 +166,7 @@
     const last = m.gws[m.gws.length - 1];
     const chipsLeft = Math.max(0, 8 - (m.chips || []).length);
     const kpis = [
-      ['Platz', `${m.rank}.`], ['Gesamt', m.total], ['Letzte GW', last ? last.points : '–'],
+      ['Platz', `${m.rank}.`], ['Gesamt', m.total], ['Letzte GW', last ? gwp(last) : '–'],
       ['Teamwert', `£${Number(m.valueNow ?? last?.value ?? 0).toFixed(1)}`], ['Bank', `£${Number(m.bankNow ?? last?.bank ?? 0).toFixed(1)}`], ['Chips übrig', chipsLeft],
     ];
 
@@ -185,7 +185,7 @@
 
     // Saisonverlauf (antippen = diese Gameweek zeigen)
     const hist = [...m.gws].reverse().map(x => `<tr data-gw="${x.gw}" class="${x.gw === s.gw ? 'on' : ''}">
-      <td>${x.gw}</td><td class="num">${x.points}</td><td class="num">${x.leagueRank != null ? x.leagueRank + '.' : '–'}</td><td>${esc(x.captain || '–')}</td><td>${x.chip ? chipName[x.chip] || x.chip : ''}</td><td class="num">${x.transfers}${x.hits ? ` (−${x.hits})` : ''}</td></tr>`).join('');
+      <td>${x.gw}</td><td class="num">${gwp(x)}</td><td class="num">${x.leagueRank != null ? x.leagueRank + '.' : '–'}</td><td>${esc(x.captain || '–')}</td><td>${x.chip ? chipName[x.chip] || x.chip : ''}</td><td class="num">${x.transfers}${x.hits ? ` (−${x.hits})` : ''}</td></tr>`).join('');
 
     el.innerHTML = `
       <a class="mp-back" href="#start" data-back>‹ Zurück</a>
@@ -200,7 +200,7 @@
         <div class="mp-card">
           <div class="sq-nav">
             <button class="sq-prev" ${idx === 0 ? 'disabled' : ''} aria-label="Ältere Gameweek">‹</button>
-            <span>Gameweek ${s.gw}${s.finished ? '' : ' · läuft'} · ${net ?? '–'} P.${s.hits ? ` (−${s.hits})` : ''}</span>
+            <span>Gameweek ${s.gw}${s.finished ? '' : ' · läuft'} · ${gross ?? '–'} P.${s.hits ? ` (−${s.hits})` : ''}</span>
             <button class="sq-next" ${idx === list.length - 1 ? 'disabled' : ''} aria-label="Neuere Gameweek">›</button>
           </div>
           ${placeHtml}

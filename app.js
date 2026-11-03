@@ -130,9 +130,9 @@ function render(d) {
   const awards = [];
   const add = (t, list, d, bad) => list.length && awards.push({ t, list, d, bad });
 
-  const win = leaders(cur, x => x.g.points);
+  const win = leaders(cur, x => gwp(x.g));
   add('🥇 Rundensieger', win, `${win[0]?.v} Punkte`);
-  const lose = leaders(cur, x => x.g.points, -1);
+  const lose = leaders(cur, x => gwp(x.g), -1);
   add('💩 Stinker der Woche', lose, `nur ${lose[0]?.v} Punkte`, 1);
   const bench = leaders(cur, x => x.g.bench);
   add('🪑 Pechvogel', bench, `${bench[0]?.v} Punkte auf der Bank`, 1);
@@ -166,14 +166,14 @@ function render(d) {
   if (fall[0]?.v < 0) add('📉 Absteiger', fall, `${fall[0].v} Plätze in der Tabelle`, 1);
   // Form der letzten 3 Runden
   const formGWs = [GW - 2, GW - 1, GW].filter(g => g >= 1);
-  const form = cur.map(x => ({ ...x, f: formGWs.reduce((a, g) => a + (gwOf(x.m, g)?.points || 0), 0) }));
+  const form = cur.map(x => ({ ...x, f: formGWs.reduce((a, g) => a + (gwp(gwOf(x.m, g) || {}) || 0), 0) }));
   const hot = leaders(form, x => x.f);
   add('🔥 In Topform', hot, `${hot[0]?.v} Punkte in den letzten ${formGWs.length} Runden`);
   const cold = leaders(form, x => x.f, -1);
   add('🥶 Formtief', cold, `nur ${cold[0]?.v} Punkte in den letzten ${formGWs.length} Runden`, 1);
   const chips = cur.filter(x => x.g.chip);
   const chipName = { wildcard: 'Wildcard', freehit: 'Free Hit', bboost: 'Bench Boost', '3xc': 'Triple Captain' };
-  chips.forEach(x => add('🃏 Chip gespielt', [x], `${chipName[x.g.chip] || x.g.chip} · ${x.g.points} Punkte`));
+  chips.forEach(x => add('🃏 Chip gespielt', [x], `${chipName[x.g.chip] || x.g.chip} · ${gwp(x.g)} Punkte`));
 
   $('awards').innerHTML = awards.map(a => {
     const m = a.list[0].m;
@@ -243,13 +243,13 @@ function render(d) {
   const winsOf = {}, lastOf = {};
   for (const gw of gws) {
     const row = ms.map(m => ({ m, g: gwOf(m, gw) })).filter(x => x.g);
-    leaders(row, x => x.g.points).forEach(x => winsOf[x.m.id] = (winsOf[x.m.id] || 0) + 1);
-    leaders(row, x => x.g.points, -1).forEach(x => lastOf[x.m.id] = (lastOf[x.m.id] || 0) + 1);
+    leaders(row, x => gwp(x.g)).forEach(x => winsOf[x.m.id] = (winsOf[x.m.id] || 0) + 1);
+    leaders(row, x => gwp(x.g), -1).forEach(x => lastOf[x.m.id] = (lastOf[x.m.id] || 0) + 1);
   }
   const sum = (m, k) => m.gws.reduce((a, g) => a + (g[k] || 0), 0);
   const rows = ms.map(m => ({
     m, cells: [
-      winsOf[m.id] || 0, lastOf[m.id] || 0, Math.max(...m.gws.map(g => g.points)),
+      winsOf[m.id] || 0, lastOf[m.id] || 0, Math.max(...m.gws.map(gwp)),
       sum(m, 'bench'), sum(m, 'captainPts'), sum(m, 'transfers'), sum(m, 'hits'),
       sum(m, 'yellow'), sum(m, 'red'), sum(m, 'goals'), sum(m, 'assists'), sum(m, 'cleanSheets'), sum(m, 'lateFor'), sum(m, 'lateAgainst'),
     ]
@@ -551,7 +551,7 @@ function renderSeasonAwards(ms, GW) {
   const gwList = [...new Set(ms.flatMap(m => m.gws.map(g => g.gw)))];
   const count = (m, dir) => gwList.filter(gw => {
     const row = ms.map(x => ({ m: x, g: x.gws.find(g => g.gw === gw) })).filter(x => x.g);
-    return leaders(row, x => x.g.points, dir).some(x => x.m === m);
+    return leaders(row, x => gwp(x.g), dir).some(x => x.m === m);
   }).length;
   const awards = [];
   const add = (t, list, d, bad) => list.length && list[0].v !== 0 && awards.push({ t, list, d, bad });
@@ -563,9 +563,9 @@ function renderSeasonAwards(ms, GW) {
   add('💩 Serien-Stinker', l, `${l[0].v}× Stinker der Woche`, 1);
 
   const games = ms.flatMap(m => m.gws.map(g => ({ m, g })));
-  l = leaders(games, x => x.g.points);
+  l = leaders(games, x => gwp(x.g));
   add('🚀 Höhenflug', l, `${l[0].v} Punkte in GW ${l[0].g.gw}`);
-  l = leaders(games, x => x.g.points, -1);
+  l = leaders(games, x => gwp(x.g), -1);
   add('🕳️ Tiefpunkt', l, `nur ${l[0].v} Punkte in GW ${l[0].g.gw}`, 1);
 
   l = leaders(all, x => sum(x.m, 'bench'));

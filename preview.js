@@ -21,7 +21,7 @@ function renderPreview(d, hist, comp) {
   const pick = arr => arr[Math.floor(rnd() * arr.length)];
 
   // --- Kennzahlen ---
-  const gwPts = (m, gw) => m.gws.find(g => g.gw === gw)?.points;
+  const gwPts = (m, gw) => gwp(m.gws.find(g => g.gw === gw) || {});
   const form = m => [last - 2, last - 1, last].filter(g => g >= 1).reduce((a, g) => a + (gwPts(m, g) || 0), 0);
   const winStreak = m => { let k = 0; for (let g = last; g >= 1; g--) { const mx = Math.max(...ms.map(x => gwPts(x, g) ?? -1)); if (gwPts(m, g) === mx) k++; else break; } return k; };
   const rankAt = (m, g) => m.gws.find(x => x.gw === g)?.leagueRank;

@@ -21,13 +21,13 @@ function renderBingo(d) {
   const ms = d.managers;
   const gwList = [...new Set(ms.flatMap(m => m.gws.map(g => g.gw)))];
   const minOf = {}; // Rundenletzter je GW
-  for (const gw of gwList) minOf[gw] = Math.min(...ms.map(m => m.gws.find(g => g.gw === gw)?.points ?? Infinity));
+  for (const gw of gwList) minOf[gw] = Math.min(...ms.map(m => gwp(m.gws.find(g => g.gw === gw) || {}) ?? Infinity));
 
   // Treffer je Manager und Feld: Liste der Gameweeks
   const hits = ms.map(m => {
     const f = Object.fromEntries(BINGO_FIELDS.map(x => [x.key, []]));
     for (const g of m.gws) {
-      if (g.points === minOf[g.gw]) f.last.push(g.gw);
+      if (gwp(g) === minOf[g.gw]) f.last.push(g.gw);
       for (let i = 0; i < (g.red || 0); i++) f.red.push(g.gw);
       for (let i = 0; i < (g.ownGoals || 0); i++) f.og.push(g.gw);
       for (let i = 0; i < (g.lateAgainst || 0); i++) f.late.push(g.gw);
