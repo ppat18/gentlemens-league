@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03T01:02:11.304Z",
+ "updated": "2026-11-03T01:16:25.211Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -2523,7 +2523,7 @@
      },
      "finLuck": -4.5,
      "csLuck": 2.4,
-     "gcLuck": 1.1,
+     "gcLuck": 1.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -10061,7 +10061,7 @@
      "captainBase": 2,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 18,
+     "benchPlayersPts": 16,
      "red": 0,
      "yellow": 2,
      "goals": 3,
@@ -10076,7 +10076,7 @@
       "name": "De Cuyper",
       "pts": 9
      },
-     "finLuck": -0.6,
+     "finLuck": -0.5,
      "csLuck": -0.7,
      "gcLuck": -0.5,
      "lateGain": 0,
@@ -11674,7 +11674,7 @@
        15,
        0,
        0,
-       8,
+       6,
        90
       ]
      ],
@@ -12139,7 +12139,7 @@
       "name": "Verbruggen",
       "pts": 11
      },
-     "finLuck": -5.2,
+     "finLuck": -5.1,
      "csLuck": 7.8,
      "gcLuck": 1.3,
      "lateGain": 0,
@@ -14100,9 +14100,9 @@
       "name": "Rogers",
       "pts": 9
      },
-     "finLuck": -11.3,
-     "csLuck": 0.7,
-     "gcLuck": 0.4,
+     "finLuck": -11.4,
+     "csLuck": 0.8,
+     "gcLuck": 0.5,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -18305,8 +18305,8 @@
       "pts": 10
      },
      "finLuck": -0.6,
-     "csLuck": 0.1,
-     "gcLuck": 0.7,
+     "csLuck": 0.2,
+     "gcLuck": 0.8,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
