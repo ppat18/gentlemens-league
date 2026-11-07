@@ -22,7 +22,9 @@
     const cells = sc.querySelectorAll('td.stick, th.stick');
     if (!cells.length) return;
     if (!sc.dataset.stickJs) {
-      if (cells[0].getBoundingClientRect().left >= sc.getBoundingClientRect().left - 1) return;   // sticky works
+      // eine Zelle aus dem Tabellenkörper prüfen: am iPhone blieb nur die Kopfzeile stehen, die Namen rutschten weg (7.11.2026)
+      const probe = sc.querySelector('td.stick') || cells[0];
+      if (probe.getBoundingClientRect().left >= sc.getBoundingClientRect().left - 1) return;   // sticky works
       sc.dataset.stickJs = '1';
     }
     for (const c of cells) { c.style.position = 'relative'; c.style.transform = `translateX(${sc.scrollLeft}px)`; }
