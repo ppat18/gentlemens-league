@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T14:27:11.782Z",
+ "updated": "2026-11-07T14:37:22.201Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -173,7 +173,7 @@
    },
    {
     "kickoff": "2026-11-07T12:30:00Z",
-    "done": false,
+    "done": true,
     "h": 2,
     "a": 6
    },
@@ -14795,7 +14795,7 @@
        12,
        0,
        0,
-       9,
+       10,
        90
       ],
       [
@@ -19170,7 +19170,7 @@
    "team": "Patrick's Team",
    "rank": 10,
    "lastRank": 10,
-   "total": 499,
+   "total": 502,
    "chips": [
     {
      "name": "wildcard",
@@ -21109,7 +21109,7 @@
      "gw": 10,
      "finished": false,
      "chip": "3xc",
-     "points": 9,
+     "points": 10,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -21118,7 +21118,7 @@
        1,
        1,
        0,
-       9,
+       10,
        90
       ],
       [
