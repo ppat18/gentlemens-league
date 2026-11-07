@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T13:23:05.197Z",
+ "updated": "2026-11-07T13:34:17.477Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -14854,7 +14854,7 @@
    "team": "FC HelloT*tty82",
    "rank": 8,
    "lastRank": 7,
-   "total": 539,
+   "total": 538,
    "chips": [],
    "gws": [
     {
@@ -16659,7 +16659,7 @@
      "gw": 10,
      "finished": false,
      "chip": null,
-     "points": 3,
+     "points": 2,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -16724,7 +16724,7 @@
        8,
        1,
        0,
-       2,
+       1,
        45
       ],
       [
