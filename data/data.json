@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T22:21:17.399Z",
+ "updated": "2026-11-08T23:01:10.243Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -4807,7 +4807,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -12.2,
+     "finLuck": -11.4,
      "csLuck": 3.7,
      "gcLuck": 0.1,
      "lateGain": 0,
@@ -6794,8 +6794,8 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -15.7,
-     "csLuck": 3.7,
+     "finLuck": -14.9,
+     "csLuck": 3.6,
      "gcLuck": 0.6,
      "lateGain": 0,
      "lateLoss": 0,
@@ -8927,7 +8927,7 @@
       "name": "Barry",
       "pts": 16
      },
-     "finLuck": 6.8,
+     "finLuck": 7.6,
      "csLuck": 3.1,
      "gcLuck": 0.7,
      "lateGain": 0,
@@ -11172,7 +11172,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -9.8,
+     "finLuck": -9,
      "csLuck": 3.3,
      "gcLuck": 0,
      "lateGain": 0,
@@ -13497,7 +13497,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -12,
+     "finLuck": -10.3,
      "csLuck": 2.8,
      "gcLuck": 0.7,
      "lateGain": 0,
@@ -17954,7 +17954,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -14,
+     "finLuck": -13.2,
      "csLuck": 5.1,
      "gcLuck": 1,
      "lateGain": 0,
@@ -20278,7 +20278,7 @@
       "name": "Vuskovic",
       "pts": 12
      },
-     "finLuck": -4.8,
+     "finLuck": -4,
      "csLuck": 1.6,
      "gcLuck": -0.1,
      "lateGain": 0,
