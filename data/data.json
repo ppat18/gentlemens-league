@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T18:40:16.871Z",
+ "updated": "2026-11-08T18:51:10.805Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -2754,7 +2754,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -11,
+     "finLuck": -10.9,
      "csLuck": 3.2,
      "gcLuck": 1,
      "lateGain": 0,
@@ -8927,7 +8927,7 @@
       "name": "Barry",
       "pts": 16
      },
-     "finLuck": 6.3,
+     "finLuck": 6.4,
      "csLuck": 3.9,
      "gcLuck": 0.9,
      "lateGain": 0,
@@ -11172,7 +11172,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -10.3,
+     "finLuck": -10.1,
      "csLuck": 4.2,
      "gcLuck": 0.1,
      "lateGain": 0,
@@ -15779,8 +15779,8 @@
       "pts": 11
      },
      "finLuck": -6.7,
-     "csLuck": 3,
-     "gcLuck": 1.4,
+     "csLuck": 3.1,
+     "gcLuck": 1.5,
      "lateGain": 0,
      "lateLoss": 4,
      "lateInfo": [
@@ -17283,7 +17283,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 9,
-   "total": 580,
+   "total": 582,
    "chips": [
     {
      "name": "wildcard",
@@ -17925,9 +17925,9 @@
     },
     {
      "gw": 10,
-     "points": 69,
-     "gross": 69,
-     "total": 580,
+     "points": 71,
+     "gross": 71,
+     "total": 582,
      "bench": 0,
      "transfers": 1,
      "hits": 0,
@@ -17955,8 +17955,8 @@
       "pts": 11
      },
      "finLuck": -14.3,
-     "csLuck": 5.8,
-     "gcLuck": 1,
+     "csLuck": 5.9,
+     "gcLuck": 1.2,
      "lateGain": 0,
      "lateLoss": 0,
      "lateInfo": [],
@@ -17969,7 +17969,7 @@
       {
        "in": "Araujo",
        "out": "Ajayi",
-       "inPts": 5,
+       "inPts": 7,
        "outPts": 6
       }
      ],
@@ -19550,7 +19550,7 @@
      "gw": 10,
      "finished": true,
      "chip": "bboost",
-     "points": 69,
+     "points": 71,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -19575,7 +19575,7 @@
        3,
        1,
        0,
-       5,
+       7,
        90
       ],
       [
@@ -19679,7 +19679,7 @@
       [
        579,
        279,
-       5,
+       7,
        6,
        90,
        68
@@ -20278,7 +20278,7 @@
       "name": "Vuskovic",
       "pts": 12
      },
-     "finLuck": -5.1,
+     "finLuck": -4.9,
      "csLuck": 1.9,
      "gcLuck": 0,
      "lateGain": 0,
