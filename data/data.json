@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T20:31:27.837Z",
+ "updated": "2026-11-08T20:41:06.325Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -6779,7 +6779,7 @@
      "captainBase": 2,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 11,
+     "benchPlayersPts": 9,
      "red": 0,
      "yellow": 2,
      "goals": 2,
@@ -6795,7 +6795,7 @@
       "pts": 11
      },
      "finLuck": -15.7,
-     "csLuck": 3.6,
+     "csLuck": 3.7,
      "gcLuck": 0.6,
      "lateGain": 0,
      "lateLoss": 0,
@@ -8246,7 +8246,7 @@
        14,
        0,
        0,
-       1,
+       -1,
        90
       ],
       [
@@ -13482,7 +13482,7 @@
      "captainBase": 2,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 15,
+     "benchPlayersPts": 13,
      "red": 0,
      "yellow": 0,
      "goals": 1,
@@ -15233,7 +15233,7 @@
        14,
        0,
        0,
-       1,
+       -1,
        90
       ],
       [
@@ -15763,7 +15763,7 @@
      "captainBase": 2,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 11,
+     "benchPlayersPts": 9,
      "red": 0,
      "yellow": 0,
      "goals": 1,
@@ -15778,7 +15778,7 @@
       "name": "N.Jackson",
       "pts": 11
      },
-     "finLuck": -6.7,
+     "finLuck": -6.5,
      "csLuck": 2.8,
      "gcLuck": 1.5,
      "lateGain": 0,
@@ -17248,7 +17248,7 @@
        14,
        0,
        0,
-       1,
+       -1,
        90
       ],
       [
@@ -17283,7 +17283,7 @@
    "team": "Volle Attacke ihr �",
    "rank": 9,
    "lastRank": 9,
-   "total": 582,
+   "total": 580,
    "chips": [
     {
      "name": "wildcard",
@@ -17925,9 +17925,9 @@
     },
     {
      "gw": 10,
-     "points": 71,
-     "gross": 71,
-     "total": 582,
+     "points": 69,
+     "gross": 69,
+     "total": 580,
      "bench": 0,
      "transfers": 1,
      "hits": 0,
@@ -17939,7 +17939,7 @@
      "captainBase": 2,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 16,
+     "benchPlayersPts": 14,
      "red": 0,
      "yellow": 3,
      "goals": 3,
@@ -17964,7 +17964,7 @@
      "lateAgainst": 1,
      "knocks": [],
      "injured": [],
-     "lazyPts": 70,
+     "lazyPts": 68,
      "transfersIn": [
       {
        "in": "Araujo",
@@ -19550,7 +19550,7 @@
      "gw": 10,
      "finished": true,
      "chip": "bboost",
-     "points": 71,
+     "points": 69,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -19671,7 +19671,7 @@
        15,
        1,
        0,
-       1,
+       -1,
        90
       ]
      ],
