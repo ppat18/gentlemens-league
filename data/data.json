@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T10:01:25.710Z",
+ "updated": "2026-11-09T11:01:24.495Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -6287,7 +6287,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 4,
-   "total": 619,
+   "total": 621,
    "chips": [],
    "gws": [
     {
@@ -6779,7 +6779,7 @@
      "captainBase": 2,
      "captainGoals": 0,
      "captainAssists": 0,
-     "benchPlayersPts": 9,
+     "benchPlayersPts": 7,
      "red": 0,
      "yellow": 2,
      "goals": 2,
@@ -8202,12 +8202,12 @@
        90
       ],
       [
-       286,
+       346,
        9,
+       1,
        0,
-       0,
-       0,
-       0
+       2,
+       90
       ],
       [
        411,
@@ -8234,12 +8234,12 @@
        90
       ],
       [
-       346,
+       286,
        13,
-       1,
        0,
-       2,
-       90
+       0,
+       0,
+       0
       ],
       [
        305,
