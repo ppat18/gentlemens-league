@@ -402,6 +402,7 @@ body{padding-bottom:80px}
 @media (prefers-reduced-motion:reduce){.refresh-btn.spin span{animation:none}}
 td.gwp small.hit{display:block;font:700 11px Inter;color:var(--red);line-height:1;margin-top:1px;white-space:nowrap}
 td.gwp small.hit .todo{color:#6b7280}
+.promo video{display:block;width:100%;max-width:340px;margin:0 auto 22px;border-radius:18px;background:#000;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 td.total small.gap{display:block;font:700 11px Inter;color:#6b7280;line-height:1;margin-top:1px;white-space:nowrap}
 /* ---------- Bowling ---------- */
 .tabs a.tab-bowling{background:linear-gradient(135deg,#8b5a2b,#5c3a1a);opacity:1;color:#ffe9c7}
@@ -639,6 +640,12 @@ body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width
 </header>
 
 <main class="page" id="page-start">
+  <!-- Vorschau-Video zur nächsten Gameweek (Patrick 16.11.2026): verschwindet von selbst zur Deadline (data-until) -->
+  <section class="promo" id="promo" hidden data-until="2026-11-21T11:00:00Z">
+    <h2>🎬 Vorschau Gameweek 11</h2>
+    <video src="media/gw11-promo.mp4" poster="media/gw11-promo.jpg" controls playsinline preload="none"></video>
+  </section>
+  <script>(p => { if (p && Date.now() < Date.parse(p.dataset.until)) p.hidden = false; else p?.remove(); })(document.getElementById('promo'));</script>
   <h2>Tabelle</h2>
   <section class="table">
     <table>
