@@ -643,7 +643,7 @@ body.bowling-mode::after{content:'';position:fixed;right:-10px;bottom:-6px;width
   <!-- Vorschau-Video zur nächsten Gameweek (Patrick 16.11.2026): verschwindet von selbst zur Deadline (data-until) -->
   <section class="promo" id="promo" hidden data-until="2026-11-21T11:00:00Z">
     <h2>🎬 Vorschau Gameweek 11</h2>
-    <video src="media/gw11-promo.mp4" poster="media/gw11-promo.jpg" controls playsinline preload="none"></video>
+    <video src="media/gw11-promo.mp4?v=2" poster="media/gw11-promo.jpg" controls playsinline preload="none"></video>
   </section>
   <script>(p => { if (p && Date.now() < Date.parse(p.dataset.until)) p.hidden = false; else p?.remove(); })(document.getElementById('promo'));</script>
   <h2>Tabelle</h2>
