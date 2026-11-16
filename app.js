@@ -218,7 +218,7 @@ function render(d) {
       <td class="rank">${r}${mv}</td>
       <td><div class="who"><img class="av" src="${av(m)}" alt=""><div>${esc(m.nick)}${r === 1 ? ' 👑' : ''}${r === ms.length ? ' 💩' : ''}<small>${esc(m.team)}</small></div></div></td>
       <td class="num gwp ${liveGW ? 'live' : ''} ${liveGW && xiState(m).playing ? 'playing' : ''}">${gwCell(m)}</td>
-      <td class="num total">${m.total}</td>
+      <td class="num total">${m.total}${first.total > m.total ? `<small class="gap" title="Rückstand auf Platz 1">−${first.total - m.total}</small>` : ''}</td>
     </tr>`;
   }).join('');
 
