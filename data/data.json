@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T16:53:06.830Z",
+ "updated": "2026-11-18T13:43:25.455Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -12750,7 +12750,7 @@
    "id": 434292,
    "nick": "Christian",
    "avatar": "christian",
-   "valueNow": 103.1,
+   "valueNow": 103,
    "bankNow": 0,
    "name": "Christian Lorenz",
    "team": "CL1",
@@ -15270,7 +15270,7 @@
    "id": 1279976,
    "nick": "Alex",
    "avatar": "alex",
-   "valueNow": 101.4,
+   "valueNow": 101.3,
    "bankNow": 3.9,
    "name": "Alex Preissler",
    "team": "FC HelloT*tty82",
