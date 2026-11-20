@@ -90,7 +90,7 @@ function renderComps(d, comp, hist) {
     [...comp.cl.knockout, ...comp.cup.rounds].forEach(r => r.ties.filter(t => byAv[t[0]] && byAv[t[1]]).forEach(t => tie(t, r.gws).legs.forEach(count)));
     return record;
   };
-  const strengthCache = {};
+  const strengthCache = {}, parts = {};
   const strength = a => {
     if (strengthCache[a] != null) return strengthCache[a];
     const m = byAv[a];
@@ -98,12 +98,15 @@ function renderComps(d, comp, hist) {
     const avg = l => l.length ? l.reduce((s, g) => s + g.gross, 0) / l.length : 50;
     const form = avg(gws.slice(-3)), season = avg(gws);
     const past = prevSeasons.map((s, i) => [seasonPts(a, s), i ? 1 : 2]).filter(x => x[0]);
-    let e = past.length
-      ? 0.4 * form + 0.3 * season + 0.3 * (past.reduce((s, [p, w]) => s + p / 38 * w, 0) / past.reduce((s, [, w]) => s + w, 0))
-      : 0.55 * form + 0.45 * season;
-    for (const s of prevSeasons) e += [champOf(s), hist?.cups?.[s], hist?.cl?.[s]].filter(x => x === a).length;
-    const r = compRecord()[a];
-    if (r) e += Math.max(-3, Math.min(3, 0.5 * (r.w - r.l)));
+    const pastAvg = past.length ? past.reduce((s, [p, w]) => s + p / 38 * w, 0) / past.reduce((s, [, w]) => s + w, 0) : null;
+    let e = past.length ? 0.4 * form + 0.3 * season + 0.3 * pastAvg : 0.55 * form + 0.45 * season;
+    const base = e;
+    let titles = 0;
+    for (const s of prevSeasons) titles += [champOf(s), hist?.cups?.[s], hist?.cl?.[s]].filter(x => x === a).length;
+    e += titles;
+    const r = compRecord()[a], recB = r ? Math.max(-3, Math.min(3, 0.5 * (r.w - r.l))) : 0;
+    e += recB;
+    parts[a] = { form, season, pastAvg, base, titles, r, recB, e };
     return (strengthCache[a] = e);
   };
   const phi = z => { // Standardnormalverteilung
@@ -117,16 +120,33 @@ function renderComps(d, comp, hist) {
     const p = phi((lead + (strength(A) - strength(B)) * n) / (SIGMA * Math.sqrt(n)));
     return Math.max(0.02, Math.min(0.98, p));
   };
-  const oddsBar = (A, B, p) => {
+  // „So wird gerechnet“ – erscheint beim Drüberfahren mit der Maus bzw. Antippen (Patrick 20.11.2026)
+  const n1 = x => x.toFixed(1).replace('.', ',');
+  const sgn = x => (x >= 0 ? '+' : '−') + n1(Math.abs(x));
+  const why = (A, B, p, lead = 0, n = 1) => {
+    if (p == null) return '';
+    strength(A); strength(B);
+    const line = a => { const q = parts[a];
+      return `${nameOf(a)}: Form ${n1(q.form)} · Saison ${n1(q.season)}${q.pastAvg != null ? ` · Vorsaisonen ${n1(q.pastAvg)}` : ''} → ${n1(q.base)}` +
+        (q.titles ? ` · Titel +${q.titles}` : '') + (q.r ? ` · CL/Cup ${q.r.w}–${q.r.l}: ${sgn(q.recB)}` : '') + ` = ${n1(q.e)} Pkt/GW`; };
+    const diff = strength(A) - strength(B), fav = diff >= 0 ? A : B;
+    const pa = Math.round(p * 100);
+    return [`📊 So wird gerechnet (erwartete Punkte pro GW):`, line(A), line(B),
+      `Unterschied: ${n1(Math.abs(diff))} Pkt/GW für ${nameOf(fav)}${n > 1 ? ` × ${n} Spiele` : ''}${lead ? ` · Zwischenstand ${lead > 0 ? '+' : '−'}${Math.abs(lead)} für ${nameOf(lead > 0 ? A : B)}` : ''}`,
+      `Zufall: ± 20 Punkte je Spieltag → ${nameOf(A)} ${pa} % : ${100 - pa} % ${nameOf(B)}`,
+      `(Form = Ø letzte 3 GWs ×40 %, Saison-Ø ×30 %, Vorsaisonen ×30 %; +1 je Titel der letzten 2 Saisonen; ±½ je Sieg/Niederlage in CL & Cup, max. ±3)`].join('\n');
+  };
+  const whyAttr = (A, B, p, lead, n) => { const w = why(A, B, p, lead, n); return w ? ` title="${esc(w)}" data-why="${esc(w)}" tabindex="0"` : ''; };
+  const oddsBar = (A, B, p, lead = 0, n = 1) => {
     if (p == null) return '';
     const a = Math.round(p * 100), b = 100 - a;
-    return `<div class="odds" title="Siegchance laut Gentlemen-Formel">
+    return `<div class="odds"${whyAttr(A, B, p, lead, n)}>
       <span class="${a >= b ? 'fav' : ''}">${a} %</span>
       <div class="odds-bar"><i class="${a >= b ? 'fav' : ''}" style="width:${a}%"></i><i class="${b > a ? 'fav' : ''}" style="width:${b}%"></i></div>
       <span class="${b > a ? 'fav' : ''}">${b} %</span>
     </div>`;
   };
-  const oddsNote = `<p class="gnote odds-note">📊 <b>Siegchance:</b> erwartete Punkte pro Spieltag aus Form (Ø letzte 3 GWs, 40 %), aktueller Saison (30 %) und den letzten 2 Saisonen (30 %; wer noch keine hat: nur aktuelle Saison). Dazu +1 je Titel (Meister, Cup, CL) der letzten 2 Saisonen und ein kleiner Bonus für Siege in CL & Cup dieser Saison. Bei Hin- und Rückspiel zählt der Zwischenstand mit. Reine Spielerei – FPL bleibt Glückssache.</p>`;
+  const oddsNote = `<p class="gnote odds-note">📊 <b>Siegchance:</b> erwartete Punkte pro Spieltag aus Form (Ø letzte 3 GWs, 40 %), aktueller Saison (30 %) und den letzten 2 Saisonen (30 %; wer noch keine hat: nur aktuelle Saison). Dazu +1 je Titel (Meister, Cup, CL) der letzten 2 Saisonen und ein kleiner Bonus für Siege in CL & Cup dieser Saison. Bei Hin- und Rückspiel zählt der Zwischenstand mit. Mit der Maus über die Prozente fahren (am Handy antippen) zeigt die Rechnung. Reine Spielerei – FPL bleibt Glückssache.</p>`;
 
   // Siegchance direkt in der Zeile des Managers (Mini-Balken + Prozent)
   const rowChance = (x, who) => {
@@ -134,7 +154,7 @@ function renderComps(d, comp, hist) {
     const p = chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length);
     if (p == null) return '';
     const pa = Math.round(p * 100), v = who === x.A ? pa : 100 - pa, fav = v > 50 || (v === 50 && who === x.A);
-    return `<span class="tchance ${fav ? 'fav' : ''}" title="Siegchance laut Gentlemen-Formel"><span class="tbar"><i style="width:${v}%"></i></span><b>${v}\u00a0%</b></span>`;
+    return `<span class="tchance ${fav ? 'fav' : ''}"${whyAttr(x.A, x.B, p, x.sa - x.sb, x.legs.filter(g => !g.done).length)}><span class="tbar"><i style="width:${v}%"></i></span><b>${v}\u00a0%</b></span>`;
   };
   const tieCard = (x, round) => `
     <div class="tie ${x.done ? 'done' : ''}">
@@ -257,7 +277,7 @@ function renderComps(d, comp, hist) {
       <div class="fg-body">
         <div class="fg-title">🏆 ${esc(r.name)} <small>GW ${r.gws.join(' + ')}</small></div>
         <div class="fg-match">${side(x.A, x.sa)}<span class="fg-vs">${g.done ? ':' : 'vs'}</span>${side(x.B, x.sb)}</div>
-        ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length))}
+        ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length), x.sa - x.sb, x.legs.filter(g => !g.done).length)}
         ${x.winner ? `<div class="fg-winner">${winnerLabel} ${esc(byAv[x.winner].nick)}</div>` : `<div class="fg-when">Anpfiff in Gameweek ${r.gws[0]}</div>`}
       </div>
     </div>`;
@@ -280,3 +300,12 @@ const TROPHY_SVG = `<svg viewBox="0 0 120 160" aria-hidden="true">
   <rect x="30" y="112" width="60" height="30" rx="4" fill="url(#tb)"/>
   <rect x="40" y="120" width="40" height="14" rx="2" fill="url(#tg)"/>
 </svg>`;
+
+// Siegchance-Erklärung zum Antippen (Handy hat kein Drüberfahren)
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-why]');
+  document.querySelectorAll('.why-pop').forEach(p => { if (!el || p.previousElementSibling !== el) p.remove(); });
+  if (!el) return;
+  if (el.nextElementSibling?.classList.contains('why-pop')) { el.nextElementSibling.remove(); return; }
+  const p = document.createElement('div'); p.className = 'why-pop'; p.textContent = el.dataset.why; el.after(p);
+});
