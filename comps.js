@@ -58,11 +58,11 @@ function renderComps(d, comp, hist) {
     return { A, B, legs, sa, sb, done, winner, any: legs.some(g => g.done) };
   };
   // --- Siegchance ---
-  // Stärke = erwartete Punkte pro Spieltag:
-  //   40 % Form (Ø letzte 3 GWs) + 30 % Ø aktuelle Saison + 30 % Ø pro GW der letzten 2 Saisonen (neuere doppelt)
-  //   ohne Vorsaisonen: 55 % Form + 45 % aktuelle Saison
-  //   + 1 Punkt je Titel (Meister/Cup/CL) in den letzten 2 Saisonen
-  //   + 0,5 × (Siege − Niederlagen) in CL & Cup dieser Saison (max. ±3)
+  // Stärke = erwartete Punkte pro Spieltag (Patrick 20.11.2026: aktuelle Form + Kader zählen mehr, Vergangenheit weniger):
+  //   30 % Kader-Prognose für die nächste Runde (FPL „expected points“ der Startelf, Kapitän doppelt)
+  //   35 % Form (Ø letzte 3 GWs) + 20 % Ø aktuelle Saison + 15 % Ø pro GW der letzten 2 Saisonen (neuere doppelt)
+  //   fehlt ein Teil (z. B. keine Vorsaison), zählen die übrigen anteilig mehr
+  //   + 1 je Sieg, − 1 je Niederlage in den letzten 3 CL-/Cup-Spielen (Remis zählen nicht)
   // Chance = Normalverteilung der Punktedifferenz (Streuung 20 Punkte je Spiel), bei 2 Spielen inkl. Zwischenstand.
   const SIGMA = 20;
   const prevSeasons = (() => { const y = +String(comp.season || '').slice(0, 4); return y ? [1, 2].map(k => `${y - k}/${String(y - k + 1).slice(2)}`) : []; })();
@@ -71,24 +71,33 @@ function renderComps(d, comp, hist) {
     if (row?.points) return row.points;
     return byAv[a]?.past?.find(p => p.season === s)?.points ?? null;
   };
-  const champOf = s => {
-    const rows = hist?.seasons?.[s];
-    if (rows?.length) return rows[0].who;
-    const best = d.managers.map(m => [m.avatar, seasonPts(m.avatar, s)]).filter(x => x[1]).sort((x, y) => y[1] - x[1])[0];
-    return best?.[0];
-  };
   let record = null;
-  const compRecord = () => {
+  const compRecord = () => { // je Manager die CL-/Cup-Ergebnisse: [Spieltag, +1 Sieg / −1 Niederlage]
     if (record) return record;
     record = {};
     const count = g => {
       if (!g.done || !byAv[g.h] || !byAv[g.a] || g.hs === g.as) return;
       const [w, l] = g.hs > g.as ? [g.h, g.a] : [g.a, g.h];
-      (record[w] ||= { w: 0, l: 0 }).w++; (record[l] ||= { w: 0, l: 0 }).l++;
+      (record[w] ||= []).push([g.gw, 1]); (record[l] ||= []).push([g.gw, -1]);
     };
     comp.cl.rounds.forEach(r => r.matches.forEach(([h, a]) => count(game(h, a, r.gw))));
     [...comp.cl.knockout, ...comp.cup.rounds].forEach(r => r.ties.filter(t => byAv[t[0]] && byAv[t[1]]).forEach(t => tie(t, r.gws).legs.forEach(count)));
     return record;
+  };
+  // Kader-Prognose: FPL-Erwartungspunkte (d.ep[id] = [diese Runde, nächste Runde]) der Startelf, Kapitän doppelt.
+  // Läuft gerade eine Runde, zählt deren echte Aufstellung; sonst die letzte bekannte (die neue sieht man erst nach der Deadline).
+  const squadForecast = a => {
+    const sq = (byAv[a]?.squads || []).at(-1);
+    if (!d.ep || !sq?.picks?.length) return null;
+    const k = sq.finished === false ? 0 : 1;
+    let s = 0, any = false;
+    for (const p of sq.picks) {
+      if (p[1] > 11) continue;
+      const ep = d.ep[p[0]];
+      if (!ep) continue;
+      any = true; s += (ep[k] || 0) * (p[3] === 1 ? 2 : 1);
+    }
+    return any ? s : null;
   };
   const strengthCache = {}, parts = {};
   const strength = a => {
@@ -99,14 +108,14 @@ function renderComps(d, comp, hist) {
     const form = avg(gws.slice(-3)), season = avg(gws);
     const past = prevSeasons.map((s, i) => [seasonPts(a, s), i ? 1 : 2]).filter(x => x[0]);
     const pastAvg = past.length ? past.reduce((s, [p, w]) => s + p / 38 * w, 0) / past.reduce((s, [, w]) => s + w, 0) : null;
-    let e = past.length ? 0.4 * form + 0.3 * season + 0.3 * pastAvg : 0.55 * form + 0.45 * season;
-    const base = e;
-    let titles = 0;
-    for (const s of prevSeasons) titles += [champOf(s), hist?.cups?.[s], hist?.cl?.[s]].filter(x => x === a).length;
-    e += titles;
-    const r = compRecord()[a], recB = r ? Math.max(-3, Math.min(3, 0.5 * (r.w - r.l))) : 0;
-    e += recB;
-    parts[a] = { form, season, pastAvg, base, titles, r, recB, e };
+    const squad = squadForecast(a);
+    const mix = [[squad, 0.30], [form, 0.35], [season, 0.20], [pastAvg, 0.15]].filter(x => x[0] != null);
+    const base = mix.reduce((s, [v, w]) => s + v * w, 0) / mix.reduce((s, [, w]) => s + w, 0);
+    const last3 = [...(compRecord()[a] || [])].sort((x, y) => y[0] - x[0]).slice(0, 3);
+    const r = last3.length ? { w: last3.filter(x => x[1] > 0).length, l: last3.filter(x => x[1] < 0).length } : null;
+    const recB = r ? r.w - r.l : 0;
+    const e = base + recB;
+    parts[a] = { squad, form, season, pastAvg, base, r, recB, e };
     return (strengthCache[a] = e);
   };
   const phi = z => { // Standardnormalverteilung
@@ -127,14 +136,14 @@ function renderComps(d, comp, hist) {
     if (p == null) return '';
     strength(A); strength(B);
     const line = a => { const q = parts[a];
-      return `${nameOf(a)}: Form ${n1(q.form)} · Saison ${n1(q.season)}${q.pastAvg != null ? ` · Vorsaisonen ${n1(q.pastAvg)}` : ''} → ${n1(q.base)}` +
-        (q.titles ? ` · Titel +${q.titles}` : '') + (q.r ? ` · CL/Cup ${q.r.w}–${q.r.l}: ${sgn(q.recB)}` : '') + ` = ${n1(q.e)} Pkt/GW`; };
+      return `${nameOf(a)}: ${q.squad != null ? `Kader ${n1(q.squad)} · ` : ''}Form ${n1(q.form)} · Saison ${n1(q.season)}${q.pastAvg != null ? ` · Vorsaisonen ${n1(q.pastAvg)}` : ''} → ${n1(q.base)}` +
+        (q.r ? ` · CL/Cup zuletzt ${q.r.w}–${q.r.l}: ${sgn(q.recB)}` : '') + ` = ${n1(q.e)} Pkt/GW`; };
     const diff = strength(A) - strength(B), fav = diff >= 0 ? A : B;
     const pa = Math.round(p * 100);
     return [`📊 So wird gerechnet (erwartete Punkte pro GW):`, line(A), line(B),
       `Unterschied: ${n1(Math.abs(diff))} Pkt/GW für ${nameOf(fav)}${n > 1 ? ` × ${n} Spiele` : ''}${lead ? ` · Zwischenstand ${lead > 0 ? '+' : '−'}${Math.abs(lead)} für ${nameOf(lead > 0 ? A : B)}` : ''}`,
       `Zufall: ± 20 Punkte je Spieltag → ${nameOf(A)} ${pa} % : ${100 - pa} % ${nameOf(B)}`,
-      `(Form = Ø letzte 3 GWs ×40 %, Saison-Ø ×30 %, Vorsaisonen ×30 %; +1 je Titel der letzten 2 Saisonen; ±½ je Sieg/Niederlage in CL & Cup, max. ±3)`].join('\n');
+      `(Kader = FPL-Prognose der Startelf für die Runde, Kapitän doppelt ×30 %; Form = Ø letzte 3 GWs ×35 %; Saison-Ø ×20 %; Vorsaisonen ×15 %; ±1 je Sieg/Niederlage in den letzten 3 CL-/Cup-Spielen)`].join('\n');
   };
   const whyAttr = (A, B, p, lead, n) => { const w = why(A, B, p, lead, n); return w ? ` title="${esc(w)}" data-why="${esc(w)}" tabindex="0"` : ''; };
   const oddsBar = (A, B, p, lead = 0, n = 1) => {
@@ -146,7 +155,7 @@ function renderComps(d, comp, hist) {
       <span class="${b > a ? 'fav' : ''}">${b} %</span>
     </div>`;
   };
-  const oddsNote = `<p class="gnote odds-note">📊 <b>Siegchance:</b> erwartete Punkte pro Spieltag aus Form (Ø letzte 3 GWs, 40 %), aktueller Saison (30 %) und den letzten 2 Saisonen (30 %; wer noch keine hat: nur aktuelle Saison). Dazu +1 je Titel (Meister, Cup, CL) der letzten 2 Saisonen und ein kleiner Bonus für Siege in CL & Cup dieser Saison. Bei Hin- und Rückspiel zählt der Zwischenstand mit. Mit der Maus über die Prozente fahren (am Handy antippen) zeigt die Rechnung. Reine Spielerei – FPL bleibt Glückssache.</p>`;
+  const oddsNote = `<p class="gnote odds-note">📊 <b>Siegchance:</b> erwartete Punkte pro Spieltag aus der FPL-Prognose für die Startelf der Runde (30 %, Kapitän doppelt), der Form (Ø letzte 3 GWs, 35 %), der aktuellen Saison (20 %) und den letzten 2 Saisonen (15 %). Dazu +1 je Sieg und −1 je Niederlage in den letzten 3 CL-/Cup-Spielen. Bei Hin- und Rückspiel zählt der Zwischenstand mit. Mit der Maus über die Prozente fahren (am Handy antippen) zeigt die Rechnung. Reine Spielerei – FPL bleibt Glückssache.</p>`;
 
   // Siegchance direkt in der Zeile des Managers (Mini-Balken + Prozent)
   const rowChance = (x, who) => {

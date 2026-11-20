@@ -395,6 +395,8 @@ async function get(url) {
     current,
     managers,
     players: squadPlayers,
+    // FPL-Erwartungspunkte je Spieler [diese Runde, nächste Runde] – für die Kader-Prognose der Siegchance (20.11.2026)
+    ep: Object.fromEntries(Object.keys(squadPlayers).map(id => [id, [+elements[id]?.ep_this || 0, +elements[id]?.ep_next || 0]])),
   };
   const file = path.join(__dirname, '..', 'data', 'data.json');
   fs.mkdirSync(path.dirname(file), { recursive: true });
