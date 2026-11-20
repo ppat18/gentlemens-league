@@ -94,7 +94,7 @@ function renderComps(d, comp, hist) {
     for (const p of sq.picks) {
       if (p[1] > 11) continue;
       const ep = d.ep[p[0]];
-      if (!ep) continue;
+      if (!ep?.[k]) continue;
       any = true; s += (ep[k] || 0) * (p[3] === 1 ? 2 : 1);
     }
     return any ? s : null;
