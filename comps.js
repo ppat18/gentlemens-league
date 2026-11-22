@@ -9,8 +9,10 @@ function renderComps(d, comp, hist) {
   // liegt man darüber (ab 3 Zusatzwechseln = −12), werden ALLE Minuspunkte abgezogen.
   const free = comp.freeHitPoints ?? 8;
   const gwOf = (a, gw) => byAv[a]?.gws.find(g => g.gw === gw);
-  const penalty = (a, gw) => { const g = gwOf(a, gw); const h = g?.hits || 0; return h > free ? h : 0; };
-  const goals = (a, gw) => { const g = gwOf(a, gw); return g ? g.gross - penalty(a, gw) : null; };
+  // laufende Gameweek: Live-Punkte aus dem aktuellen Kader (Patrick 22.11.2026)
+  const liveSq = (a, gw) => { const s = (byAv[a]?.squads || []).at(-1); return s && s.gw === gw && s.finished === false && s.points != null ? s : null; };
+  const penalty = (a, gw) => { const g = gwOf(a, gw) || liveSq(a, gw); const h = g?.hits || 0; return h > free ? h : 0; };
+  const goals = (a, gw) => { const g = gwOf(a, gw); if (g) return g.gross - penalty(a, gw); const s = liveSq(a, gw); return s ? s.points - penalty(a, gw) : null; };
   const played = gw => gw <= d.lastGW;
   const code = { Achtelfinale: 'AF', Viertelfinale: 'VF', Halbfinale: 'HF', Finale: 'F' };
   const ctx = {}; // Platzhalter -> Avatar-Name (A1, VF2, …)
@@ -28,10 +30,11 @@ function renderComps(d, comp, hist) {
   // Ein Spiel (ein Spieltag)
   const game = (h, a, gw) => {
     h = resolve(h); a = resolve(a);
-    const ready = byAv[h] && byAv[a] && played(gw);
-    const hs = ready ? goals(h, gw) : null, as = ready ? goals(a, gw) : null;
-    const pens = ready ? [[h, penalty(h, gw)], [a, penalty(a, gw)]].filter(p => p[1] > 0) : [];
-    return { h, a, gw, hs, as, pens, done: hs != null && as != null };
+    const ready = !!(byAv[h] && byAv[a] && played(gw));
+    const live = !ready && !!(byAv[h] && byAv[a] && liveSq(h, gw) && liveSq(a, gw));
+    const hs = ready || live ? goals(h, gw) : null, as = ready || live ? goals(a, gw) : null;
+    const pens = ready || live ? [[h, penalty(h, gw)], [a, penalty(a, gw)]].filter(p => p[1] > 0) : [];
+    return { h, a, gw, hs, as, pens, live, done: ready && hs != null && as != null };
   };
   // Hinweis, wenn jemand mehr als 3 Zusatzwechsel gemacht hat
   const penNote = gs => {
@@ -40,22 +43,22 @@ function renderComps(d, comp, hist) {
   };
   const matchRow = g => {
     const cls = s => !g.done ? '' : s === 'h' ? (g.hs > g.as ? 'win' : g.hs < g.as ? 'lose' : 'draw') : (g.as > g.hs ? 'win' : g.as < g.hs ? 'lose' : 'draw');
-    return `<div class="match ${g.done ? 'done' : ''}">
+    return `<div class="match ${g.done ? 'done' : g.live ? 'live' : ''}">
       <div class="${cls('h')}">${person(g.h)}</div>
-      <div class="sc">${g.done ? `${g.hs}<i>:</i>${g.as}` : `<small>GW ${g.gw}</small>`}</div>
+      <div class="sc">${g.done ? `${g.hs}<i>:</i>${g.as}` : g.live ? `${g.hs}<i>:</i>${g.as}<small class="live-tag">LIVE</small>` : `<small>GW ${g.gw}</small>`}</div>
       <div class="${cls('a')}">${person(g.a, true)}</div>
-    </div>${g.done ? '' : oddsBar(g.h, g.a, chance(g.h, g.a))}${penNote([g])}`;
+    </div>${g.done || g.live ? '' : oddsBar(g.h, g.a, chance(g.h, g.a))}${penNote([g])}`;
   };
 
   // K.o.-Duell (Hin- und Rückspiel oder ein Spiel)
   const tie = (t, gws) => {
     const legs = gws.length === 2 ? [game(t[0], t[1], gws[0]), game(t[1], t[0], gws[1])] : [game(t[0], t[1], gws[0])];
     const A = resolve(t[0]), B = resolve(t[1]);
-    const sum = who => legs.reduce((s, g) => s + (g.done ? (g.h === who ? g.hs : g.as) : 0), 0);
+    const sum = who => legs.reduce((s, g) => s + (g.done || g.live ? (g.h === who ? g.hs : g.as) : 0), 0);
     const done = legs.every(g => g.done);
     const sa = sum(A), sb = sum(B);
     const winner = done ? (sa > sb ? A : sb > sa ? B : null) : null;
-    return { A, B, legs, sa, sb, done, winner, any: legs.some(g => g.done) };
+    return { A, B, legs, sa, sb, done, winner, any: legs.some(g => g.done || g.live), live: legs.some(g => g.live) };
   };
   // --- Siegchance ---
   // Stärke = erwartete Punkte pro Spieltag (Patrick 20.11.2026: aktuelle Form + Kader zählen mehr, Vergangenheit weniger):
@@ -160,21 +163,21 @@ function renderComps(d, comp, hist) {
   // Siegchance direkt in der Zeile des Managers (Mini-Balken + Prozent)
   const rowChance = (x, who) => {
     if (x.done) return '';
-    const p = chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length);
+    const p = chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done && !g.live).length);
     if (p == null) return '';
     const pa = Math.round(p * 100), v = who === x.A ? pa : 100 - pa, fav = v > 50 || (v === 50 && who === x.A);
-    return `<span class="tchance ${fav ? 'fav' : ''}"${whyAttr(x.A, x.B, p, x.sa - x.sb, x.legs.filter(g => !g.done).length)}><span class="tbar"><i style="width:${v}%"></i></span><b>${v}\u00a0%</b></span>`;
+    return `<span class="tchance ${fav ? 'fav' : ''}"${whyAttr(x.A, x.B, p, x.sa - x.sb, x.legs.filter(g => !g.done && !g.live).length)}><span class="tbar"><i style="width:${v}%"></i></span><b>${v}\u00a0%</b></span>`;
   };
   const tieCard = (x, round) => `
-    <div class="tie ${x.done ? 'done' : ''}">
+    <div class="tie ${x.done ? 'done' : x.live ? 'live' : ''}">
       ${[['A', x.A, x.sa], ['B', x.B, x.sb]].map(([k, who, s]) => `
         <div class="tie-row ${x.winner === who ? 'win' : x.done && x.winner ? 'lose' : ''}">
           ${person(who)}
           ${rowChance(x, who) || '<span></span>'}
-          <span class="legs">${x.legs.map(g => `<i>${g.done ? (g.h === who ? g.hs : g.as) : '–'}</i>`).join('')}</span>
+          <span class="legs">${x.legs.map(g => `<i${g.live ? ' class="live"' : ''}>${g.done || g.live ? (g.h === who ? g.hs : g.as) : '–'}</i>`).join('')}</span>
           <span class="agg">${x.any ? s : ''}</span>
         </div>`).join('')}
-      <div class="tie-foot">${x.legs.map((g, i) => `${x.legs.length > 1 ? (i ? 'Rück' : 'Hin') : round} GW ${g.gw}`).join(' · ')}${x.done && !x.winner ? ' · <b>Gleichstand!</b>' : ''}</div>
+      <div class="tie-foot">${x.legs.map((g, i) => `${x.legs.length > 1 ? (i ? 'Rück' : 'Hin') : round} GW ${g.gw}`).join(' · ')}${x.live ? ' · <span class="live-tag">LIVE</span>' : ''}${x.done && !x.winner ? ' · <b>Gleichstand!</b>' : ''}</div>
       ${penNote(x.legs)}
     </div>`;
   const koRound = (r, pre) => {
@@ -279,14 +282,14 @@ function renderComps(d, comp, hist) {
     const side = (who, s) => `<div class="fg-side ${x.winner === who ? 'win' : x.winner ? 'lose' : ''}">
       ${byAv[who] ? `<img class="av" src="${av(byAv[who])}" alt="">` : `<img class="av" src="assets/avatars/unknown.svg" alt="">`}
       <b>${esc(byAv[who] ? byAv[who].nick : who.replace(/^HF(\d)$/, 'Sieger HF $1'))}</b>
-      <span class="fg-score">${g.done ? s : ''}</span>
+      <span class="fg-score">${g.done || g.live ? s : ''}</span>
     </div>`;
     return `<div class="final-gold ${compact ? 'compact' : ''}">
       <div class="trophy">${TROPHY_SVG}</div>
       <div class="fg-body">
         <div class="fg-title">🏆 ${esc(r.name)} <small>GW ${r.gws.join(' + ')}</small></div>
-        <div class="fg-match">${side(x.A, x.sa)}<span class="fg-vs">${g.done ? ':' : 'vs'}</span>${side(x.B, x.sb)}</div>
-        ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done).length), x.sa - x.sb, x.legs.filter(g => !g.done).length)}
+        <div class="fg-match">${side(x.A, x.sa)}<span class="fg-vs">${g.done || g.live ? ':' : 'vs'}</span>${side(x.B, x.sb)}</div>
+        ${x.done ? '' : oddsBar(x.A, x.B, chance(x.A, x.B, x.sa - x.sb, x.legs.filter(g => !g.done && !g.live).length), x.sa - x.sb, x.legs.filter(g => !g.done && !g.live).length)}
         ${x.winner ? `<div class="fg-winner">${winnerLabel} ${esc(byAv[x.winner].nick)}</div>` : `<div class="fg-when">Anpfiff in Gameweek ${r.gws[0]}</div>`}
       </div>
     </div>`;
