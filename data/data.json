@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T23:26:19.739Z",
+ "updated": "2026-11-22T13:08:06.381Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -232,7 +232,7 @@
    "id": 5944301,
    "nick": "Patrick",
    "avatar": "patrick",
-   "valueNow": 102.8,
+   "valueNow": 102.9,
    "bankNow": 0.2,
    "name": "Patrick Pilko",
    "team": "Eat The Poor FC",
@@ -4578,7 +4578,7 @@
    "id": 2634875,
    "nick": "Roli",
    "avatar": "roli",
-   "valueNow": 101.7,
+   "valueNow": 101.9,
    "bankNow": 1.7,
    "name": "Roland Kumpitsch",
    "team": "District 14 Graz",
@@ -6706,7 +6706,7 @@
    "team": "1. FC Wadenkrampf",
    "rank": 4,
    "lastRank": 4,
-   "total": 644,
+   "total": 646,
    "chips": [
     {
      "name": "3xc",
@@ -8706,7 +8706,7 @@
      "gw": 11,
      "finished": false,
      "chip": "3xc",
-     "points": 23,
+     "points": 25,
      "hits": 0,
      "subs": [],
      "picks": [
@@ -8755,7 +8755,7 @@
        6,
        1,
        0,
-       1,
+       3,
        90
       ],
       [
@@ -8839,7 +8839,7 @@
    "id": 5717008,
    "nick": "Favo",
    "avatar": "favo",
-   "valueNow": 101.8,
+   "valueNow": 101.9,
    "bankNow": 9.8,
    "name": "Sascha Mair",
    "team": "FC Scheisshaus",
@@ -11290,7 +11290,7 @@
    "id": 2776955,
    "nick": "Max",
    "avatar": "max",
-   "valueNow": 102.5,
+   "valueNow": 102.6,
    "bankNow": 0.2,
    "name": "Markus Reinisch",
    "team": "The Unbreakables",
@@ -13599,7 +13599,7 @@
    "id": 434292,
    "nick": "Christian",
    "avatar": "christian",
-   "valueNow": 103.1,
+   "valueNow": 103.3,
    "bankNow": 0.6,
    "name": "Christian Lorenz",
    "team": "CL1",
@@ -16259,13 +16259,13 @@
    "id": 2889833,
    "nick": "Andi",
    "avatar": "andi",
-   "valueNow": 104,
+   "valueNow": 104.2,
    "bankNow": 0.9,
    "name": "Andreas Hauth",
    "team": "Volle Attacke ihr �",
    "rank": 8,
    "lastRank": 9,
-   "total": 605,
+   "total": 607,
    "chips": [
     {
      "name": "wildcard",
@@ -18672,7 +18672,7 @@
      "gw": 11,
      "finished": false,
      "chip": null,
-     "points": 29,
+     "points": 31,
      "hits": 4,
      "subs": [],
      "picks": [
@@ -18713,7 +18713,7 @@
        5,
        1,
        0,
-       1,
+       3,
        90
       ],
       [
@@ -18809,7 +18809,7 @@
       [
        13,
        367,
-       1,
+       3,
        0,
        90,
        0
@@ -20960,7 +20960,7 @@
    "id": 6335161,
    "nick": "Amti",
    "avatar": "amti",
-   "valueNow": 101,
+   "valueNow": 101.2,
    "bankNow": 0.2,
    "name": "Patrick Amtmann",
    "team": "Patrick's Team",
@@ -23973,8 +23973,8 @@
    0
   ],
   "13": [
-   3.8,
-   3.8
+   4.2,
+   4.2
   ],
   "15": [
    5.5,
