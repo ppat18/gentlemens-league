@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23T23:36:24.872Z",
+ "updated": "2026-11-23T23:51:11.210Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -7410,7 +7410,7 @@
      "points": 35,
      "gross": 35,
      "total": 657,
-     "bench": 16,
+     "bench": 22,
      "transfers": 1,
      "hits": 0,
      "value": 101.7,
@@ -12092,7 +12092,7 @@
      "points": 44,
      "gross": 48,
      "total": 647,
-     "bench": 2,
+     "bench": 4,
      "transfers": 2,
      "hits": 4,
      "value": 101.8,
