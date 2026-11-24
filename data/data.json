@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T02:01:20.426Z",
+ "updated": "2026-11-24T03:01:16.866Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -9695,7 +9695,7 @@
       "name": "Wirtz",
       "pts": 14
      },
-     "finLuck": -12.4,
+     "finLuck": -12.5,
      "csLuck": 5.3,
      "gcLuck": 1.3,
      "lateGain": 0,
