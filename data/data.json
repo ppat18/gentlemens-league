@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T15:21:39.230Z",
+ "updated": "2026-11-26T14:48:44.744Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -2440,7 +2440,7 @@
    "id": 4797326,
    "nick": "Kai",
    "avatar": "kai",
-   "valueNow": 102.8,
+   "valueNow": 102.9,
    "bankNow": 0,
    "name": "Kai Reinisch",
    "team": "Globo Gym United",
@@ -9052,7 +9052,7 @@
    "id": 2776955,
    "nick": "Max",
    "avatar": "max",
-   "valueNow": 102.7,
+   "valueNow": 102.8,
    "bankNow": 0.2,
    "name": "Markus Reinisch",
    "team": "The Unbreakables",
@@ -11416,7 +11416,7 @@
    "id": 5717008,
    "nick": "Favo",
    "avatar": "favo",
-   "valueNow": 102,
+   "valueNow": 102.1,
    "bankNow": 9.8,
    "name": "Sascha Mair",
    "team": "FC Scheisshaus",
@@ -21450,7 +21450,7 @@
    "id": 6335161,
    "nick": "Amti",
    "avatar": "amti",
-   "valueNow": 101.1,
+   "valueNow": 101.2,
    "bankNow": 0.2,
    "name": "Patrick Amtmann",
    "team": "Patrick's Team",
