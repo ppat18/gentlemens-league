@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T14:48:44.744Z",
+ "updated": "2026-11-27T14:48:18.340Z",
  "league": {
   "id": 243508,
   "name": "Gentlemens League"
@@ -232,7 +232,7 @@
    "id": 5944301,
    "nick": "Patrick",
    "avatar": "patrick",
-   "valueNow": 103.1,
+   "valueNow": 103.2,
    "bankNow": 0.2,
    "name": "Patrick Pilko",
    "team": "Eat The Poor FC",
@@ -2440,7 +2440,7 @@
    "id": 4797326,
    "nick": "Kai",
    "avatar": "kai",
-   "valueNow": 102.9,
+   "valueNow": 103,
    "bankNow": 0,
    "name": "Kai Reinisch",
    "team": "Globo Gym United",
@@ -11416,7 +11416,7 @@
    "id": 5717008,
    "nick": "Favo",
    "avatar": "favo",
-   "valueNow": 102.1,
+   "valueNow": 102.3,
    "bankNow": 9.8,
    "name": "Sascha Mair",
    "team": "FC Scheisshaus",
@@ -13927,7 +13927,7 @@
    "id": 2889833,
    "nick": "Andi",
    "avatar": "andi",
-   "valueNow": 104.4,
+   "valueNow": 104.5,
    "bankNow": 0.9,
    "name": "Andreas Hauth",
    "team": "Volle Attacke ihr �",
@@ -19265,7 +19265,7 @@
    "id": 1279976,
    "nick": "Alex",
    "avatar": "alex",
-   "valueNow": 101.5,
+   "valueNow": 101.4,
    "bankNow": 3.9,
    "name": "Alex Preissler",
    "team": "FC HelloT*tty82",
@@ -21450,7 +21450,7 @@
    "id": 6335161,
    "nick": "Amti",
    "avatar": "amti",
-   "valueNow": 101.2,
+   "valueNow": 101.1,
    "bankNow": 0.2,
    "name": "Patrick Amtmann",
    "team": "Patrick's Team",
@@ -24492,7 +24492,7 @@
  "ep": {
   "1": [
    4,
-   2
+   3
   ],
   "4": [
    5,
@@ -24752,7 +24752,7 @@
   ],
   "305": [
    0.3,
-   0.2
+   0.3
   ],
   "320": [
    0.7,
@@ -24864,7 +24864,7 @@
   ],
   "426": [
    4.7,
-   4.7
+   3.5
   ],
   "427": [
    1.3,
